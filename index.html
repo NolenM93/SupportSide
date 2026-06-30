@@ -300,10 +300,11 @@
 
         <!-- Right: form -->
         <div class="bg-slate-800/60 border border-slate-700/60 rounded-2xl p-8">
-          <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="flex flex-col gap-5">
-            <input type="hidden" name="form-name" value="contact" />
+          <form id="contact" action="https://formspree.io/f/FORMSPREE_FORM_ID" method="POST" class="flex flex-col gap-5">
+            <input type="hidden" name="_subject" value="New Sidekick Software inquiry" />
+            <input type="hidden" name="_next" value="__PAGES_URL__#contact" />
             <p class="hidden">
-              <label>Don't fill this out: <input name="bot-field" /></label>
+              <label>Don't fill this out: <input name="_gotcha" tabindex="-1" autocomplete="off" /></label>
             </p>
 
             <div class="grid sm:grid-cols-2 gap-5">
