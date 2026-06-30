@@ -1,0 +1,19 @@
+# Dependencies
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.suo
+*.user
+
+# Environment files
+.env
+.env.local
+
+# Build output (regenerate with npm run build:css)
+# assets/css/tailwind.css is committed so Netlify deploys without a build step

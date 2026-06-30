@@ -1,0 +1,12 @@
+/* Sidekick Software — custom overrides */
+
+/* Smooth scroll offset for fixed navbar */
+html {
+  scroll-padding-top: 4rem;
+}
+
+/* Select arrow for dark theme */
+select option {
+  background-color: #0f172a;
+  color: #f8fafc;
+}
