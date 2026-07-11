@@ -1,6 +1,6 @@
-# Sidekick Software
+# Support Side Tech
 
-Official website for **Sidekick Software** — a custom software agency building affordable tools for local businesses.
+Official website for **Support Side Tech** — a custom software agency building affordable tools for local businesses.
 
 ## Tech Stack
 
@@ -66,4 +66,4 @@ The contact form posts to **Formspree** (no backend required). Submissions are e
 
 ---
 
-&copy; 2026 Sidekick Software
+&copy; 2026 Support Side Tech
