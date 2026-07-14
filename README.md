@@ -1,19 +1,20 @@
-# Support Side Tech
+# Support Side
 
-Official website for **Support Side Tech** — a custom software agency building affordable tools for local businesses.
+Official website for **Support Side** - a custom software company building web apps, portals, SMS automation, and internal tools for real businesses.
 
 ## Tech Stack
 
-- **HTML5** — semantic, accessible markup
-- **Tailwind CSS** — compiled to `assets/css/tailwind.css` at build time
-- **GitHub Pages** — static hosting with auto-deploy from `main`
-- **Formspree** — contact form submissions delivered to email
+- **HTML5** - semantic, accessible markup
+- **Tailwind CSS** - compiled to `assets/css/tailwind.css` at build time
+- **GitHub Pages** - static hosting with auto-deploy from `main`
+- **Formspree** - contact form submissions delivered to email
 
 ## Project Structure
 
 ```
 SupportSide/
 ├── index.html              # Main landing page
+├── PARTNER_SCOPE.md        # Business scope for potential partners
 ├── assets/
 │   └── css/
 │       ├── input.css       # Tailwind source
@@ -66,4 +67,4 @@ The contact form posts to **Formspree** (no backend required). Submissions are e
 
 ---
 
-&copy; 2026 Support Side Tech
+&copy; 2026 Support Side
