@@ -27,7 +27,7 @@
       <div class="mb-6">
         <p class="text-xs font-semibold uppercase tracking-widest text-brand-600 mb-2">Support Side Demo</p>
         <h1 class="text-2xl font-bold text-slate-900">Service Business Portal</h1>
-        <p class="text-sm text-slate-500 mt-1">Job status, work orders, and documents — all in one place.</p>
+        <p class="text-sm text-slate-500 mt-1">Job status, work orders, and documents — all in one place. After you sign in, click the glowing markers to explore upgrades we can build.</p>
       </div>
       <form id="login-form" class="space-y-4">
         <div>
@@ -78,9 +78,10 @@
   <div id="view-app" class="hidden min-h-screen">
     <header class="bg-slate-900 text-white">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between gap-4">
-        <div class="flex items-center gap-3 min-w-0">
+        <div id="hotspot-header" class="tour-hotspot-wrap flex items-center gap-3 min-w-0">
           <span id="header-company" class="font-bold truncate"></span>
           <span id="header-role-badge" class="hidden sm:inline text-xs px-2 py-0.5 rounded-full"></span>
+          <button type="button" class="tour-hotspot tour-hotspot--tr hidden" data-feature="automation" title="Missed-call automation we can add" aria-label="Learn about missed-call automation">8</button>
         </div>
         <div class="flex items-center gap-3 text-sm shrink-0">
           <span id="header-user" class="hidden sm:inline text-slate-400 text-xs"></span>
@@ -98,30 +99,34 @@
       </div>
     </nav>
 
-    <main class="max-w-6xl mx-auto px-4 sm:px-6 py-8">
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 py-8 pb-28">
 
       <!-- DASHBOARD -->
       <section id="tab-dashboard" class="tab-panel">
         <h2 class="text-xl font-bold text-slate-900 mb-6">Dashboard</h2>
-        <div class="grid sm:grid-cols-4 gap-4 mb-8">
-          <div class="bg-white rounded-2xl border border-slate-200 p-5">
-            <p class="text-sm text-slate-500">All jobs</p>
-            <p id="stat-total" class="text-3xl font-bold text-slate-900 mt-1">0</p>
-          </div>
-          <div class="bg-white rounded-2xl border border-slate-200 p-5">
-            <p class="text-sm text-slate-500">Open</p>
-            <p id="stat-open" class="text-3xl font-bold text-brand-600 mt-1">0</p>
-          </div>
-          <div class="bg-white rounded-2xl border border-slate-200 p-5">
-            <p class="text-sm text-slate-500">In progress</p>
-            <p id="stat-inprogress" class="text-3xl font-bold text-blue-600 mt-1">0</p>
-          </div>
-          <div class="bg-white rounded-2xl border border-slate-200 p-5">
-            <p class="text-sm text-slate-500">Completed</p>
-            <p id="stat-complete" class="text-3xl font-bold text-emerald-600 mt-1">0</p>
+        <div id="hotspot-stats" class="tour-hotspot-wrap mb-8">
+          <button type="button" class="tour-hotspot tour-hotspot--tr hidden" data-feature="scheduling" title="Scheduling calendar we can add" aria-label="Learn about scheduling">3</button>
+          <div class="grid sm:grid-cols-4 gap-4">
+            <div class="bg-white rounded-2xl border border-slate-200 p-5">
+              <p class="text-sm text-slate-500">All jobs</p>
+              <p id="stat-total" class="text-3xl font-bold text-slate-900 mt-1">0</p>
+            </div>
+            <div class="bg-white rounded-2xl border border-slate-200 p-5">
+              <p class="text-sm text-slate-500">Open</p>
+              <p id="stat-open" class="text-3xl font-bold text-brand-600 mt-1">0</p>
+            </div>
+            <div class="bg-white rounded-2xl border border-slate-200 p-5">
+              <p class="text-sm text-slate-500">In progress</p>
+              <p id="stat-inprogress" class="text-3xl font-bold text-blue-600 mt-1">0</p>
+            </div>
+            <div class="bg-white rounded-2xl border border-slate-200 p-5">
+              <p class="text-sm text-slate-500">Completed</p>
+              <p id="stat-complete" class="text-3xl font-bold text-emerald-600 mt-1">0</p>
+            </div>
           </div>
         </div>
-        <div class="bg-white rounded-2xl border border-slate-200 p-5">
+        <div id="hotspot-recent" class="tour-hotspot-wrap bg-white rounded-2xl border border-slate-200 p-5">
+          <button type="button" class="tour-hotspot tour-hotspot--tr hidden" data-feature="dispatch" title="Dispatch map we can add" aria-label="Learn about dispatch map">5</button>
           <div class="flex items-center justify-between mb-4">
             <h3 class="font-semibold text-slate-900">Recent jobs</h3>
             <button data-tab="jobs" class="tab-btn text-xs text-brand-600 hover:underline font-medium">View all</button>
@@ -133,7 +138,10 @@
       <!-- JOBS LIST -->
       <section id="tab-jobs" class="tab-panel hidden">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
-          <h2 class="text-xl font-bold text-slate-900">Jobs</h2>
+          <div id="hotspot-jobs" class="tour-hotspot-wrap inline-flex items-center">
+            <h2 class="text-xl font-bold text-slate-900">Jobs</h2>
+            <button type="button" class="tour-hotspot tour-hotspot--inline hidden" data-feature="sms" title="SMS updates we can add" aria-label="Learn about SMS updates">1</button>
+          </div>
           <div class="flex flex-wrap gap-2">
             <select id="filter-status" class="rounded-xl border border-slate-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/30">
               <option value="">All statuses</option>
@@ -142,10 +150,16 @@
               <option>In Progress</option>
               <option>Complete</option>
             </select>
-            <button id="btn-new-job" class="bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold px-4 py-2 rounded-xl transition-colors">+ New request</button>
+            <div id="hotspot-new-job" class="tour-hotspot-wrap inline-flex">
+              <button id="btn-new-job" class="bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold px-4 py-2 rounded-xl transition-colors">+ New request</button>
+              <button type="button" class="tour-hotspot tour-hotspot--tr hidden" data-feature="invoicing" title="Invoicing we can add" aria-label="Learn about invoicing">4</button>
+            </div>
           </div>
         </div>
-        <div class="space-y-3" id="jobs-list"></div>
+        <div id="hotspot-jobs-list" class="tour-hotspot-wrap">
+          <button type="button" class="tour-hotspot tour-hotspot--tr hidden" data-feature="photos" title="Field photos we can add" aria-label="Learn about field photos">2</button>
+          <div id="jobs-list" class="space-y-3"></div>
+        </div>
       </section>
 
       <!-- JOB DETAIL -->
@@ -159,11 +173,77 @@
 
       <!-- CLIENTS (staff only) -->
       <section id="tab-clients" class="tab-panel hidden">
-        <h2 class="text-xl font-bold text-slate-900 mb-6">Clients</h2>
-        <div class="grid sm:grid-cols-3 gap-4" id="clients-list"></div>
+        <div id="hotspot-clients" class="tour-hotspot-wrap inline-flex items-center mb-6">
+          <h2 class="text-xl font-bold text-slate-900">Clients</h2>
+          <button type="button" class="tour-hotspot tour-hotspot--inline hidden" data-feature="esign" title="E-signatures we can add" aria-label="Learn about e-signatures">6</button>
+        </div>
+        <div id="hotspot-clients-list" class="tour-hotspot-wrap">
+          <button type="button" class="tour-hotspot tour-hotspot--tr hidden" data-feature="contracts" title="Recurring contracts we can add" aria-label="Learn about recurring contracts">7</button>
+          <div class="grid sm:grid-cols-3 gap-4" id="clients-list"></div>
+        </div>
       </section>
 
     </main>
+  </div>
+
+  <!-- TOUR: welcome coachmark -->
+  <div id="tour-welcome" class="tour-welcome hidden" role="dialog" aria-labelledby="tour-welcome-title">
+    <p class="tour-welcome-kicker">Interactive demo</p>
+    <h3 id="tour-welcome-title">This is just the starting point</h3>
+    <p>Click the glowing numbered markers — or open the feature list — to see advanced upgrades we can build for a real service business.</p>
+    <div class="tour-welcome-actions">
+      <button type="button" id="tour-welcome-explore" class="tour-btn-primary">Explore upgrades</button>
+      <button type="button" id="tour-welcome-dismiss" class="tour-btn-ghost">Got it</button>
+    </div>
+  </div>
+
+  <!-- TOUR: floating action button -->
+  <button type="button" id="tour-fab" class="tour-fab hidden" aria-label="Open upgrade features">
+    <span>What we can add</span>
+    <span class="tour-fab-badge">8</span>
+  </button>
+
+  <!-- TOUR: feature detail modal -->
+  <div id="feature-modal" class="feature-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="feature-modal-title">
+    <div class="feature-panel">
+      <div class="feature-panel-header">
+        <div id="feature-modal-icon" class="feature-panel-icon"></div>
+        <div class="min-w-0">
+          <p class="feature-panel-kicker">Upgrade idea</p>
+          <h3 id="feature-modal-title">Feature</h3>
+        </div>
+        <button type="button" id="feature-modal-close" class="feature-panel-close" aria-label="Close">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="feature-panel-body">
+        <p id="feature-modal-tagline" class="feature-tagline"></p>
+        <p id="feature-modal-body" class="feature-body"></p>
+        <ul id="feature-modal-bullets" class="feature-bullets"></ul>
+        <div class="feature-why">
+          <p class="feature-why-label">Why it matters</p>
+          <p id="feature-modal-why"></p>
+        </div>
+        <a id="feature-modal-cta" href="../../index.html#contact" class="feature-panel-cta">Ask about this for your business</a>
+        <p class="feature-panel-note">Not built into this demo — shown as an example of what a custom build can include.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOUR: feature gallery -->
+  <div id="feature-gallery" class="feature-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="feature-gallery-title">
+    <div class="feature-gallery-panel">
+      <div class="feature-gallery-header">
+        <div>
+          <h3 id="feature-gallery-title">Features we can add</h3>
+          <p>Eight upgrades that turn this portal into a full service ops system.</p>
+        </div>
+        <button type="button" id="feature-gallery-close" class="feature-panel-close" aria-label="Close">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div id="feature-gallery-grid" class="feature-gallery-grid"></div>
+    </div>
   </div>
 
   <!-- NEW JOB MODAL -->
@@ -238,6 +318,7 @@
   </div>
 
   <script src="seed.js"></script>
+  <script src="tour.js"></script>
   <script src="app.js"></script>
   <script>
     function fillLogin(email, pw) {

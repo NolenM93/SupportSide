@@ -361,11 +361,13 @@
     $('view-app').classList.remove('hidden');
     renderHeader();
     showTab('dashboard');
+    if (window.ServicePortalTour) window.ServicePortalTour.start();
   }
 
   function showLogin() {
     $('view-app').classList.add('hidden');
     $('view-login').classList.remove('hidden');
+    if (window.ServicePortalTour) window.ServicePortalTour.stop();
   }
 
   $('login-form').addEventListener('submit', e => {

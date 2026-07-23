@@ -40,11 +40,13 @@
     $('view-login').classList.add('hidden');
     $('view-app').classList.remove('hidden');
     renderAll();
+    if (window.GiftshopTour) window.GiftshopTour.start();
   }
 
   function showLogin() {
     $('view-app').classList.add('hidden');
     $('view-login').classList.remove('hidden');
+    if (window.GiftshopTour) window.GiftshopTour.stop();
   }
 
   function money(n) {

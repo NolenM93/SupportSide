@@ -27,7 +27,7 @@
       <div class="mb-6">
         <p class="text-xs font-semibold uppercase tracking-widest text-brand-600 mb-2">Support Side Demo</p>
         <h1 class="text-2xl font-bold text-slate-900">Gift Shop Inventory</h1>
-        <p class="text-sm text-slate-500 mt-2">Portfolio demo with sample gift shop data. Not a live client system.</p>
+        <p class="text-sm text-slate-500 mt-2">Portfolio demo with sample gift shop data. After you sign in, click the glowing markers to explore upgrades we can build.</p>
       </div>
       <form id="login-form" class="space-y-4">
         <div>
@@ -55,9 +55,10 @@
   <div id="view-app" class="hidden min-h-screen">
     <header class="bg-slate-900 text-white">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between gap-4">
-        <div class="flex items-center gap-3 min-w-0">
+        <div id="hotspot-header" class="tour-hotspot-wrap flex items-center gap-3 min-w-0">
           <span class="font-bold truncate">Harbor Lane Gift Shop</span>
           <span class="hidden sm:inline text-xs bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded-full">Demo</span>
+          <button type="button" class="tour-hotspot tour-hotspot--tr hidden" data-feature="roles" title="Staff roles we can add" aria-label="Learn about staff roles">8</button>
         </div>
         <div class="flex items-center gap-3 text-sm shrink-0">
           <a href="../../index.html" class="text-slate-300 hover:text-white transition-colors">Support Side</a>
@@ -75,26 +76,30 @@
       </div>
     </nav>
 
-    <main class="max-w-6xl mx-auto px-4 sm:px-6 py-8">
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 py-8 pb-28">
 
       <!-- DASHBOARD -->
       <section id="tab-dashboard" class="tab-panel">
         <h2 class="text-xl font-bold text-slate-900 mb-6">Dashboard</h2>
-        <div class="grid sm:grid-cols-3 gap-4 mb-8">
-          <div class="bg-white rounded-2xl border border-slate-200 p-5">
-            <p class="text-sm text-slate-500">Products</p>
-            <p id="stat-products" class="text-3xl font-bold text-slate-900 mt-1">0</p>
-          </div>
-          <div class="bg-white rounded-2xl border border-slate-200 p-5">
-            <p class="text-sm text-slate-500">Units in stock</p>
-            <p id="stat-units" class="text-3xl font-bold text-slate-900 mt-1">0</p>
-          </div>
-          <div class="bg-white rounded-2xl border border-slate-200 p-5">
-            <p class="text-sm text-slate-500">Low stock alerts</p>
-            <p id="stat-low" class="text-3xl font-bold text-amber-600 mt-1">0</p>
+        <div id="hotspot-stats" class="tour-hotspot-wrap mb-8">
+          <button type="button" class="tour-hotspot tour-hotspot--tr hidden" data-feature="locations" title="Multi-location inventory" aria-label="Learn about multi-location inventory">3</button>
+          <div class="grid sm:grid-cols-3 gap-4">
+            <div class="bg-white rounded-2xl border border-slate-200 p-5">
+              <p class="text-sm text-slate-500">Products</p>
+              <p id="stat-products" class="text-3xl font-bold text-slate-900 mt-1">0</p>
+            </div>
+            <div class="bg-white rounded-2xl border border-slate-200 p-5">
+              <p class="text-sm text-slate-500">Units in stock</p>
+              <p id="stat-units" class="text-3xl font-bold text-slate-900 mt-1">0</p>
+            </div>
+            <div class="bg-white rounded-2xl border border-slate-200 p-5">
+              <p class="text-sm text-slate-500">Low stock alerts</p>
+              <p id="stat-low" class="text-3xl font-bold text-amber-600 mt-1">0</p>
+            </div>
           </div>
         </div>
-        <div class="bg-white rounded-2xl border border-slate-200 p-5">
+        <div id="hotspot-activity" class="tour-hotspot-wrap bg-white rounded-2xl border border-slate-200 p-5">
+          <button type="button" class="tour-hotspot tour-hotspot--tr hidden" data-feature="analytics" title="Sales reports we can add" aria-label="Learn about sales reports">5</button>
           <h3 class="font-semibold text-slate-900 mb-3">Recent stock activity</h3>
           <ul id="recent-activity" class="divide-y divide-slate-100 text-sm"></ul>
         </div>
@@ -103,11 +108,17 @@
       <!-- PRODUCTS -->
       <section id="tab-products" class="tab-panel hidden">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
-          <h2 class="text-xl font-bold text-slate-900">Products</h2>
+          <div id="hotspot-products" class="tour-hotspot-wrap inline-flex items-center">
+            <h2 class="text-xl font-bold text-slate-900">Products</h2>
+            <button type="button" class="tour-hotspot tour-hotspot--inline hidden" data-feature="purchase-orders" title="Purchase orders we can add" aria-label="Learn about purchase orders">4</button>
+          </div>
           <div class="flex flex-wrap gap-2">
             <input id="search" type="search" placeholder="Search name or SKU..."
               class="rounded-xl border border-slate-300 px-3 py-2 text-sm w-full sm:w-56 focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500" />
-            <button id="btn-add-product" class="bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold px-4 py-2 rounded-xl transition-colors">Add product</button>
+            <div id="hotspot-add-product" class="tour-hotspot-wrap inline-flex">
+              <button id="btn-add-product" class="bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold px-4 py-2 rounded-xl transition-colors">Add product</button>
+              <button type="button" class="tour-hotspot tour-hotspot--tr hidden" data-feature="photos" title="Product photos we can add" aria-label="Learn about product photos">7</button>
+            </div>
             <button id="btn-reset" class="border border-slate-300 hover:bg-slate-50 text-slate-700 text-sm font-medium px-4 py-2 rounded-xl transition-colors">Reset sample data</button>
           </div>
         </div>
@@ -133,8 +144,13 @@
 
       <!-- ADJUST -->
       <section id="tab-adjust" class="tab-panel hidden">
-        <h2 class="text-xl font-bold text-slate-900 mb-6">Stock adjustment</h2>
-        <form id="adjust-form" class="bg-white rounded-2xl border border-slate-200 p-6 max-w-lg space-y-4">
+        <div id="hotspot-adjust" class="tour-hotspot-wrap inline-flex items-center mb-6">
+          <h2 class="text-xl font-bold text-slate-900">Stock adjustment</h2>
+          <button type="button" class="tour-hotspot tour-hotspot--inline hidden" data-feature="barcode" title="Barcode scanning we can add" aria-label="Learn about barcode scanning">1</button>
+        </div>
+        <form id="adjust-form" class="tour-hotspot-wrap bg-white rounded-2xl border border-slate-200 p-6 max-w-lg space-y-4">
+          <span id="hotspot-adjust-form" class="absolute inset-0 pointer-events-none" aria-hidden="true"></span>
+          <button type="button" class="tour-hotspot tour-hotspot--tr hidden" data-feature="pos" title="POS sync we can add" aria-label="Learn about POS sync">6</button>
           <div>
             <label class="block text-sm font-medium text-slate-700 mb-1" for="adjust-product">Product</label>
             <select id="adjust-product" required class="w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm"></select>
@@ -164,13 +180,76 @@
 
       <!-- LOW STOCK -->
       <section id="tab-low" class="tab-panel hidden">
-        <h2 class="text-xl font-bold text-slate-900 mb-2">Low stock</h2>
+        <div id="hotspot-low" class="tour-hotspot-wrap inline-flex items-center mb-2">
+          <h2 class="text-xl font-bold text-slate-900">Low stock</h2>
+          <button type="button" class="tour-hotspot tour-hotspot--inline hidden" data-feature="alerts" title="Automatic alerts we can add" aria-label="Learn about automatic alerts">2</button>
+        </div>
         <p class="text-sm text-slate-500 mb-6">Items at or below their reorder threshold.</p>
         <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden">
           <ul id="low-list" class="divide-y divide-slate-100"></ul>
         </div>
       </section>
     </main>
+  </div>
+
+  <!-- TOUR: welcome coachmark -->
+  <div id="tour-welcome" class="tour-welcome hidden" role="dialog" aria-labelledby="tour-welcome-title">
+    <p class="tour-welcome-kicker">Interactive demo</p>
+    <h3 id="tour-welcome-title">This is just the starting point</h3>
+    <p>Click the glowing numbered markers — or open the feature list — to see advanced upgrades we can build for a real gift shop.</p>
+    <div class="tour-welcome-actions">
+      <button type="button" id="tour-welcome-explore" class="tour-btn-primary">Explore upgrades</button>
+      <button type="button" id="tour-welcome-dismiss" class="tour-btn-ghost">Got it</button>
+    </div>
+  </div>
+
+  <!-- TOUR: floating action button -->
+  <button type="button" id="tour-fab" class="tour-fab hidden" aria-label="Open upgrade features">
+    <span>What we can add</span>
+    <span class="tour-fab-badge">8</span>
+  </button>
+
+  <!-- TOUR: feature detail modal -->
+  <div id="feature-modal" class="feature-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="feature-modal-title">
+    <div class="feature-panel">
+      <div class="feature-panel-header">
+        <div id="feature-modal-icon" class="feature-panel-icon"></div>
+        <div class="min-w-0">
+          <p class="feature-panel-kicker">Upgrade idea</p>
+          <h3 id="feature-modal-title">Feature</h3>
+        </div>
+        <button type="button" id="feature-modal-close" class="feature-panel-close" aria-label="Close">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="feature-panel-body">
+        <p id="feature-modal-tagline" class="feature-tagline"></p>
+        <p id="feature-modal-body" class="feature-body"></p>
+        <ul id="feature-modal-bullets" class="feature-bullets"></ul>
+        <div class="feature-why">
+          <p class="feature-why-label">Why it matters</p>
+          <p id="feature-modal-why"></p>
+        </div>
+        <a id="feature-modal-cta" href="../../index.html#contact" class="feature-panel-cta">Ask about this for your shop</a>
+        <p class="feature-panel-note">Not built into this demo — shown as an example of what a custom build can include.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOUR: feature gallery -->
+  <div id="feature-gallery" class="feature-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="feature-gallery-title">
+    <div class="feature-gallery-panel">
+      <div class="feature-gallery-header">
+        <div>
+          <h3 id="feature-gallery-title">Features we can add</h3>
+          <p>Eight upgrades that turn this inventory demo into a full retail ops tool.</p>
+        </div>
+        <button type="button" id="feature-gallery-close" class="feature-panel-close" aria-label="Close">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div id="feature-gallery-grid" class="feature-gallery-grid"></div>
+    </div>
   </div>
 
   <!-- PRODUCT MODAL -->
@@ -222,6 +301,7 @@
   </div>
 
   <script src="seed.js"></script>
+  <script src="tour.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
