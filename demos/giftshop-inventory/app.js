@@ -1,10 +1,79 @@
 (function () {
   const STORAGE_KEY = 'supportside_giftshop_inventory_v1';
   const AUTH_KEY = 'supportside_giftshop_auth';
+  const THEME_KEY = 'supportside_giftshop_theme';
   const DEMO_EMAIL = 'demo@giftshop.local';
   const DEMO_PASS = 'demo1234';
 
+  const THEMES = [
+    {
+      id: 'classic',
+      name: 'Classic',
+      desc: 'Clean indigo — the default Support Side look.',
+      swatches: ['#0f172a', '#4f46e5', '#f1f5f9', '#ffffff']
+    },
+    {
+      id: 'dark',
+      name: 'Dark',
+      desc: 'Low-light slate with soft indigo accents.',
+      swatches: ['#020617', '#818cf8', '#1a2332', '#0b1220']
+    },
+    {
+      id: 'ocean',
+      name: 'Ocean',
+      desc: 'Cool teal tones for a fresh retail feel.',
+      swatches: ['#0e4d5c', '#0891b2', '#ecfeff', '#ffffff']
+    },
+    {
+      id: 'forest',
+      name: 'Forest',
+      desc: 'Green and earthy — great for gift & lifestyle brands.',
+      swatches: ['#14532d', '#15803d', '#f0fdf4', '#ffffff']
+    },
+    {
+      id: 'sunset',
+      name: 'Sunset',
+      desc: 'Warm amber accents with an inviting glow.',
+      swatches: ['#7c2d12', '#ea580c', '#fff7ed', '#ffffff']
+    }
+  ];
+
   const $ = (id) => document.getElementById(id);
+
+  function getTheme() {
+    try {
+      return localStorage.getItem(THEME_KEY) || 'classic';
+    } catch {
+      return 'classic';
+    }
+  }
+
+  function applyTheme(id) {
+    const theme = THEMES.find((t) => t.id === id) ? id : 'classic';
+    document.documentElement.setAttribute('data-theme', theme);
+    try { localStorage.setItem(THEME_KEY, theme); } catch {}
+    renderThemePicker();
+  }
+
+  function renderThemePicker() {
+    const picker = $('theme-picker');
+    if (!picker) return;
+    const active = getTheme();
+    picker.innerHTML = THEMES.map((t) => `
+      <button type="button" class="theme-card${t.id === active ? ' is-active' : ''}" data-theme-id="${t.id}" aria-pressed="${t.id === active}">
+        <div class="theme-card-swatch" aria-hidden="true">
+          ${t.swatches.map((c) => `<span style="background:${c}"></span>`).join('')}
+        </div>
+        <div class="theme-card-meta">
+          <span class="theme-card-name">${t.name}</span>
+          <span class="theme-card-desc">${t.desc}</span>
+        </div>
+        <span class="theme-card-check">Selected</span>
+      </button>`).join('');
+    picker.querySelectorAll('[data-theme-id]').forEach((btn) => {
+      btn.addEventListener('click', () => applyTheme(btn.getAttribute('data-theme-id')));
+    });
+  }
 
   function loadState() {
     const raw = localStorage.getItem(STORAGE_KEY);
@@ -40,6 +109,7 @@
     $('view-login').classList.add('hidden');
     $('view-app').classList.remove('hidden');
     renderAll();
+    renderThemePicker();
     if (window.GiftshopTour) window.GiftshopTour.start();
   }
 
@@ -211,9 +281,11 @@
     btn.addEventListener('click', () => {
       const tab = btn.getAttribute('data-tab');
       document.querySelectorAll('.tab-btn').forEach((b) => b.classList.remove('active'));
-      btn.classList.add('active');
+      document.querySelectorAll(`.tab-btn[data-tab="${tab}"]`).forEach((b) => b.classList.add('active'));
       document.querySelectorAll('.tab-panel').forEach((p) => p.classList.add('hidden'));
-      $('tab-' + tab).classList.remove('hidden');
+      const panel = $('tab-' + tab);
+      if (panel) panel.classList.remove('hidden');
+      if (tab === 'settings') renderThemePicker();
     });
   });
 
@@ -301,6 +373,8 @@
     msg.classList.remove('hidden');
     setTimeout(() => msg.classList.add('hidden'), 3000);
   });
+
+  applyTheme(getTheme());
 
   if (isLoggedIn()) showApp();
   else showLogin();

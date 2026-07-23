@@ -18,6 +18,14 @@
     }
   </script>
   <link rel="stylesheet" href="styles.css" />
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('supportside_giftshop_theme') || 'classic';
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body class="bg-slate-100 text-slate-800 antialiased min-h-screen">
 
@@ -73,6 +81,7 @@
         <button data-tab="products" class="tab-btn tab-link">Products</button>
         <button data-tab="adjust" class="tab-btn tab-link">Stock adjust</button>
         <button data-tab="low" class="tab-btn tab-link">Low stock</button>
+        <button data-tab="settings" class="tab-btn tab-link">Settings</button>
       </div>
     </nav>
 
@@ -187,6 +196,17 @@
         <p class="text-sm text-slate-500 mb-6">Items at or below their reorder threshold.</p>
         <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden">
           <ul id="low-list" class="divide-y divide-slate-100"></ul>
+        </div>
+      </section>
+
+      <!-- SETTINGS -->
+      <section id="tab-settings" class="tab-panel hidden">
+        <h2 class="text-xl font-bold text-slate-900 mb-2">Settings</h2>
+        <p class="text-sm text-slate-500 mb-6">Customize how this demo looks. Your choice is saved in this browser.</p>
+        <div class="bg-white rounded-2xl border border-slate-200 p-6">
+          <h3 class="font-semibold text-slate-900 mb-1">Appearance</h3>
+          <p class="text-sm text-slate-500 mb-5">Pick a theme — including dark mode — to see how a branded portal can match your business.</p>
+          <div id="theme-picker" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3"></div>
         </div>
       </section>
     </main>

@@ -1,8 +1,77 @@
 (function () {
   const STORAGE_KEY = 'supportside_serviceportal_v1';
   const AUTH_KEY    = 'supportside_serviceportal_auth';
+  const THEME_KEY  = 'supportside_serviceportal_theme';
+
+  const THEMES = [
+    {
+      id: 'classic',
+      name: 'Classic',
+      desc: 'Clean indigo — the default Support Side look.',
+      swatches: ['#0f172a', '#4f46e5', '#f1f5f9', '#ffffff']
+    },
+    {
+      id: 'dark',
+      name: 'Dark',
+      desc: 'Low-light slate with soft indigo accents.',
+      swatches: ['#020617', '#818cf8', '#1a2332', '#0b1220']
+    },
+    {
+      id: 'ocean',
+      name: 'Ocean',
+      desc: 'Cool teal tones for a professional service brand.',
+      swatches: ['#0e4d5c', '#0891b2', '#ecfeff', '#ffffff']
+    },
+    {
+      id: 'forest',
+      name: 'Forest',
+      desc: 'Green and earthy — solid for outdoor / home services.',
+      swatches: ['#14532d', '#15803d', '#f0fdf4', '#ffffff']
+    },
+    {
+      id: 'sunset',
+      name: 'Sunset',
+      desc: 'Warm amber accents with an inviting glow.',
+      swatches: ['#7c2d12', '#ea580c', '#fff7ed', '#ffffff']
+    }
+  ];
 
   const $ = (id) => document.getElementById(id);
+
+  function getTheme() {
+    try {
+      return localStorage.getItem(THEME_KEY) || 'classic';
+    } catch {
+      return 'classic';
+    }
+  }
+
+  function applyTheme(id) {
+    const theme = THEMES.find((t) => t.id === id) ? id : 'classic';
+    document.documentElement.setAttribute('data-theme', theme);
+    try { localStorage.setItem(THEME_KEY, theme); } catch {}
+    renderThemePicker();
+  }
+
+  function renderThemePicker() {
+    const picker = $('theme-picker');
+    if (!picker) return;
+    const active = getTheme();
+    picker.innerHTML = THEMES.map((t) => `
+      <button type="button" class="theme-card${t.id === active ? ' is-active' : ''}" data-theme-id="${t.id}" aria-pressed="${t.id === active}">
+        <div class="theme-card-swatch" aria-hidden="true">
+          ${t.swatches.map((c) => `<span style="background:${c}"></span>`).join('')}
+        </div>
+        <div class="theme-card-meta">
+          <span class="theme-card-name">${t.name}</span>
+          <span class="theme-card-desc">${t.desc}</span>
+        </div>
+        <span class="theme-card-check">Selected</span>
+      </button>`).join('');
+    picker.querySelectorAll('[data-theme-id]').forEach((btn) => {
+      btn.addEventListener('click', () => applyTheme(btn.getAttribute('data-theme-id')));
+    });
+  }
 
   /* ---------- state / auth ---------- */
 
@@ -92,6 +161,7 @@
     if (name === 'dashboard')   renderDashboard();
     if (name === 'jobs')        renderJobs();
     if (name === 'clients')     renderClients();
+    if (name === 'settings')    renderThemePicker();
   }
 
   document.querySelectorAll('.tab-btn').forEach(btn => {
@@ -361,6 +431,7 @@
     $('view-app').classList.remove('hidden');
     renderHeader();
     showTab('dashboard');
+    renderThemePicker();
     if (window.ServicePortalTour) window.ServicePortalTour.start();
   }
 
@@ -379,6 +450,8 @@
       $('login-error').classList.remove('hidden');
     }
   });
+
+  applyTheme(getTheme());
 
   if (restoreSession()) showApp();
   else showLogin();

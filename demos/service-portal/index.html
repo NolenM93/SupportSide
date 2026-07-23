@@ -18,6 +18,14 @@
     }
   </script>
   <link rel="stylesheet" href="styles.css" />
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('supportside_serviceportal_theme') || 'classic';
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body class="bg-slate-100 text-slate-800 antialiased min-h-screen">
 
@@ -96,6 +104,7 @@
         <button data-tab="dashboard" class="tab-btn tab-link active">Dashboard</button>
         <button data-tab="jobs" class="tab-btn tab-link">Jobs</button>
         <button id="tab-btn-clients" data-tab="clients" class="tab-btn tab-link hidden">Clients</button>
+        <button data-tab="settings" class="tab-btn tab-link">Settings</button>
       </div>
     </nav>
 
@@ -180,6 +189,17 @@
         <div id="hotspot-clients-list" class="tour-hotspot-wrap">
           <button type="button" class="tour-hotspot tour-hotspot--tr hidden" data-feature="contracts" title="Recurring contracts we can add" aria-label="Learn about recurring contracts">7</button>
           <div class="grid sm:grid-cols-3 gap-4" id="clients-list"></div>
+        </div>
+      </section>
+
+      <!-- SETTINGS -->
+      <section id="tab-settings" class="tab-panel hidden">
+        <h2 class="text-xl font-bold text-slate-900 mb-2">Settings</h2>
+        <p class="text-sm text-slate-500 mb-6">Customize how this demo looks. Your choice is saved in this browser.</p>
+        <div class="bg-white rounded-2xl border border-slate-200 p-6">
+          <h3 class="font-semibold text-slate-900 mb-1">Appearance</h3>
+          <p class="text-sm text-slate-500 mb-5">Pick a theme — including dark mode — to see how a branded portal can match your business.</p>
+          <div id="theme-picker" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3"></div>
         </div>
       </section>
 
