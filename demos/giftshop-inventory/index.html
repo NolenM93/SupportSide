@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gift Shop Inventory Manager | Support Side Demo</title>
+  <meta name="description" content="Portfolio demo: inventory manager for local gift shops. Sample data included." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { 50:'#eef2ff', 100:'#e0e7ff', 500:'#6366f1', 600:'#4f46e5', 700:'#4338ca' }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-slate-100 text-slate-800 antialiased min-h-screen">
+
+  <!-- LOGIN -->
+  <div id="view-login" class="min-h-screen flex items-center justify-center p-6">
+    <div class="w-full max-w-md bg-white rounded-2xl border border-slate-200 shadow-sm p-8">
+      <div class="mb-6">
+        <p class="text-xs font-semibold uppercase tracking-widest text-brand-600 mb-2">Support Side Demo</p>
+        <h1 class="text-2xl font-bold text-slate-900">Gift Shop Inventory</h1>
+        <p class="text-sm text-slate-500 mt-2">Portfolio demo with sample gift shop data. Not a live client system.</p>
+      </div>
+      <form id="login-form" class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-1" for="email">Email</label>
+          <input id="email" type="email" value="demo@giftshop.local" required
+            class="w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-1" for="password">Password</label>
+          <input id="password" type="password" value="demo1234" required
+            class="w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500" />
+        </div>
+        <p id="login-error" class="hidden text-sm text-red-600">Use demo@giftshop.local / demo1234</p>
+        <button type="submit" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-xl py-3 text-sm transition-colors">
+          Sign in to demo
+        </button>
+      </form>
+      <p class="text-xs text-slate-400 mt-6 text-center">
+        <a href="../../index.html" class="text-brand-600 hover:underline">Back to Support Side</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- APP SHELL -->
+  <div id="view-app" class="hidden min-h-screen">
+    <header class="bg-slate-900 text-white">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between gap-4">
+        <div class="flex items-center gap-3 min-w-0">
+          <span class="font-bold truncate">Harbor Lane Gift Shop</span>
+          <span class="hidden sm:inline text-xs bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded-full">Demo</span>
+        </div>
+        <div class="flex items-center gap-3 text-sm shrink-0">
+          <a href="../../index.html" class="text-slate-300 hover:text-white transition-colors">Support Side</a>
+          <button id="btn-logout" class="text-slate-300 hover:text-white transition-colors">Log out</button>
+        </div>
+      </div>
+    </header>
+
+    <nav class="bg-white border-b border-slate-200">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 flex gap-1 overflow-x-auto">
+        <button data-tab="dashboard" class="tab-btn active tab-link">Dashboard</button>
+        <button data-tab="products" class="tab-btn tab-link">Products</button>
+        <button data-tab="adjust" class="tab-btn tab-link">Stock adjust</button>
+        <button data-tab="low" class="tab-btn tab-link">Low stock</button>
+      </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 py-8">
+
+      <!-- DASHBOARD -->
+      <section id="tab-dashboard" class="tab-panel">
+        <h2 class="text-xl font-bold text-slate-900 mb-6">Dashboard</h2>
+        <div class="grid sm:grid-cols-3 gap-4 mb-8">
+          <div class="bg-white rounded-2xl border border-slate-200 p-5">
+            <p class="text-sm text-slate-500">Products</p>
+            <p id="stat-products" class="text-3xl font-bold text-slate-900 mt-1">0</p>
+          </div>
+          <div class="bg-white rounded-2xl border border-slate-200 p-5">
+            <p class="text-sm text-slate-500">Units in stock</p>
+            <p id="stat-units" class="text-3xl font-bold text-slate-900 mt-1">0</p>
+          </div>
+          <div class="bg-white rounded-2xl border border-slate-200 p-5">
+            <p class="text-sm text-slate-500">Low stock alerts</p>
+            <p id="stat-low" class="text-3xl font-bold text-amber-600 mt-1">0</p>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl border border-slate-200 p-5">
+          <h3 class="font-semibold text-slate-900 mb-3">Recent stock activity</h3>
+          <ul id="recent-activity" class="divide-y divide-slate-100 text-sm"></ul>
+        </div>
+      </section>
+
+      <!-- PRODUCTS -->
+      <section id="tab-products" class="tab-panel hidden">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+          <h2 class="text-xl font-bold text-slate-900">Products</h2>
+          <div class="flex flex-wrap gap-2">
+            <input id="search" type="search" placeholder="Search name or SKU..."
+              class="rounded-xl border border-slate-300 px-3 py-2 text-sm w-full sm:w-56 focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500" />
+            <button id="btn-add-product" class="bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold px-4 py-2 rounded-xl transition-colors">Add product</button>
+            <button id="btn-reset" class="border border-slate-300 hover:bg-slate-50 text-slate-700 text-sm font-medium px-4 py-2 rounded-xl transition-colors">Reset sample data</button>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm text-left">
+              <thead class="bg-slate-50 text-slate-500 border-b border-slate-200">
+                <tr>
+                  <th class="px-4 py-3 font-medium">SKU</th>
+                  <th class="px-4 py-3 font-medium">Name</th>
+                  <th class="px-4 py-3 font-medium">Category</th>
+                  <th class="px-4 py-3 font-medium text-right">Qty</th>
+                  <th class="px-4 py-3 font-medium text-right">Price</th>
+                  <th class="px-4 py-3 font-medium text-right">Reorder at</th>
+                  <th class="px-4 py-3 font-medium"></th>
+                </tr>
+              </thead>
+              <tbody id="products-body" class="divide-y divide-slate-100"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ADJUST -->
+      <section id="tab-adjust" class="tab-panel hidden">
+        <h2 class="text-xl font-bold text-slate-900 mb-6">Stock adjustment</h2>
+        <form id="adjust-form" class="bg-white rounded-2xl border border-slate-200 p-6 max-w-lg space-y-4">
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1" for="adjust-product">Product</label>
+            <select id="adjust-product" required class="w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm"></select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1" for="adjust-type">Type</label>
+            <select id="adjust-type" class="w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm">
+              <option value="in">Stock in (receiving / restock)</option>
+              <option value="out">Stock out (sale / damage / remove)</option>
+              <option value="set">Set exact quantity</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1" for="adjust-qty">Quantity</label>
+            <input id="adjust-qty" type="number" min="0" step="1" required value="1"
+              class="w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1" for="adjust-note">Note (optional)</label>
+            <input id="adjust-note" type="text" placeholder="e.g. Weekly restock from supplier"
+              class="w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm" />
+          </div>
+          <button type="submit" class="bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-xl px-5 py-2.5 text-sm transition-colors">Apply adjustment</button>
+          <p id="adjust-msg" class="text-sm text-emerald-600 hidden"></p>
+        </form>
+      </section>
+
+      <!-- LOW STOCK -->
+      <section id="tab-low" class="tab-panel hidden">
+        <h2 class="text-xl font-bold text-slate-900 mb-2">Low stock</h2>
+        <p class="text-sm text-slate-500 mb-6">Items at or below their reorder threshold.</p>
+        <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden">
+          <ul id="low-list" class="divide-y divide-slate-100"></ul>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- PRODUCT MODAL -->
+  <div id="modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50">
+    <div class="bg-white rounded-2xl w-full max-w-md p-6 shadow-xl">
+      <h3 id="modal-title" class="text-lg font-bold text-slate-900 mb-4">Add product</h3>
+      <form id="product-form" class="space-y-3">
+        <input type="hidden" id="product-id" />
+        <div>
+          <label class="block text-sm font-medium mb-1" for="p-sku">SKU</label>
+          <input id="p-sku" required class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-1" for="p-name">Name</label>
+          <input id="p-name" required class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-1" for="p-category">Category</label>
+          <select id="p-category" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm">
+            <option>Home decor</option>
+            <option>Candles &amp; scent</option>
+            <option>Stationery</option>
+            <option>Jewelry</option>
+            <option>Toys &amp; kids</option>
+            <option>Gourmet</option>
+            <option>Seasonal</option>
+          </select>
+        </div>
+        <div class="grid grid-cols-3 gap-3">
+          <div>
+            <label class="block text-sm font-medium mb-1" for="p-qty">Qty</label>
+            <input id="p-qty" type="number" min="0" value="0" required class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1" for="p-price">Price</label>
+            <input id="p-price" type="number" min="0" step="0.01" value="0" required class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1" for="p-reorder">Reorder</label>
+            <input id="p-reorder" type="number" min="0" value="5" required class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm" />
+          </div>
+        </div>
+        <div class="flex justify-end gap-2 pt-2">
+          <button type="button" id="modal-cancel" class="px-4 py-2 text-sm rounded-xl border border-slate-300">Cancel</button>
+          <button type="submit" class="px-4 py-2 text-sm rounded-xl bg-brand-600 text-white font-semibold">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="seed.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

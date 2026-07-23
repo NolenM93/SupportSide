@@ -15,6 +15,8 @@ Official website for **Support Side** - a custom software company building web a
 SupportSide/
 ├── index.html              # Main landing page
 ├── PARTNER_SCOPE.md        # Business scope for potential partners
+├── demos/
+│   └── giftshop-inventory/ # Portfolio demo: gift shop inventory manager
 ├── assets/
 │   └── css/
 │       ├── input.css       # Tailwind source
