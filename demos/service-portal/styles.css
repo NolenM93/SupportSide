@@ -1,0 +1,32 @@
+/* Service Business Job Portal Demo */
+.tab-link {
+  padding: 0.625rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #64748b;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.tab-link:hover { color: #0f172a; }
+.tab-link.active { color: #4f46e5; border-bottom-color: #4f46e5; }
+
+.badge { display: inline-flex; align-items: center; font-size: 0.7rem; font-weight: 600; padding: 0.2rem 0.55rem; border-radius: 9999px; }
+.badge-submitted  { background: #dbeafe; color: #1d4ed8; }
+.badge-scheduled  { background: #fef9c3; color: #a16207; }
+.badge-inprogress { background: #dbeafe; color: #1d4ed8; }
+.badge-complete   { background: #dcfce7; color: #15803d; }
+.badge-urgent     { background: #fee2e2; color: #b91c1c; }
+.badge-high       { background: #ffedd5; color: #c2410c; }
+.badge-normal     { background: #f1f5f9; color: #475569; }
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: 0.45rem;
+  top: 1.5rem;
+  bottom: -0.5rem;
+  width: 2px;
+  background: #e2e8f0;
+}
+.timeline-item:last-child::before { display: none; }

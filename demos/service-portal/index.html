@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Client Portal | Support Side Demo</title>
+  <meta name="description" content="Portfolio demo: service business client portal for job status, work orders, and documents." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { 50:'#eef2ff', 100:'#e0e7ff', 200:'#c7d2fe', 500:'#6366f1', 600:'#4f46e5', 700:'#4338ca' }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-slate-100 text-slate-800 antialiased min-h-screen">
+
+  <!-- ===================== LOGIN ===================== -->
+  <div id="view-login" class="min-h-screen flex items-center justify-center p-6">
+    <div class="w-full max-w-md bg-white rounded-2xl border border-slate-200 shadow-sm p-8">
+      <div class="mb-6">
+        <p class="text-xs font-semibold uppercase tracking-widest text-brand-600 mb-2">Support Side Demo</p>
+        <h1 class="text-2xl font-bold text-slate-900">Service Business Portal</h1>
+        <p class="text-sm text-slate-500 mt-1">Job status, work orders, and documents — all in one place.</p>
+      </div>
+      <form id="login-form" class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-1">Email</label>
+          <input id="login-email" type="email" required value="staff@acmehvac.local"
+            class="w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-1">Password</label>
+          <input id="login-password" type="password" required value="staff1234"
+            class="w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500" />
+        </div>
+        <p id="login-error" class="hidden text-sm text-red-600">Email or password not recognized.</p>
+        <button type="submit" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-xl py-3 text-sm transition-colors">
+          Sign in
+        </button>
+      </form>
+
+      <div class="mt-6 border-t border-slate-100 pt-5">
+        <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">Demo logins</p>
+        <div class="space-y-2 text-xs text-slate-500">
+          <div class="flex justify-between bg-slate-50 rounded-lg px-3 py-2">
+            <span><span class="font-semibold text-slate-700">Staff</span> — see all jobs, update status</span>
+            <button class="text-brand-600 font-semibold hover:underline" onclick="fillLogin('staff@acmehvac.local','staff1234')">Use</button>
+          </div>
+          <div class="flex justify-between bg-slate-50 rounded-lg px-3 py-2">
+            <span><span class="font-semibold text-slate-700">Client 1</span> — Best Office Complex</span>
+            <button class="text-brand-600 font-semibold hover:underline" onclick="fillLogin('client@bestoffice.local','client1234')">Use</button>
+          </div>
+          <div class="flex justify-between bg-slate-50 rounded-lg px-3 py-2">
+            <span><span class="font-semibold text-slate-700">Client 2</span> — Johnson Residence</span>
+            <button class="text-brand-600 font-semibold hover:underline" onclick="fillLogin('client@johnson.local','client1234')">Use</button>
+          </div>
+          <div class="flex justify-between bg-slate-50 rounded-lg px-3 py-2">
+            <span><span class="font-semibold text-slate-700">Client 3</span> — Riverside Apartments</span>
+            <button class="text-brand-600 font-semibold hover:underline" onclick="fillLogin('client@riverside.local','client1234')">Use</button>
+          </div>
+        </div>
+      </div>
+
+      <p class="text-xs text-slate-400 mt-5 text-center">
+        <a href="../../index.html" class="text-brand-600 hover:underline">Back to Support Side</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- ===================== APP ===================== -->
+  <div id="view-app" class="hidden min-h-screen">
+    <header class="bg-slate-900 text-white">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between gap-4">
+        <div class="flex items-center gap-3 min-w-0">
+          <span id="header-company" class="font-bold truncate"></span>
+          <span id="header-role-badge" class="hidden sm:inline text-xs px-2 py-0.5 rounded-full"></span>
+        </div>
+        <div class="flex items-center gap-3 text-sm shrink-0">
+          <span id="header-user" class="hidden sm:inline text-slate-400 text-xs"></span>
+          <a href="../../index.html" class="text-slate-300 hover:text-white transition-colors">Support Side</a>
+          <button id="btn-logout" class="text-slate-300 hover:text-white transition-colors">Log out</button>
+        </div>
+      </div>
+    </header>
+
+    <nav class="bg-white border-b border-slate-200">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 flex gap-1 overflow-x-auto">
+        <button data-tab="dashboard" class="tab-btn tab-link active">Dashboard</button>
+        <button data-tab="jobs" class="tab-btn tab-link">Jobs</button>
+        <button id="tab-btn-clients" data-tab="clients" class="tab-btn tab-link hidden">Clients</button>
+      </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 py-8">
+
+      <!-- DASHBOARD -->
+      <section id="tab-dashboard" class="tab-panel">
+        <h2 class="text-xl font-bold text-slate-900 mb-6">Dashboard</h2>
+        <div class="grid sm:grid-cols-4 gap-4 mb-8">
+          <div class="bg-white rounded-2xl border border-slate-200 p-5">
+            <p class="text-sm text-slate-500">All jobs</p>
+            <p id="stat-total" class="text-3xl font-bold text-slate-900 mt-1">0</p>
+          </div>
+          <div class="bg-white rounded-2xl border border-slate-200 p-5">
+            <p class="text-sm text-slate-500">Open</p>
+            <p id="stat-open" class="text-3xl font-bold text-brand-600 mt-1">0</p>
+          </div>
+          <div class="bg-white rounded-2xl border border-slate-200 p-5">
+            <p class="text-sm text-slate-500">In progress</p>
+            <p id="stat-inprogress" class="text-3xl font-bold text-blue-600 mt-1">0</p>
+          </div>
+          <div class="bg-white rounded-2xl border border-slate-200 p-5">
+            <p class="text-sm text-slate-500">Completed</p>
+            <p id="stat-complete" class="text-3xl font-bold text-emerald-600 mt-1">0</p>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl border border-slate-200 p-5">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="font-semibold text-slate-900">Recent jobs</h3>
+            <button data-tab="jobs" class="tab-btn text-xs text-brand-600 hover:underline font-medium">View all</button>
+          </div>
+          <ul id="dashboard-jobs" class="divide-y divide-slate-100"></ul>
+        </div>
+      </section>
+
+      <!-- JOBS LIST -->
+      <section id="tab-jobs" class="tab-panel hidden">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+          <h2 class="text-xl font-bold text-slate-900">Jobs</h2>
+          <div class="flex flex-wrap gap-2">
+            <select id="filter-status" class="rounded-xl border border-slate-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/30">
+              <option value="">All statuses</option>
+              <option>Submitted</option>
+              <option>Scheduled</option>
+              <option>In Progress</option>
+              <option>Complete</option>
+            </select>
+            <button id="btn-new-job" class="bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold px-4 py-2 rounded-xl transition-colors">+ New request</button>
+          </div>
+        </div>
+        <div class="space-y-3" id="jobs-list"></div>
+      </section>
+
+      <!-- JOB DETAIL -->
+      <section id="tab-job-detail" class="tab-panel hidden">
+        <button id="back-to-jobs" class="flex items-center gap-1 text-sm text-brand-600 hover:underline mb-5">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"/></svg>
+          Back to jobs
+        </button>
+        <div id="job-detail-body"></div>
+      </section>
+
+      <!-- CLIENTS (staff only) -->
+      <section id="tab-clients" class="tab-panel hidden">
+        <h2 class="text-xl font-bold text-slate-900 mb-6">Clients</h2>
+        <div class="grid sm:grid-cols-3 gap-4" id="clients-list"></div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- NEW JOB MODAL -->
+  <div id="modal-job" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50">
+    <div class="bg-white rounded-2xl w-full max-w-md p-6 shadow-xl">
+      <h3 class="text-lg font-bold text-slate-900 mb-4">New service request</h3>
+      <form id="new-job-form" class="space-y-3">
+        <div>
+          <label class="block text-sm font-medium mb-1">Title</label>
+          <input id="nj-title" required placeholder="e.g. AC unit not cooling" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm" />
+        </div>
+        <div id="nj-client-wrap" class="hidden">
+          <label class="block text-sm font-medium mb-1">Client</label>
+          <select id="nj-client" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm"></select>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-sm font-medium mb-1">Type</label>
+            <select id="nj-type" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm">
+              <option>HVAC</option>
+              <option>Plumbing</option>
+              <option>Electrical</option>
+              <option>General</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1">Priority</label>
+            <select id="nj-priority" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm">
+              <option>Normal</option>
+              <option>High</option>
+              <option>Urgent</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-1">Description</label>
+          <textarea id="nj-desc" rows="3" placeholder="Describe the issue or service needed..." class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm resize-none"></textarea>
+        </div>
+        <div class="flex justify-end gap-2 pt-1">
+          <button type="button" id="modal-job-cancel" class="px-4 py-2 text-sm rounded-xl border border-slate-300 hover:bg-slate-50">Cancel</button>
+          <button type="submit" class="px-4 py-2 text-sm rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold transition-colors">Submit request</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- UPDATE STATUS MODAL -->
+  <div id="modal-status" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50">
+    <div class="bg-white rounded-2xl w-full max-w-sm p-6 shadow-xl">
+      <h3 class="text-lg font-bold text-slate-900 mb-4">Update job status</h3>
+      <form id="status-form" class="space-y-3">
+        <input type="hidden" id="status-job-id" />
+        <div>
+          <label class="block text-sm font-medium mb-1">New status</label>
+          <select id="status-val" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm">
+            <option>Submitted</option>
+            <option>Scheduled</option>
+            <option>In Progress</option>
+            <option>Complete</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-1">Note</label>
+          <input id="status-note" type="text" placeholder="Optional update note for client" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm" />
+        </div>
+        <div class="flex justify-end gap-2 pt-1">
+          <button type="button" id="modal-status-cancel" class="px-4 py-2 text-sm rounded-xl border border-slate-300 hover:bg-slate-50">Cancel</button>
+          <button type="submit" class="px-4 py-2 text-sm rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold transition-colors">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="seed.js"></script>
+  <script src="app.js"></script>
+  <script>
+    function fillLogin(email, pw) {
+      document.getElementById('login-email').value = email;
+      document.getElementById('login-password').value = pw;
+    }
+  </script>
+</body>
+</html>
