@@ -1,12 +1,228 @@
-/* Support Side - custom overrides */
+/* ============================================================
+   Support Side — marketing site components
+   Built on the primitives + tokens defined in glass.css.
+   ============================================================ */
 
-/* Smooth scroll offset for fixed navbar */
-html {
-  scroll-padding-top: 4rem;
+/* ---------- Accessibility ---------- */
+
+.skip-link {
+  position: absolute;
+  left: 50%;
+  top: 0.5rem;
+  z-index: 100;
+  transform: translate(-50%, -160%);
+  padding: 0.6rem 1.1rem;
+  border-radius: 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent-ink);
+  background: rgba(5, 7, 13, 0.92);
+  border: 1px solid var(--accent-line);
+  transition: transform var(--dur-2) var(--ease);
 }
 
-/* Select arrow for dark theme */
-select option {
-  background-color: #0f172a;
-  color: #f8fafc;
+.skip-link:focus-visible {
+  transform: translate(-50%, 0);
+}
+
+/* ---------- Navigation ---------- */
+
+.site-nav {
+  transition:
+    background-color var(--dur-3) var(--ease),
+    border-color var(--dur-3) var(--ease),
+    box-shadow var(--dur-3) var(--ease);
+}
+
+.site-nav.is-scrolled {
+  background: rgba(5, 7, 13, 0.8);
+  border-bottom-color: var(--line-2);
+  box-shadow: var(--elev-2);
+}
+
+.brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.7rem;
+  color: var(--accent-ink);
+  background: linear-gradient(135deg, var(--accent-wash), rgba(255, 255, 255, 0.06));
+  border: 1px solid var(--accent-line);
+  box-shadow: 0 0 18px -8px var(--accent-glow);
+  transition:
+    box-shadow var(--dur-2) var(--ease),
+    border-color var(--dur-2) var(--ease);
+}
+
+.group:hover .brand-mark {
+  border-color: var(--accent);
+  box-shadow: 0 0 24px -6px var(--accent-glow);
+}
+
+.brand-mark--sm {
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 0.6rem;
+}
+
+/* ---------- Section headings ---------- */
+
+.section-kicker {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+
+/* ---------- Cards & tiles ---------- */
+
+.icon-tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.9rem;
+  color: var(--accent);
+  background: var(--accent-wash);
+  border: 1px solid var(--accent-line-soft);
+  transition:
+    border-color var(--dur-2) var(--ease),
+    box-shadow var(--dur-2) var(--ease),
+    transform var(--dur-2) var(--ease);
+}
+
+.glass-card:hover .icon-tile {
+  transform: translateY(-2px);
+  border-color: var(--accent-line);
+  box-shadow: 0 0 22px -8px var(--accent-glow);
+}
+
+.avatar-tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 1rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--accent-ink);
+  background: linear-gradient(135deg, var(--accent-wash), rgba(167, 139, 250, 0.14));
+  border: 1px solid var(--accent-line);
+}
+
+.avatar-tile--ghost {
+  color: var(--ink-3);
+  background: var(--glass-1);
+  border: 1px dashed var(--line-2);
+}
+
+.check-tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.6rem;
+  color: var(--accent);
+  background: var(--glass-1);
+  border: 1px solid var(--line-1);
+}
+
+/* ---------- Project cards ---------- */
+
+.project-media {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 11rem;
+  overflow: hidden;
+  color: rgba(255, 255, 255, 0.85);
+  border-bottom: 1px solid var(--line-1);
+}
+
+/* Soft duotone wash instead of a hard neon fill */
+.project-media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(120% 90% at 50% 120%, rgba(5, 7, 13, 0.75), transparent 70%);
+  pointer-events: none;
+}
+
+.project-media svg {
+  position: relative;
+  z-index: 1;
+  transition: transform var(--dur-3) var(--ease);
+}
+
+.group:hover .project-media svg {
+  transform: translateY(-4px) scale(1.04);
+}
+
+.project-media--cyan {
+  background: linear-gradient(135deg, rgba(34, 211, 238, 0.22), rgba(14, 116, 144, 0.14));
+}
+
+.project-media--blue {
+  background: linear-gradient(135deg, rgba(96, 165, 250, 0.22), rgba(67, 56, 202, 0.16));
+}
+
+.project-media--magenta {
+  background: linear-gradient(135deg, rgba(232, 121, 249, 0.2), rgba(129, 140, 248, 0.16));
+}
+
+/* ---------- Tags ---------- */
+
+.tag {
+  display: inline-block;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.tag--live {
+  color: #7ff0d0;
+  background: rgba(52, 211, 153, 0.12);
+  border: 1px solid rgba(52, 211, 153, 0.32);
+}
+
+.tag--concept {
+  color: #fcd9a1;
+  background: rgba(251, 191, 36, 0.12);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+}
+
+.success-ring {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 999px;
+  color: var(--accent);
+  background: var(--accent-wash);
+  border: 1px solid var(--accent-line);
+  box-shadow: 0 0 26px -8px var(--accent-glow);
+}
+
+/* ---------- Form extras ---------- */
+
+/* Custom caret so the native one doesn't clash with the dark glass field */
+.select-caret {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2393a1b8' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19.5 8.25l-7.5 7.5-7.5-7.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.9rem center;
+  background-size: 1.1rem;
+  padding-right: 2.75rem;
 }

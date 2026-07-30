@@ -1,384 +1,382 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth" data-accent="cyan">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Support Side Tech - Custom Software for Real Businesses</title>
   <meta name="description" content="Support Side Tech builds custom web apps, business portals, SMS automation, and internal tools for service companies, clinics, salons, and growing businesses." />
+  <meta name="theme-color" content="#05070d" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/tailwind.css" />
+  <link rel="stylesheet" href="assets/css/glass.css" />
   <link rel="stylesheet" href="assets/css/custom.css" />
 </head>
-<body class="font-sans text-slate-800 bg-white antialiased">
+<body class="font-sans text-ink-2 antialiased">
+
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- ===================== BACKGROUND ===================== -->
+  <div class="aurora" aria-hidden="true">
+    <span class="aurora-orb aurora-orb--1"></span>
+    <span class="aurora-orb aurora-orb--2"></span>
+    <span class="aurora-orb aurora-orb--3"></span>
+  </div>
+  <div class="grid-veil" aria-hidden="true"></div>
 
   <!-- ===================== NAVBAR ===================== -->
-  <header id="top" class="fixed top-0 left-0 right-0 z-50 bg-slate-900/95 backdrop-blur-sm border-b border-slate-700/50">
+  <header id="top" class="site-nav glass-nav fixed top-0 left-0 right-0 z-50">
     <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-      <a href="#top" class="flex items-center gap-2">
-        <div class="w-8 h-8 rounded-lg bg-brand-600 flex items-center justify-center">
-          <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+      <a href="#top" class="flex items-center gap-2.5 group">
+        <span class="brand-mark">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
           </svg>
-        </div>
-        <span class="text-white font-bold text-lg tracking-tight">Support Side Tech</span>
+        </span>
+        <span class="text-ink-1 font-bold text-lg tracking-tight">Support Side Tech</span>
       </a>
       <div class="hidden md:flex items-center gap-8">
-        <a href="#services" class="text-slate-300 hover:text-white text-sm font-medium transition-colors">Services</a>
-        <a href="#work" class="text-slate-300 hover:text-white text-sm font-medium transition-colors">Example Projects</a>
-        <a href="#about" class="text-slate-300 hover:text-white text-sm font-medium transition-colors">About</a>
-        <a href="#contact" class="bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors">Get a Free Quote</a>
+        <a href="#services" class="link-neon text-sm font-medium">Services</a>
+        <a href="#work" class="link-neon text-sm font-medium">Example Projects</a>
+        <a href="#about" class="link-neon text-sm font-medium">About</a>
+        <a href="#contact" class="btn-neon text-sm px-4 py-2">Get a Free Quote</a>
       </div>
-      <button id="menu-btn" class="md:hidden text-slate-300 hover:text-white p-1" aria-label="Toggle menu">
+      <button id="menu-btn" class="md:hidden text-ink-2 hover:text-ink-1 p-1 transition-colors" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
         <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
         </svg>
       </button>
     </nav>
-    <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-slate-700/50 px-6 py-4 flex flex-col gap-4">
-      <a href="#services" class="text-slate-300 hover:text-white text-sm font-medium transition-colors" onclick="closeMobileMenu()">Services</a>
-      <a href="#work" class="text-slate-300 hover:text-white text-sm font-medium transition-colors" onclick="closeMobileMenu()">Example Projects</a>
-      <a href="#about" class="text-slate-300 hover:text-white text-sm font-medium transition-colors" onclick="closeMobileMenu()">About</a>
-      <a href="#contact" class="bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold px-4 py-2 rounded-lg text-center transition-colors" onclick="closeMobileMenu()">Get a Free Quote</a>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-hair px-6 py-4 flex flex-col gap-4">
+      <a href="#services" class="link-neon text-sm font-medium" onclick="closeMobileMenu()">Services</a>
+      <a href="#work" class="link-neon text-sm font-medium" onclick="closeMobileMenu()">Example Projects</a>
+      <a href="#about" class="link-neon text-sm font-medium" onclick="closeMobileMenu()">About</a>
+      <a href="#contact" class="btn-neon text-sm px-4 py-2.5" onclick="closeMobileMenu()">Get a Free Quote</a>
     </div>
   </header>
 
-  <!-- ===================== HERO ===================== -->
-  <section class="bg-slate-900 min-h-screen flex items-center pt-16">
-    <div class="max-w-6xl mx-auto px-6 py-24 md:py-32">
-      <div class="max-w-3xl">
-        <div class="inline-flex items-center gap-2 bg-brand-900/60 border border-brand-700/50 text-brand-400 text-xs font-semibold px-3 py-1.5 rounded-full mb-8 uppercase tracking-wider">
-          <span class="w-1.5 h-1.5 bg-brand-400 rounded-full animate-pulse"></span>
-          Now Accepting New Clients
-        </div>
-        <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight tracking-tight mb-6">
-          Custom software<br />
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-violet-400">built for how you work</span>
-        </h1>
-        <p class="text-lg md:text-xl text-slate-400 leading-relaxed mb-10 max-w-2xl">
-          Support Side Tech designs and builds web apps, client portals, SMS automation, and internal tools for businesses that have outgrown spreadsheets and off-the-shelf software.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4">
-          <a href="#contact" class="bg-brand-600 hover:bg-brand-700 text-white font-semibold px-8 py-4 rounded-xl text-base transition-colors text-center shadow-lg shadow-brand-900/50">
-            Get a Free Quote
-          </a>
-          <a href="#services" class="border border-slate-600 hover:border-slate-400 text-slate-300 hover:text-white font-semibold px-8 py-4 rounded-xl text-base transition-colors text-center">
-            See What We Build
-          </a>
-        </div>
-      </div>
+  <main id="main" class="relative z-10">
 
-      <div class="mt-20 pt-12 border-t border-slate-700/50 grid grid-cols-2 md:grid-cols-3 gap-8 max-w-2xl">
-        <div>
-          <div class="text-3xl font-bold text-white">100%</div>
-          <div class="text-sm text-slate-400 mt-1">Custom-built solutions</div>
-        </div>
-        <div>
-          <div class="text-3xl font-bold text-white">$0</div>
-          <div class="text-sm text-slate-400 mt-1">No cost to start a conversation</div>
-        </div>
-        <div class="col-span-2 md:col-span-1">
-          <div class="text-3xl font-bold text-white">Clear</div>
-          <div class="text-sm text-slate-400 mt-1">Scoped projects, transparent pricing</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== SERVICES ===================== -->
-  <section id="services" class="bg-white py-24 md:py-32">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="text-center mb-16">
-        <p class="text-brand-600 font-semibold text-sm uppercase tracking-widest mb-3">What We Build</p>
-        <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight">Software that solves real problems</h2>
-        <p class="mt-4 text-lg text-slate-500 max-w-xl mx-auto">We skip the bloat and build exactly what your business needs to run smoother, respond faster, and stop losing work to messy systems.</p>
-      </div>
-
-      <div class="grid md:grid-cols-2 gap-6">
-
-        <div class="group bg-slate-50 hover:bg-brand-50 border border-slate-200 hover:border-brand-200 rounded-2xl p-8 transition-all duration-200">
-          <div class="w-12 h-12 bg-brand-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-brand-200 transition-colors">
-            <svg class="w-6 h-6 text-brand-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v12a2.25 2.25 0 002.25 2.25z" />
-            </svg>
+    <!-- ===================== HERO ===================== -->
+    <section class="min-h-screen flex items-center pt-16">
+      <div class="max-w-6xl mx-auto px-6 py-24 md:py-32 w-full">
+        <div class="max-w-3xl">
+          <div class="chip mb-8 animate-fade-rise">
+            <span class="chip-dot"></span>
+            Now Accepting New Clients
           </div>
-          <h3 class="text-xl font-bold text-slate-900 mb-3">Custom Web Apps</h3>
-          <p class="text-slate-500 leading-relaxed">Web applications built around your workflow, scheduling, job tracking, intake forms, inventory, reporting, and anything else that currently lives in spreadsheets or sticky notes.</p>
-        </div>
-
-        <div class="group bg-slate-50 hover:bg-brand-50 border border-slate-200 hover:border-brand-200 rounded-2xl p-8 transition-all duration-200">
-          <div class="w-12 h-12 bg-brand-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-brand-200 transition-colors">
-            <svg class="w-6 h-6 text-brand-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 9.75a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375m-13.5 3.01c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.184-4.183a1.14 1.14 0 01.778-.332 48.294 48.294 0 005.83-.498c1.585-.233 2.708-1.626 2.708-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold text-slate-900 mb-3">SMS &amp; AI Automation</h3>
-          <p class="text-slate-500 leading-relaxed">Automatic appointment reminders, missed-call follow-up, FAQ replies, and lead routing, so customers get answers fast and your team spends less time on the phone.</p>
-        </div>
-
-        <div class="group bg-slate-50 hover:bg-brand-50 border border-slate-200 hover:border-brand-200 rounded-2xl p-8 transition-all duration-200">
-          <div class="w-12 h-12 bg-brand-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-brand-200 transition-colors">
-            <svg class="w-6 h-6 text-brand-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-8.69-6.44l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z" />
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold text-slate-900 mb-3">Client Portals &amp; Dashboards</h3>
-          <p class="text-slate-500 leading-relaxed">Secure portals for clients, staff, or partners, status updates, document sharing, request intake, and live dashboards that replace email chains and shared drives.</p>
-        </div>
-
-        <div class="group bg-slate-50 hover:bg-brand-50 border border-slate-200 hover:border-brand-200 rounded-2xl p-8 transition-all duration-200">
-          <div class="w-12 h-12 bg-brand-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-brand-200 transition-colors">
-            <svg class="w-6 h-6 text-brand-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5" />
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold text-slate-900 mb-3">Internal Business Tools</h3>
-          <p class="text-slate-500 leading-relaxed">Ops tools for your team: job boards, work-order systems, CRM-lite tools, reporting, and anything else that helps you run the business without fighting your software.</p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== EXAMPLE PROJECTS ===================== -->
-  <section id="work" class="bg-slate-50 py-24 md:py-32">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="text-center mb-16">
-        <p class="text-brand-600 font-semibold text-sm uppercase tracking-widest mb-3">Example Projects</p>
-        <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight">Real tools we can build for you</h2>
-        <p class="mt-4 text-lg text-slate-500 max-w-xl mx-auto">Portfolio demos and example products - concrete systems, not vague industry blurbs.</p>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-6">
-
-        <a href="demos/giftshop-inventory/" class="bg-white rounded-2xl border border-slate-200 overflow-hidden hover:border-brand-300 hover:shadow-md transition-all group block">
-          <div class="h-44 bg-gradient-to-br from-rose-500 to-pink-700 flex items-center justify-center">
-            <svg class="w-16 h-16 text-white/80" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
-            </svg>
-          </div>
-          <div class="p-6">
-            <div class="inline-block bg-emerald-100 text-emerald-700 text-xs font-semibold px-2.5 py-1 rounded-full mb-3">Live Demo</div>
-            <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-brand-600 transition-colors">Gift Shop Inventory Manager</h3>
-            <p class="text-sm text-slate-500 leading-relaxed">Track products, stock levels, and low-inventory alerts for local gift shops - built as a working portfolio demo with sample data.</p>
-          </div>
-        </a>
-
-        <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden">
-          <div class="h-44 bg-gradient-to-br from-brand-600 to-violet-700 flex items-center justify-center">
-            <svg class="w-16 h-16 text-white/80" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
-            </svg>
-          </div>
-          <div class="p-6">
-            <div class="inline-block bg-amber-100 text-amber-700 text-xs font-semibold px-2.5 py-1 rounded-full mb-3">Example Concept</div>
-            <h3 class="text-lg font-bold text-slate-900 mb-2">Appointment Reminder System</h3>
-            <p class="text-sm text-slate-500 leading-relaxed">Automated email and SMS reminders for clinics, salons, and service businesses to cut no-shows and keep schedules full.</p>
-          </div>
-        </div>
-
-        <a href="demos/service-portal/" class="bg-white rounded-2xl border border-slate-200 overflow-hidden hover:border-brand-300 hover:shadow-md transition-all group block">
-          <div class="h-44 bg-gradient-to-br from-slate-700 to-slate-900 flex items-center justify-center">
-            <svg class="w-16 h-16 text-white/80" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-8.69-6.44l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z" />
-            </svg>
-          </div>
-          <div class="p-6">
-            <div class="inline-block bg-emerald-100 text-emerald-700 text-xs font-semibold px-2.5 py-1 rounded-full mb-3">Live Demo</div>
-            <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-brand-600 transition-colors">Service Business Job Portal</h3>
-            <p class="text-sm text-slate-500 leading-relaxed">Client-facing portal for job status, work orders, and documents - so HVAC, cleaning, and contractor teams stop living in email.</p>
-          </div>
-        </a>
-
-      </div>
-
-      <p class="text-center text-slate-400 text-sm mt-10">Want something like this for your business? <a href="#contact" class="text-brand-600 hover:text-brand-700 font-medium underline underline-offset-2">Tell us what you need</a> and we'll scope it.</p>
-    </div>
-  </section>
-
-  <!-- ===================== ABOUT ===================== -->
-  <section id="about" class="bg-white py-24 md:py-32">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="grid md:grid-cols-2 gap-16 items-center">
-
-        <div>
-          <p class="text-brand-600 font-semibold text-sm uppercase tracking-widest mb-3">About</p>
-          <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight mb-6">
-            Software that supports the business, not the other way around.
-          </h2>
-          <p class="text-lg text-slate-500 leading-relaxed mb-6">
-            Support Side Tech is a custom software company. We build tools for businesses that need something more useful than a generic app, and less expensive than a big agency project.
+          <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-ink-1 leading-tight tracking-tight mb-6">
+            Custom software<br />
+            <span class="neon-gradient-text">built for how you work</span>
+          </h1>
+          <p class="text-lg md:text-xl text-ink-2 leading-relaxed mb-10 max-w-2xl">
+            Support Side Tech designs and builds web apps, client portals, SMS automation, and internal tools for businesses that have outgrown spreadsheets and off-the-shelf software.
           </p>
-          <p class="text-lg text-slate-500 leading-relaxed mb-8">
-            Whether you need a client portal, an SMS reminder system, a job-tracking app, or a full internal tool, we scope it clearly, build it cleanly, and keep it maintainable.
-          </p>
-          <div class="flex items-center gap-3">
-            <a href="#contact" class="bg-brand-600 hover:bg-brand-700 text-white font-semibold px-6 py-3 rounded-xl text-sm transition-colors">
-              Work With Us
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="#contact" class="btn-neon px-8 py-4 text-base">
+              Get a Free Quote
+            </a>
+            <a href="#services" class="btn-ghost px-8 py-4 text-base">
+              See What We Build
             </a>
           </div>
         </div>
 
-        <div class="flex flex-col gap-5">
-          <div class="flex items-start gap-5 bg-slate-50 rounded-2xl p-6 border border-slate-200">
-            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-brand-500 to-violet-600 flex items-center justify-center text-white text-xl font-bold shrink-0">N</div>
-            <div>
-              <h3 class="font-bold text-slate-900 text-lg">Nolen</h3>
-              <p class="text-brand-600 text-sm font-medium mb-2">Founder &amp; Developer</p>
-              <p class="text-slate-500 text-sm leading-relaxed">Builds the software, custom web apps, backends, and tools that turn messy business processes into clean working systems.</p>
-            </div>
+        <div class="mt-20 pt-12 border-t border-hair grid grid-cols-2 md:grid-cols-3 gap-4 max-w-3xl">
+          <div class="glass-card glass-edge rounded-2xl p-5 reveal">
+            <div class="text-3xl font-bold text-ink-1">100%</div>
+            <div class="text-sm text-ink-3 mt-1">Custom-built solutions</div>
           </div>
-          <div class="flex items-start gap-5 bg-slate-50 rounded-2xl p-6 border border-slate-200 border-dashed">
-            <div class="w-14 h-14 rounded-2xl bg-slate-200 flex items-center justify-center text-slate-500 text-xl font-bold shrink-0">+</div>
-            <div>
-              <h3 class="font-bold text-slate-900 text-lg">Partner opportunity</h3>
-              <p class="text-slate-500 text-sm font-medium mb-2">Business / client side</p>
-              <p class="text-slate-500 text-sm leading-relaxed">Looking for a partner who can help find clients, scope projects, and own relationships while development stays on the technical side.</p>
-            </div>
+          <div class="glass-card glass-edge rounded-2xl p-5 reveal reveal-delay-1">
+            <div class="text-3xl font-bold text-ink-1">$0</div>
+            <div class="text-sm text-ink-3 mt-1">No cost to start a conversation</div>
+          </div>
+          <div class="glass-card glass-edge rounded-2xl p-5 col-span-2 md:col-span-1 reveal reveal-delay-2">
+            <div class="text-3xl font-bold text-ink-1">Clear</div>
+            <div class="text-sm text-ink-3 mt-1">Scoped projects, transparent pricing</div>
           </div>
         </div>
-
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ===================== CONTACT ===================== -->
-  <section id="contact" class="bg-slate-900 py-24 md:py-32">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="grid md:grid-cols-2 gap-16 items-start">
-
-        <div class="md:pt-2">
-          <p class="text-brand-400 font-semibold text-sm uppercase tracking-widest mb-3">Get in Touch</p>
-          <h2 class="text-3xl md:text-5xl font-extrabold text-white tracking-tight leading-tight mb-6">
-            Let's talk about what your business needs.
-          </h2>
-          <p class="text-lg text-slate-400 leading-relaxed mb-10">
-            No pitch decks, no long sales calls. Tell us about your business and what's getting in the way, we'll tell you if we can build something that fixes it.
-          </p>
-          <div class="flex flex-col gap-4 text-slate-400 text-sm">
-            <div class="flex items-center gap-3">
-              <div class="w-8 h-8 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center shrink-0">
-                <svg class="w-4 h-4 text-brand-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              Free consultation, no commitment required
-            </div>
-            <div class="flex items-center gap-3">
-              <div class="w-8 h-8 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center shrink-0">
-                <svg class="w-4 h-4 text-brand-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              We respond within 24 hours
-            </div>
-            <div class="flex items-center gap-3">
-              <div class="w-8 h-8 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center shrink-0">
-                <svg class="w-4 h-4 text-brand-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              Transparent pricing, no hidden fees
-            </div>
-          </div>
+    <!-- ===================== SERVICES ===================== -->
+    <section id="services" class="py-24 md:py-32">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-16 reveal">
+          <p class="section-kicker">What We Build</p>
+          <h2 class="text-3xl md:text-5xl font-extrabold text-ink-1 tracking-tight">Software that solves real problems</h2>
+          <p class="mt-4 text-lg text-ink-3 max-w-xl mx-auto">We skip the bloat and build exactly what your business needs to run smoother, respond faster, and stop losing work to messy systems.</p>
         </div>
 
-        <div class="bg-slate-800/60 border border-slate-700/60 rounded-2xl p-8">
-          <form id="contact" action="https://formspree.io/f/FORMSPREE_FORM_ID" method="POST" class="flex flex-col gap-5">
-            <input type="hidden" name="_subject" value="New Support Side Tech inquiry" />
-            <input type="hidden" name="_next" value="__PAGES_URL__#contact" />
-            <p class="hidden">
-              <label>Don't fill this out: <input name="_gotcha" tabindex="-1" autocomplete="off" /></label>
+        <div class="grid md:grid-cols-2 gap-6">
+
+          <div class="glass-card glass-edge rounded-2xl p-8 reveal">
+            <div class="icon-tile mb-6">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v12a2.25 2.25 0 002.25 2.25z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-ink-1 mb-3">Custom Web Apps</h3>
+            <p class="text-ink-3 leading-relaxed">Web applications built around your workflow, scheduling, job tracking, intake forms, inventory, reporting, and anything else that currently lives in spreadsheets or sticky notes.</p>
+          </div>
+
+          <div class="glass-card glass-edge rounded-2xl p-8 reveal reveal-delay-1">
+            <div class="icon-tile mb-6">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 9.75a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375m-13.5 3.01c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.184-4.183a1.14 1.14 0 01.778-.332 48.294 48.294 0 005.83-.498c1.585-.233 2.708-1.626 2.708-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-ink-1 mb-3">SMS &amp; AI Automation</h3>
+            <p class="text-ink-3 leading-relaxed">Automatic appointment reminders, missed-call follow-up, FAQ replies, and lead routing, so customers get answers fast and your team spends less time on the phone.</p>
+          </div>
+
+          <div class="glass-card glass-edge rounded-2xl p-8 reveal">
+            <div class="icon-tile mb-6">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-8.69-6.44l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-ink-1 mb-3">Client Portals &amp; Dashboards</h3>
+            <p class="text-ink-3 leading-relaxed">Secure portals for clients, staff, or partners, status updates, document sharing, request intake, and live dashboards that replace email chains and shared drives.</p>
+          </div>
+
+          <div class="glass-card glass-edge rounded-2xl p-8 reveal reveal-delay-1">
+            <div class="icon-tile mb-6">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-ink-1 mb-3">Internal Business Tools</h3>
+            <p class="text-ink-3 leading-relaxed">Ops tools for your team: job boards, work-order systems, CRM-lite tools, reporting, and anything else that helps you run the business without fighting your software.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== EXAMPLE PROJECTS ===================== -->
+    <section id="work" class="py-24 md:py-32">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-16 reveal">
+          <p class="section-kicker">Example Projects</p>
+          <h2 class="text-3xl md:text-5xl font-extrabold text-ink-1 tracking-tight">Real tools we can build for you</h2>
+          <p class="mt-4 text-lg text-ink-3 max-w-xl mx-auto">Portfolio demos and example products - concrete systems, not vague industry blurbs.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+
+          <a href="demos/giftshop-inventory/" class="glass-card glass-edge rounded-2xl overflow-hidden group block reveal">
+            <div class="project-media project-media--magenta">
+              <svg class="w-16 h-16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
+              </svg>
+            </div>
+            <div class="p-6">
+              <div class="tag tag--live mb-3">Live Demo</div>
+              <h3 class="text-lg font-bold text-ink-1 mb-2 group-hover:text-[color:var(--accent)] transition-colors">Gift Shop Inventory Manager</h3>
+              <p class="text-sm text-ink-3 leading-relaxed">Track products, stock levels, and low-inventory alerts for local gift shops - built as a working portfolio demo with sample data.</p>
+            </div>
+          </a>
+
+          <div class="glass-card glass-edge rounded-2xl overflow-hidden reveal reveal-delay-1">
+            <div class="project-media project-media--cyan">
+              <svg class="w-16 h-16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+              </svg>
+            </div>
+            <div class="p-6">
+              <div class="tag tag--concept mb-3">Example Concept</div>
+              <h3 class="text-lg font-bold text-ink-1 mb-2">Appointment Reminder System</h3>
+              <p class="text-sm text-ink-3 leading-relaxed">Automated email and SMS reminders for clinics, salons, and service businesses to cut no-shows and keep schedules full.</p>
+            </div>
+          </div>
+
+          <a href="demos/service-portal/" class="glass-card glass-edge rounded-2xl overflow-hidden group block reveal reveal-delay-2">
+            <div class="project-media project-media--blue">
+              <svg class="w-16 h-16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-8.69-6.44l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z" />
+              </svg>
+            </div>
+            <div class="p-6">
+              <div class="tag tag--live mb-3">Live Demo</div>
+              <h3 class="text-lg font-bold text-ink-1 mb-2 group-hover:text-[color:var(--accent)] transition-colors">Service Business Job Portal</h3>
+              <p class="text-sm text-ink-3 leading-relaxed">Client-facing portal for job status, work orders, and documents - so HVAC, cleaning, and contractor teams stop living in email.</p>
+            </div>
+          </a>
+
+        </div>
+
+        <p class="text-center text-ink-3 text-sm mt-10">Want something like this for your business? <a href="#contact" class="neon-text font-medium hover:underline underline-offset-4">Tell us what you need</a> and we'll scope it.</p>
+      </div>
+    </section>
+
+    <!-- ===================== ABOUT ===================== -->
+    <section id="about" class="py-24 md:py-32">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="grid md:grid-cols-2 gap-16 items-center">
+
+          <div class="reveal">
+            <p class="section-kicker text-left">About</p>
+            <h2 class="text-3xl md:text-5xl font-extrabold text-ink-1 tracking-tight leading-tight mb-6">
+              Software that supports the business, not the other way around.
+            </h2>
+            <p class="text-lg text-ink-3 leading-relaxed mb-6">
+              Support Side Tech is a custom software company. We build tools for businesses that need something more useful than a generic app, and less expensive than a big agency project.
             </p>
+            <p class="text-lg text-ink-3 leading-relaxed mb-8">
+              Whether you need a client portal, an SMS reminder system, a job-tracking app, or a full internal tool, we scope it clearly, build it cleanly, and keep it maintainable.
+            </p>
+            <div class="flex items-center gap-3">
+              <a href="#contact" class="btn-neon px-6 py-3 text-sm">
+                Work With Us
+              </a>
+            </div>
+          </div>
 
-            <div class="grid sm:grid-cols-2 gap-5">
+          <div class="flex flex-col gap-5">
+            <div class="glass-card glass-edge rounded-2xl p-6 flex items-start gap-5 reveal">
+              <div class="avatar-tile">N</div>
               <div>
-                <label for="name" class="block text-slate-300 text-sm font-medium mb-2">Your Name</label>
-                <input type="text" id="name" name="name" required placeholder="Jane Smith"
-                  class="w-full bg-slate-900/60 border border-slate-600 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 text-white placeholder-slate-500 rounded-xl px-4 py-3 text-sm outline-none transition-all" />
+                <h3 class="font-bold text-ink-1 text-lg">Nolen</h3>
+                <p class="neon-text text-sm font-medium mb-2">Founder &amp; Developer</p>
+                <p class="text-ink-3 text-sm leading-relaxed">Builds the software, custom web apps, backends, and tools that turn messy business processes into clean working systems.</p>
               </div>
+            </div>
+            <div class="glass rounded-2xl p-6 flex items-start gap-5 border-dashed reveal reveal-delay-1">
+              <div class="avatar-tile avatar-tile--ghost">+</div>
               <div>
-                <label for="email" class="block text-slate-300 text-sm font-medium mb-2">Email Address</label>
-                <input type="email" id="email" name="email" required placeholder="jane@yourbusiness.com"
-                  class="w-full bg-slate-900/60 border border-slate-600 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 text-white placeholder-slate-500 rounded-xl px-4 py-3 text-sm outline-none transition-all" />
+                <h3 class="font-bold text-ink-1 text-lg">Partner opportunity</h3>
+                <p class="text-ink-3 text-sm font-medium mb-2">Business / client side</p>
+                <p class="text-ink-3 text-sm leading-relaxed">Looking for a partner who can help find clients, scope projects, and own relationships while development stays on the technical side.</p>
               </div>
             </div>
+          </div>
 
-            <div>
-              <label for="business" class="block text-slate-300 text-sm font-medium mb-2">Business Type</label>
-              <select id="business" name="business_type"
-                class="w-full bg-slate-900/60 border border-slate-600 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 text-white rounded-xl px-4 py-3 text-sm outline-none transition-all appearance-none">
-                <option value="" class="text-slate-500">Select your business type...</option>
-                <option value="service">Service Business (HVAC, plumbing, cleaning, etc.)</option>
-                <option value="appointment">Clinic / Salon / Appointment-Based</option>
-                <option value="property">Property Management / Contractor</option>
-                <option value="professional">Professional Services</option>
-                <option value="retail">Retail / Office Team</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-
-            <div>
-              <label for="message" class="block text-slate-300 text-sm font-medium mb-2">What do you need?</label>
-              <textarea id="message" name="message" rows="4" required placeholder="Tell us about your business and the problem you're trying to solve..."
-                class="w-full bg-slate-900/60 border border-slate-600 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 text-white placeholder-slate-500 rounded-xl px-4 py-3 text-sm outline-none transition-all resize-none"></textarea>
-            </div>
-
-            <button type="submit"
-              class="w-full bg-brand-600 hover:bg-brand-700 text-white font-semibold py-4 rounded-xl text-sm transition-colors shadow-lg shadow-brand-900/40">
-              Send Message
-            </button>
-
-            <p class="text-xs text-slate-500 text-center">We'll get back to you within 24 hours. No spam, ever.</p>
-          </form>
         </div>
-
       </div>
-    </div>
-  </section>
+    </section>
+
+    <!-- ===================== CONTACT ===================== -->
+    <section id="contact" class="py-24 md:py-32">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="grid md:grid-cols-2 gap-16 items-start">
+
+          <div class="md:pt-2 reveal">
+            <p class="section-kicker text-left">Get in Touch</p>
+            <h2 class="text-3xl md:text-5xl font-extrabold text-ink-1 tracking-tight leading-tight mb-6">
+              Let's talk about what your business needs.
+            </h2>
+            <p class="text-lg text-ink-3 leading-relaxed mb-10">
+              No pitch decks, no long sales calls. Tell us about your business and what's getting in the way, we'll tell you if we can build something that fixes it.
+            </p>
+            <ul class="flex flex-col gap-4 text-ink-2 text-sm">
+              <li class="flex items-center gap-3">
+                <span class="check-tile">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </span>
+                Free consultation, no commitment required
+              </li>
+              <li class="flex items-center gap-3">
+                <span class="check-tile">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </span>
+                We respond within 24 hours
+              </li>
+              <li class="flex items-center gap-3">
+                <span class="check-tile">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </span>
+                Transparent pricing, no hidden fees
+              </li>
+            </ul>
+          </div>
+
+          <div class="glass-strong glass-edge relative rounded-2xl p-8 reveal reveal-delay-1">
+            <form id="contact-form" action="https://formspree.io/f/FORMSPREE_FORM_ID" method="POST" class="flex flex-col gap-5">
+              <input type="hidden" name="_subject" value="New Support Side Tech inquiry" />
+              <input type="hidden" name="_next" value="__PAGES_URL__#contact" />
+              <p class="hidden">
+                <label>Don't fill this out: <input name="_gotcha" tabindex="-1" autocomplete="off" /></label>
+              </p>
+
+              <div class="grid sm:grid-cols-2 gap-5">
+                <div>
+                  <label for="name" class="block text-ink-2 text-sm font-medium mb-2">Your Name</label>
+                  <input type="text" id="name" name="name" required placeholder="Jane Smith"
+                    class="glass-input px-4 py-3 text-sm" />
+                </div>
+                <div>
+                  <label for="email" class="block text-ink-2 text-sm font-medium mb-2">Email Address</label>
+                  <input type="email" id="email" name="email" required placeholder="jane@yourbusiness.com"
+                    class="glass-input px-4 py-3 text-sm" />
+                </div>
+              </div>
+
+              <div>
+                <label for="business" class="block text-ink-2 text-sm font-medium mb-2">Business Type</label>
+                <select id="business" name="business_type"
+                  class="glass-input px-4 py-3 text-sm appearance-none select-caret">
+                  <option value="">Select your business type...</option>
+                  <option value="service">Service Business (HVAC, plumbing, cleaning, etc.)</option>
+                  <option value="appointment">Clinic / Salon / Appointment-Based</option>
+                  <option value="property">Property Management / Contractor</option>
+                  <option value="professional">Professional Services</option>
+                  <option value="retail">Retail / Office Team</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="message" class="block text-ink-2 text-sm font-medium mb-2">What do you need?</label>
+                <textarea id="message" name="message" rows="4" required placeholder="Tell us about your business and the problem you're trying to solve..."
+                  class="glass-input px-4 py-3 text-sm resize-none"></textarea>
+              </div>
+
+              <button type="submit" class="btn-neon w-full py-4 text-sm">
+                Send Message
+              </button>
+
+              <p class="text-xs text-ink-3 text-center">We'll get back to you within 24 hours. No spam, ever.</p>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
 
   <!-- ===================== FOOTER ===================== -->
-  <footer class="bg-slate-950 border-t border-slate-800 py-10">
+  <footer class="relative z-10 border-t border-hair py-10">
     <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
       <div class="flex items-center gap-2">
-        <div class="w-7 h-7 rounded-lg bg-brand-600 flex items-center justify-center">
-          <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+        <span class="brand-mark brand-mark--sm">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
           </svg>
-        </div>
-        <span class="text-slate-400 text-sm font-medium">Support Side Tech</span>
+        </span>
+        <span class="text-ink-2 text-sm font-medium">Support Side Tech</span>
       </div>
 
-      <div class="flex items-center gap-6 text-slate-500 text-sm">
-        <a href="#services" class="hover:text-slate-300 transition-colors">Services</a>
-        <a href="#work" class="hover:text-slate-300 transition-colors">Example Projects</a>
-        <a href="#about" class="hover:text-slate-300 transition-colors">About</a>
-        <a href="#contact" class="hover:text-slate-300 transition-colors">Contact</a>
+      <div class="flex items-center gap-6 text-sm">
+        <a href="#services" class="link-neon">Services</a>
+        <a href="#work" class="link-neon">Example Projects</a>
+        <a href="#about" class="link-neon">About</a>
+        <a href="#contact" class="link-neon">Contact</a>
       </div>
 
-      <p class="text-slate-600 text-xs">&copy; 2026 Support Side Tech. All rights reserved.</p>
+      <p class="text-ink-3 text-xs">&copy; 2026 Support Side Tech. All rights reserved.</p>
     </div>
   </footer>
 
-  <script>
-    const menuBtn = document.getElementById('menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-
-    menuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
-
-    function closeMobileMenu() {
-      mobileMenu.classList.add('hidden');
-    }
-
-    document.addEventListener('click', (e) => {
-      if (!menuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
-        mobileMenu.classList.add('hidden');
-      }
-    });
-  </script>
+  <script src="assets/js/ui.js" defer></script>
 
 </body>
 </html>

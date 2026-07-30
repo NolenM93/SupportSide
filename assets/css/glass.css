@@ -1,0 +1,568 @@
+/* ============================================================
+   Support Side — Glassmorphism + Neon Design System
+   Shared by the marketing site and the product demos.
+
+   Load order: glass.css  ->  page/app stylesheet
+   Everything is driven by the custom properties in :root so a
+   single token change re-themes every surface.
+   ============================================================ */
+
+/* ---------- 1. Tokens ---------- */
+
+:root {
+  /* Base canvas: near-black with a faint blue cast */
+  --bg-base: #05070d;
+  --bg-deep: #03040a;
+  --bg-raised: #0a0f1a;
+
+  /* Glass surfaces — layered by opacity, not by solid color */
+  --glass-1: rgba(255, 255, 255, 0.04);
+  --glass-2: rgba(255, 255, 255, 0.06);
+  --glass-3: rgba(255, 255, 255, 0.09);
+  --glass-hover: rgba(255, 255, 255, 0.08);
+
+  /* Hairline borders */
+  --line-1: rgba(255, 255, 255, 0.1);
+  --line-2: rgba(255, 255, 255, 0.16);
+  --line-3: rgba(255, 255, 255, 0.22);
+
+  /* Blur scale */
+  --blur-sm: 8px;
+  --blur-md: 14px;
+  --blur-lg: 20px;
+
+  /* Type — all pass AA on --bg-base */
+  --ink-1: #f4f7ff;
+  --ink-2: #c3cede;
+  --ink-3: #93a1b8;
+
+  /* Neon accents */
+  --neon-cyan: #22d3ee;
+  --neon-blue: #60a5fa;
+  --neon-magenta: #e879f9;
+
+  /* Active accent (overridden per accent theme) */
+  --accent: var(--neon-cyan);
+  --accent-2: var(--neon-blue);
+  --accent-ink: #d9fbff;
+  --accent-line: rgba(34, 211, 238, 0.45);
+  --accent-line-soft: rgba(34, 211, 238, 0.22);
+  --accent-wash: rgba(34, 211, 238, 0.12);
+  --accent-glow: rgba(34, 211, 238, 0.3);
+
+  /* Ambient background washes (retinted per accent theme) */
+  --wash-1: rgba(34, 211, 238, 0.1);
+  --wash-2: rgba(129, 140, 248, 0.1);
+  --wash-3: rgba(232, 121, 249, 0.08);
+  --orb-1: rgba(34, 211, 238, 0.5);
+  --orb-2: rgba(129, 140, 248, 0.45);
+  --orb-3: rgba(232, 121, 249, 0.35);
+
+  /* Elevation */
+  --elev-1: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --elev-2: 0 10px 30px -12px rgba(0, 0, 0, 0.7);
+  --elev-3: 0 24px 60px -20px rgba(0, 0, 0, 0.8);
+  --glow-soft: 0 0 24px -6px var(--accent-glow);
+
+  /* Motion */
+  --dur-1: 200ms;
+  --dur-2: 280ms;
+  --dur-3: 400ms;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Status hues (kept legible on glass) */
+  --ok: #34d399;
+  --warn: #fbbf24;
+  --danger: #fb7185;
+}
+
+/* Accent variants — set data-accent on <html> */
+html[data-accent='cyan'] {
+  --accent: var(--neon-cyan);
+  --accent-2: var(--neon-blue);
+  --accent-ink: #d9fbff;
+  --accent-line: rgba(34, 211, 238, 0.45);
+  --accent-line-soft: rgba(34, 211, 238, 0.22);
+  --accent-wash: rgba(34, 211, 238, 0.12);
+  --accent-glow: rgba(34, 211, 238, 0.3);
+}
+
+html[data-accent='blue'] {
+  --accent: var(--neon-blue);
+  --accent-2: #a78bfa;
+  --accent-ink: #e2ecff;
+  --accent-line: rgba(96, 165, 250, 0.45);
+  --accent-line-soft: rgba(96, 165, 250, 0.22);
+  --accent-wash: rgba(96, 165, 250, 0.12);
+  --accent-glow: rgba(96, 165, 250, 0.3);
+}
+
+html[data-accent='magenta'] {
+  --accent: var(--neon-magenta);
+  --accent-2: #818cf8;
+  --accent-ink: #fde8ff;
+  --accent-line: rgba(232, 121, 249, 0.45);
+  --accent-line-soft: rgba(232, 121, 249, 0.22);
+  --accent-wash: rgba(232, 121, 249, 0.12);
+  --accent-glow: rgba(232, 121, 249, 0.3);
+}
+
+/* ---------- 2. Base canvas ---------- */
+
+html {
+  color-scheme: dark;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  background-color: var(--bg-base);
+  color: var(--ink-2);
+  /* Layered radial washes give the flat black depth without images */
+  background-image:
+    radial-gradient(70rem 40rem at 12% -10%, var(--wash-1), transparent 60%),
+    radial-gradient(60rem 38rem at 88% 4%, var(--wash-2), transparent 62%),
+    radial-gradient(50rem 34rem at 50% 108%, var(--wash-3), transparent 60%);
+  background-attachment: fixed;
+}
+
+::selection {
+  background: var(--accent-wash);
+  color: var(--ink-1);
+}
+
+/* Keyboard focus gets a neon ring everywhere */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 0.35rem;
+}
+
+/* Dark form controls */
+select option {
+  background-color: #0b1120;
+  color: var(--ink-1);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--ink-3);
+  opacity: 1;
+}
+
+/* Scrollbar */
+* {
+  scrollbar-color: rgba(255, 255, 255, 0.18) transparent;
+  scrollbar-width: thin;
+}
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+*::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.14);
+  border: 2px solid transparent;
+  background-clip: content-box;
+  border-radius: 999px;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.24);
+  background-clip: content-box;
+}
+
+/* ---------- 3. Decorative background orbs ---------- */
+
+.aurora {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.aurora-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.5;
+  will-change: transform;
+}
+
+.aurora-orb--1 {
+  width: 34rem;
+  height: 34rem;
+  top: -10rem;
+  left: -8rem;
+  background: radial-gradient(circle, var(--orb-1), transparent 68%);
+  animation: orb-drift-a 26s ease-in-out infinite alternate;
+}
+
+.aurora-orb--2 {
+  width: 30rem;
+  height: 30rem;
+  top: 22%;
+  right: -10rem;
+  background: radial-gradient(circle, var(--orb-2), transparent 68%);
+  animation: orb-drift-b 32s ease-in-out infinite alternate;
+}
+
+.aurora-orb--3 {
+  width: 28rem;
+  height: 28rem;
+  bottom: -12rem;
+  left: 38%;
+  background: radial-gradient(circle, var(--orb-3), transparent 68%);
+  animation: orb-drift-c 38s ease-in-out infinite alternate;
+}
+
+/* Thin grid overlay for a technical, futuristic base */
+.grid-veil {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 100% 60% at 50% 0%, #000 40%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 100% 60% at 50% 0%, #000 40%, transparent 100%);
+}
+
+/* ---------- 4. Glass surfaces ---------- */
+
+.glass {
+  background: var(--glass-1);
+  border: 1px solid var(--line-1);
+  backdrop-filter: blur(var(--blur-md)) saturate(140%);
+  -webkit-backdrop-filter: blur(var(--blur-md)) saturate(140%);
+  box-shadow: var(--elev-2);
+}
+
+.glass-strong {
+  background: var(--glass-2);
+  border: 1px solid var(--line-2);
+  backdrop-filter: blur(var(--blur-lg)) saturate(150%);
+  -webkit-backdrop-filter: blur(var(--blur-lg)) saturate(150%);
+  box-shadow: var(--elev-3);
+}
+
+/* Interactive card: lifts and picks up a neon edge on hover */
+.glass-card {
+  position: relative;
+  background: var(--glass-1);
+  border: 1px solid var(--line-1);
+  backdrop-filter: blur(var(--blur-md)) saturate(140%);
+  -webkit-backdrop-filter: blur(var(--blur-md)) saturate(140%);
+  box-shadow: var(--elev-2);
+  transition:
+    transform var(--dur-2) var(--ease),
+    border-color var(--dur-2) var(--ease),
+    box-shadow var(--dur-2) var(--ease),
+    background-color var(--dur-2) var(--ease);
+}
+
+.glass-card:hover {
+  transform: translateY(-4px);
+  background: var(--glass-2);
+  border-color: var(--accent-line);
+  box-shadow: var(--elev-3), var(--glow-soft);
+}
+
+/* Top hairline that catches the light, like a real glass edge */
+.glass-edge::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  pointer-events: none;
+}
+
+.glass-nav {
+  background: rgba(5, 7, 13, 0.66);
+  border-bottom: 1px solid var(--line-1);
+  backdrop-filter: blur(var(--blur-lg)) saturate(150%);
+  -webkit-backdrop-filter: blur(var(--blur-lg)) saturate(150%);
+}
+
+/* Modal scrim */
+.glass-scrim {
+  background: rgba(3, 4, 10, 0.62);
+  backdrop-filter: blur(var(--blur-sm));
+  -webkit-backdrop-filter: blur(var(--blur-sm));
+}
+
+/* Browsers without backdrop-filter get denser fills so text stays legible */
+@supports not ((backdrop-filter: blur(4px)) or (-webkit-backdrop-filter: blur(4px))) {
+  .glass,
+  .glass-card,
+  .glass-strong {
+    background: rgba(14, 19, 32, 0.94);
+  }
+  .glass-nav {
+    background: rgba(5, 7, 13, 0.97);
+  }
+  .glass-scrim {
+    background: rgba(3, 4, 10, 0.9);
+  }
+}
+
+/* ---------- 5. Neon accents ---------- */
+
+.neon-text {
+  color: var(--accent);
+}
+
+.neon-gradient-text {
+  background: linear-gradient(100deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.neon-hairline {
+  height: 1px;
+  border: 0;
+  background: linear-gradient(90deg, transparent, var(--accent-line), transparent);
+}
+
+/* Small status/label chip */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-ink);
+  background: var(--accent-wash);
+  border: 1px solid var(--accent-line-soft);
+}
+
+.chip-dot {
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 999px;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+  animation: pulse-dot 2.4s ease-in-out infinite;
+}
+
+/* Primary action — translucent neon, never a flat neon slab */
+.btn-neon {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  color: var(--accent-ink);
+  background: linear-gradient(135deg, var(--accent-wash), rgba(255, 255, 255, 0.05));
+  border: 1px solid var(--accent-line);
+  border-radius: 0.85rem;
+  backdrop-filter: blur(var(--blur-sm));
+  -webkit-backdrop-filter: blur(var(--blur-sm));
+  box-shadow: 0 0 0 0 var(--accent-glow), var(--elev-1);
+  transition:
+    transform var(--dur-1) var(--ease),
+    box-shadow var(--dur-2) var(--ease),
+    border-color var(--dur-2) var(--ease),
+    background-color var(--dur-2) var(--ease),
+    color var(--dur-1) var(--ease);
+}
+
+.btn-neon:hover {
+  transform: translateY(-2px);
+  color: #fff;
+  border-color: var(--accent);
+  box-shadow: 0 0 28px -6px var(--accent-glow), var(--elev-2);
+}
+
+.btn-neon:active {
+  transform: translateY(0);
+}
+
+.btn-neon:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Secondary action — hairline glass */
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  color: var(--ink-2);
+  background: var(--glass-1);
+  border: 1px solid var(--line-2);
+  border-radius: 0.85rem;
+  backdrop-filter: blur(var(--blur-sm));
+  -webkit-backdrop-filter: blur(var(--blur-sm));
+  transition:
+    transform var(--dur-1) var(--ease),
+    border-color var(--dur-2) var(--ease),
+    color var(--dur-1) var(--ease),
+    background-color var(--dur-2) var(--ease);
+}
+
+.btn-ghost:hover {
+  transform: translateY(-2px);
+  color: var(--ink-1);
+  border-color: var(--line-3);
+  background: var(--glass-hover);
+}
+
+/* Animated underline for text links */
+.link-neon {
+  position: relative;
+  color: var(--ink-2);
+  transition: color var(--dur-1) var(--ease);
+}
+
+.link-neon::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -3px;
+  height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform var(--dur-2) var(--ease);
+}
+
+.link-neon:hover {
+  color: var(--ink-1);
+}
+
+.link-neon:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* ---------- 6. Inputs ---------- */
+
+.glass-input {
+  width: 100%;
+  color: var(--ink-1);
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid var(--line-2);
+  border-radius: 0.85rem;
+  transition:
+    border-color var(--dur-2) var(--ease),
+    box-shadow var(--dur-2) var(--ease),
+    background-color var(--dur-2) var(--ease);
+}
+
+.glass-input:hover {
+  border-color: var(--line-3);
+}
+
+.glass-input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-wash), 0 0 18px -8px var(--accent-glow);
+}
+
+/* ---------- 7. Motion ---------- */
+
+@keyframes orb-drift-a {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to   { transform: translate3d(4rem, 3rem, 0) scale(1.12); }
+}
+
+@keyframes orb-drift-b {
+  from { transform: translate3d(0, 0, 0) scale(1.08); }
+  to   { transform: translate3d(-5rem, 2.5rem, 0) scale(1); }
+}
+
+@keyframes orb-drift-c {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to   { transform: translate3d(3rem, -3rem, 0) scale(1.1); }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.45; transform: scale(0.82); }
+}
+
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+
+@keyframes fade-rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.animate-float {
+  animation: float-y 7s ease-in-out infinite;
+}
+
+.animate-fade-rise {
+  animation: fade-rise var(--dur-3) var(--ease) both;
+}
+
+/* Scroll reveal — .reveal is set in markup, .is-visible added by observer.
+   Without JS the content stays visible (progressive enhancement). */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity var(--dur-3) var(--ease),
+    transform var(--dur-3) var(--ease);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.reveal-delay-1 { transition-delay: 60ms; }
+.reveal-delay-2 { transition-delay: 120ms; }
+.reveal-delay-3 { transition-delay: 180ms; }
+.reveal-delay-4 { transition-delay: 240ms; }
+
+/* ---------- 8. Reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .aurora-orb {
+    animation: none !important;
+  }
+
+  /* Never leave content hidden if the transition is disabled */
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .glass-card:hover,
+  .btn-neon:hover,
+  .btn-ghost:hover {
+    transform: none !important;
+  }
+}

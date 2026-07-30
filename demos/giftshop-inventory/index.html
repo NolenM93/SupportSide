@@ -17,6 +17,9 @@
       }
     }
   </script>
+  <meta name="theme-color" content="#05070d" />
+  <link rel="stylesheet" href="../../assets/css/glass.css" />
+  <link rel="stylesheet" href="../../assets/css/demo-app.css" />
   <link rel="stylesheet" href="styles.css" />
   <script>
     (function () {
@@ -29,8 +32,16 @@
 </head>
 <body class="bg-slate-100 text-slate-800 antialiased min-h-screen">
 
+  <!-- Ambient background -->
+  <div class="aurora" aria-hidden="true">
+    <span class="aurora-orb aurora-orb--1"></span>
+    <span class="aurora-orb aurora-orb--2"></span>
+    <span class="aurora-orb aurora-orb--3"></span>
+  </div>
+  <div class="grid-veil" aria-hidden="true"></div>
+
   <!-- LOGIN -->
-  <div id="view-login" class="min-h-screen flex items-center justify-center p-6">
+  <div id="view-login" class="app-layer min-h-screen flex items-center justify-center p-6">
     <div class="w-full max-w-md bg-white rounded-2xl border border-slate-200 shadow-sm p-8">
       <div class="mb-6">
         <p class="text-xs font-semibold uppercase tracking-widest text-brand-600 mb-2">Support Side Demo</p>
@@ -60,7 +71,7 @@
   </div>
 
   <!-- APP SHELL -->
-  <div id="view-app" class="hidden min-h-screen">
+  <div id="view-app" class="app-layer hidden min-h-screen">
     <header class="bg-slate-900 text-white">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between gap-4">
         <div id="hotspot-header" class="tour-hotspot-wrap flex items-center gap-3 min-w-0">

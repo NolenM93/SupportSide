@@ -6,33 +6,33 @@
   const THEMES = [
     {
       id: 'classic',
-      name: 'Classic',
-      desc: 'Clean indigo — the default Support Side look.',
-      swatches: ['#0f172a', '#4f46e5', '#f1f5f9', '#ffffff']
+      name: 'Aurora',
+      desc: 'Cyan and electric blue on deep black — the default.',
+      swatches: ['#05070d', '#22d3ee', '#60a5fa', '#0a0f1a']
     },
     {
       id: 'dark',
-      name: 'Dark',
-      desc: 'Low-light slate with soft indigo accents.',
-      swatches: ['#020617', '#818cf8', '#1a2332', '#0b1220']
+      name: 'Midnight',
+      desc: 'Pure black glass with a restrained ice-blue glow.',
+      swatches: ['#000000', '#7dd3fc', '#a5b4fc', '#07090e']
     },
     {
       id: 'ocean',
-      name: 'Ocean',
-      desc: 'Cool teal tones for a professional service brand.',
-      swatches: ['#0e4d5c', '#0891b2', '#ecfeff', '#ffffff']
+      name: 'Deep Ocean',
+      desc: 'Teal neon — cool and clinical for service brands.',
+      swatches: ['#04090e', '#2dd4bf', '#38bdf8', '#081218']
     },
     {
       id: 'forest',
-      name: 'Forest',
-      desc: 'Green and earthy — solid for outdoor / home services.',
-      swatches: ['#14532d', '#15803d', '#f0fdf4', '#ffffff']
+      name: 'Neon Mint',
+      desc: 'Fresh green accents — good for home and field services.',
+      swatches: ['#040a07', '#4ade80', '#a3e635', '#08120c']
     },
     {
       id: 'sunset',
-      name: 'Sunset',
-      desc: 'Warm amber accents with an inviting glow.',
-      swatches: ['#7c2d12', '#ea580c', '#fff7ed', '#ffffff']
+      name: 'Magenta Haze',
+      desc: 'Soft magenta and violet highlights on near-black.',
+      swatches: ['#0a050c', '#e879f9', '#a78bfa', '#120a16']
     }
   ];
 
