@@ -1,6 +1,6 @@
 # Support Side
 
-Official website for **Support Side** - a custom software company building web apps, portals, SMS automation, and internal tools for real businesses.
+Official website for **Support Side** - a custom software company building web apps, portals, rental booking sites, and internal tools for real businesses.
 
 ## Tech Stack
 

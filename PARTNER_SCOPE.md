@@ -1,7 +1,7 @@
 # Support Side - Partner Scope
 
 ## The Idea in One Line
-**Support Side** builds custom software for businesses that have outgrown spreadsheets and generic apps - web apps, client portals, SMS automation, and internal tools priced and scoped for real operations.
+**Support Side** builds custom software for businesses that have outgrown spreadsheets and generic apps - web apps, client portals, rental booking sites, and internal tools priced and scoped for real operations.
 
 ---
 
@@ -15,7 +15,7 @@ Growing businesses often run on messy systems: email chains, shared folders, pap
 | Offer | What it does |
 |--------|----------------|
 | **Custom Web Apps** | Scheduling, job tracking, intake, inventory, reporting - built to their workflow |
-| **SMS & AI Automation** | Reminders, missed-call follow-up, FAQ replies, lead routing |
+| **Rental Booking Sites** | Availability calendars, reservations, deposits, and check-in for rental companies |
 | **Client Portals & Dashboards** | Secure status updates, document sharing, request intake, live dashboards |
 | **Internal Business Tools** | Job boards, work orders, CRM-lite, ops tools for the team |
 
@@ -26,7 +26,7 @@ Growing businesses often run on messy systems: email chains, shared folders, pap
 | Target | Why they buy |
 |--------|----------------|
 | **Service businesses** | HVAC, plumbing, cleaning, landscaping, auto, contractors - jobs, dispatch, customer updates |
-| **Appointment-based businesses** | Clinics, dental, salons, spas - booking, reminders, intake, fewer no-shows |
+| **Rental companies** | Equipment, vehicles, venues, property - booking sites, availability, reservations |
 | **Growing teams & ops** | Property managers, professional services, retail/office teams - portals and internal systems |
 
 We are **not** positioning around novelty niches (breweries, food trucks, etc.).
@@ -76,7 +76,7 @@ Optional later: turn successful builds into reusable products for similar busine
 | Website hosting | $0 to start (GitHub Pages) |
 | Domain | ~$12/year when ready |
 | Client app hosting | ~$6/month when needed |
-| SMS / AI usage | Pay-as-you-go per client |
+| Domain extras | Optional, only if a client needs one |
 
 Low cash needed to start. Time, clarity, and sales matter more than capital.
 
@@ -98,7 +98,7 @@ Out of scope unless agreed: expecting instant revenue, equal ownership without e
 - Brand: **Support Side**
 - Website: landing page in progress  
 - Positioning: custom software for real business operations  
-- Target markets defined (service, appointment-based, ops/teams)
+- Target markets defined (service, rental companies, ops/teams)
 
 ---
 

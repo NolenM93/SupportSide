@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth" data-accent="cyan">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About the Founder - Nolen | Support Side Tech</title>
+  <meta name="description" content="Meet Nolen, founder and developer of Support Side Tech. Custom software, portals, and internal tools built for how real businesses actually work." />
+  <meta name="theme-color" content="#05070d" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/tailwind.css" />
+  <link rel="stylesheet" href="assets/css/glass.css" />
+  <link rel="stylesheet" href="assets/css/custom.css" />
+</head>
+<body class="font-sans text-ink-2 antialiased min-h-screen flex flex-col">
+
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- ===================== BACKGROUND ===================== -->
+  <div class="aurora" aria-hidden="true">
+    <span class="aurora-orb aurora-orb--1"></span>
+    <span class="aurora-orb aurora-orb--2"></span>
+    <span class="aurora-orb aurora-orb--3"></span>
+  </div>
+  <div class="grid-veil" aria-hidden="true"></div>
+
+  <!-- ===================== NAVBAR ===================== -->
+  <header class="site-nav glass-nav fixed top-0 left-0 right-0 z-50">
+    <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2.5 group">
+        <span class="brand-mark">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
+          </svg>
+        </span>
+        <span class="text-ink-1 font-bold text-lg tracking-tight">Support Side Tech</span>
+      </a>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="index.html#services" class="link-neon text-sm font-medium">Services</a>
+        <a href="index.html#work" class="link-neon text-sm font-medium">Example Projects</a>
+        <a href="index.html#about" class="link-neon text-sm font-medium">About</a>
+        <a href="founder.html" class="link-neon text-sm font-medium neon-text" aria-current="page">Founder</a>
+        <a href="index.html#contact" class="btn-neon text-sm px-4 py-2">Get a Free Quote</a>
+      </div>
+      <button id="menu-btn" class="md:hidden text-ink-2 hover:text-ink-1 p-1 transition-colors" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
+        <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+      </button>
+    </nav>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-hair px-6 py-4 flex flex-col gap-4">
+      <a href="index.html#services" class="link-neon text-sm font-medium" onclick="closeMobileMenu()">Services</a>
+      <a href="index.html#work" class="link-neon text-sm font-medium" onclick="closeMobileMenu()">Example Projects</a>
+      <a href="index.html#about" class="link-neon text-sm font-medium" onclick="closeMobileMenu()">About</a>
+      <a href="founder.html" class="link-neon text-sm font-medium neon-text" aria-current="page" onclick="closeMobileMenu()">Founder</a>
+      <a href="index.html#contact" class="btn-neon text-sm px-4 py-2.5" onclick="closeMobileMenu()">Get a Free Quote</a>
+    </div>
+  </header>
+
+  <main id="main" class="relative z-10 flex-1 pt-16">
+
+    <!-- ===================== HERO ===================== -->
+    <section class="pt-20 md:pt-28 pb-12">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="grid md:grid-cols-[auto_1fr] gap-10 md:gap-16 items-center">
+          <div class="founder-portrait reveal" aria-hidden="true">
+            <span class="founder-portrait-letter">N</span>
+          </div>
+          <div>
+            <div class="chip mb-6 animate-fade-rise">
+              <span class="chip-dot"></span>
+              Founder &amp; Developer
+            </div>
+            <h1 class="text-4xl md:text-6xl font-extrabold text-ink-1 leading-tight tracking-tight mb-4">
+              I'm Nolen.
+            </h1>
+            <p class="text-xl md:text-2xl text-ink-2 leading-relaxed mb-6 max-w-2xl">
+              I started Support Side Tech to build the software businesses actually need, not another generic app they have to work around.
+            </p>
+            <p class="text-ink-3 leading-relaxed max-w-2xl">
+              If your day still lives in spreadsheets, email threads, and tools that almost fit, that's the problem I like to solve. I design and build custom web apps, client portals, rental booking sites, and internal tools: scoped clearly, built cleanly, and kept maintainable.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="neon-hairline max-w-6xl mx-auto" />
+
+    <!-- ===================== STORY ===================== -->
+    <section class="py-20 md:py-24">
+      <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-12 gap-12">
+        <div class="md:col-span-4 reveal">
+          <p class="section-kicker text-left">The short version</p>
+          <h2 class="text-3xl md:text-4xl font-extrabold text-ink-1 tracking-tight leading-tight">
+            Software on the support side of the business.
+          </h2>
+        </div>
+        <div class="md:col-span-8 space-y-5 text-lg text-ink-3 leading-relaxed reveal reveal-delay-1">
+          <p>
+            Most growing businesses don't need a 40-person agency or a bloated SaaS subscription. They need one person who can listen, scope a real tool, and ship it.
+          </p>
+          <p>
+            That's the role I take. I talk to the people who run the work (owners, dispatchers, front-desk staff) and turn messy processes into clean systems: job tracking, intake, portals, inventory, booking, reporting. Whatever is currently leaking time.
+          </p>
+          <p>
+            Support Side is still early, and that's intentional. I take on work I can stand behind, keep pricing transparent, and stay close to the product after it launches. You work with the person who writes the code.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== HOW I WORK ===================== -->
+    <section class="pb-20 md:pb-24">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="mb-12 reveal">
+          <p class="section-kicker">How I work</p>
+          <h2 class="text-3xl md:text-4xl font-extrabold text-ink-1 tracking-tight">A few things you can count on</h2>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="glass-card glass-edge rounded-2xl p-8 reveal">
+            <div class="icon-tile mb-5">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-ink-1 mb-3">Clear scope first</h3>
+            <p class="text-ink-3 leading-relaxed">We agree on the problem, the first useful version, and the price before I write a line of production code. No surprise invoices, no vague retainers.</p>
+          </div>
+          <div class="glass-card glass-edge rounded-2xl p-8 reveal reveal-delay-1">
+            <div class="icon-tile mb-5">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-ink-1 mb-3">I build it myself</h3>
+            <p class="text-ink-3 leading-relaxed">Custom web apps, backends, and integrations. You talk to the person shipping the work, not an account manager translating for a distant team.</p>
+          </div>
+          <div class="glass-card glass-edge rounded-2xl p-8 reveal">
+            <div class="icon-tile mb-5">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-ink-1 mb-3">Useful over theatrical</h3>
+            <p class="text-ink-3 leading-relaxed">I skip features that look impressive in a demo and die in week two. The goal is a tool your team actually opens on a Tuesday morning.</p>
+          </div>
+          <div class="glass-card glass-edge rounded-2xl p-8 reveal reveal-delay-1">
+            <div class="icon-tile mb-5">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-ink-1 mb-3">Built to last</h3>
+            <p class="text-ink-3 leading-relaxed">Clean code, straightforward hosting, and systems you can keep running. I don't lock you into a black box you can't understand or hand off later.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== WHAT I BUILD ===================== -->
+    <section class="pb-20 md:pb-24">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="mb-12 reveal">
+          <p class="section-kicker">What I focus on</p>
+          <h2 class="text-3xl md:text-4xl font-extrabold text-ink-1 tracking-tight">The work I take on</h2>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="glass rounded-2xl p-6 reveal">
+            <p class="neon-text text-sm font-semibold mb-2">Custom web apps</p>
+            <p class="text-sm text-ink-3 leading-relaxed">Scheduling, job tracking, intake, inventory, and reporting built around your workflow.</p>
+          </div>
+          <div class="glass rounded-2xl p-6 reveal reveal-delay-1">
+            <p class="neon-text text-sm font-semibold mb-2">Client portals</p>
+            <p class="text-sm text-ink-3 leading-relaxed">Status updates, documents, and request intake so clients stop living in your inbox.</p>
+          </div>
+          <div class="glass rounded-2xl p-6 reveal reveal-delay-2">
+            <p class="neon-text text-sm font-semibold mb-2">Rental booking sites</p>
+            <p class="text-sm text-ink-3 leading-relaxed">Availability calendars, reservations, and check-in for equipment, vehicles, venues, or property rentals.</p>
+          </div>
+          <div class="glass rounded-2xl p-6 reveal">
+            <p class="neon-text text-sm font-semibold mb-2">Internal tools</p>
+            <p class="text-sm text-ink-3 leading-relaxed">Work orders, CRM-lite, dashboards, and ops systems for the people running the day.</p>
+          </div>
+          <div class="glass rounded-2xl p-6 reveal reveal-delay-1">
+            <p class="neon-text text-sm font-semibold mb-2">Service businesses</p>
+            <p class="text-sm text-ink-3 leading-relaxed">HVAC, plumbing, cleaning, contractors: jobs, dispatch, and customer updates.</p>
+          </div>
+          <div class="glass rounded-2xl p-6 reveal reveal-delay-2">
+            <p class="neon-text text-sm font-semibold mb-2">Rental companies</p>
+            <p class="text-sm text-ink-3 leading-relaxed">Equipment, vehicle, venue, and property rentals that need a booking site customers can actually use.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== WORKING TOGETHER ===================== -->
+    <section class="pb-24 md:pb-32">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="glass-strong glass-edge relative rounded-2xl p-8 md:p-12 grid md:grid-cols-2 gap-10 items-center reveal">
+          <div>
+            <p class="section-kicker text-left">Working together</p>
+            <h2 class="text-3xl md:text-4xl font-extrabold text-ink-1 tracking-tight leading-tight mb-4">
+              Tell me what's getting in the way.
+            </h2>
+            <p class="text-ink-3 leading-relaxed mb-6">
+              No pitch deck. Send a short note about your business and the problem. I'll tell you honestly whether I can build something that fixes it, and what that would look like.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-3">
+              <a href="index.html#contact" class="btn-neon px-6 py-3 text-sm">Get in touch</a>
+              <a href="index.html#work" class="btn-ghost px-6 py-3 text-sm">See example projects</a>
+            </div>
+          </div>
+          <ul class="flex flex-col gap-4 text-sm text-ink-2">
+            <li class="flex items-start gap-3">
+              <span class="check-tile mt-0.5">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </span>
+              Free first conversation, no commitment
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="check-tile mt-0.5">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </span>
+              I respond within 24 hours
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="check-tile mt-0.5">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </span>
+              Transparent pricing once the scope is clear
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="check-tile mt-0.5">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </span>
+              Open to a business partner who owns client relationships
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="relative z-10 border-t border-hair py-10">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <span class="brand-mark brand-mark--sm">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
+          </svg>
+        </span>
+        <span class="text-ink-2 text-sm font-medium">Support Side Tech</span>
+      </div>
+
+      <div class="flex items-center gap-6 text-sm">
+        <a href="index.html#services" class="link-neon">Services</a>
+        <a href="index.html#work" class="link-neon">Example Projects</a>
+        <a href="founder.html" class="link-neon">Founder</a>
+        <a href="index.html#contact" class="link-neon">Contact</a>
+      </div>
+
+      <p class="text-ink-3 text-xs">&copy; 2026 Support Side Tech. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/ui.js" defer></script>
+
+</body>
+</html>

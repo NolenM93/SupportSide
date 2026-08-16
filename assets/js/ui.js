@@ -1,4 +1,4 @@
-/* Support Side — shared UI behavior
+/* Support Side: shared UI behavior
    Mobile nav, scrolled nav state, and scroll-reveal motion.
    All motion is skipped when the user prefers reduced motion. */
 (function () {

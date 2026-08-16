@@ -1,9 +1,9 @@
-/* Gift Shop Inventory Demo — demo-specific styles only.
+/* Gift Shop Inventory Demo: demo-specific styles only.
    Shell, theming, tour, and components live in:
      /assets/css/glass.css      (design tokens + primitives)
      /assets/css/demo-app.css   (shared demo shell) */
 
-/* Stock level signals — tuned for legibility on dark glass */
+/* Stock level signals, tuned for legibility on dark glass */
 .qty-low {
   color: #fbbf24;
   font-weight: 600;

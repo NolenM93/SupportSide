@@ -1,5 +1,5 @@
 /* ============================================================
-   Support Side — marketing site components
+   Support Side: marketing site components
    Built on the primitives + tokens defined in glass.css.
    ============================================================ */
 
@@ -121,6 +121,38 @@
   color: var(--ink-3);
   background: var(--glass-1);
   border: 1px dashed var(--line-2);
+}
+
+.founder-portrait {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 10rem;
+  height: 10rem;
+  border-radius: 1.75rem;
+  background: linear-gradient(160deg, var(--accent-wash), rgba(167, 139, 250, 0.12));
+  border: 1px solid var(--accent-line);
+  box-shadow: var(--elev-3), 0 0 40px -12px var(--accent-glow);
+}
+
+.founder-portrait-letter {
+  font-size: 4.25rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--accent-ink);
+}
+
+@media (min-width: 768px) {
+  .founder-portrait {
+    width: 12.5rem;
+    height: 12.5rem;
+    border-radius: 2rem;
+  }
+
+  .founder-portrait-letter {
+    font-size: 5.25rem;
+  }
 }
 
 .check-tile {

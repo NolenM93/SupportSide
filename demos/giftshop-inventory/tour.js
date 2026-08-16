@@ -13,7 +13,7 @@
       icon: 'scan',
       title: 'Barcode & QR scanning',
       tagline: 'Receive and count stock in seconds',
-      body: 'Point a phone camera or USB scanner at a barcode to receive shipments, pull items for sale, or run cycle counts — no typing SKUs.',
+      body: 'Point a phone camera or USB scanner at a barcode to receive shipments, pull items for sale, or run cycle counts. No typing SKUs.',
       bullets: [
         'Scan to stock-in from supplier boxes',
         'Mobile-friendly camera scanning on the floor',
@@ -26,15 +26,15 @@
       tab: 'low',
       anchor: 'hotspot-low',
       icon: 'bell',
-      title: 'Automatic low-stock alerts',
+      title: 'Low-stock alerts',
       tagline: 'Know before you sell out',
-      body: 'When qty hits the reorder level, the system texts or emails you (and your supplier list) so popular candles and seasonal items get reordered before the shelf goes empty.',
+      body: 'When qty hits the reorder level, the dashboard flags it so popular candles and seasonal items get reordered before the shelf goes empty.',
       bullets: [
-        'SMS or email when stock crosses the threshold',
+        'Low-stock list updates as soon as qty crosses the threshold',
         'Optional weekly “what to reorder” digest',
-        'Per-product supplier contact hooks'
+        'Per-product supplier contact notes'
       ],
-      why: 'Most stockouts happen because nobody checked the spreadsheet. Alerts make replenishment automatic.'
+      why: 'Most stockouts happen because nobody checked the spreadsheet. A clear low-stock list makes replenishment obvious.'
     },
     {
       id: 'locations',
@@ -43,7 +43,7 @@
       icon: 'map',
       title: 'Multi-location inventory',
       tagline: 'Storefront, back room, and market booth',
-      body: 'Track the same SKU across locations — main shop, storage, pop-up markets — with transfer history between them.',
+      body: 'Track the same SKU across locations (main shop, storage, pop-up markets) with transfer history between them.',
       bullets: [
         'Per-location quantities on one product',
         'Transfer stock between sites in two taps',
@@ -73,7 +73,7 @@
       icon: 'chart',
       title: 'Sales velocity & reports',
       tagline: 'See what actually sells',
-      body: 'Dashboards for top movers, dead stock, margin by category, and seasonal trends — exportable for your bookkeeper or tax prep.',
+      body: 'Dashboards for top movers, dead stock, margin by category, and seasonal trends, exportable for your bookkeeper or tax prep.',
       bullets: [
         'Best / worst sellers by week or season',
         'Category margin snapshots',
@@ -88,7 +88,7 @@
       icon: 'pos',
       title: 'POS & Shopify sync',
       tagline: 'Sell once, inventory updates everywhere',
-      body: 'Connect Square, Shopify, or a custom POS so every sale deducts stock automatically — no end-of-day spreadsheet reconciliation.',
+      body: 'Connect Square, Shopify, or a custom POS so every sale deducts stock. No end-of-day spreadsheet reconciliation.',
       bullets: [
         'Realtime stock sync from sales',
         'Online + in-store inventory in one place',
@@ -103,7 +103,7 @@
       icon: 'photo',
       title: 'Product photo catalog',
       tagline: 'Visual inventory your staff can recognize',
-      body: 'Attach photos (and optional variants) so part-time staff find the right SKU fast — and you have assets ready for social or an online catalog.',
+      body: 'Attach photos (and optional variants) so part-time staff find the right SKU fast, and you have assets ready for social or an online catalog.',
       bullets: [
         'Phone photo upload per product',
         'Variant images (color, scent, size)',
@@ -118,7 +118,7 @@
       icon: 'users',
       title: 'Staff roles & permissions',
       tagline: 'Owner vs. cashier vs. stocker',
-      body: 'Give cashiers adjust-only access, let managers edit prices, and keep cost / vendor data owner-only — with an audit log of who changed what.',
+      body: 'Give cashiers adjust-only access, let managers edit prices, and keep cost / vendor data owner-only, with an audit log of who changed what.',
       bullets: [
         'Role-based screens and actions',
         'Full audit trail on qty and price changes',

@@ -1,5 +1,5 @@
 /* ============================================================
-   Support Side — Glassmorphism + Neon Design System
+   Support Side: Glassmorphism + Neon Design System
    Shared by the marketing site and the product demos.
 
    Load order: glass.css  ->  page/app stylesheet
@@ -15,7 +15,7 @@
   --bg-deep: #03040a;
   --bg-raised: #0a0f1a;
 
-  /* Glass surfaces — layered by opacity, not by solid color */
+  /* Glass surfaces: layered by opacity, not by solid color */
   --glass-1: rgba(255, 255, 255, 0.04);
   --glass-2: rgba(255, 255, 255, 0.06);
   --glass-3: rgba(255, 255, 255, 0.09);
@@ -31,7 +31,7 @@
   --blur-md: 14px;
   --blur-lg: 20px;
 
-  /* Type — all pass AA on --bg-base */
+  /* Type: all pass AA on --bg-base */
   --ink-1: #f4f7ff;
   --ink-2: #c3cede;
   --ink-3: #93a1b8;
@@ -76,7 +76,7 @@
   --danger: #fb7185;
 }
 
-/* Accent variants — set data-accent on <html> */
+/* Accent variants: set data-accent on <html> */
 html[data-accent='cyan'] {
   --accent: var(--neon-cyan);
   --accent-2: var(--neon-blue);
@@ -351,7 +351,7 @@ textarea::placeholder {
   animation: pulse-dot 2.4s ease-in-out infinite;
 }
 
-/* Primary action — translucent neon, never a flat neon slab */
+/* Primary action: translucent neon, never a flat neon slab */
 .btn-neon {
   position: relative;
   display: inline-flex;
@@ -392,7 +392,7 @@ textarea::placeholder {
   box-shadow: none;
 }
 
-/* Secondary action — hairline glass */
+/* Secondary action: hairline glass */
 .btn-ghost {
   display: inline-flex;
   align-items: center;
@@ -518,7 +518,7 @@ textarea::placeholder {
   animation: fade-rise var(--dur-3) var(--ease) both;
 }
 
-/* Scroll reveal — .reveal is set in markup, .is-visible added by observer.
+/* Scroll reveal: .reveal is set in markup, .is-visible added by observer.
    Without JS the content stays visible (progressive enhancement). */
 .reveal {
   opacity: 0;

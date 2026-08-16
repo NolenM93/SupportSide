@@ -9,7 +9,7 @@
     {
       id: 'classic',
       name: 'Aurora',
-      desc: 'Cyan and electric blue on deep black — the default.',
+      desc: 'Cyan and electric blue on deep black. The default.',
       swatches: ['#05070d', '#22d3ee', '#60a5fa', '#0a0f1a']
     },
     {
@@ -21,13 +21,13 @@
     {
       id: 'ocean',
       name: 'Deep Ocean',
-      desc: 'Teal neon — cool and fresh for a retail brand.',
+      desc: 'Teal neon, cool and fresh for a retail brand.',
       swatches: ['#04090e', '#2dd4bf', '#38bdf8', '#081218']
     },
     {
       id: 'forest',
       name: 'Neon Mint',
-      desc: 'Fresh green accents — great for gift & lifestyle brands.',
+      desc: 'Fresh green accents, great for gift and lifestyle brands.',
       swatches: ['#040a07', '#4ade80', '#a3e635', '#08120c']
     },
     {

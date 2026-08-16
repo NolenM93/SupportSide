@@ -1,11 +1,11 @@
 /* ============================================================
-   Support Side — demo application shell
+   Support Side: demo application shell
    Shared by every demo under /demos. Depends on glass.css.
 
    The demos are built with the Tailwind CDN, so their markup is
    full of light-mode utility classes. Rather than rewrite every
    template, this layer remaps those utilities onto the glass
-   design tokens — one place to change, every demo follows.
+   design tokens: one place to change, every demo follows.
    ============================================================ */
 
 /* ---------- 1. Accent themes (Settings > Appearance) ---------- */
@@ -27,7 +27,7 @@ html[data-theme='classic'] {
   --orb-3: rgba(232, 121, 249, 0.3);
 }
 
-/* Pure black, ice-blue accent — the lowest-light option */
+/* Pure black, ice-blue accent: the lowest-light option */
 html[data-theme='dark'] {
   --bg-base: #000000;
   --bg-deep: #000000;
@@ -185,7 +185,7 @@ body.bg-slate-100 {
   background-color: var(--glass-hover) !important;
 }
 
-/* Primary buttons — translucent neon, never a solid neon slab */
+/* Primary buttons: translucent neon, never a solid neon slab */
 .bg-brand-600 {
   background-color: transparent !important;
   background-image: linear-gradient(135deg, var(--accent-wash), rgba(255, 255, 255, 0.05)) !important;

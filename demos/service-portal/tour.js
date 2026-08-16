@@ -7,19 +7,19 @@
 
   const FEATURES = [
     {
-      id: 'sms',
+      id: 'status',
       tab: 'jobs',
       anchor: 'hotspot-jobs',
-      icon: 'sms',
-      title: 'SMS status updates',
-      tagline: 'Clients get texts when jobs move',
-      body: 'When staff marks a job Scheduled, In Progress, or Complete, the client automatically gets a clear SMS — no phone tag, no “any update?” emails.',
+      icon: 'feed',
+      title: 'In-portal status updates',
+      tagline: 'Clients see the job move in one place',
+      body: 'When staff marks a job Scheduled, In Progress, or Complete, the client sees it in their portal. No phone tag, no “any update?” emails.',
       bullets: [
-        'Auto-text on every status change',
-        'Custom templates per job type',
-        'Optional two-way reply (“reschedule” / “confirm”)'
+        'Live status on every job',
+        'Notes the client can actually read',
+        'Optional request to reschedule or confirm from the portal'
       ],
-      why: 'Service businesses lose hours answering status questions. Automated SMS keeps clients calm and your phone free.'
+      why: 'Service businesses lose hours answering status questions. A clear portal keeps clients informed and your phone free.'
     },
     {
       id: 'photos',
@@ -43,7 +43,7 @@
       icon: 'calendar',
       title: 'Live scheduling calendar',
       tagline: 'Drag jobs onto tech days',
-      body: 'A shared calendar for dispatch — assign techs, set windows, block travel time, and let clients request preferred slots from the portal.',
+      body: 'A shared calendar for dispatch: assign techs, set windows, block travel time, and let clients request preferred slots from the portal.',
       bullets: [
         'Drag-and-drop day / week board',
         'Tech capacity and travel buffers',
@@ -58,7 +58,7 @@
       icon: 'invoice',
       title: 'Invoices & online payments',
       tagline: 'Finish the job, get paid faster',
-      body: 'Generate an invoice from the completed work order and collect card or ACH payment in the portal — with receipts emailed automatically.',
+      body: 'Generate an invoice from the completed work order and collect card or ACH payment in the portal, with receipts emailed automatically.',
       bullets: [
         'Line items from job notes / parts',
         'Stripe / Square payment links',
@@ -77,7 +77,7 @@
       bullets: [
         'Jobs pinned on a live map',
         'Optional tech location (with consent)',
-        'ETA texts to the next client'
+        'Share ETAs in the client portal'
       ],
       why: 'Better routing means fewer dead miles and happier customers staring at the clock.'
     },
@@ -88,7 +88,7 @@
       icon: 'pen',
       title: 'E-signatures on work orders',
       tagline: 'Approve estimates on a phone',
-      body: 'Send estimates or completion forms for tap-to-sign. Signed PDFs attach to the job automatically — no printing, scanning, or lost paper.',
+      body: 'Send estimates or completion forms for tap-to-sign. Signed PDFs attach to the job automatically. No printing, scanning, or lost paper.',
       bullets: [
         'Estimate approval from the client portal',
         'Completion / waiver signatures on-site',
@@ -103,7 +103,7 @@
       icon: 'repeat',
       title: 'Recurring maintenance contracts',
       tagline: 'HVAC tune-ups on autopilot',
-      body: 'Set seasonal or quarterly service plans that auto-create jobs, remind the client, and track contract value — perfect for maintenance agreements.',
+      body: 'Set seasonal or quarterly service plans that create upcoming jobs, show them in the client portal, and track contract value. Built for maintenance agreements.',
       bullets: [
         'Auto-generate recurring jobs',
         'Contract start / end and billing cadence',
@@ -112,35 +112,35 @@
       why: 'Recurring revenue is the difference between feast-or-famine and a predictable pipeline.'
     },
     {
-      id: 'automation',
+      id: 'intake',
       tab: 'dashboard',
       anchor: 'hotspot-header',
-      icon: 'bot',
-      title: 'Missed-call & AI SMS intake',
-      tagline: 'Never lose a lead after hours',
-      body: 'Missed calls trigger an SMS that collects name, address, and issue — then opens a portal job for your team. Optional AI FAQ handles common questions.',
+      icon: 'form',
+      title: 'After-hours web intake',
+      tagline: 'New requests land as jobs, even at night',
+      body: 'A public request form collects name, address, and issue, then opens a portal job for your team. Customers leave a request instead of calling the next company.',
       bullets: [
-        'Missed-call → SMS conversation',
-        'Leads become jobs in the portal',
+        'Simple web form on your site or portal',
+        'Leads become jobs your staff can pick up',
         'After-hours coverage without a night shift'
       ],
-      why: 'Most service leads call once. If you miss it, they call the next company. Automation catches them.'
+      why: 'Most service leads reach out once. If nobody is there to take it, they call the next company. A form catches them.'
     }
   ];
 
   const ICONS = {
-    sms: '<path stroke-linecap="round" stroke-linejoin="round" d="M8.625 9.75a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375m-13.5 3.01c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.184-4.183a1.14 1.14 0 01.778-.332 48.294 48.294 0 005.83-.498c1.585-.233 2.708-1.626 2.708-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z"/>',
+    feed: '<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12"/>',
+    form: '<path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/>',
     camera: '<path stroke-linecap="round" stroke-linejoin="round" d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z"/><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0z"/>',
     calendar: '<path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/>',
     invoice: '<path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z"/>',
     map: '<path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z"/>',
     pen: '<path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"/>',
-    repeat: '<path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"/>',
-    bot: '<path stroke-linecap="round" stroke-linejoin="round" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 002.25-2.25V6.75a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 6.75v10.5a2.25 2.25 0 002.25 2.25zm.75-12h9v9h-9v-9z"/>'
+    repeat: '<path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"/>'
   };
 
   function iconSvg(key) {
-    return `<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">${ICONS[key] || ICONS.sms}</svg>`;
+    return `<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">${ICONS[key] || ICONS.feed}</svg>`;
   }
 
   function $(id) { return document.getElementById(id); }
@@ -151,7 +151,7 @@
 
   function activateTab(tab) {
     if (!tab) return;
-    // Clients tab is staff-only — fall back to dashboard if hidden
+    // Clients tab is staff-only; fall back to dashboard if hidden
     if (tab === 'clients') {
       const clientsBtn = $('tab-btn-clients');
       if (clientsBtn && clientsBtn.classList.contains('hidden')) {

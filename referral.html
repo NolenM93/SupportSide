@@ -205,7 +205,7 @@
           throw new Error('Submission failed');
         }
       } catch {
-        btnText.textContent = 'Something went wrong — try again';
+        btnText.textContent = 'Something went wrong. Try again';
         btnSpinner.classList.add('hidden');
         submitBtn.disabled = false;
       }
