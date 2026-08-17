@@ -65,7 +65,9 @@ Live URL: **https://nolenm93.github.io/SupportSide/**
 
 ## Contact Form
 
-The contact form posts to **Formspree** (no backend required). Submissions are emailed to the address on your Formspree account. Free tier: 50 submissions/month.
+The contact form posts to **Formspree** (no backend required). Inquiries should arrive at **nolenmillington@supportsidetech.com**, not a personal Gmail.
+
+In the Formspree dashboard, set the form's notification email to `nolenmillington@supportsidetech.com`. The site also shows that address as a mailto link. Free tier: 50 submissions/month.
 
 ---
 
