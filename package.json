@@ -2,6 +2,7 @@
   "name": "supportside",
   "private": true,
   "scripts": {
+    "dev": "npm run dev --prefix studio",
     "build:css": "tailwindcss -i ./assets/css/input.css -o ./assets/css/tailwind.css --minify",
     "watch:css": "tailwindcss -i ./assets/css/input.css -o ./assets/css/tailwind.css --watch"
   },

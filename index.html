@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Support Side Tech - Custom Software for Real Businesses</title>
-  <meta name="description" content="Support Side Tech builds custom web apps, business portals, rental booking sites, and internal tools for service companies, rental businesses, and growing teams." />
+  <title>Support Side | Nolen Millington</title>
+  <meta name="description" content="Support Side builds safe, affordable software for local businesses. Booking sites, tools, apps: whatever helps the work run." />
   <meta name="theme-color" content="#05070d" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/tailwind.css" />
   <link rel="stylesheet" href="assets/css/glass.css" />
   <link rel="stylesheet" href="assets/css/custom.css" />
@@ -17,7 +17,6 @@
 
   <a href="#main" class="skip-link">Skip to content</a>
 
-  <!-- ===================== BACKGROUND ===================== -->
   <div class="aurora" aria-hidden="true">
     <span class="aurora-orb aurora-orb--1"></span>
     <span class="aurora-orb aurora-orb--2"></span>
@@ -25,371 +24,246 @@
   </div>
   <div class="grid-veil" aria-hidden="true"></div>
 
-  <!-- ===================== NAVBAR ===================== -->
   <header id="top" class="site-nav glass-nav fixed top-0 left-0 right-0 z-50">
-    <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-      <a href="#top" class="flex items-center gap-2.5 group">
+    <nav class="max-w-3xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="#top" class="flex items-center gap-2.5">
         <span class="brand-mark">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
           </svg>
         </span>
-        <span class="text-ink-1 font-bold text-lg tracking-tight">Support Side Tech</span>
+        <span class="text-ink-1 font-bold text-lg tracking-tight">Support Side</span>
       </a>
-      <div class="hidden md:flex items-center gap-8">
-        <a href="#services" class="link-neon text-sm font-medium">Services</a>
-        <a href="#work" class="link-neon text-sm font-medium">Example Projects</a>
-        <a href="#about" class="link-neon text-sm font-medium">About</a>
-        <a href="founder.html" class="link-neon text-sm font-medium">Founder</a>
-        <a href="#contact" class="btn-neon text-sm px-4 py-2">Get a Free Quote</a>
+      <div class="hidden sm:flex items-center gap-6 text-sm font-medium">
+        <a href="#purpose" class="link-neon">Purpose</a>
+        <a href="#about" class="link-neon">About</a>
+        <a href="#work" class="link-neon">Work</a>
+        <a href="#contact" class="btn-neon px-4 py-2">Contact</a>
       </div>
-      <button id="menu-btn" class="md:hidden text-ink-2 hover:text-ink-1 p-1 transition-colors" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
-        <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <button id="menu-btn" class="sm:hidden text-ink-2 hover:text-ink-1 p-1" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
         </svg>
       </button>
     </nav>
-    <div id="mobile-menu" class="hidden md:hidden border-t border-hair px-6 py-4 flex flex-col gap-4">
-      <a href="#services" class="link-neon text-sm font-medium" onclick="closeMobileMenu()">Services</a>
-      <a href="#work" class="link-neon text-sm font-medium" onclick="closeMobileMenu()">Example Projects</a>
+    <div id="mobile-menu" class="hidden sm:hidden border-t border-hair px-6 py-4 flex flex-col gap-4">
+      <a href="#purpose" class="link-neon text-sm font-medium" onclick="closeMobileMenu()">Purpose</a>
       <a href="#about" class="link-neon text-sm font-medium" onclick="closeMobileMenu()">About</a>
-      <a href="founder.html" class="link-neon text-sm font-medium" onclick="closeMobileMenu()">Founder</a>
-      <a href="#contact" class="btn-neon text-sm px-4 py-2.5" onclick="closeMobileMenu()">Get a Free Quote</a>
+      <a href="#work" class="link-neon text-sm font-medium" onclick="closeMobileMenu()">Work</a>
+      <a href="#contact" class="btn-neon text-sm px-4 py-2.5" onclick="closeMobileMenu()">Contact</a>
     </div>
   </header>
 
   <main id="main" class="relative z-10">
 
-    <!-- ===================== HERO ===================== -->
-    <section class="min-h-screen flex items-center pt-16">
-      <div class="max-w-6xl mx-auto px-6 py-24 md:py-32 w-full">
-        <div class="max-w-3xl">
-          <div class="chip mb-8 animate-fade-rise">
-            <span class="chip-dot"></span>
-            Now Accepting New Clients
+    <section class="pt-28 md:pt-36 pb-16 md:pb-20">
+      <div class="max-w-3xl mx-auto px-6">
+        <div class="flex flex-col sm:flex-row sm:items-center gap-8">
+          <div class="founder-portrait reveal">
+            <img src="assets/images/nolen.png" alt="Nolen Millington" width="200" height="200" />
           </div>
-          <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-ink-1 leading-tight tracking-tight mb-6">
-            Custom software<br />
-            <span class="neon-gradient-text">built for how you work</span>
-          </h1>
-          <p class="text-lg md:text-xl text-ink-2 leading-relaxed mb-10 max-w-2xl">
-            Support Side Tech designs and builds web apps, client portals, rental booking sites, and internal tools for businesses that have outgrown spreadsheets and off-the-shelf software.
+          <div>
+            <p class="section-kicker text-left">Support Side Tech</p>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-ink-1 tracking-tight leading-tight mb-4">
+              Software that supports<br />the local business.
+            </h1>
+            <p class="text-lg text-ink-2 leading-relaxed max-w-xl">
+              I’m Nolen Millington. I build safe, affordable software of any kind: sites, booking tools, apps, so local owners can stay on the actual work.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="purpose" class="scroll-mt-24 pb-20 md:pb-28">
+      <div class="max-w-3xl mx-auto px-6">
+        <p class="section-kicker text-left">Purpose</p>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-ink-1 tracking-tight mb-6">Why Support Side exists</h2>
+        <div class="space-y-5 text-lg text-ink-3 leading-relaxed">
+          <p>
+            Local businesses get stuck with software that doesn’t fit, or with prices that don’t make sense. They need tools that match how they actually work: booking, scheduling, inventory, customer intake, or a site customers can use, without an agency markup or a bloated subscription.
           </p>
-          <div class="flex flex-col sm:flex-row gap-4">
-            <a href="#contact" class="btn-neon px-8 py-4 text-base">
-              Get a Free Quote
-            </a>
-            <a href="#services" class="btn-ghost px-8 py-4 text-base">
-              See What We Build
-            </a>
-          </div>
-        </div>
-
-        <div class="mt-20 pt-12 border-t border-hair grid grid-cols-2 md:grid-cols-3 gap-4 max-w-3xl">
-          <div class="glass-card glass-edge rounded-2xl p-5 reveal">
-            <div class="text-3xl font-bold text-ink-1">100%</div>
-            <div class="text-sm text-ink-3 mt-1">Custom-built solutions</div>
-          </div>
-          <div class="glass-card glass-edge rounded-2xl p-5 reveal reveal-delay-1">
-            <div class="text-3xl font-bold text-ink-1">$0</div>
-            <div class="text-sm text-ink-3 mt-1">No cost to start a conversation</div>
-          </div>
-          <div class="glass-card glass-edge rounded-2xl p-5 col-span-2 md:col-span-1 reveal reveal-delay-2">
-            <div class="text-3xl font-bold text-ink-1">Clear</div>
-            <div class="text-sm text-ink-3 mt-1">Scoped projects, transparent pricing</div>
-          </div>
+          <p>
+            That’s what Support Side does. I build safe, affordable software of any kind to support the business. Right now that work is a booking website for a local rental LLC. Next time it might be something else. The job is the same: listen, build what they need, keep it maintainable.
+          </p>
+          <p>
+            The owner stays on the actual work. I stay on the support side.
+          </p>
         </div>
       </div>
     </section>
 
-    <!-- ===================== SERVICES ===================== -->
-    <section id="services" class="py-24 md:py-32">
-      <div class="max-w-6xl mx-auto px-6">
-        <div class="text-center mb-16 reveal">
-          <p class="section-kicker">What We Build</p>
-          <h2 class="text-3xl md:text-5xl font-extrabold text-ink-1 tracking-tight">Software that solves real problems</h2>
-          <p class="mt-4 text-lg text-ink-3 max-w-xl mx-auto">We skip the bloat and build exactly what your business needs to run smoother, respond faster, and stop losing work to messy systems.</p>
+    <hr class="neon-hairline max-w-3xl mx-auto" />
+
+    <section id="about" class="scroll-mt-24 py-20 md:py-28">
+      <div class="max-w-3xl mx-auto px-6">
+        <p class="section-kicker text-left">About</p>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-ink-1 tracking-tight mb-6">Nolen Millington</h2>
+        <p class="text-lg text-ink-3 leading-relaxed mb-4">
+          Software developer in Warrensburg, New York. I like building things people can actually use: websites, desktop tools, and mobile apps. I learn by shipping the next project.
+        </p>
+        <p class="text-lg text-ink-3 leading-relaxed mb-10">
+          I finished an associate’s in software development at Full Sail University and I’m working through a bachelor’s in computer science with a concentration in AI. Outside of that: fishing, hiking, family, and making things with other people.
+        </p>
+
+        <div class="flex flex-wrap gap-x-6 gap-y-2 text-sm mb-12">
+          <a class="neon-text font-medium" href="mailto:nolenmillington@supportsidetech.com">nolenmillington@supportsidetech.com</a>
+          <a class="link-neon" href="tel:+15186810647">(518) 681-0647</a>
+          <a class="link-neon" href="https://github.com/NolenM93" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="link-neon" href="https://www.linkedin.com/in/nolen-millington" target="_blank" rel="noreferrer">LinkedIn</a>
         </div>
 
-        <div class="grid md:grid-cols-2 gap-6">
-
-          <div class="glass-card glass-edge rounded-2xl p-8 reveal">
-            <div class="icon-tile mb-6">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v12a2.25 2.25 0 002.25 2.25z" />
-              </svg>
-            </div>
-            <h3 class="text-xl font-bold text-ink-1 mb-3">Custom Web Apps</h3>
-            <p class="text-ink-3 leading-relaxed">Web applications built around your workflow, scheduling, job tracking, intake forms, inventory, reporting, and anything else that currently lives in spreadsheets or sticky notes.</p>
+        <h3 class="text-xl font-bold text-ink-1 mb-4">Education</h3>
+        <div class="glass-card glass-edge rounded-2xl p-6 mb-4">
+          <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-2">
+            <p class="font-semibold text-ink-1">Bachelor of Science, Computer Science (AI concentration)</p>
+            <p class="text-sm text-ink-3">In progress</p>
           </div>
-
-          <div class="glass-card glass-edge rounded-2xl p-8 reveal reveal-delay-1">
-            <div class="icon-tile mb-6">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z" />
-              </svg>
-            </div>
-            <h3 class="text-xl font-bold text-ink-1 mb-3">Rental Booking Sites</h3>
-            <p class="text-ink-3 leading-relaxed">Booking sites for rental companies: availability calendars, reservations, deposits, and customer check-in for equipment, vehicles, venues, or property rentals.</p>
-          </div>
-
-          <div class="glass-card glass-edge rounded-2xl p-8 reveal">
-            <div class="icon-tile mb-6">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-8.69-6.44l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z" />
-              </svg>
-            </div>
-            <h3 class="text-xl font-bold text-ink-1 mb-3">Client Portals &amp; Dashboards</h3>
-            <p class="text-ink-3 leading-relaxed">Secure portals for clients, staff, or partners, status updates, document sharing, request intake, and live dashboards that replace email chains and shared drives.</p>
-          </div>
-
-          <div class="glass-card glass-edge rounded-2xl p-8 reveal reveal-delay-1">
-            <div class="icon-tile mb-6">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5" />
-              </svg>
-            </div>
-            <h3 class="text-xl font-bold text-ink-1 mb-3">Internal Business Tools</h3>
-            <p class="text-ink-3 leading-relaxed">Ops tools for your team: job boards, work-order systems, CRM-lite tools, reporting, and anything else that helps you run the business without fighting your software.</p>
-          </div>
-
+          <p class="text-sm text-ink-3">Full Sail University · Winter Park, FL</p>
         </div>
+        <div class="glass-card glass-edge rounded-2xl p-6 mb-12">
+          <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-2">
+            <p class="font-semibold text-ink-1">Associate of Science, Software Development</p>
+            <p class="text-sm text-ink-3">2025</p>
+          </div>
+          <p class="text-sm text-ink-3 mb-2">Full Sail University · GPA 3.8</p>
+          <p class="text-sm text-ink-3">Coursework in object-oriented programming, mobile development, data structures, and software design.</p>
+        </div>
+
+        <h3 class="text-xl font-bold text-ink-1 mb-4">Experience</h3>
+        <div class="glass-card glass-edge rounded-2xl p-6 mb-4">
+          <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-2">
+            <p class="font-semibold text-ink-1">Founder · Support Side Tech</p>
+            <p class="text-sm text-ink-3">2025 to present</p>
+          </div>
+          <p class="text-sm text-ink-3 leading-relaxed">
+            Custom software for local businesses. Currently building a booking website for a rental LLC. Talk to the person who runs the work, then write the code myself.
+          </p>
+        </div>
+        <div class="glass-card glass-edge rounded-2xl p-6 mb-12">
+          <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-2">
+            <p class="font-semibold text-ink-1">Assembly line · Manufacturing</p>
+            <p class="text-sm text-ink-3">2023 to Oct 2024</p>
+          </div>
+          <p class="text-sm text-ink-3 leading-relaxed">
+            Warrensburg, NY. Production work, quality checks, and fixing process snags on the floor. Detail, reliability, and showing up. The same habits I bring to shipping software.
+          </p>
+        </div>
+
+        <h3 class="text-xl font-bold text-ink-1 mb-4">Skills</h3>
+        <p class="text-ink-3 leading-relaxed mb-8">
+          JavaScript, TypeScript, HTML/CSS, Python, C++, Dart / Flutter.
+          Git, Firebase, wxWidgets. Comfortable with UI, hosting, and getting a project from a blank folder to something someone can open.
+        </p>
+
+        <h3 class="text-xl font-bold text-ink-1 mb-4">Certifications</h3>
+        <ul class="text-ink-3 text-sm space-y-2 mb-2">
+          <li>Foundations of Cybersecurity, Google / Coursera, May 2024</li>
+          <li>Play It Safe: Manage Security Risks, Google / Coursera, June 2024</li>
+        </ul>
       </div>
     </section>
 
-    <!-- ===================== EXAMPLE PROJECTS ===================== -->
-    <section id="work" class="py-24 md:py-32">
-      <div class="max-w-6xl mx-auto px-6">
-        <div class="text-center mb-16 reveal">
-          <p class="section-kicker">Example Projects</p>
-          <h2 class="text-3xl md:text-5xl font-extrabold text-ink-1 tracking-tight">Real tools we can build for you</h2>
-          <p class="mt-4 text-lg text-ink-3 max-w-xl mx-auto">Portfolio demos and example products - concrete systems, not vague industry blurbs.</p>
-        </div>
+    <hr class="neon-hairline max-w-3xl mx-auto" />
 
-        <div class="grid md:grid-cols-3 gap-6">
+    <section id="work" class="scroll-mt-24 py-20 md:py-28">
+      <div class="max-w-3xl mx-auto px-6">
+        <p class="section-kicker text-left">Selected work</p>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-ink-1 tracking-tight mb-10">Things I’ve built</h2>
 
-          <a href="demos/giftshop-inventory/" class="glass-card glass-edge rounded-2xl overflow-hidden group block reveal">
-            <div class="project-media project-media--magenta">
-              <svg class="w-16 h-16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
-              </svg>
-            </div>
-            <div class="p-6">
-              <div class="tag tag--live mb-3">Live Demo</div>
-              <h3 class="text-lg font-bold text-ink-1 mb-2 group-hover:text-[color:var(--accent)] transition-colors">Gift Shop Inventory Manager</h3>
-              <p class="text-sm text-ink-3 leading-relaxed">Track products, stock levels, and low-inventory alerts for local gift shops - built as a working portfolio demo with sample data.</p>
-            </div>
+        <div class="flex flex-col gap-5">
+          <a href="https://github.com/NolenM93/Adirondack-Property-Group" target="_blank" rel="noreferrer" class="glass-card glass-edge rounded-2xl p-6 block group">
+            <h3 class="text-lg font-bold text-ink-1 group-hover:text-[color:var(--accent)] transition-colors">Rental booking site</h3>
+            <p class="text-xs text-ink-3 mt-1 mb-3">In progress · TypeScript · local rental LLC</p>
+            <p class="text-sm text-ink-3 leading-relaxed">
+              A booking website for a local rental company: availability, reservations, and a flow customers can actually use.
+            </p>
           </a>
 
-          <div class="glass-card glass-edge rounded-2xl overflow-hidden reveal reveal-delay-1">
-            <div class="project-media project-media--cyan">
-              <svg class="w-16 h-16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
-              </svg>
-            </div>
-            <div class="p-6">
-              <div class="tag tag--concept mb-3">Example Concept</div>
-              <h3 class="text-lg font-bold text-ink-1 mb-2">Rental Booking Site</h3>
-              <p class="text-sm text-ink-3 leading-relaxed">Let customers see availability and book equipment, vehicles, or rentals online, with a calendar your team can manage.</p>
-            </div>
-          </div>
+          <article class="glass-card glass-edge rounded-2xl p-6">
+            <h3 class="text-lg font-bold text-ink-1">Support Side</h3>
+            <p class="text-xs text-ink-3 mt-1 mb-3">This practice</p>
+            <p class="text-sm text-ink-3 leading-relaxed">
+              Affordable software for local businesses. Whatever they need to run, not a one-size product.
+            </p>
+          </article>
 
-          <a href="demos/service-portal/" class="glass-card glass-edge rounded-2xl overflow-hidden group block reveal reveal-delay-2">
-            <div class="project-media project-media--blue">
-              <svg class="w-16 h-16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-8.69-6.44l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z" />
-              </svg>
-            </div>
-            <div class="p-6">
-              <div class="tag tag--live mb-3">Live Demo</div>
-              <h3 class="text-lg font-bold text-ink-1 mb-2 group-hover:text-[color:var(--accent)] transition-colors">Service Business Job Portal</h3>
-              <p class="text-sm text-ink-3 leading-relaxed">Client-facing portal for job status, work orders, and documents - so HVAC, cleaning, and contractor teams stop living in email.</p>
-            </div>
+          <a href="https://github.com/NolenM93/WanderCub" target="_blank" rel="noreferrer" class="glass-card glass-edge rounded-2xl p-6 block group">
+            <h3 class="text-lg font-bold text-ink-1 group-hover:text-[color:var(--accent)] transition-colors">WanderCub</h3>
+            <p class="text-xs text-ink-3 mt-1 mb-3">Dart · mobile</p>
+            <p class="text-sm text-ink-3 leading-relaxed">
+              A family vacation app that serves short “micro-adventures” for kids while you’re on the road.
+            </p>
           </a>
 
-        </div>
-
-        <p class="text-center text-ink-3 text-sm mt-10">Want something like this for your business? <a href="#contact" class="neon-text font-medium hover:underline underline-offset-4">Tell us what you need</a> and we'll scope it.</p>
-      </div>
-    </section>
-
-    <!-- ===================== ABOUT ===================== -->
-    <section id="about" class="py-24 md:py-32">
-      <div class="max-w-6xl mx-auto px-6">
-        <div class="grid md:grid-cols-2 gap-16 items-center">
-
-          <div class="reveal">
-            <p class="section-kicker text-left">About</p>
-            <h2 class="text-3xl md:text-5xl font-extrabold text-ink-1 tracking-tight leading-tight mb-6">
-              Software that supports the business, not the other way around.
-            </h2>
-            <p class="text-lg text-ink-3 leading-relaxed mb-6">
-              Support Side Tech is a custom software company. We build tools for businesses that need something more useful than a generic app, and less expensive than a big agency project.
+          <a href="https://github.com/NolenM93/QuestBoard" target="_blank" rel="noreferrer" class="glass-card glass-edge rounded-2xl p-6 block group">
+            <h3 class="text-lg font-bold text-ink-1 group-hover:text-[color:var(--accent)] transition-colors">QuestBoard / StudyPals</h3>
+            <p class="text-xs text-ink-3 mt-1 mb-3">Flutter, Dart, Firebase · team project</p>
+            <p class="text-sm text-ink-3 leading-relaxed">
+              A gamified study app: quests, tasks, virtual pets. I set up the Firebase side: auth, live progress, cloud storage.
             </p>
-            <p class="text-lg text-ink-3 leading-relaxed mb-8">
-              Whether you need a client portal, a rental booking site, a job-tracking app, or a full internal tool, we scope it clearly, build it cleanly, and keep it maintainable.
+          </a>
+
+          <article class="glass-card glass-edge rounded-2xl p-6">
+            <h3 class="text-lg font-bold text-ink-1">Conway’s Game of Life</h3>
+            <p class="text-xs text-ink-3 mt-1 mb-3">C++ · wxWidgets</p>
+            <p class="text-sm text-ink-3 leading-relaxed">
+              An interactive desktop simulator: click cells, watch generations, finite or wrap-around grid, HUD for living cells and neighbors.
             </p>
-            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3">
-              <a href="#contact" class="btn-neon px-6 py-3 text-sm">
-                Work With Us
-              </a>
-              <a href="founder.html" class="btn-ghost px-6 py-3 text-sm">
-                About the founder
-              </a>
-            </div>
-          </div>
-
-          <div class="flex flex-col gap-5">
-            <a href="founder.html" class="glass-card glass-edge rounded-2xl p-6 flex items-start gap-5 reveal group block">
-              <div class="avatar-tile">
-                <img src="assets/images/nolen.png" alt="Nolen" width="56" height="56" />
-              </div>
-              <div>
-                <h3 class="font-bold text-ink-1 text-lg">Nolen</h3>
-                <p class="neon-text text-sm font-medium mb-2">Founder &amp; Developer</p>
-                <p class="text-ink-3 text-sm leading-relaxed">Builds the software, custom web apps, backends, and tools that turn messy business processes into clean working systems.</p>
-                <p class="text-sm neon-text font-medium mt-3">Read the full story &rarr;</p>
-              </div>
-            </a>
-            <div class="glass rounded-2xl p-6 flex items-start gap-5 border-dashed reveal reveal-delay-1">
-              <div class="avatar-tile avatar-tile--ghost">+</div>
-              <div>
-                <h3 class="font-bold text-ink-1 text-lg">Partner opportunity</h3>
-                <p class="text-ink-3 text-sm font-medium mb-2">Business / client side</p>
-                <p class="text-ink-3 text-sm leading-relaxed">Looking for a partner who can help find clients, scope projects, and own relationships while development stays on the technical side.</p>
-              </div>
-            </div>
-          </div>
-
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- ===================== CONTACT ===================== -->
-    <section id="contact" class="py-24 md:py-32">
-      <div class="max-w-6xl mx-auto px-6">
-        <div class="grid md:grid-cols-2 gap-16 items-start">
+    <section id="contact" class="scroll-mt-24 pb-24 md:pb-32">
+      <div class="max-w-3xl mx-auto px-6">
+        <p class="section-kicker text-left">Contact</p>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-ink-1 tracking-tight mb-4">Say hello</h2>
+        <p class="text-lg text-ink-3 leading-relaxed mb-8">
+          Need software for the business, want to talk through a project, or just introducing yourself. Email is fine. I reply within a day.
+        </p>
 
-          <div class="md:pt-2 reveal">
-            <p class="section-kicker text-left">Get in Touch</p>
-            <h2 class="text-3xl md:text-5xl font-extrabold text-ink-1 tracking-tight leading-tight mb-6">
-              Let's talk about what your business needs.
-            </h2>
-            <p class="text-lg text-ink-3 leading-relaxed mb-10">
-              No pitch decks, no long sales calls. Tell us about your business and what's getting in the way, we'll tell you if we can build something that fixes it.
-            </p>
-            <p class="mb-8">
-              <a href="mailto:nolenmillington@supportsidetech.com" class="neon-text font-semibold hover:underline underline-offset-4">nolenmillington@supportsidetech.com</a>
-            </p>
-            <ul class="flex flex-col gap-4 text-ink-2 text-sm">
-              <li class="flex items-center gap-3">
-                <span class="check-tile">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </span>
-                Free consultation, no commitment required
-              </li>
-              <li class="flex items-center gap-3">
-                <span class="check-tile">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </span>
-                We respond within 24 hours
-              </li>
-              <li class="flex items-center gap-3">
-                <span class="check-tile">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </span>
-                Transparent pricing, no hidden fees
-              </li>
-            </ul>
+        <form id="contact-form" action="https://formspree.io/f/FORMSPREE_FORM_ID" method="POST" class="glass-strong glass-edge relative rounded-2xl p-6 md:p-8 flex flex-col gap-5">
+          <input type="hidden" name="_subject" value="New Support Side inquiry" />
+          <input type="hidden" name="_next" value="__PAGES_URL__#contact" />
+          <input type="hidden" name="_cc" value="nolenmillington@supportsidetech.com" />
+          <p class="hidden">
+            <label>Don’t fill this out: <input name="_gotcha" tabindex="-1" autocomplete="off" /></label>
+          </p>
+
+          <div class="grid sm:grid-cols-2 gap-5">
+            <div>
+              <label for="name" class="block text-ink-2 text-sm font-medium mb-2">Name</label>
+              <input type="text" id="name" name="name" required placeholder="Your name" class="glass-input px-4 py-3 text-sm" />
+            </div>
+            <div>
+              <label for="email" class="block text-ink-2 text-sm font-medium mb-2">Email</label>
+              <input type="email" id="email" name="email" required placeholder="you@example.com" class="glass-input px-4 py-3 text-sm" />
+            </div>
           </div>
 
-          <div class="glass-strong glass-edge relative rounded-2xl p-8 reveal reveal-delay-1">
-            <form id="contact-form" action="https://formspree.io/f/FORMSPREE_FORM_ID" method="POST" class="flex flex-col gap-5">
-              <input type="hidden" name="_subject" value="New Support Side Tech inquiry" />
-              <input type="hidden" name="_next" value="__PAGES_URL__#contact" />
-              <input type="hidden" name="_cc" value="nolenmillington@supportsidetech.com" />
-              <p class="hidden">
-                <label>Don't fill this out: <input name="_gotcha" tabindex="-1" autocomplete="off" /></label>
-              </p>
-
-              <div class="grid sm:grid-cols-2 gap-5">
-                <div>
-                  <label for="name" class="block text-ink-2 text-sm font-medium mb-2">Your Name</label>
-                  <input type="text" id="name" name="name" required placeholder="Jane Smith"
-                    class="glass-input px-4 py-3 text-sm" />
-                </div>
-                <div>
-                  <label for="email" class="block text-ink-2 text-sm font-medium mb-2">Email Address</label>
-                  <input type="email" id="email" name="email" required placeholder="jane@yourbusiness.com"
-                    class="glass-input px-4 py-3 text-sm" />
-                </div>
-              </div>
-
-              <div>
-                <label for="business" class="block text-ink-2 text-sm font-medium mb-2">Business Type</label>
-                <select id="business" name="business_type"
-                  class="glass-input px-4 py-3 text-sm appearance-none select-caret">
-                  <option value="">Select your business type...</option>
-                  <option value="service">Service Business (HVAC, plumbing, cleaning, etc.)</option>
-                  <option value="rental">Rental Company (equipment, vehicles, venues)</option>
-                  <option value="property">Property Management / Contractor</option>
-                  <option value="professional">Professional Services</option>
-                  <option value="retail">Retail / Office Team</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-
-              <div>
-                <label for="message" class="block text-ink-2 text-sm font-medium mb-2">What do you need?</label>
-                <textarea id="message" name="message" rows="4" required placeholder="Tell us about your business and the problem you're trying to solve..."
-                  class="glass-input px-4 py-3 text-sm resize-none"></textarea>
-              </div>
-
-              <button type="submit" class="btn-neon w-full py-4 text-sm">
-                Send Message
-              </button>
-
-              <p class="text-xs text-ink-3 text-center">We'll get back to you within 24 hours. No spam, ever.</p>
-            </form>
+          <div>
+            <label for="message" class="block text-ink-2 text-sm font-medium mb-2">Message</label>
+            <textarea id="message" name="message" rows="5" required placeholder="What you need, or who you are." class="glass-input px-4 py-3 text-sm resize-none"></textarea>
           </div>
 
-        </div>
+          <button type="submit" class="btn-neon w-full py-3.5 text-sm">Send</button>
+        </form>
       </div>
     </section>
 
   </main>
 
-  <!-- ===================== FOOTER ===================== -->
   <footer class="relative z-10 border-t border-hair py-10">
-    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
-      <div class="flex items-center gap-2">
-        <span class="brand-mark brand-mark--sm">
-          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
-          </svg>
-        </span>
-        <span class="text-ink-2 text-sm font-medium">Support Side Tech</span>
-      </div>
-
-      <div class="flex items-center gap-6 text-sm">
-        <a href="#services" class="link-neon">Services</a>
-        <a href="#work" class="link-neon">Example Projects</a>
-        <a href="#about" class="link-neon">About</a>
-        <a href="founder.html" class="link-neon">Founder</a>
-        <a href="#contact" class="link-neon">Contact</a>
-      </div>
-
-      <p class="text-ink-3 text-xs">&copy; 2026 Support Side Tech. <a href="mailto:nolenmillington@supportsidetech.com" class="link-neon">nolenmillington@supportsidetech.com</a></p>
+    <div class="max-w-3xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm">
+      <span class="text-ink-2 font-medium">Support Side Tech</span>
+      <p class="text-ink-3 text-xs">
+        &copy; 2026 Nolen Millington ·
+        <a href="mailto:nolenmillington@supportsidetech.com" class="link-neon">nolenmillington@supportsidetech.com</a>
+      </p>
     </div>
   </footer>
 
   <script src="assets/js/ui.js" defer></script>
-
 </body>
 </html>

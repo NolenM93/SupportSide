@@ -43,6 +43,10 @@ jobs:
             sed -i "s|FORMSPREE_FORM_ID|${FORMSPREE_FORM_ID}|g" index.html
           fi
 
+      - name: Prune app sources from Pages artifact
+        run: |
+          rm -rf node_modules studio homeschool-ai-scheduler demos
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

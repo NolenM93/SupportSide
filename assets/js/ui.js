@@ -6,6 +6,13 @@
 
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  var studioLinks = document.querySelectorAll('[data-studio-url]');
+  if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+    studioLinks.forEach(function (link) {
+      link.setAttribute('href', 'http://localhost:3000');
+    });
+  }
+
   /* ---------- Mobile menu ---------- */
 
   var menuBtn = document.getElementById('menu-btn');
