@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth" data-accent="cyan">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conway's Game of Life | Support Side</title>
+  <meta name="description" content="An interactive desktop simulator of Conway's Game of Life built with C++ and wxWidgets." />
+  <meta name="theme-color" content="#05070d" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/tailwind.css" />
+  <link rel="stylesheet" href="../assets/css/glass.css" />
+  <link rel="stylesheet" href="../assets/css/custom.css" />
+</head>
+<body class="font-sans text-ink-2 antialiased">
+
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <div class="aurora" aria-hidden="true">
+    <span class="aurora-orb aurora-orb--1"></span>
+    <span class="aurora-orb aurora-orb--2"></span>
+    <span class="aurora-orb aurora-orb--3"></span>
+  </div>
+  <div class="grid-veil" aria-hidden="true"></div>
+
+  <header class="site-nav glass-nav fixed top-0 left-0 right-0 z-50">
+    <nav class="max-w-3xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-2.5">
+        <span class="brand-mark">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
+          </svg>
+        </span>
+        <span class="text-ink-1 font-bold text-lg tracking-tight">Support Side</span>
+      </a>
+      <a href="../index.html#work" class="link-neon text-sm font-medium">← Back to Work</a>
+    </nav>
+  </header>
+
+  <main id="main" class="relative z-10">
+    <article class="pt-28 md:pt-36 pb-20 md:pb-28">
+      <div class="max-w-3xl mx-auto px-6">
+        
+        <p class="section-kicker text-left">Desktop Application · School Project</p>
+        <h1 class="text-4xl md:text-5xl font-extrabold text-ink-1 tracking-tight leading-tight mb-4">
+          Conway's Game of Life
+        </h1>
+        <p class="text-lg text-ink-2 leading-relaxed mb-8 max-w-2xl">
+          An interactive desktop simulator of John Conway's cellular automaton. Click cells, watch generations evolve, switch between finite and wrap-around grids. Built to develop skills in code organization, testing, and UI design.
+        </p>
+
+        <div class="flex flex-wrap gap-2 mb-10">
+          <span class="chip"><span class="chip-dot"></span>Live Demo</span>
+          <span class="tag tag--live">Open Source</span>
+        </div>
+
+        <div class="glass-card glass-edge rounded-2xl overflow-hidden mb-10">
+          <div class="project-media project-media--cyan h-64 flex items-center justify-center">
+            <svg class="w-24 h-24 opacity-60" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z" />
+            </svg>
+          </div>
+        </div>
+
+        <hr class="neon-hairline mb-10" />
+
+        <section class="mb-12">
+          <h2 class="text-2xl font-bold text-ink-1 mb-4">About the Project</h2>
+          <p class="text-ink-3 leading-relaxed mb-4">
+            Conway's Game of Life is a zero-player game where cells on a grid live, die, or reproduce based on simple rules. It's a classic example of how complex patterns can emerge from simple rules—a concept that's relevant to everything from biology to computer science.
+          </p>
+          <p class="text-ink-3 leading-relaxed">
+            I built this as a school project to practice designing, organizing, and testing code. The focus wasn't just on making it work, but on making it maintainable: clean separation between the simulation logic and the UI, proper state management, and code that's easy to extend.
+          </p>
+        </section>
+
+        <section class="mb-12">
+          <h2 class="text-2xl font-bold text-ink-1 mb-4">Features</h2>
+          <div class="grid sm:grid-cols-2 gap-4 mt-6">
+            <div class="glass-card glass-edge rounded-xl p-5">
+              <div class="icon-tile mb-3">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15.042 21.672 13.684 16.6m0 0-2.51 2.225.569-9.47 5.227 7.917-3.286-.672ZM12 2.25V4.5m5.834.166-1.591 1.591M20.25 10.5H18M7.757 14.743l-1.59 1.59M6 10.5H3.75m4.007-4.243-1.59-1.59" />
+                </svg>
+              </div>
+              <h3 class="font-semibold text-ink-1 mb-1">Interactive Grid</h3>
+              <p class="text-sm text-ink-3">Click cells to toggle them alive or dead.</p>
+            </div>
+            <div class="glass-card glass-edge rounded-xl p-5">
+              <div class="icon-tile mb-3">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347a1.125 1.125 0 0 1-1.667-.986V5.653Z" />
+                </svg>
+              </div>
+              <h3 class="font-semibold text-ink-1 mb-1">Generation Playback</h3>
+              <p class="text-sm text-ink-3">Play, pause, and step through generations.</p>
+            </div>
+            <div class="glass-card glass-edge rounded-xl p-5">
+              <div class="icon-tile mb-3">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
+                </svg>
+              </div>
+              <h3 class="font-semibold text-ink-1 mb-1">Boundary Modes</h3>
+              <p class="text-sm text-ink-3">Finite grid or toroidal wrap-around.</p>
+            </div>
+            <div class="glass-card glass-edge rounded-xl p-5">
+              <div class="icon-tile mb-3">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0 1 18 16.5h-2.25m-7.5 0h7.5m-7.5 0-1 3m8.5-3 1 3m0 0 .5 1.5m-.5-1.5h-9.5m0 0-.5 1.5" />
+                </svg>
+              </div>
+              <h3 class="font-semibold text-ink-1 mb-1">Live Statistics</h3>
+              <p class="text-sm text-ink-3">HUD shows living cells and neighbor counts.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="mb-12">
+          <h2 class="text-2xl font-bold text-ink-1 mb-4">The Rules</h2>
+          <div class="glass-card glass-edge rounded-xl p-6">
+            <ul class="space-y-3 text-ink-3">
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 w-6 h-6 rounded-full bg-accent-wash border border-accent-line-soft flex items-center justify-center text-xs font-bold text-accent">1</span>
+                <span>A live cell with 2 or 3 neighbors <strong class="text-ink-2">survives</strong>.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 w-6 h-6 rounded-full bg-accent-wash border border-accent-line-soft flex items-center justify-center text-xs font-bold text-accent">2</span>
+                <span>A dead cell with exactly 3 neighbors <strong class="text-ink-2">becomes alive</strong>.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 w-6 h-6 rounded-full bg-accent-wash border border-accent-line-soft flex items-center justify-center text-xs font-bold text-accent">3</span>
+                <span>All other cells <strong class="text-ink-2">die</strong> (or stay dead).</span>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="mb-12">
+          <h2 class="text-2xl font-bold text-ink-1 mb-4">Tech Stack</h2>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1.5 text-sm font-medium text-ink-2 bg-glass-1 border border-line-1 rounded-lg">C++</span>
+            <span class="px-3 py-1.5 text-sm font-medium text-ink-2 bg-glass-1 border border-line-1 rounded-lg">wxWidgets</span>
+          </div>
+        </section>
+
+        <section class="mb-12">
+          <h2 class="text-2xl font-bold text-ink-1 mb-4">Links</h2>
+          <div class="flex flex-wrap gap-3">
+            <a href="../demos/conways-game-of-life/" class="btn-neon px-5 py-2.5 text-sm">
+              <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+              </svg>
+              Try Live Demo
+            </a>
+            <a href="https://github.com/NolenM93/wxWidgets_Game" target="_blank" rel="noreferrer" class="btn-ghost px-5 py-2.5 text-sm">
+              <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              View C++ Source on GitHub
+            </a>
+          </div>
+        </section>
+
+        <section class="mb-12">
+          <h2 class="text-2xl font-bold text-ink-1 mb-4">About the Web Demo</h2>
+          <p class="text-ink-3 leading-relaxed mb-3">
+            The original project is a <strong class="text-ink-2">native C++ desktop application</strong> built with wxWidgets. It runs locally on Windows/Mac/Linux and demonstrates proper separation between simulation logic and UI.
+          </p>
+          <p class="text-ink-3 leading-relaxed">
+            The live demo above is a <strong class="text-ink-2">JavaScript web port</strong> that recreates the same functionality in-browser: click cells, watch generations evolve, choose finite or wrap-around boundaries. It's provided so you can try the concept without downloading the desktop app.
+          </p>
+        </section>
+
+        <hr class="neon-hairline mb-10" />
+
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="../index.html#work" class="btn-ghost px-6 py-3 text-sm">← Back to Portfolio</a>
+          <a href="../index.html#contact" class="btn-neon px-6 py-3 text-sm">Get in Touch</a>
+        </div>
+
+      </div>
+    </article>
+  </main>
+
+  <footer class="relative z-10 border-t border-hair py-10">
+    <div class="max-w-3xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm">
+      <span class="text-ink-2 font-medium">Support Side Tech</span>
+      <p class="text-ink-3 text-xs">
+        &copy; 2026 Nolen Millington ·
+        <a href="mailto:nolenmillington@supportsidetech.com" class="link-neon">nolenmillington@supportsidetech.com</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="../assets/js/ui.js" defer></script>
+</body>
+</html>
