@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en" data-accent="cyan">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conway's Game of Life | Support Side</title>
+  <meta name="description" content="Interactive web simulator of Conway's Game of Life. Click cells, watch generations evolve, finite or wrap-around grid." />
+  <meta name="theme-color" content="#05070d" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-base: #05070d;
+      --bg-raised: #0a0f1a;
+      --glass-1: rgba(255, 255, 255, 0.04);
+      --glass-2: rgba(255, 255, 255, 0.06);
+      --line-1: rgba(255, 255, 255, 0.1);
+      --line-2: rgba(255, 255, 255, 0.16);
+      --ink-1: #f4f7ff;
+      --ink-2: #c3cede;
+      --ink-3: #93a1b8;
+      --accent: #22d3ee;
+      --accent-wash: rgba(34, 211, 238, 0.12);
+      --accent-line: rgba(34, 211, 238, 0.45);
+      --accent-glow: rgba(34, 211, 238, 0.3);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background-color: var(--bg-base);
+      color: var(--ink-2);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-image:
+        radial-gradient(70rem 40rem at 12% -10%, rgba(34, 211, 238, 0.1), transparent 60%),
+        radial-gradient(60rem 38rem at 88% 4%, rgba(129, 140, 248, 0.1), transparent 62%);
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      background: rgba(5, 7, 13, 0.8);
+      border-bottom: 1px solid var(--line-1);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+
+    nav {
+      max-width: 56rem;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      height: 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      text-decoration: none;
+      color: var(--ink-1);
+    }
+
+    .brand-mark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 0.7rem;
+      background: linear-gradient(135deg, var(--accent-wash), rgba(255, 255, 255, 0.06));
+      border: 1px solid var(--accent-line);
+      box-shadow: 0 0 18px -8px var(--accent-glow);
+    }
+
+    .brand-mark svg {
+      width: 1rem;
+      height: 1rem;
+      color: var(--ink-1);
+    }
+
+    .brand-text {
+      font-weight: 700;
+      font-size: 1.125rem;
+      letter-spacing: -0.025em;
+    }
+
+    .back-link {
+      color: var(--ink-2);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover {
+      color: var(--ink-1);
+    }
+
+    main {
+      flex: 1;
+      padding: 6rem 1.5rem 3rem;
+      max-width: 56rem;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--ink-1);
+      letter-spacing: -0.025em;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      color: var(--ink-3);
+      margin-bottom: 1.5rem;
+    }
+
+    .game-container {
+      background: var(--glass-1);
+      border: 1px solid var(--line-1);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+      align-items: center;
+    }
+
+    button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.625rem 1rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--ink-1);
+      background: var(--glass-2);
+      border: 1px solid var(--line-2);
+      border-radius: 0.5rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+
+    button:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: var(--accent-line);
+    }
+
+    button.primary {
+      background: linear-gradient(135deg, var(--accent-wash), rgba(255, 255, 255, 0.05));
+      border-color: var(--accent-line);
+      color: #d9fbff;
+    }
+
+    button.primary:hover {
+      box-shadow: 0 0 20px -6px var(--accent-glow);
+    }
+
+    button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .stats {
+      display: flex;
+      gap: 1.5rem;
+      font-size: 0.875rem;
+      color: var(--ink-3);
+      margin-left: auto;
+    }
+
+    .stat {
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+    }
+
+    .stat-value {
+      color: var(--accent);
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .canvas-wrapper {
+      display: flex;
+      justify-content: center;
+      background: var(--bg-raised);
+      border-radius: 0.5rem;
+      overflow: hidden;
+    }
+
+    canvas {
+      display: block;
+      cursor: crosshair;
+    }
+
+    .settings {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line-1);
+    }
+
+    .setting {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+    }
+
+    .setting label {
+      color: var(--ink-3);
+    }
+
+    select {
+      padding: 0.5rem 0.75rem;
+      font-size: 0.875rem;
+      color: var(--ink-1);
+      background: var(--glass-2);
+      border: 1px solid var(--line-2);
+      border-radius: 0.375rem;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    select option {
+      background: #0b1120;
+    }
+
+    .rules {
+      background: var(--glass-1);
+      border: 1px solid var(--line-1);
+      border-radius: 1rem;
+      padding: 1.5rem;
+    }
+
+    .rules h2 {
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: var(--ink-1);
+      margin-bottom: 1rem;
+    }
+
+    .rules ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .rules li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      color: var(--ink-3);
+      font-size: 0.875rem;
+      line-height: 1.5;
+    }
+
+    .rule-num {
+      flex-shrink: 0;
+      width: 1.5rem;
+      height: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--accent-wash);
+      border: 1px solid var(--accent-line);
+      border-radius: 50%;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    footer {
+      padding: 1.5rem;
+      text-align: center;
+      border-top: 1px solid var(--line-1);
+      font-size: 0.75rem;
+      color: var(--ink-3);
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    @media (max-width: 640px) {
+      h1 { font-size: 1.5rem; }
+      .stats { margin-left: 0; width: 100%; margin-top: 0.5rem; }
+      .controls { flex-direction: column; align-items: stretch; }
+      .controls > * { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="../../index.html" class="brand">
+        <span class="brand-mark">
+          <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
+          </svg>
+        </span>
+        <span class="brand-text">Support Side</span>
+      </a>
+      <a href="../../projects/conways-game-of-life.html" class="back-link">← Project Details</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Conway's Game of Life</h1>
+    <p class="subtitle">Click cells to toggle. Watch generations evolve.</p>
+
+    <div class="game-container">
+      <div class="controls">
+        <button id="playPause" class="primary">
+          <svg id="playIcon" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M11.596 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+          </svg>
+          <svg id="pauseIcon" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="display:none;">
+            <path d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5zm5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5z"/>
+          </svg>
+          <span id="playPauseText">Play</span>
+        </button>
+        <button id="step">Step</button>
+        <button id="clear">Clear</button>
+        <button id="random">Random</button>
+        <div class="stats">
+          <div class="stat">
+            <span>Generation:</span>
+            <span id="generation" class="stat-value">0</span>
+          </div>
+          <div class="stat">
+            <span>Living:</span>
+            <span id="living" class="stat-value">0</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="canvas-wrapper">
+        <canvas id="grid"></canvas>
+      </div>
+
+      <div class="settings">
+        <div class="setting">
+          <label for="speed">Speed:</label>
+          <select id="speed">
+            <option value="500">Slow</option>
+            <option value="200" selected>Normal</option>
+            <option value="50">Fast</option>
+          </select>
+        </div>
+        <div class="setting">
+          <label for="boundary">Boundary:</label>
+          <select id="boundary">
+            <option value="finite">Finite</option>
+            <option value="toroidal">Wrap-around</option>
+          </select>
+        </div>
+        <div class="setting">
+          <label for="gridSize">Grid:</label>
+          <select id="gridSize">
+            <option value="30">30 × 30</option>
+            <option value="50" selected>50 × 50</option>
+            <option value="80">80 × 80</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="rules">
+      <h2>The Rules</h2>
+      <ul>
+        <li>
+          <span class="rule-num">1</span>
+          <span>A live cell with 2 or 3 neighbors <strong style="color: var(--ink-2)">survives</strong>.</span>
+        </li>
+        <li>
+          <span class="rule-num">2</span>
+          <span>A dead cell with exactly 3 neighbors <strong style="color: var(--ink-2)">becomes alive</strong>.</span>
+        </li>
+        <li>
+          <span class="rule-num">3</span>
+          <span>All other cells <strong style="color: var(--ink-2)">die</strong> (or stay dead).</span>
+        </li>
+      </ul>
+    </div>
+  </main>
+
+  <footer>
+    <a href="../../index.html">Support Side Tech</a> · Built by Nolen Millington
+  </footer>
+
+  <script>
+    const canvas = document.getElementById('grid');
+    const ctx = canvas.getContext('2d');
+    
+    let cols = 50;
+    let rows = 50;
+    let cellSize = 10;
+    let grid = [];
+    let isPlaying = false;
+    let generation = 0;
+    let intervalId = null;
+    let speed = 200;
+    let boundary = 'finite';
+
+    const accentColor = '#22d3ee';
+    const deadColor = '#0a0f1a';
+    const gridColor = 'rgba(255, 255, 255, 0.05)';
+
+    function initGrid() {
+      grid = [];
+      for (let i = 0; i < cols; i++) {
+        grid[i] = [];
+        for (let j = 0; j < rows; j++) {
+          grid[i][j] = 0;
+        }
+      }
+      generation = 0;
+      updateStats();
+    }
+
+    function resizeCanvas() {
+      const wrapper = canvas.parentElement;
+      const maxWidth = wrapper.clientWidth - 2;
+      cellSize = Math.floor(maxWidth / cols);
+      canvas.width = cols * cellSize;
+      canvas.height = rows * cellSize;
+      draw();
+    }
+
+    function draw() {
+      ctx.fillStyle = deadColor;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      for (let i = 0; i < cols; i++) {
+        for (let j = 0; j < rows; j++) {
+          if (grid[i][j] === 1) {
+            ctx.fillStyle = accentColor;
+            ctx.fillRect(i * cellSize + 1, j * cellSize + 1, cellSize - 2, cellSize - 2);
+          }
+        }
+      }
+
+      ctx.strokeStyle = gridColor;
+      ctx.lineWidth = 1;
+      for (let i = 0; i <= cols; i++) {
+        ctx.beginPath();
+        ctx.moveTo(i * cellSize, 0);
+        ctx.lineTo(i * cellSize, canvas.height);
+        ctx.stroke();
+      }
+      for (let j = 0; j <= rows; j++) {
+        ctx.beginPath();
+        ctx.moveTo(0, j * cellSize);
+        ctx.lineTo(canvas.width, j * cellSize);
+        ctx.stroke();
+      }
+    }
+
+    function countNeighbors(x, y) {
+      let count = 0;
+      for (let i = -1; i <= 1; i++) {
+        for (let j = -1; j <= 1; j++) {
+          if (i === 0 && j === 0) continue;
+          
+          let nx = x + i;
+          let ny = y + j;
+
+          if (boundary === 'toroidal') {
+            nx = (nx + cols) % cols;
+            ny = (ny + rows) % rows;
+          } else {
+            if (nx < 0 || nx >= cols || ny < 0 || ny >= rows) continue;
+          }
+
+          count += grid[nx][ny];
+        }
+      }
+      return count;
+    }
+
+    function nextGeneration() {
+      const newGrid = [];
+      for (let i = 0; i < cols; i++) {
+        newGrid[i] = [];
+        for (let j = 0; j < rows; j++) {
+          const neighbors = countNeighbors(i, j);
+          const alive = grid[i][j] === 1;
+
+          if (alive && (neighbors === 2 || neighbors === 3)) {
+            newGrid[i][j] = 1;
+          } else if (!alive && neighbors === 3) {
+            newGrid[i][j] = 1;
+          } else {
+            newGrid[i][j] = 0;
+          }
+        }
+      }
+      grid = newGrid;
+      generation++;
+      updateStats();
+      draw();
+    }
+
+    function updateStats() {
+      let living = 0;
+      for (let i = 0; i < cols; i++) {
+        for (let j = 0; j < rows; j++) {
+          living += grid[i][j];
+        }
+      }
+      document.getElementById('generation').textContent = generation;
+      document.getElementById('living').textContent = living;
+    }
+
+    function togglePlay() {
+      isPlaying = !isPlaying;
+      const btn = document.getElementById('playPause');
+      const playIcon = document.getElementById('playIcon');
+      const pauseIcon = document.getElementById('pauseIcon');
+      const text = document.getElementById('playPauseText');
+
+      if (isPlaying) {
+        playIcon.style.display = 'none';
+        pauseIcon.style.display = 'block';
+        text.textContent = 'Pause';
+        intervalId = setInterval(nextGeneration, speed);
+      } else {
+        playIcon.style.display = 'block';
+        pauseIcon.style.display = 'none';
+        text.textContent = 'Play';
+        clearInterval(intervalId);
+      }
+    }
+
+    function randomize() {
+      for (let i = 0; i < cols; i++) {
+        for (let j = 0; j < rows; j++) {
+          grid[i][j] = Math.random() > 0.7 ? 1 : 0;
+        }
+      }
+      generation = 0;
+      updateStats();
+      draw();
+    }
+
+    canvas.addEventListener('click', (e) => {
+      const rect = canvas.getBoundingClientRect();
+      const x = Math.floor((e.clientX - rect.left) / cellSize);
+      const y = Math.floor((e.clientY - rect.top) / cellSize);
+      if (x >= 0 && x < cols && y >= 0 && y < rows) {
+        grid[x][y] = grid[x][y] === 1 ? 0 : 1;
+        updateStats();
+        draw();
+      }
+    });
+
+    let isDrawing = false;
+    let lastDrawValue = 1;
+
+    canvas.addEventListener('mousedown', (e) => {
+      isDrawing = true;
+      const rect = canvas.getBoundingClientRect();
+      const x = Math.floor((e.clientX - rect.left) / cellSize);
+      const y = Math.floor((e.clientY - rect.top) / cellSize);
+      if (x >= 0 && x < cols && y >= 0 && y < rows) {
+        lastDrawValue = grid[x][y] === 1 ? 0 : 1;
+        grid[x][y] = lastDrawValue;
+        updateStats();
+        draw();
+      }
+    });
+
+    canvas.addEventListener('mousemove', (e) => {
+      if (!isDrawing) return;
+      const rect = canvas.getBoundingClientRect();
+      const x = Math.floor((e.clientX - rect.left) / cellSize);
+      const y = Math.floor((e.clientY - rect.top) / cellSize);
+      if (x >= 0 && x < cols && y >= 0 && y < rows) {
+        grid[x][y] = lastDrawValue;
+        updateStats();
+        draw();
+      }
+    });
+
+    canvas.addEventListener('mouseup', () => isDrawing = false);
+    canvas.addEventListener('mouseleave', () => isDrawing = false);
+
+    document.getElementById('playPause').addEventListener('click', togglePlay);
+    document.getElementById('step').addEventListener('click', nextGeneration);
+    document.getElementById('clear').addEventListener('click', () => {
+      initGrid();
+      draw();
+    });
+    document.getElementById('random').addEventListener('click', randomize);
+
+    document.getElementById('speed').addEventListener('change', (e) => {
+      speed = parseInt(e.target.value);
+      if (isPlaying) {
+        clearInterval(intervalId);
+        intervalId = setInterval(nextGeneration, speed);
+      }
+    });
+
+    document.getElementById('boundary').addEventListener('change', (e) => {
+      boundary = e.target.value;
+    });
+
+    document.getElementById('gridSize').addEventListener('change', (e) => {
+      const newSize = parseInt(e.target.value);
+      cols = newSize;
+      rows = newSize;
+      initGrid();
+      resizeCanvas();
+    });
+
+    window.addEventListener('resize', resizeCanvas);
+
+    initGrid();
+    resizeCanvas();
+
+    // Add a classic glider pattern to start
+    const midX = Math.floor(cols / 2);
+    const midY = Math.floor(rows / 2);
+    grid[midX][midY] = 1;
+    grid[midX + 1][midY] = 1;
+    grid[midX + 2][midY] = 1;
+    grid[midX + 2][midY - 1] = 1;
+    grid[midX + 1][midY - 2] = 1;
+    updateStats();
+    draw();
+  </script>
+</body>
+</html>
