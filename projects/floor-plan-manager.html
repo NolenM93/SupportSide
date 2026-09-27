@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth" data-accent="cyan">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Floor Plan Manager | Support Side</title>
+  <meta name="description" content="A floor plan management tool for banquet events. Place tables, assign teams, generate service passes, and manage the flip from reception to dinner." />
+  <meta name="theme-color" content="#05070d" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/tailwind.css" />
+  <link rel="stylesheet" href="../assets/css/glass.css" />
+  <link rel="stylesheet" href="../assets/css/custom.css" />
+</head>
+<body class="font-sans text-ink-2 antialiased">
+
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <div class="aurora" aria-hidden="true">
+    <span class="aurora-orb aurora-orb--1"></span>
+    <span class="aurora-orb aurora-orb--2"></span>
+    <span class="aurora-orb aurora-orb--3"></span>
+  </div>
+  <div class="grid-veil" aria-hidden="true"></div>
+
+  <header class="site-nav glass-nav fixed top-0 left-0 right-0 z-50">
+    <nav class="max-w-3xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-2.5">
+        <span class="brand-mark">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
+          </svg>
+        </span>
+        <span class="text-ink-1 font-bold text-lg tracking-tight">Support Side</span>
+      </a>
+      <a href="../index.html#work" class="link-neon text-sm font-medium">← Back to Work</a>
+    </nav>
+  </header>
+
+  <main id="main" class="relative z-10">
+    <article class="pt-28 md:pt-36 pb-20 md:pb-28">
+      <div class="max-w-3xl mx-auto px-6">
+        
+        <p class="section-kicker text-left">Web App · Hospitality</p>
+        <h1 class="text-4xl md:text-5xl font-extrabold text-ink-1 tracking-tight leading-tight mb-4">
+          Floor Plan Manager
+        </h1>
+        <p class="text-lg text-ink-2 leading-relaxed mb-8 max-w-2xl">
+          A floor plan management tool built for banquet operations. Place tables on a drag-and-drop canvas, assign server teams, generate service passes, and manage the setup for events from cocktail hour to dinner.
+        </p>
+
+        <div class="flex flex-wrap gap-2 mb-10">
+          <span class="chip"><span class="chip-dot"></span>Live Demo</span>
+          <span class="tag tag--live">Open Source</span>
+        </div>
+
+        <div class="glass-card glass-edge rounded-2xl overflow-hidden mb-10">
+          <div class="project-media project-media--magenta h-64 flex items-center justify-center">
+            <svg class="w-24 h-24 opacity-60" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z" />
+            </svg>
+          </div>
+        </div>
+
+        <hr class="neon-hairline mb-10" />
+
+        <section class="mb-12">
+          <h2 class="text-2xl font-bold text-ink-1 mb-4">The Problem</h2>
+          <p class="text-ink-3 leading-relaxed mb-4">
+            Hotel banquet operations juggle multiple events, each with different floor plans, table assignments, and server teams. The traditional approach—paper diagrams, spreadsheets, and radio calls—doesn't scale when you have back-to-back events and a room that needs to flip from cocktails to dinner in 30 minutes.
+          </p>
+          <p class="text-ink-3 leading-relaxed">
+            Banquet captains need to see the floor, assign tables to teams, and print service passes that servers can actually use. Operations needs to know what moves and when.
+          </p>
+        </section>
+
+        <section class="mb-12">
+          <h2 class="text-2xl font-bold text-ink-1 mb-4">Key Features</h2>
+          <div class="grid sm:grid-cols-2 gap-4 mt-6">
+            <div class="glass-card glass-edge rounded-xl p-5">
+              <div class="icon-tile mb-3">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 4.5v15m6-15v15m-10.875 0h15.75c.621 0 1.125-.504 1.125-1.125V5.625c0-.621-.504-1.125-1.125-1.125H4.125C3.504 4.5 3 5.004 3 5.625v12.75c0 .621.504 1.125 1.125 1.125Z" />
+                </svg>
+              </div>
+              <h3 class="font-semibold text-ink-1 mb-1">Canvas Floor Plan</h3>
+              <p class="text-sm text-ink-3">Drag and drop tables with snap-to-grid alignment.</p>
+            </div>
+            <div class="glass-card glass-edge rounded-xl p-5">
+              <div class="icon-tile mb-3">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
+                </svg>
+              </div>
+              <h3 class="font-semibold text-ink-1 mb-1">Team Management</h3>
+              <p class="text-sm text-ink-3">Create server teams and assign tables by color.</p>
+            </div>
+            <div class="glass-card glass-edge rounded-xl p-5">
+              <div class="icon-tile mb-3">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6.72 13.829c-.24.03-.48.062-.72.096m.72-.096a42.415 42.415 0 0 1 10.56 0m-10.56 0L6.34 18m10.94-4.171c.24.03.48.062.72.096m-.72-.096L17.66 18m0 0 .229 2.523a1.125 1.125 0 0 1-1.12 1.227H7.231c-.662 0-1.18-.568-1.12-1.227L6.34 18m11.318 0h1.091A2.25 2.25 0 0 0 21 15.75V9.456c0-1.081-.768-2.015-1.837-2.175a48.055 48.055 0 0 0-1.913-.247M6.34 18H5.25A2.25 2.25 0 0 1 3 15.75V9.456c0-1.081.768-2.015 1.837-2.175a48.041 48.041 0 0 1 1.913-.247m10.5 0a48.536 48.536 0 0 0-10.5 0m10.5 0V3.375c0-.621-.504-1.125-1.125-1.125h-8.25c-.621 0-1.125.504-1.125 1.125v3.659M18 10.5h.008v.008H18V10.5Zm-3 0h.008v.008H15V10.5Z" />
+                </svg>
+              </div>
+              <h3 class="font-semibold text-ink-1 mb-1">Service Passes</h3>
+              <p class="text-sm text-ink-3">Print ready-to-use assignment sheets for each team.</p>
+            </div>
+            <div class="glass-card glass-edge rounded-xl p-5">
+              <div class="icon-tile mb-3">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 20.25h12m-7.5-3v3m3-3v3m-10.125-3h17.25c.621 0 1.125-.504 1.125-1.125V4.875c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125Z" />
+                </svg>
+              </div>
+              <h3 class="font-semibold text-ink-1 mb-1">TV View</h3>
+              <p class="text-sm text-ink-3">Display-ready view for wall-mounted screens in the service area.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="mb-12">
+          <h2 class="text-2xl font-bold text-ink-1 mb-4">How It Works</h2>
+          <div class="glass-card glass-edge rounded-xl p-6">
+            <ol class="space-y-4 text-ink-3">
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 w-6 h-6 rounded-full bg-accent-wash border border-accent-line-soft flex items-center justify-center text-xs font-bold text-accent">1</span>
+                <span><strong class="text-ink-2">Create an event.</strong> Give it a name, date, and expected cover count.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 w-6 h-6 rounded-full bg-accent-wash border border-accent-line-soft flex items-center justify-center text-xs font-bold text-accent">2</span>
+                <span><strong class="text-ink-2">Add tables.</strong> Place rounds, rectangles, or custom shapes. Snap to grid or free-place.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 w-6 h-6 rounded-full bg-accent-wash border border-accent-line-soft flex items-center justify-center text-xs font-bold text-accent">3</span>
+                <span><strong class="text-ink-2">Assign teams.</strong> Create color-coded server teams and drag tables into their sections.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 w-6 h-6 rounded-full bg-accent-wash border border-accent-line-soft flex items-center justify-center text-xs font-bold text-accent">4</span>
+                <span><strong class="text-ink-2">Print and display.</strong> Generate service passes for staff or push to the TV view.</span>
+              </li>
+            </ol>
+          </div>
+        </section>
+
+        <section class="mb-12">
+          <h2 class="text-2xl font-bold text-ink-1 mb-4">Tech Stack</h2>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1.5 text-sm font-medium text-ink-2 bg-glass-1 border border-line-1 rounded-lg">JavaScript</span>
+            <span class="px-3 py-1.5 text-sm font-medium text-ink-2 bg-glass-1 border border-line-1 rounded-lg">HTML Canvas</span>
+            <span class="px-3 py-1.5 text-sm font-medium text-ink-2 bg-glass-1 border border-line-1 rounded-lg">CSS</span>
+            <span class="px-3 py-1.5 text-sm font-medium text-ink-2 bg-glass-1 border border-line-1 rounded-lg">LocalStorage</span>
+          </div>
+        </section>
+
+        <section class="mb-12">
+          <h2 class="text-2xl font-bold text-ink-1 mb-4">Links</h2>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://nolenm93.github.io/Floor-Plan-Manager/" target="_blank" rel="noreferrer" class="btn-neon px-5 py-2.5 text-sm">
+              <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+              </svg>
+              Try Live Demo
+            </a>
+            <a href="https://github.com/NolenM93/Floor-Plan-Manager" target="_blank" rel="noreferrer" class="btn-ghost px-5 py-2.5 text-sm">
+              <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              View on GitHub
+            </a>
+          </div>
+        </section>
+
+        <hr class="neon-hairline mb-10" />
+
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="../index.html#work" class="btn-ghost px-6 py-3 text-sm">← Back to Portfolio</a>
+          <a href="../index.html#contact" class="btn-neon px-6 py-3 text-sm">Get in Touch</a>
+        </div>
+
+      </div>
+    </article>
+  </main>
+
+  <footer class="relative z-10 border-t border-hair py-10">
+    <div class="max-w-3xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm">
+      <span class="text-ink-2 font-medium">Support Side Tech</span>
+      <p class="text-ink-3 text-xs">
+        &copy; 2026 Nolen Millington ·
+        <a href="mailto:nolenmillington@supportsidetech.com" class="link-neon">nolenmillington@supportsidetech.com</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="../assets/js/ui.js" defer></script>
+</body>
+</html>
