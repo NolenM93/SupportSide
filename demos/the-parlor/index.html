@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Parlor | Barbershop & Grooming</title>
   <meta name="description" content="Classic barbershop services with modern style. Book your appointment online.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💈</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -405,12 +406,79 @@
     .calendar-day.disabled {
       color: var(--gray-300);
       cursor: not-allowed;
+      background: var(--gray-100);
+      text-decoration: line-through;
+    }
+
+    .calendar-day.closed {
+      color: var(--gray-300);
+      cursor: not-allowed;
+      background: repeating-linear-gradient(
+        45deg,
+        var(--gray-100),
+        var(--gray-100) 2px,
+        transparent 2px,
+        transparent 6px
+      );
+      text-decoration: none;
+    }
+
+    .calendar-day.past {
+      color: var(--gray-300);
+      cursor: not-allowed;
+      background: var(--gray-100);
+      text-decoration: line-through;
     }
 
     .calendar-day.selected {
       background: var(--accent);
       color: var(--primary);
       font-weight: 600;
+      text-decoration: none;
+    }
+
+    .calendar-legend {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 12px;
+      font-size: 12px;
+      color: var(--gray-600);
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .legend-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+    }
+
+    .legend-dot.closed {
+      background: repeating-linear-gradient(
+        45deg,
+        var(--gray-200),
+        var(--gray-200) 2px,
+        transparent 2px,
+        transparent 4px
+      );
+      border: 1px solid var(--gray-300);
+    }
+
+    .legend-dot.past {
+      background: var(--gray-200);
+      text-decoration: line-through;
+    }
+
+    .time-slot.passed {
+      background: var(--gray-100);
+      color: var(--gray-400);
+      cursor: not-allowed;
+      text-decoration: line-through;
     }
 
     .time-slots {
@@ -461,6 +529,22 @@
     .form-group input:focus {
       outline: none;
       border-color: var(--accent);
+    }
+
+    .form-group input.error {
+      border-color: #ef4444;
+      background: #fef2f2;
+    }
+
+    .form-group .error-msg {
+      color: #ef4444;
+      font-size: 12px;
+      margin-top: 4px;
+      display: none;
+    }
+
+    .form-group.has-error .error-msg {
+      display: block;
     }
 
     .booking-summary {
@@ -782,12 +866,19 @@
           <h3 class="step-title">Select Date & Time</h3>
           <div class="calendar">
             <div class="calendar-header">
-              <button class="calendar-nav" onclick="changeMonth(-1)">←</button>
+              <button class="calendar-nav" id="cal-prev" onclick="changeMonth(-1)">←</button>
               <h4 id="calendar-month">October 2026</h4>
               <button class="calendar-nav" onclick="changeMonth(1)">→</button>
             </div>
             <div class="calendar-grid" id="calendar-grid"></div>
+            <div class="calendar-legend">
+              <div class="legend-item"><span class="legend-dot closed"></span> Closed (Sun/Mon)</div>
+              <div class="legend-item"><span class="legend-dot past"></span> Past</div>
+            </div>
           </div>
+          <p style="font-size: 13px; color: var(--gray-500); text-align: center; margin-bottom: 16px;">
+            Open Tuesday–Saturday, 9 AM – 7 PM
+          </p>
           <div id="time-section" style="display: none;">
             <h4 style="font-size: 14px; font-weight: 600; margin-bottom: 12px;">Available Times</h4>
             <div class="time-slots" id="time-slots"></div>
@@ -818,13 +909,15 @@
               <span class="summary-value" id="summary-price">-</span>
             </div>
           </div>
-          <div class="form-group">
-            <label for="client-name">Your Name</label>
-            <input type="text" id="client-name" placeholder="John Smith">
+          <div class="form-group" id="name-group">
+            <label for="client-name">Your Name *</label>
+            <input type="text" id="client-name" placeholder="John Smith" required>
+            <div class="error-msg">Please enter your name</div>
           </div>
-          <div class="form-group">
-            <label for="client-phone">Phone Number</label>
-            <input type="tel" id="client-phone" placeholder="(555) 123-4567">
+          <div class="form-group" id="phone-group">
+            <label for="client-phone">Phone Number *</label>
+            <input type="tel" id="client-phone" placeholder="(555) 123-4567" required>
+            <div class="error-msg">Please enter a valid phone number</div>
           </div>
           <div class="form-group">
             <label for="client-email">Email (optional)</label>
@@ -958,16 +1051,32 @@
 
       for (let day = 1; day <= daysInMonth; day++) {
         const date = new Date(currentYear, currentMonth, day);
-        const isPast = date < new Date(today.getFullYear(), today.getMonth(), today.getDate());
+        const todayStart = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+        const isPast = date < todayStart;
         const isSunday = date.getDay() === 0;
         const isMonday = date.getDay() === 1;
+        const isClosed = isSunday || isMonday;
         const isSelected = booking.date && booking.date.getTime() === date.getTime();
         
         let classes = 'calendar-day';
-        if (isPast || isSunday || isMonday) classes += ' disabled';
-        if (isSelected) classes += ' selected';
+        if (isPast) {
+          classes += ' disabled past';
+        } else if (isClosed) {
+          classes += ' disabled closed';
+        }
+        if (isSelected && !isPast && !isClosed) classes += ' selected';
 
         grid.innerHTML += `<div class="${classes}" data-date="${date.toISOString()}" onclick="selectDate(this)">${day}</div>`;
+      }
+      
+      // Update prev button state
+      const prevBtn = document.getElementById('cal-prev');
+      if (currentYear === today.getFullYear() && currentMonth === today.getMonth()) {
+        prevBtn.style.opacity = '0.3';
+        prevBtn.style.cursor = 'not-allowed';
+      } else {
+        prevBtn.style.opacity = '1';
+        prevBtn.style.cursor = 'pointer';
       }
     }
 
@@ -999,20 +1108,36 @@
     }
 
     function renderTimeSlots() {
-      const slots = ['9:00 AM', '9:30 AM', '10:00 AM', '10:30 AM', '11:00 AM', '11:30 AM', '12:00 PM', '1:00 PM', '1:30 PM', '2:00 PM', '2:30 PM', '3:00 PM', '3:30 PM', '4:00 PM', '4:30 PM', '5:00 PM', '5:30 PM', '6:00 PM'];
+      const slots = ['9:00 AM', '9:30 AM', '10:00 AM', '10:30 AM', '11:00 AM', '11:30 AM', '12:00 PM', '1:00 PM', '1:30 PM', '2:00 PM', '2:30 PM', '3:00 PM', '3:30 PM', '4:00 PM', '4:30 PM', '5:00 PM', '5:30 PM', '6:00 PM', '6:30 PM'];
       
       const container = document.getElementById('time-slots');
       container.innerHTML = '';
 
       const dateStr = booking.date.toDateString();
+      const now = new Date();
+      const isToday = booking.date.toDateString() === now.toDateString();
 
       slots.forEach(time => {
         const slotKey = `${dateStr}-${time}-${booking.barber}`;
         const isBooked = bookedSlots.includes(slotKey);
         
+        // Check if time has passed for today
+        let isPassed = false;
+        if (isToday) {
+          const [timeStr, period] = time.split(' ');
+          let [hours, minutes] = timeStr.split(':').map(Number);
+          if (period === 'PM' && hours !== 12) hours += 12;
+          if (period === 'AM' && hours === 12) hours = 0;
+          
+          const slotTime = new Date(booking.date);
+          slotTime.setHours(hours, minutes, 0, 0);
+          isPassed = now > slotTime;
+        }
+        
         let classes = 'time-slot';
         if (isBooked) classes += ' booked';
-        if (booking.time === time) classes += ' selected';
+        else if (isPassed) classes += ' passed';
+        if (booking.time === time && !isBooked && !isPassed) classes += ' selected';
 
         container.innerHTML += `<div class="${classes}" data-time="${time}" onclick="selectTime(this)">${time}</div>`;
       });
@@ -1021,7 +1146,7 @@
     }
 
     function selectTime(el) {
-      if (el.classList.contains('booked')) return;
+      if (el.classList.contains('booked') || el.classList.contains('passed')) return;
       
       document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
       el.classList.add('selected');
@@ -1038,13 +1163,35 @@
     }
 
     function confirmBooking() {
-      const name = document.getElementById('client-name').value;
-      const phone = document.getElementById('client-phone').value;
-
-      if (!name || !phone) {
-        alert('Please enter your name and phone number.');
-        return;
+      const nameInput = document.getElementById('client-name');
+      const phoneInput = document.getElementById('client-phone');
+      const nameGroup = document.getElementById('name-group');
+      const phoneGroup = document.getElementById('phone-group');
+      
+      const name = nameInput.value.trim();
+      const phone = phoneInput.value.trim();
+      
+      // Reset errors
+      nameGroup.classList.remove('has-error');
+      phoneGroup.classList.remove('has-error');
+      nameInput.classList.remove('error');
+      phoneInput.classList.remove('error');
+      
+      let hasError = false;
+      
+      if (!name) {
+        nameGroup.classList.add('has-error');
+        nameInput.classList.add('error');
+        hasError = true;
       }
+      
+      if (!phone || phone.length < 10) {
+        phoneGroup.classList.add('has-error');
+        phoneInput.classList.add('error');
+        hasError = true;
+      }
+      
+      if (hasError) return;
 
       // Mark slot as booked
       const slotKey = `${booking.date.toDateString()}-${booking.time}-${booking.barber}`;

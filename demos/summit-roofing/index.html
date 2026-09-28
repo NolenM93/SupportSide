@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Summit Roofing Co. | Professional Roofing Services</title>
   <meta name="description" content="Quality roofing services for residential and commercial properties. Free estimates, licensed and insured.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -592,7 +593,48 @@
       justify-content: center;
     }
 
-    .gallery-placeholder svg { width: 64px; height: 64px; color: var(--gray-400); }
+    .gallery-placeholder svg { width: 64px; height: 64px; color: rgba(255,255,255,0.3); }
+
+    .gallery-item.roof-shingle {
+      background: 
+        linear-gradient(45deg, rgba(0,0,0,0.1) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(0,0,0,0.1) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, rgba(0,0,0,0.1) 75%),
+        linear-gradient(-45deg, transparent 75%, rgba(0,0,0,0.1) 75%),
+        linear-gradient(135deg, #4a5568 0%, #718096 50%, #4a5568 100%);
+      background-size: 20px 20px, 20px 20px, 20px 20px, 20px 20px, 100% 100%;
+    }
+
+    .gallery-item.roof-metal {
+      background: 
+        repeating-linear-gradient(
+          90deg,
+          #64748b,
+          #64748b 2px,
+          #94a3b8 2px,
+          #94a3b8 30px
+        );
+    }
+
+    .gallery-item.roof-flat {
+      background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
+    }
+
+    .gallery-item.house-exterior {
+      background: 
+        linear-gradient(to bottom, #87CEEB 0%, #87CEEB 40%, #228B22 40%, #228B22 100%);
+    }
+
+    .gallery-item .house-silhouette {
+      position: absolute;
+      bottom: 30%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60%;
+      height: 40%;
+      background: #2d3748;
+      clip-path: polygon(50% 0%, 100% 35%, 100% 100%, 0% 100%, 0% 35%);
+    }
 
     /* Testimonials */
     .testimonials-grid {
@@ -697,6 +739,23 @@
       outline: none;
       border-color: var(--primary);
       box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+    }
+
+    .form-group input.error,
+    .form-group select.error {
+      border-color: #ef4444;
+      background: #fef2f2;
+    }
+
+    .form-group .error-msg {
+      color: #ef4444;
+      font-size: 12px;
+      margin-top: 4px;
+      display: none;
+    }
+
+    .form-group.has-error .error-msg {
+      display: block;
     }
 
     .form-row {
@@ -1008,28 +1067,25 @@
         <p>See the quality of our work across residential and commercial properties.</p>
       </div>
       <div class="gallery-grid">
-        <div class="gallery-item" style="background: linear-gradient(45deg, #1e40af, #3b82f6);">
-          <div class="gallery-placeholder"><svg fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" /></svg></div>
+        <div class="gallery-item roof-shingle">
+          <div class="house-silhouette"></div>
           <span class="caption">Residential Shingle Replacement</span>
         </div>
-        <div class="gallery-item" style="background: linear-gradient(45deg, #059669, #10b981);">
-          <div class="gallery-placeholder"><svg fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" /></svg></div>
+        <div class="gallery-item roof-metal">
+          <div class="house-silhouette"></div>
           <span class="caption">Metal Roof Installation</span>
         </div>
-        <div class="gallery-item" style="background: linear-gradient(45deg, #7c3aed, #a78bfa);">
-          <div class="gallery-placeholder"><svg fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" /></svg></div>
+        <div class="gallery-item roof-flat" style="background: linear-gradient(135deg, #94a3b8, #64748b);">
           <span class="caption">Commercial Flat Roof</span>
         </div>
-        <div class="gallery-item" style="background: linear-gradient(45deg, #dc2626, #f87171);">
-          <div class="gallery-placeholder"><svg fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" /></svg></div>
+        <div class="gallery-item house-exterior">
+          <div class="house-silhouette"></div>
           <span class="caption">Storm Damage Repair</span>
         </div>
-        <div class="gallery-item" style="background: linear-gradient(45deg, #0891b2, #22d3ee);">
-          <div class="gallery-placeholder"><svg fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" /></svg></div>
+        <div class="gallery-item" style="background: linear-gradient(180deg, #87CEEB 60%, #228B22 60%);">
           <span class="caption">Gutter & Downspout System</span>
         </div>
-        <div class="gallery-item" style="background: linear-gradient(45deg, #ca8a04, #facc15);">
-          <div class="gallery-placeholder"><svg fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" /></svg></div>
+        <div class="gallery-item" style="background: linear-gradient(135deg, #fbbf24, #f59e0b);">
           <span class="caption">Skylight Installation</span>
         </div>
       </div>
@@ -1229,14 +1285,29 @@
 
   <script>
     function calculateEstimate() {
-      const jobType = document.getElementById('job-type').value;
-      const roofSize = parseInt(document.getElementById('roof-size').value) || 0;
+      const jobSelect = document.getElementById('job-type');
+      const sizeSelect = document.getElementById('roof-size');
+      const jobType = jobSelect.value;
+      const roofSize = parseInt(sizeSelect.value) || 0;
       const material = document.getElementById('material').value;
 
-      if (!jobType || !roofSize) {
-        alert('Please select a service and roof size.');
-        return;
+      // Reset errors
+      jobSelect.classList.remove('error');
+      sizeSelect.classList.remove('error');
+      
+      let hasError = false;
+      
+      if (!jobType) {
+        jobSelect.classList.add('error');
+        hasError = true;
       }
+      
+      if (!roofSize) {
+        sizeSelect.classList.add('error');
+        hasError = true;
+      }
+      
+      if (hasError) return;
 
       let baseMin = 0, baseMax = 0;
 
@@ -1265,14 +1336,37 @@
     }
 
     function submitQuote() {
-      const name = document.getElementById('name').value;
-      const phone = document.getElementById('phone').value;
-      const email = document.getElementById('email').value;
+      const nameInput = document.getElementById('name');
+      const phoneInput = document.getElementById('phone');
+      const emailInput = document.getElementById('email');
+      
+      const name = nameInput.value.trim();
+      const phone = phoneInput.value.trim();
+      const email = emailInput.value.trim();
 
-      if (!name || !phone || !email) {
-        alert('Please fill in your name, phone, and email.');
-        return;
+      // Reset errors
+      nameInput.classList.remove('error');
+      phoneInput.classList.remove('error');
+      emailInput.classList.remove('error');
+      
+      let hasError = false;
+      
+      if (!name) {
+        nameInput.classList.add('error');
+        hasError = true;
       }
+      
+      if (!phone || phone.length < 10) {
+        phoneInput.classList.add('error');
+        hasError = true;
+      }
+      
+      if (!email || !email.includes('@')) {
+        emailInput.classList.add('error');
+        hasError = true;
+      }
+      
+      if (hasError) return;
 
       document.getElementById('calc-form').style.display = 'none';
       document.getElementById('confirmation').classList.add('show');

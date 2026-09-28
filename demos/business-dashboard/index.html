@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Business Dashboard | Summit Roofing Co.</title>
+  <meta name="description" content="Back-office dashboard for managing customers, invoices, and revenue tracking.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -64,8 +66,44 @@
       flex-shrink: 0;
     }
 
+    .mobile-header {
+      display: none;
+      background: var(--gray-900);
+      color: white;
+      padding: 16px 20px;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .mobile-header h1 {
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .mobile-menu-btn {
+      background: none;
+      border: none;
+      color: white;
+      padding: 8px;
+      cursor: pointer;
+    }
+
+    .mobile-menu-btn svg {
+      width: 24px;
+      height: 24px;
+    }
+
     @media (max-width: 900px) {
-      .sidebar { display: none; }
+      .sidebar { 
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        z-index: 100;
+      }
+      .sidebar.open { display: block; }
+      .mobile-header { display: flex; }
     }
 
     .sidebar-logo {
@@ -438,6 +476,23 @@
       border-color: var(--primary);
     }
 
+    .form-group input.error,
+    .form-group select.error {
+      border-color: var(--danger);
+      background: #fef2f2;
+    }
+
+    .form-group .error-msg {
+      color: var(--danger);
+      font-size: 12px;
+      margin-top: 4px;
+      display: none;
+    }
+
+    .form-group.has-error .error-msg {
+      display: block;
+    }
+
     .form-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -466,8 +521,15 @@
     ⚡ This is a sample dashboard built by <a href="https://supportsidetech.com">Support Side Tech</a>. All data is fictional and resets on refresh.
   </div>
 
+  <div class="mobile-header">
+    <h1>Summit Roofing Dashboard</h1>
+    <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
+    </button>
+  </div>
+
   <div class="app">
-    <aside class="sidebar">
+    <aside class="sidebar" id="sidebar">
       <div class="sidebar-logo">
         <h1>Summit <span>Roofing</span></h1>
         <p>Business Dashboard</p>
@@ -758,16 +820,38 @@
       document.getElementById(`${type}-modal`).classList.remove('active');
     }
 
-    function addCustomer() {
-      const name = document.getElementById('cust-name').value;
-      const email = document.getElementById('cust-email').value;
-      const phone = document.getElementById('cust-phone').value;
-      const address = document.getElementById('cust-address').value;
+    function toggleMobileMenu() {
+      document.getElementById('sidebar').classList.toggle('open');
+    }
 
-      if (!name || !email) {
-        alert('Please enter name and email.');
-        return;
+    function addCustomer() {
+      const nameInput = document.getElementById('cust-name');
+      const emailInput = document.getElementById('cust-email');
+      const phoneInput = document.getElementById('cust-phone');
+      const addressInput = document.getElementById('cust-address');
+      
+      const name = nameInput.value.trim();
+      const email = emailInput.value.trim();
+      const phone = phoneInput.value.trim();
+      const address = addressInput.value.trim();
+
+      // Reset errors
+      nameInput.classList.remove('error');
+      emailInput.classList.remove('error');
+      
+      let hasError = false;
+      
+      if (!name) {
+        nameInput.classList.add('error');
+        hasError = true;
       }
+      
+      if (!email || !email.includes('@')) {
+        emailInput.classList.add('error');
+        hasError = true;
+      }
+      
+      if (hasError) return;
 
       customers.push({
         id: customers.length + 1,
@@ -789,15 +873,45 @@
     }
 
     function createInvoice() {
-      const customerId = parseInt(document.getElementById('inv-customer').value);
-      const desc = document.getElementById('inv-desc').value;
-      const amount = parseFloat(document.getElementById('inv-amount').value);
-      const due = document.getElementById('inv-due').value;
+      const customerSelect = document.getElementById('inv-customer');
+      const descInput = document.getElementById('inv-desc');
+      const amountInput = document.getElementById('inv-amount');
+      const dueInput = document.getElementById('inv-due');
+      
+      const customerId = parseInt(customerSelect.value);
+      const desc = descInput.value.trim();
+      const amount = parseFloat(amountInput.value);
+      const due = dueInput.value;
 
-      if (!customerId || !desc || !amount || !due) {
-        alert('Please fill in all fields.');
-        return;
+      // Reset errors
+      customerSelect.classList.remove('error');
+      descInput.classList.remove('error');
+      amountInput.classList.remove('error');
+      dueInput.classList.remove('error');
+      
+      let hasError = false;
+      
+      if (!customerId) {
+        customerSelect.classList.add('error');
+        hasError = true;
       }
+      
+      if (!desc) {
+        descInput.classList.add('error');
+        hasError = true;
+      }
+      
+      if (!amount || amount <= 0) {
+        amountInput.classList.add('error');
+        hasError = true;
+      }
+      
+      if (!due) {
+        dueInput.classList.add('error');
+        hasError = true;
+      }
+      
+      if (hasError) return;
 
       const customer = customers.find(c => c.id === customerId);
       
