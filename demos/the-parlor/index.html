@@ -972,9 +972,19 @@
     }
 
     function changeMonth(delta) {
-      currentMonth += delta;
-      if (currentMonth > 11) { currentMonth = 0; currentYear++; }
-      if (currentMonth < 0) { currentMonth = 11; currentYear--; }
+      const today = new Date();
+      const newMonth = currentMonth + delta;
+      const newYear = currentYear + (newMonth > 11 ? 1 : newMonth < 0 ? -1 : 0);
+      const adjustedMonth = newMonth > 11 ? 0 : newMonth < 0 ? 11 : newMonth;
+      
+      // Don't allow navigating to past months
+      if (newYear < today.getFullYear() || 
+          (newYear === today.getFullYear() && adjustedMonth < today.getMonth())) {
+        return;
+      }
+      
+      currentMonth = adjustedMonth;
+      currentYear = newYear;
       renderCalendar();
     }
 

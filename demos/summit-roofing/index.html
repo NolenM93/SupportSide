@@ -196,18 +196,257 @@
     .btn-secondary:hover { background: rgba(255,255,255,0.25); }
 
     .hero-image {
-      background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+      position: relative;
       border-radius: 20px;
       height: 350px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid rgba(255,255,255,0.1);
+      overflow: hidden;
+      background: linear-gradient(180deg, #87CEEB 0%, #E0F4FF 60%, #90EE90 60%, #228B22 100%);
     }
 
-    .roof-graphic {
-      width: 200px;
-      height: 150px;
+    .hero-house {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 280px;
+    }
+
+    .house-body {
+      position: relative;
+      width: 220px;
+      height: 140px;
+      background: linear-gradient(135deg, #F5F5DC 0%, #DEB887 100%);
+      margin: 0 auto;
+      border-radius: 4px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    }
+
+    .house-roof {
+      position: absolute;
+      top: -70px;
+      left: -30px;
+      width: 0;
+      height: 0;
+      border-left: 140px solid transparent;
+      border-right: 140px solid transparent;
+      border-bottom: 80px solid #8B4513;
+    }
+
+    .house-roof::after {
+      content: '';
+      position: absolute;
+      top: 10px;
+      left: -130px;
+      width: 0;
+      height: 0;
+      border-left: 130px solid transparent;
+      border-right: 130px solid transparent;
+      border-bottom: 70px solid #A0522D;
+    }
+
+    .roof-tiles {
+      position: absolute;
+      top: -65px;
+      left: -25px;
+      width: 270px;
+      height: 75px;
+      background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 18px,
+        rgba(0,0,0,0.1) 18px,
+        rgba(0,0,0,0.1) 20px
+      ),
+      repeating-linear-gradient(
+        180deg,
+        transparent,
+        transparent 14px,
+        rgba(0,0,0,0.15) 14px,
+        rgba(0,0,0,0.15) 16px
+      );
+      clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+    }
+
+    .house-door {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 45px;
+      height: 75px;
+      background: linear-gradient(135deg, #5D3A1A, #8B4513);
+      border-radius: 4px 4px 0 0;
+      box-shadow: inset -3px 0 8px rgba(0,0,0,0.3);
+    }
+
+    .door-handle {
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      width: 8px;
+      height: 8px;
+      background: #FFD700;
+      border-radius: 50%;
+      box-shadow: 0 0 4px rgba(255,215,0,0.5);
+    }
+
+    .house-window {
+      position: absolute;
+      width: 40px;
+      height: 50px;
+      background: linear-gradient(135deg, #87CEEB, #ADD8E6);
+      border: 4px solid #FFF8DC;
+      border-radius: 4px;
+      box-shadow: inset 0 0 10px rgba(135,206,235,0.5);
+    }
+
+    .house-window::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: #FFF8DC;
+      transform: translateY(-50%);
+    }
+
+    .house-window::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: #FFF8DC;
+      transform: translateX(-50%);
+    }
+
+    .window-left { left: 25px; top: 25px; }
+    .window-right { right: 25px; top: 25px; }
+
+    .house-chimney {
+      position: absolute;
+      top: -100px;
+      right: 40px;
+      width: 30px;
+      height: 50px;
+      background: linear-gradient(135deg, #CD5C5C, #8B0000);
+      border-radius: 2px;
+    }
+
+    .chimney-cap {
+      position: absolute;
+      top: -6px;
+      left: -4px;
+      width: 38px;
+      height: 8px;
+      background: #8B0000;
+      border-radius: 2px;
+    }
+
+    .hero-cloud {
+      position: absolute;
+      background: white;
+      border-radius: 50px;
+      opacity: 0.9;
+    }
+
+    .cloud-1 {
+      width: 80px;
+      height: 30px;
+      top: 30px;
+      left: 20px;
+      box-shadow: 25px -10px 0 10px white, 55px 0 0 5px white;
+    }
+
+    .cloud-2 {
+      width: 60px;
+      height: 25px;
+      top: 50px;
+      right: 30px;
+      box-shadow: 20px -8px 0 8px white, 40px 0 0 4px white;
+    }
+
+    .hero-sun {
+      position: absolute;
+      top: 25px;
+      right: 100px;
+      width: 50px;
+      height: 50px;
+      background: #FFD700;
+      border-radius: 50%;
+      box-shadow: 0 0 30px #FFD700, 0 0 60px rgba(255,215,0,0.4);
+    }
+
+    .hero-tree {
+      position: absolute;
+      bottom: 0;
+    }
+
+    .tree-trunk {
+      width: 20px;
+      height: 50px;
+      background: linear-gradient(90deg, #8B4513, #A0522D);
+      margin: 0 auto;
+      border-radius: 3px;
+    }
+
+    .tree-foliage {
+      width: 60px;
+      height: 80px;
+      background: linear-gradient(135deg, #228B22, #006400);
+      border-radius: 50% 50% 45% 45%;
+      margin-bottom: -15px;
+      box-shadow: inset -10px 0 15px rgba(0,0,0,0.2);
+    }
+
+    .tree-left { left: 15px; }
+    .tree-right { right: 20px; }
+    .tree-right .tree-foliage { width: 50px; height: 65px; }
+
+    .hero-grass {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 40px;
+      background: linear-gradient(180deg, #32CD32, #228B22);
+    }
+
+    .trust-badge {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      background: white;
+      padding: 12px 16px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .trust-stars {
+      display: flex;
+      gap: 2px;
+    }
+
+    .trust-stars svg {
+      width: 16px;
+      height: 16px;
+      fill: #FFD700;
+    }
+
+    .trust-rating {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--gray-900);
+    }
+
+    .trust-count {
+      font-size: 12px;
+      color: var(--gray-600);
     }
 
     @media (max-width: 900px) {
@@ -645,13 +884,45 @@
         </div>
       </div>
       <div class="hero-image">
-        <svg class="roof-graphic" viewBox="0 0 200 150" fill="none">
-          <path d="M100 10 L190 80 L180 80 L180 140 L20 140 L20 80 L10 80 Z" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
-          <path d="M100 10 L190 80 L10 80 Z" fill="rgba(255,255,255,0.1)"/>
-          <rect x="80" y="100" width="40" height="40" fill="rgba(255,255,255,0.2)" rx="2"/>
-          <rect x="40" y="90" width="25" height="25" fill="rgba(255,255,255,0.15)" rx="2"/>
-          <rect x="135" y="90" width="25" height="25" fill="rgba(255,255,255,0.15)" rx="2"/>
-        </svg>
+        <div class="hero-sun"></div>
+        <div class="hero-cloud cloud-1"></div>
+        <div class="hero-cloud cloud-2"></div>
+        <div class="hero-tree tree-left">
+          <div class="tree-foliage"></div>
+          <div class="tree-trunk"></div>
+        </div>
+        <div class="hero-tree tree-right">
+          <div class="tree-foliage"></div>
+          <div class="tree-trunk"></div>
+        </div>
+        <div class="hero-grass"></div>
+        <div class="hero-house">
+          <div class="house-chimney">
+            <div class="chimney-cap"></div>
+          </div>
+          <div class="house-roof"></div>
+          <div class="roof-tiles"></div>
+          <div class="house-body">
+            <div class="house-window window-left"></div>
+            <div class="house-window window-right"></div>
+            <div class="house-door">
+              <div class="door-handle"></div>
+            </div>
+          </div>
+        </div>
+        <div class="trust-badge">
+          <div class="trust-stars">
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 6.17H19l-5.3 4.08 2.03 6.58L10 13.77l-5.73 4.06 2.03-6.58L1 7.17h6.61z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 6.17H19l-5.3 4.08 2.03 6.58L10 13.77l-5.73 4.06 2.03-6.58L1 7.17h6.61z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 6.17H19l-5.3 4.08 2.03 6.58L10 13.77l-5.73 4.06 2.03-6.58L1 7.17h6.61z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 6.17H19l-5.3 4.08 2.03 6.58L10 13.77l-5.73 4.06 2.03-6.58L1 7.17h6.61z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1l2.39 6.17H19l-5.3 4.08 2.03 6.58L10 13.77l-5.73 4.06 2.03-6.58L1 7.17h6.61z"/></svg>
+          </div>
+          <div>
+            <div class="trust-rating">4.9/5</div>
+            <div class="trust-count">120+ Reviews</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
