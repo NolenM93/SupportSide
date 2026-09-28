@@ -260,35 +260,40 @@
       height: 200px;
       display: flex;
       align-items: flex-end;
-      gap: 8px;
-      padding-top: 20px;
+      justify-content: space-between;
+      padding-top: 30px;
+    }
+
+    .chart-bar-wrapper {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 0;
     }
 
     .chart-bar {
-      flex: 1;
+      width: 100%;
+      max-width: 40px;
       background: linear-gradient(180deg, var(--primary-light), var(--primary));
       border-radius: 6px 6px 0 0;
       position: relative;
       transition: all 0.3s ease;
-      min-width: 30px;
     }
 
     .chart-bar:hover { opacity: 0.8; }
 
-    .chart-bar::after {
-      content: attr(data-value);
-      position: absolute;
-      top: -24px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 12px;
+    .chart-value {
+      font-size: 11px;
       font-weight: 600;
       color: var(--gray-600);
+      margin-bottom: 4px;
+      white-space: nowrap;
     }
 
     .chart-labels {
       display: flex;
-      gap: 8px;
+      justify-content: space-between;
       margin-top: 12px;
     }
 
@@ -297,7 +302,13 @@
       text-align: center;
       font-size: 12px;
       color: var(--gray-500);
-      min-width: 30px;
+      min-width: 0;
+    }
+
+    @media (max-width: 500px) {
+      .chart-value { font-size: 10px; }
+      .chart-label { font-size: 10px; }
+      .chart-bar { max-width: 28px; }
     }
 
     /* Tables */
@@ -800,11 +811,22 @@
       document.getElementById('stat-avg').textContent = formatCurrency(avgInvoice);
     }
 
+    function formatCompactCurrency(amount) {
+      if (amount >= 1000) {
+        return '$' + Math.round(amount / 1000) + 'k';
+      }
+      return '$' + amount;
+    }
+
     function renderChart() {
       const maxVal = Math.max(...monthlyRevenue);
       const barsHtml = monthlyRevenue.map(val => {
         const height = (val / maxVal) * 160;
-        return `<div class="chart-bar" style="height: ${height}px" data-value="${formatCurrency(val)}"></div>`;
+        const compactVal = formatCompactCurrency(val);
+        return `<div class="chart-bar-wrapper">
+          <div class="chart-value">${compactVal}</div>
+          <div class="chart-bar" style="height: ${height}px"></div>
+        </div>`;
       }).join('');
       
       const labelsHtml = months.map(m => `<div class="chart-label">${m}</div>`).join('');
