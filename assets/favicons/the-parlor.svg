@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <rect width="32" height="32" rx="6" fill="#1a1a2e"/>
+  <rect x="10" y="6" width="12" height="20" rx="6" fill="url(#pole)"/>
+  <rect x="8" y="4" width="16" height="3" rx="1.5" fill="#c9a227"/>
+  <rect x="8" y="25" width="16" height="3" rx="1.5" fill="#c9a227"/>
+  <defs>
+    <linearGradient id="pole" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#dc2626"/>
+      <stop offset="16.66%" stop-color="#dc2626"/>
+      <stop offset="16.66%" stop-color="white"/>
+      <stop offset="33.33%" stop-color="white"/>
+      <stop offset="33.33%" stop-color="#2563eb"/>
+      <stop offset="50%" stop-color="#2563eb"/>
+      <stop offset="50%" stop-color="#dc2626"/>
+      <stop offset="66.66%" stop-color="#dc2626"/>
+      <stop offset="66.66%" stop-color="white"/>
+      <stop offset="83.33%" stop-color="white"/>
+      <stop offset="83.33%" stop-color="#2563eb"/>
+      <stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+  </defs>
+</svg>
