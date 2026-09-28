@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Business Dashboard | Summit Roofing Co.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    :root {
+      --primary: #1e40af;
+      --primary-light: #3b82f6;
+      --accent: #f59e0b;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --gray-50: #f9fafb;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-300: #d1d5db;
+      --gray-400: #9ca3af;
+      --gray-500: #6b7280;
+      --gray-600: #4b5563;
+      --gray-700: #374151;
+      --gray-800: #1f2937;
+      --gray-900: #111827;
+      --radius: 12px;
+      --shadow: 0 1px 3px rgb(0 0 0 / 0.1);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--gray-100);
+      color: var(--gray-800);
+      line-height: 1.5;
+    }
+
+    /* Demo Banner */
+    .demo-banner {
+      background: var(--gray-900);
+      color: white;
+      text-align: center;
+      padding: 10px 20px;
+      font-size: 13px;
+    }
+    .demo-banner a { color: var(--accent); text-decoration: none; font-weight: 600; }
+
+    /* Layout */
+    .app {
+      display: flex;
+      min-height: calc(100vh - 40px);
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 260px;
+      background: var(--gray-900);
+      color: white;
+      padding: 24px 0;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 900px) {
+      .sidebar { display: none; }
+    }
+
+    .sidebar-logo {
+      padding: 0 24px 24px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      margin-bottom: 24px;
+    }
+
+    .sidebar-logo h1 {
+      font-size: 18px;
+      font-weight: 700;
+    }
+    .sidebar-logo span { color: var(--primary-light); }
+    .sidebar-logo p { font-size: 12px; color: var(--gray-400); margin-top: 4px; }
+
+    .nav-section {
+      padding: 0 12px;
+      margin-bottom: 24px;
+    }
+
+    .nav-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--gray-500);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 0 12px;
+      margin-bottom: 8px;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px;
+      color: var(--gray-400);
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    .nav-link:hover { background: rgba(255,255,255,0.05); color: white; }
+    .nav-link.active { background: var(--primary); color: white; }
+    .nav-link svg { width: 20px; height: 20px; }
+
+    /* Main Content */
+    .main {
+      flex: 1;
+      padding: 24px;
+      overflow-x: auto;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .header h2 {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--gray-900);
+    }
+
+    .header-actions { display: flex; gap: 12px; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .btn-primary { background: var(--primary); color: white; }
+    .btn-primary:hover { background: var(--primary-light); }
+    .btn-secondary { background: white; color: var(--gray-700); border: 1px solid var(--gray-300); }
+    .btn-secondary:hover { background: var(--gray-50); }
+    .btn svg { width: 18px; height: 18px; }
+
+    /* Stats Cards */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+
+    .stat-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .stat-label {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--gray-500);
+      margin-bottom: 8px;
+    }
+
+    .stat-value {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--gray-900);
+    }
+
+    .stat-change {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 13px;
+      font-weight: 500;
+      margin-top: 8px;
+    }
+
+    .stat-change.positive { color: var(--success); }
+    .stat-change.negative { color: var(--danger); }
+
+    /* Chart */
+    .chart-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+    }
+
+    .chart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .chart-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--gray-900);
+    }
+
+    .chart-container {
+      height: 200px;
+      display: flex;
+      align-items: flex-end;
+      gap: 8px;
+      padding-top: 20px;
+    }
+
+    .chart-bar {
+      flex: 1;
+      background: linear-gradient(180deg, var(--primary-light), var(--primary));
+      border-radius: 6px 6px 0 0;
+      position: relative;
+      transition: all 0.3s ease;
+      min-width: 30px;
+    }
+
+    .chart-bar:hover { opacity: 0.8; }
+
+    .chart-bar::after {
+      content: attr(data-value);
+      position: absolute;
+      top: -24px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--gray-600);
+    }
+
+    .chart-labels {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .chart-label {
+      flex: 1;
+      text-align: center;
+      font-size: 12px;
+      color: var(--gray-500);
+      min-width: 30px;
+    }
+
+    /* Tables */
+    .table-card {
+      background: white;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+
+    .table-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--gray-200);
+    }
+
+    .table-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--gray-900);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 14px 24px;
+      text-align: left;
+      font-size: 14px;
+    }
+
+    th {
+      background: var(--gray-50);
+      font-weight: 600;
+      color: var(--gray-600);
+      border-bottom: 1px solid var(--gray-200);
+    }
+
+    td { border-bottom: 1px solid var(--gray-100); }
+    tr:last-child td { border-bottom: none; }
+    tr:hover { background: var(--gray-50); }
+
+    .status-badge {
+      display: inline-flex;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .status-paid { background: rgba(16, 185, 129, 0.1); color: var(--success); }
+    .status-pending { background: rgba(245, 158, 11, 0.1); color: var(--warning); }
+    .status-overdue { background: rgba(239, 68, 68, 0.1); color: var(--danger); }
+
+    .amount { font-weight: 600; font-variant-numeric: tabular-nums; }
+
+    /* Alerts */
+    .alerts-section {
+      margin-bottom: 24px;
+    }
+
+    .alert {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(239, 68, 68, 0.08);
+      border: 1px solid rgba(239, 68, 68, 0.2);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-bottom: 12px;
+    }
+
+    .alert-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--danger);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .alert-icon svg { width: 20px; height: 20px; color: white; }
+
+    .alert-content { flex: 1; }
+    .alert-title { font-weight: 600; color: var(--gray-900); font-size: 14px; }
+    .alert-text { font-size: 13px; color: var(--gray-600); }
+
+    .alert-action {
+      padding: 8px 16px;
+      background: var(--danger);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* Modal */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+
+    .modal-overlay.active { display: flex; }
+
+    .modal {
+      background: white;
+      border-radius: 16px;
+      width: 100%;
+      max-width: 500px;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--gray-200);
+    }
+
+    .modal-title { font-size: 18px; font-weight: 600; }
+
+    .modal-close {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      color: var(--gray-500);
+    }
+
+    .modal-body { padding: 24px; }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      color: var(--gray-700);
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid var(--gray-300);
+      border-radius: 8px;
+      font-size: 14px;
+      font-family: inherit;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .modal-footer {
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+      padding: 16px 24px;
+      border-top: 1px solid var(--gray-200);
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .header { flex-direction: column; gap: 16px; align-items: flex-start; }
+      .form-row { grid-template-columns: 1fr; }
+      th, td { padding: 12px 16px; font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-banner">
+    ⚡ This is a sample dashboard built by <a href="https://supportsidetech.com">Support Side Tech</a>. All data is fictional and resets on refresh.
+  </div>
+
+  <div class="app">
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <h1>Summit <span>Roofing</span></h1>
+        <p>Business Dashboard</p>
+      </div>
+      <nav class="nav-section">
+        <div class="nav-label">Overview</div>
+        <a href="#" class="nav-link active">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z" /></svg>
+          Dashboard
+        </a>
+      </nav>
+      <nav class="nav-section">
+        <div class="nav-label">Manage</div>
+        <a href="#" class="nav-link" onclick="showSection('customers'); return false;">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" /></svg>
+          Customers
+        </a>
+        <a href="#" class="nav-link" onclick="showSection('invoices'); return false;">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" /></svg>
+          Invoices
+        </a>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <div class="header">
+        <h2>Dashboard</h2>
+        <div class="header-actions">
+          <button class="btn btn-secondary" onclick="openModal('customer')">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21c-2.331 0-4.512-.645-6.374-1.766Z" /></svg>
+            Add Customer
+          </button>
+          <button class="btn btn-primary" onclick="openModal('invoice')">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+            New Invoice
+          </button>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-label">Total Revenue (YTD)</div>
+          <div class="stat-value" id="stat-revenue">$0</div>
+          <div class="stat-change positive">↑ 12% from last year</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Outstanding</div>
+          <div class="stat-value" id="stat-outstanding">$0</div>
+          <div class="stat-change negative">↓ 3 invoices pending</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Customers</div>
+          <div class="stat-value" id="stat-customers">0</div>
+          <div class="stat-change positive">↑ 2 new this month</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Avg. Invoice</div>
+          <div class="stat-value" id="stat-avg">$0</div>
+        </div>
+      </div>
+
+      <!-- Alerts -->
+      <div class="alerts-section" id="alerts-container"></div>
+
+      <!-- Chart -->
+      <div class="chart-card">
+        <div class="chart-header">
+          <div class="chart-title">Monthly Revenue</div>
+        </div>
+        <div class="chart-container" id="chart-bars"></div>
+        <div class="chart-labels" id="chart-labels"></div>
+      </div>
+
+      <!-- Invoices Table -->
+      <div class="table-card">
+        <div class="table-header">
+          <div class="table-title">Recent Invoices</div>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Invoice</th>
+              <th>Customer</th>
+              <th>Date</th>
+              <th>Amount</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="invoices-table"></tbody>
+        </table>
+      </div>
+
+      <!-- Customers Table -->
+      <div class="table-card">
+        <div class="table-header">
+          <div class="table-title">Customers</div>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Total Spent</th>
+            </tr>
+          </thead>
+          <tbody id="customers-table"></tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <!-- Add Customer Modal -->
+  <div class="modal-overlay" id="customer-modal">
+    <div class="modal">
+      <div class="modal-header">
+        <div class="modal-title">Add Customer</div>
+        <button class="modal-close" onclick="closeModal('customer')">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" id="cust-name" placeholder="John Smith">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="cust-email" placeholder="john@example.com">
+          </div>
+          <div class="form-group">
+            <label>Phone</label>
+            <input type="tel" id="cust-phone" placeholder="(555) 123-4567">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Address</label>
+          <input type="text" id="cust-address" placeholder="123 Main St, Anytown, NY">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeModal('customer')">Cancel</button>
+        <button class="btn btn-primary" onclick="addCustomer()">Add Customer</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Create Invoice Modal -->
+  <div class="modal-overlay" id="invoice-modal">
+    <div class="modal">
+      <div class="modal-header">
+        <div class="modal-title">Create Invoice</div>
+        <button class="modal-close" onclick="closeModal('invoice')">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Customer</label>
+          <select id="inv-customer"></select>
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <input type="text" id="inv-desc" placeholder="Roof replacement - 2,500 sq ft">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Amount</label>
+            <input type="number" id="inv-amount" placeholder="5000">
+          </div>
+          <div class="form-group">
+            <label>Due Date</label>
+            <input type="date" id="inv-due">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeModal('invoice')">Cancel</button>
+        <button class="btn btn-primary" onclick="createInvoice()">Create Invoice</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Sample data
+    let customers = [
+      { id: 1, name: 'Jennifer Martinez', email: 'jennifer.m@email.com', phone: '(555) 234-5678', address: '45 Oak Drive, Lake George, NY', totalSpent: 12500 },
+      { id: 2, name: 'Robert Patterson', email: 'rpatterson@email.com', phone: '(555) 345-6789', address: '789 Elm Street, Queensbury, NY', totalSpent: 8900 },
+      { id: 3, name: 'Sarah Chen', email: 'schen@business.com', phone: '(555) 456-7890', address: '321 Commerce Blvd, Glens Falls, NY', totalSpent: 24000 },
+      { id: 4, name: 'Michael Thompson', email: 'mthompson@email.com', phone: '(555) 567-8901', address: '567 Pine Road, Bolton Landing, NY', totalSpent: 6200 },
+      { id: 5, name: 'Amanda Wilson', email: 'awilson@email.com', phone: '(555) 678-9012', address: '890 Maple Ave, Warrensburg, NY', totalSpent: 15800 }
+    ];
+
+    let invoices = [
+      { id: 'INV-001', customerId: 3, customer: 'Sarah Chen', desc: 'Commercial flat roof replacement', amount: 18500, date: '2026-09-15', due: '2026-10-15', status: 'paid' },
+      { id: 'INV-002', customerId: 1, customer: 'Jennifer Martinez', desc: 'Residential shingle replacement', amount: 8500, date: '2026-09-18', due: '2026-10-18', status: 'pending' },
+      { id: 'INV-003', customerId: 2, customer: 'Robert Patterson', desc: 'Storm damage repair', amount: 2400, date: '2026-08-20', due: '2026-09-20', status: 'overdue' },
+      { id: 'INV-004', customerId: 4, customer: 'Michael Thompson', desc: 'Gutter installation', amount: 1800, date: '2026-09-22', due: '2026-10-22', status: 'pending' },
+      { id: 'INV-005', customerId: 5, customer: 'Amanda Wilson', desc: 'Metal roof installation', amount: 15800, date: '2026-09-10', due: '2026-10-10', status: 'paid' },
+      { id: 'INV-006', customerId: 3, customer: 'Sarah Chen', desc: 'Annual inspection', amount: 350, date: '2026-09-25', due: '2026-10-25', status: 'pending' }
+    ];
+
+    const monthlyRevenue = [42000, 38500, 51200, 45800, 62000, 48900, 55200, 61800, 47500];
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'];
+
+    let invoiceCounter = 7;
+
+    function formatCurrency(amount) {
+      return '$' + amount.toLocaleString();
+    }
+
+    function updateStats() {
+      const paidTotal = invoices.filter(i => i.status === 'paid').reduce((sum, i) => sum + i.amount, 0);
+      const outstanding = invoices.filter(i => i.status !== 'paid').reduce((sum, i) => sum + i.amount, 0);
+      const avgInvoice = invoices.length > 0 ? Math.round(invoices.reduce((sum, i) => sum + i.amount, 0) / invoices.length) : 0;
+
+      document.getElementById('stat-revenue').textContent = formatCurrency(paidTotal + monthlyRevenue.slice(0, -1).reduce((a, b) => a + b, 0));
+      document.getElementById('stat-outstanding').textContent = formatCurrency(outstanding);
+      document.getElementById('stat-customers').textContent = customers.length;
+      document.getElementById('stat-avg').textContent = formatCurrency(avgInvoice);
+    }
+
+    function renderChart() {
+      const maxVal = Math.max(...monthlyRevenue);
+      const barsHtml = monthlyRevenue.map(val => {
+        const height = (val / maxVal) * 160;
+        return `<div class="chart-bar" style="height: ${height}px" data-value="${formatCurrency(val)}"></div>`;
+      }).join('');
+      
+      const labelsHtml = months.map(m => `<div class="chart-label">${m}</div>`).join('');
+      
+      document.getElementById('chart-bars').innerHTML = barsHtml;
+      document.getElementById('chart-labels').innerHTML = labelsHtml;
+    }
+
+    function renderInvoices() {
+      const html = invoices.slice().reverse().map(inv => `
+        <tr>
+          <td><strong>${inv.id}</strong></td>
+          <td>${inv.customer}</td>
+          <td>${new Date(inv.date).toLocaleDateString()}</td>
+          <td class="amount">${formatCurrency(inv.amount)}</td>
+          <td><span class="status-badge status-${inv.status}">${inv.status.charAt(0).toUpperCase() + inv.status.slice(1)}</span></td>
+        </tr>
+      `).join('');
+      document.getElementById('invoices-table').innerHTML = html;
+    }
+
+    function renderCustomers() {
+      const html = customers.map(c => `
+        <tr>
+          <td><strong>${c.name}</strong></td>
+          <td>${c.email}</td>
+          <td>${c.phone}</td>
+          <td class="amount">${formatCurrency(c.totalSpent)}</td>
+        </tr>
+      `).join('');
+      document.getElementById('customers-table').innerHTML = html;
+    }
+
+    function renderAlerts() {
+      const overdue = invoices.filter(i => i.status === 'overdue');
+      const html = overdue.map(inv => `
+        <div class="alert">
+          <div class="alert-icon">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" /></svg>
+          </div>
+          <div class="alert-content">
+            <div class="alert-title">Overdue: ${inv.id}</div>
+            <div class="alert-text">${inv.customer} owes ${formatCurrency(inv.amount)} - due ${new Date(inv.due).toLocaleDateString()}</div>
+          </div>
+          <button class="alert-action" onclick="sendReminder('${inv.id}')">Send Reminder</button>
+        </div>
+      `).join('');
+      document.getElementById('alerts-container').innerHTML = html;
+    }
+
+    function updateCustomerSelect() {
+      const html = '<option value="">Select customer...</option>' + 
+        customers.map(c => `<option value="${c.id}">${c.name}</option>`).join('');
+      document.getElementById('inv-customer').innerHTML = html;
+    }
+
+    function openModal(type) {
+      if (type === 'invoice') updateCustomerSelect();
+      document.getElementById(`${type}-modal`).classList.add('active');
+    }
+
+    function closeModal(type) {
+      document.getElementById(`${type}-modal`).classList.remove('active');
+    }
+
+    function addCustomer() {
+      const name = document.getElementById('cust-name').value;
+      const email = document.getElementById('cust-email').value;
+      const phone = document.getElementById('cust-phone').value;
+      const address = document.getElementById('cust-address').value;
+
+      if (!name || !email) {
+        alert('Please enter name and email.');
+        return;
+      }
+
+      customers.push({
+        id: customers.length + 1,
+        name,
+        email,
+        phone,
+        address,
+        totalSpent: 0
+      });
+
+      document.getElementById('cust-name').value = '';
+      document.getElementById('cust-email').value = '';
+      document.getElementById('cust-phone').value = '';
+      document.getElementById('cust-address').value = '';
+
+      closeModal('customer');
+      renderCustomers();
+      updateStats();
+    }
+
+    function createInvoice() {
+      const customerId = parseInt(document.getElementById('inv-customer').value);
+      const desc = document.getElementById('inv-desc').value;
+      const amount = parseFloat(document.getElementById('inv-amount').value);
+      const due = document.getElementById('inv-due').value;
+
+      if (!customerId || !desc || !amount || !due) {
+        alert('Please fill in all fields.');
+        return;
+      }
+
+      const customer = customers.find(c => c.id === customerId);
+      
+      invoices.push({
+        id: `INV-${String(invoiceCounter++).padStart(3, '0')}`,
+        customerId,
+        customer: customer.name,
+        desc,
+        amount,
+        date: new Date().toISOString().split('T')[0],
+        due,
+        status: 'pending'
+      });
+
+      document.getElementById('inv-customer').value = '';
+      document.getElementById('inv-desc').value = '';
+      document.getElementById('inv-amount').value = '';
+      document.getElementById('inv-due').value = '';
+
+      closeModal('invoice');
+      renderInvoices();
+      renderAlerts();
+      updateStats();
+    }
+
+    function sendReminder(invoiceId) {
+      alert(`Reminder sent for ${invoiceId}! (Demo - no actual email sent)`);
+    }
+
+    // Initialize
+    updateStats();
+    renderChart();
+    renderInvoices();
+    renderCustomers();
+    renderAlerts();
+  </script>
+</body>
+</html>
