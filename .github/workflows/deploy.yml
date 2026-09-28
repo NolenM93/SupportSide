@@ -45,7 +45,7 @@ jobs:
 
       - name: Prune app sources from Pages artifact
         run: |
-          rm -rf node_modules studio homeschool-ai-scheduler demos
+          rm -rf node_modules studio homeschool-ai-scheduler
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
