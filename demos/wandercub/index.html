@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>WanderCub | Road Trip Adventure</title>
+  <meta name="description" content="A playable web demo of WanderCub - help the cub collect items on a road trip adventure!" />
+  <meta name="theme-color" content="#1a1a2e" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    :root {
+      --bg-dark: #1a1a2e;
+      --bg-mid: #16213e;
+      --accent-warm: #f4a261;
+      --accent-bright: #e9c46a;
+      --accent-teal: #2a9d8f;
+      --accent-coral: #e76f51;
+      --text-light: #f8f9fa;
+      --text-dim: #adb5bd;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-mid) 100%);
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--text-light);
+      touch-action: none;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+
+    #game-container {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    #game-canvas {
+      display: block;
+      image-rendering: pixelated;
+      image-rendering: crisp-edges;
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    }
+
+    .game-ui {
+      position: absolute;
+      pointer-events: none;
+    }
+
+    #hud {
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      z-index: 10;
+    }
+
+    .hud-left, .hud-right {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .hud-right {
+      align-items: flex-end;
+    }
+
+    .score-display {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--accent-bright);
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+
+    .best-score {
+      font-size: 14px;
+      color: var(--text-dim);
+    }
+
+    .badges-container {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      max-width: 200px;
+      justify-content: flex-end;
+    }
+
+    .badge {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      background: linear-gradient(135deg, var(--accent-warm), var(--accent-coral));
+      box-shadow: 0 2px 8px rgba(231, 111, 81, 0.4);
+      opacity: 0.3;
+      transition: opacity 0.3s, transform 0.3s;
+    }
+
+    .badge.earned {
+      opacity: 1;
+      animation: badgePop 0.5s ease-out;
+    }
+
+    @keyframes badgePop {
+      0% { transform: scale(0); }
+      50% { transform: scale(1.3); }
+      100% { transform: scale(1); }
+    }
+
+    .btn {
+      pointer-events: auto;
+      font-family: 'Fredoka', sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      padding: 12px 32px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent-warm), var(--accent-coral));
+      color: white;
+      box-shadow: 0 4px 16px rgba(231, 111, 81, 0.4);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.1);
+      color: var(--text-light);
+      border: 2px solid rgba(255,255,255,0.2);
+    }
+
+    .btn-icon {
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      border-radius: 50%;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #controls-hint {
+      position: absolute;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 13px;
+      color: var(--text-dim);
+      text-align: center;
+      opacity: 0.8;
+    }
+
+    #title-screen, #game-over-screen, #pause-screen {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: rgba(26, 26, 46, 0.95);
+      z-index: 100;
+      padding: 20px;
+    }
+
+    .screen-hidden {
+      display: none !important;
+    }
+
+    .game-logo {
+      font-family: 'Fredoka', sans-serif;
+      font-size: clamp(48px, 10vw, 72px);
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--accent-bright) 0%, var(--accent-warm) 50%, var(--accent-coral) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+
+    .game-subtitle {
+      font-size: 18px;
+      color: var(--text-dim);
+      margin-bottom: 40px;
+    }
+
+    .cub-mascot {
+      font-size: 80px;
+      margin-bottom: 24px;
+      animation: cubBounce 1s ease-in-out infinite;
+    }
+
+    @keyframes cubBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .menu-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .final-score {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--accent-bright);
+      margin: 16px 0;
+    }
+
+    .new-best {
+      color: var(--accent-coral);
+      font-size: 20px;
+      font-weight: 600;
+      animation: pulse 1s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+
+    .how-to-play {
+      max-width: 320px;
+      text-align: center;
+      margin-top: 24px;
+      padding: 16px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 12px;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .how-to-play h3 {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 16px;
+      margin-bottom: 8px;
+      color: var(--accent-warm);
+    }
+
+    .items-collected {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 16px 0;
+    }
+
+    .item-count {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 18px;
+    }
+
+    .sound-toggle {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      z-index: 101;
+      pointer-events: auto;
+    }
+
+    @media (max-width: 600px) {
+      .score-display { font-size: 22px; }
+      .badge { width: 28px; height: 28px; font-size: 14px; }
+      #controls-hint { font-size: 11px; bottom: 8px; }
+      .btn { font-size: 16px; padding: 10px 24px; }
+      .cub-mascot { font-size: 60px; }
+    }
+  </style>
+</head>
+<body>
+  <div id="game-container">
+    <canvas id="game-canvas"></canvas>
+    
+    <div id="hud" class="game-ui">
+      <div class="hud-left">
+        <div class="score-display">Score: <span id="score">0</span></div>
+        <div class="best-score">Best: <span id="best-score">0</span></div>
+      </div>
+      <div class="hud-right">
+        <div class="badges-container" id="badges"></div>
+        <button id="pause-btn" class="btn btn-secondary btn-icon" title="Pause">⏸</button>
+      </div>
+    </div>
+
+    <div id="controls-hint">
+      <span class="desktop-hint">↑↓ or W/S to move · Space to pause</span>
+      <span class="mobile-hint">Swipe or tap to move</span>
+    </div>
+
+    <div id="title-screen">
+      <div class="cub-mascot">🐻</div>
+      <h1 class="game-logo">WanderCub</h1>
+      <p class="game-subtitle">Road Trip Adventure</p>
+      <div class="menu-buttons">
+        <button id="start-btn" class="btn btn-primary">Start Adventure</button>
+      </div>
+      <button id="sound-toggle-title" class="btn btn-secondary btn-icon sound-toggle" title="Toggle Sound">🔊</button>
+      <div class="how-to-play">
+        <h3>How to Play</h3>
+        <p>Help the cub collect items on a road trip! Grab barns 🏠, license plates 🚗, flowers 🌸, and more. Avoid rocks and earn badges!</p>
+      </div>
+    </div>
+
+    <div id="pause-screen" class="screen-hidden">
+      <h2 class="game-logo" style="font-size: 48px;">Paused</h2>
+      <div class="cub-mascot" style="font-size: 60px;">🐻</div>
+      <div class="menu-buttons">
+        <button id="resume-btn" class="btn btn-primary">Resume</button>
+        <button id="restart-pause-btn" class="btn btn-secondary">Restart</button>
+      </div>
+    </div>
+
+    <div id="game-over-screen" class="screen-hidden">
+      <div class="cub-mascot">🐻</div>
+      <h2 style="font-size: 32px; margin-bottom: 8px;">Adventure Complete!</h2>
+      <div class="final-score" id="final-score">0</div>
+      <div id="new-best-label" class="new-best screen-hidden">🎉 New Best!</div>
+      <div class="items-collected" id="items-collected"></div>
+      <div class="menu-buttons">
+        <button id="play-again-btn" class="btn btn-primary">Play Again</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('game-canvas');
+    const ctx = canvas.getContext('2d');
+    
+    // Game constants
+    const GAME_WIDTH = 800;
+    const GAME_HEIGHT = 500;
+    const LANES = 3;
+    const LANE_HEIGHT = 80;
+    const GROUND_Y = GAME_HEIGHT - 120;
+    
+    // Game state
+    let gameState = 'title'; // title, playing, paused, gameover
+    let score = 0;
+    let bestScore = parseInt(localStorage.getItem('wandercub-best') || '0');
+    let distance = 0;
+    let speed = 4;
+    let soundEnabled = true;
+    let lastTime = 0;
+    let deltaTime = 0;
+    
+    // Player
+    const player = {
+      x: 120,
+      y: 0,
+      targetLane: 1,
+      currentLane: 1,
+      width: 50,
+      height: 50,
+      bobOffset: 0,
+      bobSpeed: 0.1
+    };
+    
+    // Collections
+    let collectibles = [];
+    let particles = [];
+    let backgrounds = [];
+    let earnedBadges = [];
+    let itemsCounts = { barn: 0, car: 0, flower: 0, tree: 0, bird: 0 };
+    
+    // Collectible types
+    const COLLECTIBLE_TYPES = [
+      { type: 'barn', emoji: '🏠', points: 10, color: '#e76f51' },
+      { type: 'car', emoji: '🚗', points: 15, color: '#2a9d8f' },
+      { type: 'flower', emoji: '🌸', points: 5, color: '#f4a261' },
+      { type: 'tree', emoji: '🌲', points: 8, color: '#2a9d8f' },
+      { type: 'bird', emoji: '🐦', points: 12, color: '#e9c46a' }
+    ];
+    
+    const OBSTACLE_TYPE = { type: 'rock', emoji: '🪨', damage: true };
+    
+    // Badges
+    const BADGES = [
+      { id: 'explorer', emoji: '🎒', name: 'Explorer', requirement: 100 },
+      { id: 'collector', emoji: '⭐', name: 'Collector', requirement: 250 },
+      { id: 'adventurer', emoji: '🏆', name: 'Adventurer', requirement: 500 },
+      { id: 'wanderer', emoji: '🌟', name: 'Wanderer', requirement: 1000 },
+      { id: 'master', emoji: '👑', name: 'Master', requirement: 2000 }
+    ];
+    
+    // Audio context for sound effects
+    let audioCtx = null;
+    
+    function initAudio() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+    }
+    
+    function playSound(type) {
+      if (!soundEnabled || !audioCtx) return;
+      
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      
+      const now = audioCtx.currentTime;
+      
+      if (type === 'collect') {
+        osc.frequency.setValueAtTime(523, now);
+        osc.frequency.exponentialRampToValueAtTime(784, now + 0.1);
+        gain.gain.setValueAtTime(0.2, now);
+        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.15);
+        osc.start(now);
+        osc.stop(now + 0.15);
+      } else if (type === 'badge') {
+        osc.frequency.setValueAtTime(523, now);
+        osc.frequency.setValueAtTime(659, now + 0.1);
+        osc.frequency.setValueAtTime(784, now + 0.2);
+        gain.gain.setValueAtTime(0.25, now);
+        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.4);
+        osc.start(now);
+        osc.stop(now + 0.4);
+      } else if (type === 'hit') {
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(200, now);
+        osc.frequency.exponentialRampToValueAtTime(50, now + 0.2);
+        gain.gain.setValueAtTime(0.3, now);
+        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.2);
+        osc.start(now);
+        osc.stop(now + 0.2);
+      }
+    }
+    
+    function getLaneY(lane) {
+      return GROUND_Y - (LANES - 1 - lane) * LANE_HEIGHT - LANE_HEIGHT / 2;
+    }
+    
+    function resizeCanvas() {
+      const container = document.getElementById('game-container');
+      const containerWidth = container.clientWidth;
+      const containerHeight = container.clientHeight;
+      
+      const scale = Math.min(
+        (containerWidth - 32) / GAME_WIDTH,
+        (containerHeight - 32) / GAME_HEIGHT
+      );
+      
+      canvas.style.width = `${GAME_WIDTH * scale}px`;
+      canvas.style.height = `${GAME_HEIGHT * scale}px`;
+      canvas.width = GAME_WIDTH;
+      canvas.height = GAME_HEIGHT;
+    }
+    
+    function spawnCollectible() {
+      const isObstacle = Math.random() < 0.15;
+      const lane = Math.floor(Math.random() * LANES);
+      
+      if (isObstacle) {
+        collectibles.push({
+          ...OBSTACLE_TYPE,
+          x: GAME_WIDTH + 50,
+          y: getLaneY(lane),
+          lane: lane,
+          width: 40,
+          height: 40
+        });
+      } else {
+        const typeData = COLLECTIBLE_TYPES[Math.floor(Math.random() * COLLECTIBLE_TYPES.length)];
+        collectibles.push({
+          ...typeData,
+          x: GAME_WIDTH + 50,
+          y: getLaneY(lane),
+          lane: lane,
+          width: 40,
+          height: 40,
+          bobOffset: Math.random() * Math.PI * 2
+        });
+      }
+    }
+    
+    function spawnParticles(x, y, color, count = 8) {
+      for (let i = 0; i < count; i++) {
+        const angle = (Math.PI * 2 * i) / count + Math.random() * 0.5;
+        const speed = 2 + Math.random() * 3;
+        particles.push({
+          x, y,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed,
+          life: 1,
+          color,
+          size: 4 + Math.random() * 4
+        });
+      }
+    }
+    
+    function checkBadges() {
+      for (const badge of BADGES) {
+        if (!earnedBadges.includes(badge.id) && score >= badge.requirement) {
+          earnedBadges.push(badge.id);
+          playSound('badge');
+          updateBadgesUI();
+        }
+      }
+    }
+    
+    function updateBadgesUI() {
+      const container = document.getElementById('badges');
+      container.innerHTML = BADGES.map(badge => 
+        `<div class="badge ${earnedBadges.includes(badge.id) ? 'earned' : ''}" title="${badge.name}">${badge.emoji}</div>`
+      ).join('');
+    }
+    
+    function resetGame() {
+      score = 0;
+      distance = 0;
+      speed = 4;
+      player.currentLane = 1;
+      player.targetLane = 1;
+      player.y = getLaneY(1);
+      collectibles = [];
+      particles = [];
+      earnedBadges = [];
+      itemsCounts = { barn: 0, car: 0, flower: 0, tree: 0, bird: 0 };
+      updateBadgesUI();
+      document.getElementById('score').textContent = '0';
+    }
+    
+    function startGame() {
+      initAudio();
+      resetGame();
+      gameState = 'playing';
+      document.getElementById('title-screen').classList.add('screen-hidden');
+      document.getElementById('game-over-screen').classList.add('screen-hidden');
+      document.getElementById('pause-screen').classList.add('screen-hidden');
+    }
+    
+    function pauseGame() {
+      if (gameState === 'playing') {
+        gameState = 'paused';
+        document.getElementById('pause-screen').classList.remove('screen-hidden');
+      }
+    }
+    
+    function resumeGame() {
+      if (gameState === 'paused') {
+        gameState = 'playing';
+        document.getElementById('pause-screen').classList.add('screen-hidden');
+        lastTime = performance.now();
+      }
+    }
+    
+    function gameOver() {
+      gameState = 'gameover';
+      
+      const isNewBest = score > bestScore;
+      if (isNewBest) {
+        bestScore = score;
+        localStorage.setItem('wandercub-best', bestScore.toString());
+        document.getElementById('best-score').textContent = bestScore;
+      }
+      
+      document.getElementById('final-score').textContent = score;
+      document.getElementById('new-best-label').classList.toggle('screen-hidden', !isNewBest);
+      
+      const itemsHtml = Object.entries(itemsCounts)
+        .filter(([_, count]) => count > 0)
+        .map(([type, count]) => {
+          const typeData = COLLECTIBLE_TYPES.find(t => t.type === type);
+          return `<div class="item-count">${typeData.emoji} ×${count}</div>`;
+        }).join('');
+      document.getElementById('items-collected').innerHTML = itemsHtml;
+      
+      document.getElementById('game-over-screen').classList.remove('screen-hidden');
+    }
+    
+    function update(dt) {
+      if (gameState !== 'playing') return;
+      
+      distance += speed * dt;
+      
+      // Increase speed over time
+      speed = 4 + Math.min(distance / 5000, 4);
+      
+      // Player lane movement with easing
+      const targetY = getLaneY(player.targetLane);
+      player.y += (targetY - player.y) * 0.15;
+      player.currentLane = player.targetLane;
+      
+      // Player bob animation
+      player.bobOffset += player.bobSpeed * dt * 60;
+      
+      // Spawn collectibles
+      if (Math.random() < 0.02 * dt * 60) {
+        spawnCollectible();
+      }
+      
+      // Update collectibles
+      for (let i = collectibles.length - 1; i >= 0; i--) {
+        const c = collectibles[i];
+        c.x -= speed * dt * 60;
+        
+        if (c.bobOffset !== undefined) {
+          c.bobOffset += 0.05 * dt * 60;
+        }
+        
+        // Remove off-screen
+        if (c.x < -50) {
+          collectibles.splice(i, 1);
+          continue;
+        }
+        
+        // Collision detection
+        const playerCenterX = player.x + player.width / 2;
+        const playerCenterY = player.y;
+        const cCenterX = c.x + c.width / 2;
+        const cCenterY = c.y;
+        
+        const dx = Math.abs(playerCenterX - cCenterX);
+        const dy = Math.abs(playerCenterY - cCenterY);
+        
+        if (dx < 35 && dy < 35) {
+          if (c.damage) {
+            playSound('hit');
+            gameOver();
+            return;
+          } else {
+            score += c.points;
+            itemsCounts[c.type]++;
+            document.getElementById('score').textContent = score;
+            playSound('collect');
+            spawnParticles(c.x + c.width / 2, c.y, c.color);
+            checkBadges();
+            collectibles.splice(i, 1);
+          }
+        }
+      }
+      
+      // Update particles
+      for (let i = particles.length - 1; i >= 0; i--) {
+        const p = particles[i];
+        p.x += p.vx * dt * 60;
+        p.y += p.vy * dt * 60;
+        p.life -= 0.02 * dt * 60;
+        p.vy += 0.1 * dt * 60;
+        
+        if (p.life <= 0) {
+          particles.splice(i, 1);
+        }
+      }
+    }
+    
+    function drawBackground() {
+      // Sky gradient
+      const skyGrad = ctx.createLinearGradient(0, 0, 0, GAME_HEIGHT);
+      skyGrad.addColorStop(0, '#87ceeb');
+      skyGrad.addColorStop(0.5, '#b4d7e8');
+      skyGrad.addColorStop(1, '#98d4bb');
+      ctx.fillStyle = skyGrad;
+      ctx.fillRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
+      
+      // Sun
+      ctx.fillStyle = '#f9dc5c';
+      ctx.beginPath();
+      ctx.arc(680, 80, 45, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillStyle = '#fff8dc';
+      ctx.beginPath();
+      ctx.arc(680, 80, 35, 0, Math.PI * 2);
+      ctx.fill();
+      
+      // Distant mountains
+      ctx.fillStyle = '#7eb8a6';
+      ctx.beginPath();
+      ctx.moveTo(0, 280);
+      ctx.lineTo(150, 180);
+      ctx.lineTo(300, 260);
+      ctx.lineTo(450, 160);
+      ctx.lineTo(600, 240);
+      ctx.lineTo(750, 170);
+      ctx.lineTo(GAME_WIDTH, 250);
+      ctx.lineTo(GAME_WIDTH, 350);
+      ctx.lineTo(0, 350);
+      ctx.fill();
+      
+      // Closer hills
+      ctx.fillStyle = '#5fa88f';
+      ctx.beginPath();
+      ctx.moveTo(0, 320);
+      ctx.lineTo(200, 280);
+      ctx.lineTo(400, 310);
+      ctx.lineTo(600, 270);
+      ctx.lineTo(GAME_WIDTH, 300);
+      ctx.lineTo(GAME_WIDTH, 380);
+      ctx.lineTo(0, 380);
+      ctx.fill();
+      
+      // Ground / road area
+      ctx.fillStyle = '#4a7c59';
+      ctx.fillRect(0, GROUND_Y - LANES * LANE_HEIGHT, GAME_WIDTH, LANES * LANE_HEIGHT + 120);
+      
+      // Lane dividers
+      ctx.strokeStyle = 'rgba(255,255,255,0.2)';
+      ctx.lineWidth = 2;
+      ctx.setLineDash([20, 20]);
+      for (let i = 1; i < LANES; i++) {
+        const y = GROUND_Y - i * LANE_HEIGHT;
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(GAME_WIDTH, y);
+        ctx.stroke();
+      }
+      ctx.setLineDash([]);
+      
+      // Road lines (animated)
+      const lineOffset = (distance * 2) % 40;
+      ctx.fillStyle = 'rgba(255,255,255,0.15)';
+      for (let x = -lineOffset; x < GAME_WIDTH; x += 40) {
+        ctx.fillRect(x, GROUND_Y + 20, 25, 4);
+      }
+    }
+    
+    function drawPlayer() {
+      const bobY = Math.sin(player.bobOffset) * 3;
+      const x = player.x;
+      const y = player.y + bobY;
+      
+      ctx.font = '48px serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('🐻', x + player.width / 2, y);
+    }
+    
+    function drawCollectibles() {
+      ctx.font = '36px serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      
+      for (const c of collectibles) {
+        let y = c.y;
+        if (c.bobOffset !== undefined) {
+          y += Math.sin(c.bobOffset) * 4;
+        }
+        ctx.fillText(c.emoji, c.x + c.width / 2, y);
+      }
+    }
+    
+    function drawParticles() {
+      for (const p of particles) {
+        ctx.globalAlpha = p.life;
+        ctx.fillStyle = p.color;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size * p.life, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      ctx.globalAlpha = 1;
+    }
+    
+    function draw() {
+      ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
+      
+      drawBackground();
+      drawCollectibles();
+      drawPlayer();
+      drawParticles();
+    }
+    
+    function gameLoop(timestamp) {
+      deltaTime = Math.min((timestamp - lastTime) / 1000, 0.1);
+      lastTime = timestamp;
+      
+      update(deltaTime);
+      draw();
+      
+      requestAnimationFrame(gameLoop);
+    }
+    
+    // Input handling
+    function moveUp() {
+      if (gameState === 'playing' && player.targetLane > 0) {
+        player.targetLane--;
+      }
+    }
+    
+    function moveDown() {
+      if (gameState === 'playing' && player.targetLane < LANES - 1) {
+        player.targetLane++;
+      }
+    }
+    
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowUp' || e.key === 'w' || e.key === 'W') {
+        e.preventDefault();
+        moveUp();
+      } else if (e.key === 'ArrowDown' || e.key === 's' || e.key === 'S') {
+        e.preventDefault();
+        moveDown();
+      } else if (e.key === ' ' || e.key === 'p' || e.key === 'P') {
+        e.preventDefault();
+        if (gameState === 'playing') pauseGame();
+        else if (gameState === 'paused') resumeGame();
+      } else if (e.key === 'Enter') {
+        if (gameState === 'title' || gameState === 'gameover') startGame();
+      }
+    });
+    
+    // Touch handling
+    let touchStartY = 0;
+    let touchStartTime = 0;
+    
+    canvas.addEventListener('touchstart', (e) => {
+      e.preventDefault();
+      touchStartY = e.touches[0].clientY;
+      touchStartTime = Date.now();
+    }, { passive: false });
+    
+    canvas.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      const touchEndY = e.changedTouches[0].clientY;
+      const deltaY = touchEndY - touchStartY;
+      const deltaT = Date.now() - touchStartTime;
+      
+      if (Math.abs(deltaY) > 30 && deltaT < 300) {
+        if (deltaY < 0) moveUp();
+        else moveDown();
+      } else if (deltaT < 200 && Math.abs(deltaY) < 20) {
+        // Tap - move toward tap position
+        const rect = canvas.getBoundingClientRect();
+        const tapY = (e.changedTouches[0].clientY - rect.top) / rect.height * GAME_HEIGHT;
+        const playerY = getLaneY(player.targetLane);
+        if (tapY < playerY - 20) moveUp();
+        else if (tapY > playerY + 20) moveDown();
+      }
+    }, { passive: false });
+    
+    // Button handlers
+    document.getElementById('start-btn').addEventListener('click', startGame);
+    document.getElementById('play-again-btn').addEventListener('click', startGame);
+    document.getElementById('resume-btn').addEventListener('click', resumeGame);
+    document.getElementById('restart-pause-btn').addEventListener('click', startGame);
+    document.getElementById('pause-btn').addEventListener('click', () => {
+      if (gameState === 'playing') pauseGame();
+      else if (gameState === 'paused') resumeGame();
+    });
+    
+    // Sound toggle
+    function updateSoundUI() {
+      const btns = document.querySelectorAll('.sound-toggle, #sound-toggle-title');
+      btns.forEach(btn => btn.textContent = soundEnabled ? '🔊' : '🔇');
+    }
+    
+    document.getElementById('sound-toggle-title').addEventListener('click', () => {
+      soundEnabled = !soundEnabled;
+      updateSoundUI();
+    });
+    
+    // Detect mobile
+    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    document.querySelector('.desktop-hint').style.display = isMobile ? 'none' : 'inline';
+    document.querySelector('.mobile-hint').style.display = isMobile ? 'inline' : 'none';
+    
+    // Initialize
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+    updateBadgesUI();
+    document.getElementById('best-score').textContent = bestScore;
+    player.y = getLaneY(1);
+    lastTime = performance.now();
+    requestAnimationFrame(gameLoop);
+  </script>
+</body>
+</html>
