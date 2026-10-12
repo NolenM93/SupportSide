@@ -71,7 +71,7 @@ export function AccountClient({
             </div>
             <div className="text-sm text-[var(--secondary)]">
               {canPublish ? "You can publish." : "Subscribe to publish a live site."}
-              {!stripe && " Stripe is not connected yet — publishing is open in this environment."}
+              {!stripe && " Stripe is not connected yet, so publishing is open in this environment."}
             </div>
           </div>
         </div>

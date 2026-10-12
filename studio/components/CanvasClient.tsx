@@ -214,7 +214,7 @@ export function CanvasClient({
                 </p>
                 <div className="mt-3 flex flex-col gap-2">
                   <button type="button" className="ios-btn" disabled>
-                    Add credits — coming soon
+                    Add credits (coming soon)
                   </button>
                   <a
                     className="ios-btn ios-btn-ghost"

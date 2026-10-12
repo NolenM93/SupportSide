@@ -224,7 +224,7 @@ export function EditorClient({ site: initial }: { site: SiteRecord }) {
         <aside className="flex flex-col border-white/10 p-3 lg:border-l">
           <p className="text-xs font-semibold text-[var(--secondary)]">Design agent</p>
           <p className="mt-1 text-[12px] leading-snug text-[var(--tertiary)]">
-            Tell it what to change — colors, cards, spacing, order — like you would tell a developer.
+            Tell it what to change (colors, cards, spacing, order) like you would tell a developer.
           </p>
 
           <div ref={chatRef} className="mt-3 max-h-[220px] space-y-2 overflow-y-auto pr-1">

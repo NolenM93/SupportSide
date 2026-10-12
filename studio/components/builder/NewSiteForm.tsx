@@ -37,7 +37,7 @@ export function NewSiteForm() {
       <h1 className="large-title mt-1 mb-3">New site</h1>
       <p className="mb-5 text-[var(--secondary)]">
         Describe the business. We fill Home, About, Services, and Contact. Then you keep
-        prompting — “rounder cards”, “darker green”, “move contact up” — until it looks right.
+        prompting (“rounder cards”, “darker green”, “move contact up”) until it looks right.
         We host it.
       </p>
       <textarea

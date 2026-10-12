@@ -15,7 +15,7 @@ Rules:
 - Make it actually usable: seed realistic sample data, wire buttons, keep state in memory or localStorage.
 - Iterate from CURRENT FILES when provided. Do not start over unless the user asks for a new app.
 - Do not include markdown, comments about being an AI, or placeholders like TODO.
-- No window.parent / window.top access. No tracking pixels. No external scripts or fonts from CDNs — use system fonts.
+- No window.parent / window.top access. No tracking pixels. No external scripts or fonts from CDNs; use system fonts.
 - Keep CSS and JS practical. Target a phone-width layout (max-width ~430px).`;
 
 export function buildUserPrompt(input: {

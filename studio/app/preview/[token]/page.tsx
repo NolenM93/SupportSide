@@ -13,7 +13,7 @@ export default async function DraftPreviewPage({
   return (
     <div>
       <p className="bg-amber-100 px-4 py-2 text-center text-sm text-amber-950">
-        Draft preview — not the live site.
+        Draft preview (not the live site).
       </p>
       <SiteView site={site} />
     </div>
