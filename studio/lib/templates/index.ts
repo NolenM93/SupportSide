@@ -55,7 +55,7 @@ function blankFiles(): FileTree {
           </div>
         </div>
         <section class="card">
-          <p class="muted">Describe what this app should do. Inventory, jobs, booking, a client portal — the next prompt will shape this screen.</p>
+          <p class="muted">Describe what this app should do. Inventory, jobs, booking, a client portal: the next prompt will shape this screen.</p>
         </section>
       </main>`,
     ),

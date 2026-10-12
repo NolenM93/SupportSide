@@ -284,5 +284,5 @@ export function describeSpec(spec: AppSpec, iterating: boolean) {
   if (iterating) {
     return `Updated ${spec.name}: ${theme} ${spec.kind} app with ${spec.items.length} live records. Try Home, New, and the action on each card.`;
   }
-  return `Built ${spec.name} — a ${theme} ${spec.kind} app with today's sample work, search, and a New tab so you can add records.`;
+  return `Built ${spec.name}, a ${theme} ${spec.kind} app with today's sample work, search, and a New tab so you can add records.`;
 }

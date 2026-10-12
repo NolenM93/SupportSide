@@ -9,7 +9,7 @@ export default async function MarketingPage() {
       <p className="chip w-fit">Support Side</p>
       <h1 className="large-title mt-4">A site for your business. We host it.</h1>
       <p className="mt-4 text-lg text-[var(--secondary)]">
-        Describe the company. Edit the words and colors. Publish. You stay on the tools — we keep
+        Describe the company. Edit the words and colors. Publish. You stay on the tools, and we keep
         the lights on.
       </p>
       <ul className="mt-8 space-y-2 text-sm text-[var(--secondary)]">

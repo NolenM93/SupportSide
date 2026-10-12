@@ -51,7 +51,7 @@ export function ProjectsHome({
           <div className="glass-card rounded-[24px] p-6">
             <h2 className="text-xl font-semibold tracking-tight">Describe the app you need</h2>
             <p className="mt-2 text-[var(--secondary)]">
-              Prompt Studio to design a business web app — inventory, jobs, booking, or a blank canvas.
+              Prompt Studio to design a business web app: inventory, jobs, booking, or a blank canvas.
             </p>
             <Link href="/new" className="ios-btn mt-5 w-full">
               Start building

@@ -132,6 +132,6 @@ export function buildSiteFromPrompt(prompt: string, theme?: Partial<Theme>): Sit
     theme: { ...DEFAULT_THEME, ...theme },
     sections,
     pageTitle: `${name} · ${area}`,
-    metaDescription: `${name} — service you can actually get on the phone. ${area}.`,
+    metaDescription: `${name}: service you can actually get on the phone. ${area}.`,
   };
 }

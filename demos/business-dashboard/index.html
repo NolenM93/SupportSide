@@ -869,7 +869,7 @@
           </div>
           <div class="alert-content">
             <div class="alert-title">Overdue: ${inv.id}</div>
-            <div class="alert-text">${inv.customer} owes ${formatCurrency(inv.amount)} - due ${new Date(inv.due).toLocaleDateString()}</div>
+            <div class="alert-text">${inv.customer} owes ${formatCurrency(inv.amount)}, due ${new Date(inv.due).toLocaleDateString()}</div>
           </div>
           <button class="alert-action" onclick="sendReminder('${inv.id}')">Send Reminder</button>
         </div>

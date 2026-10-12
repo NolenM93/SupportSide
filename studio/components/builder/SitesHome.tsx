@@ -20,7 +20,7 @@ export function SitesHome({ sites }: { sites: SiteRecord[] }) {
         <div className="glass-card rounded-[24px] p-6">
           <h2 className="text-xl font-semibold">Describe the business</h2>
           <p className="mt-2 text-[var(--secondary)]">
-            We generate a one-page site. You keep prompting the design — colors, cards, spacing —
+            We generate a one-page site. You keep prompting the design (colors, cards, spacing),
             then publish. We host it.
           </p>
           <Link href="/sites/new" className="ios-btn mt-5 w-full">

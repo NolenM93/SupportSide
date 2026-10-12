@@ -29,7 +29,7 @@ export default function Home() {
         <p className="text-xl text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">
           Input your children&apos;s grades, curricula, and schedule
           constraints. Our AI generates a personalized weekly pacing guide so
-          you can focus on teaching — not planning.
+          you can focus on teaching, not planning.
         </p>
         <Link
           href="/schedule"
