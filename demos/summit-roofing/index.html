@@ -116,6 +116,40 @@
     .mobile-menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
     .mobile-menu-btn svg { width: 28px; height: 28px; color: var(--gray-700); }
 
+    .mobile-nav {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: white;
+      box-shadow: var(--shadow-lg);
+      padding: 16px 20px;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .mobile-nav.open { display: flex; }
+
+    .mobile-nav a {
+      color: var(--gray-700);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      padding: 8px 0;
+    }
+
+    .mobile-nav a:hover { color: var(--primary); }
+
+    .mobile-nav .nav-cta {
+      background: var(--accent);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      text-align: center;
+      margin-top: 8px;
+    }
+
     @media (max-width: 768px) {
       nav { display: none; }
       .mobile-menu-btn { display: block; }
@@ -201,218 +235,47 @@
       border-radius: 20px;
       height: 350px;
       overflow: hidden;
-      background: linear-gradient(180deg, #87CEEB 0%, #E0F4FF 60%, #90EE90 60%, #228B22 100%);
+      background: linear-gradient(180deg, #e8f4fc 0%, #f0f8ff 50%, #e8f5e9 50%, #c8e6c9 100%);
     }
 
-    .hero-house {
+    .hero-illustration {
       position: absolute;
-      bottom: 40px;
+      bottom: 30px;
       left: 50%;
       transform: translateX(-50%);
-      width: 280px;
-    }
-
-    .house-body {
-      position: relative;
-      width: 220px;
-      height: 140px;
-      background: linear-gradient(135deg, #F5F5DC 0%, #DEB887 100%);
-      margin: 0 auto;
-      border-radius: 4px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-    }
-
-    .house-roof {
-      position: absolute;
-      top: -70px;
-      left: -30px;
-      width: 0;
-      height: 0;
-      border-left: 140px solid transparent;
-      border-right: 140px solid transparent;
-      border-bottom: 80px solid #8B4513;
-    }
-
-    .house-roof::after {
-      content: '';
-      position: absolute;
-      top: 10px;
-      left: -130px;
-      width: 0;
-      height: 0;
-      border-left: 130px solid transparent;
-      border-right: 130px solid transparent;
-      border-bottom: 70px solid #A0522D;
-    }
-
-    .roof-tiles {
-      position: absolute;
-      top: -65px;
-      left: -25px;
-      width: 270px;
-      height: 75px;
-      background: repeating-linear-gradient(
-        90deg,
-        transparent,
-        transparent 18px,
-        rgba(0,0,0,0.1) 18px,
-        rgba(0,0,0,0.1) 20px
-      ),
-      repeating-linear-gradient(
-        180deg,
-        transparent,
-        transparent 14px,
-        rgba(0,0,0,0.15) 14px,
-        rgba(0,0,0,0.15) 16px
-      );
-      clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
-    }
-
-    .house-door {
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 45px;
-      height: 75px;
-      background: linear-gradient(135deg, #5D3A1A, #8B4513);
-      border-radius: 4px 4px 0 0;
-      box-shadow: inset -3px 0 8px rgba(0,0,0,0.3);
-    }
-
-    .door-handle {
-      position: absolute;
-      right: 8px;
-      top: 50%;
-      width: 8px;
-      height: 8px;
-      background: #FFD700;
-      border-radius: 50%;
-      box-shadow: 0 0 4px rgba(255,215,0,0.5);
-    }
-
-    .house-window {
-      position: absolute;
-      width: 40px;
-      height: 50px;
-      background: linear-gradient(135deg, #87CEEB, #ADD8E6);
-      border: 4px solid #FFF8DC;
-      border-radius: 4px;
-      box-shadow: inset 0 0 10px rgba(135,206,235,0.5);
-    }
-
-    .house-window::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: #FFF8DC;
-      transform: translateY(-50%);
-    }
-
-    .house-window::after {
-      content: '';
-      position: absolute;
-      left: 50%;
-      top: 0;
-      bottom: 0;
-      width: 3px;
-      background: #FFF8DC;
-      transform: translateX(-50%);
-    }
-
-    .window-left { left: 25px; top: 25px; }
-    .window-right { right: 25px; top: 25px; }
-
-    .house-chimney {
-      position: absolute;
-      top: -100px;
-      right: 40px;
-      width: 30px;
-      height: 50px;
-      background: linear-gradient(135deg, #CD5C5C, #8B0000);
-      border-radius: 2px;
-    }
-
-    .chimney-cap {
-      position: absolute;
-      top: -6px;
-      left: -4px;
-      width: 38px;
-      height: 8px;
-      background: #8B0000;
-      border-radius: 2px;
-    }
-
-    .hero-cloud {
-      position: absolute;
-      background: white;
-      border-radius: 50px;
-      opacity: 0.9;
-    }
-
-    .cloud-1 {
-      width: 80px;
-      height: 30px;
-      top: 30px;
-      left: 20px;
-      box-shadow: 25px -10px 0 10px white, 55px 0 0 5px white;
-    }
-
-    .cloud-2 {
-      width: 60px;
-      height: 25px;
-      top: 50px;
-      right: 30px;
-      box-shadow: 20px -8px 0 8px white, 40px 0 0 4px white;
+      width: 320px;
+      height: 220px;
     }
 
     .hero-sun {
       position: absolute;
-      top: 25px;
-      right: 100px;
+      top: 20px;
+      right: 40px;
       width: 50px;
       height: 50px;
-      background: #FFD700;
+      background: radial-gradient(circle, #FFE082 0%, #FFD54F 50%, #FFC107 100%);
       border-radius: 50%;
-      box-shadow: 0 0 30px #FFD700, 0 0 60px rgba(255,215,0,0.4);
+      box-shadow: 0 0 30px rgba(255,193,7,0.5), 0 0 60px rgba(255,193,7,0.3);
     }
 
-    .hero-tree {
+    .hero-cloud {
       position: absolute;
-      bottom: 0;
+      fill: white;
+      opacity: 0.9;
     }
 
-    .tree-trunk {
-      width: 20px;
-      height: 50px;
-      background: linear-gradient(90deg, #8B4513, #A0522D);
-      margin: 0 auto;
-      border-radius: 3px;
-    }
-
-    .tree-foliage {
-      width: 60px;
-      height: 80px;
-      background: linear-gradient(135deg, #228B22, #006400);
-      border-radius: 50% 50% 45% 45%;
-      margin-bottom: -15px;
-      box-shadow: inset -10px 0 15px rgba(0,0,0,0.2);
-    }
-
-    .tree-left { left: 15px; }
-    .tree-right { right: 20px; }
-    .tree-right .tree-foliage { width: 50px; height: 65px; }
-
-    .hero-grass {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
+    .cloud-1 {
+      width: 100px;
       height: 40px;
-      background: linear-gradient(180deg, #32CD32, #228B22);
+      top: 25px;
+      left: 30px;
+    }
+
+    .cloud-2 {
+      width: 80px;
+      height: 32px;
+      top: 45px;
+      right: 120px;
     }
 
     .trust-badge {
@@ -461,22 +324,9 @@
         margin: 24px auto 0;
         border-radius: 16px;
       }
-      .hero-house { width: 200px; bottom: 28px; }
-      .house-body { width: 160px; height: 100px; }
-      .house-roof { top: -50px; left: -20px; border-left-width: 100px; border-right-width: 100px; border-bottom-width: 58px; }
-      .house-roof::after { top: 7px; left: -93px; border-left-width: 93px; border-right-width: 93px; border-bottom-width: 50px; }
-      .roof-tiles { top: -47px; left: -17px; width: 194px; height: 54px; }
-      .house-window { width: 30px; height: 38px; }
-      .window-left { left: 18px; top: 18px; }
-      .window-right { right: 18px; top: 18px; }
-      .house-door { width: 32px; height: 55px; }
-      .door-handle { width: 6px; height: 6px; right: 5px; }
-      .house-chimney { top: -72px; right: 28px; width: 22px; height: 36px; }
-      .chimney-cap { width: 28px; height: 6px; left: -3px; top: -4px; }
-      .hero-sun { width: 36px; height: 36px; top: 15px; right: 50px; box-shadow: 0 0 20px #FFD700, 0 0 40px rgba(255,215,0,0.4); }
+      .hero-illustration { width: 240px; height: 165px; bottom: 20px; }
+      .hero-sun { width: 36px; height: 36px; top: 15px; right: 25px; box-shadow: 0 0 20px rgba(255,193,7,0.4), 0 0 40px rgba(255,193,7,0.25); }
       .hero-cloud { display: none; }
-      .hero-tree { display: none; }
-      .hero-grass { height: 28px; }
       .trust-badge { bottom: 10px; right: 10px; padding: 8px 12px; gap: 6px; border-radius: 10px; }
       .trust-stars svg { width: 12px; height: 12px; }
       .trust-rating { font-size: 12px; }
@@ -965,9 +815,15 @@
         <a href="#testimonials">Reviews</a>
         <a href="#estimate" class="nav-cta">Get Estimate</a>
       </nav>
-      <button class="mobile-menu-btn" aria-label="Menu">
+      <button class="mobile-menu-btn" aria-label="Menu" onclick="toggleMobileNav()">
         <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
       </button>
+    </div>
+    <div class="mobile-nav" id="mobile-nav">
+      <a href="#services" onclick="closeMobileNav()">Services</a>
+      <a href="#gallery" onclick="closeMobileNav()">Our Work</a>
+      <a href="#testimonials" onclick="closeMobileNav()">Reviews</a>
+      <a href="#estimate" class="nav-cta" onclick="closeMobileNav()">Get Estimate</a>
     </div>
   </header>
 
@@ -986,31 +842,111 @@
       </div>
       <div class="hero-image">
         <div class="hero-sun"></div>
-        <div class="hero-cloud cloud-1"></div>
-        <div class="hero-cloud cloud-2"></div>
-        <div class="hero-tree tree-left">
-          <div class="tree-foliage"></div>
-          <div class="tree-trunk"></div>
-        </div>
-        <div class="hero-tree tree-right">
-          <div class="tree-foliage"></div>
-          <div class="tree-trunk"></div>
-        </div>
-        <div class="hero-grass"></div>
-        <div class="hero-house">
-          <div class="house-chimney">
-            <div class="chimney-cap"></div>
-          </div>
-          <div class="house-roof"></div>
-          <div class="roof-tiles"></div>
-          <div class="house-body">
-            <div class="house-window window-left"></div>
-            <div class="house-window window-right"></div>
-            <div class="house-door">
-              <div class="door-handle"></div>
-            </div>
-          </div>
-        </div>
+        <svg class="hero-cloud cloud-1" viewBox="0 0 100 40"><ellipse cx="30" cy="25" rx="20" ry="12"/><ellipse cx="50" cy="20" rx="25" ry="15"/><ellipse cx="75" cy="25" rx="18" ry="10"/></svg>
+        <svg class="hero-cloud cloud-2" viewBox="0 0 80 32"><ellipse cx="25" cy="20" rx="16" ry="10"/><ellipse cx="42" cy="16" rx="20" ry="12"/><ellipse cx="60" cy="20" rx="14" ry="8"/></svg>
+        <svg class="hero-illustration" viewBox="0 0 320 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Ground/Lawn -->
+          <rect x="0" y="175" width="320" height="45" fill="url(#grass)"/>
+          
+          <!-- House Shadow -->
+          <ellipse cx="160" cy="195" rx="100" ry="12" fill="rgba(0,0,0,0.08)"/>
+          
+          <!-- House Body -->
+          <rect x="60" y="100" width="200" height="100" rx="2" fill="#F5F5F0"/>
+          <rect x="60" y="100" width="200" height="100" rx="2" fill="url(#houseFace)"/>
+          
+          <!-- House Siding Lines -->
+          <line x1="60" y1="120" x2="260" y2="120" stroke="#E0DED8" stroke-width="1"/>
+          <line x1="60" y1="140" x2="260" y2="140" stroke="#E0DED8" stroke-width="1"/>
+          <line x1="60" y1="160" x2="260" y2="160" stroke="#E0DED8" stroke-width="1"/>
+          <line x1="60" y1="180" x2="260" y2="180" stroke="#E0DED8" stroke-width="1"/>
+          
+          <!-- Roof -->
+          <polygon points="50,100 160,30 270,100" fill="url(#roofGradient)"/>
+          <polygon points="55,100 160,35 265,100" fill="url(#roofShingles)"/>
+          
+          <!-- Roof Ridge -->
+          <line x1="160" y1="30" x2="160" y2="35" stroke="#5D4037" stroke-width="3" stroke-linecap="round"/>
+          
+          <!-- Chimney -->
+          <rect x="200" y="40" width="24" height="45" fill="#8D6E63"/>
+          <rect x="197" y="38" width="30" height="6" rx="1" fill="#6D4C41"/>
+          <rect x="200" y="40" width="24" height="45" fill="url(#chimneyShade)"/>
+          
+          <!-- Left Window -->
+          <rect x="85" y="115" width="45" height="55" rx="2" fill="#B3E5FC"/>
+          <rect x="85" y="115" width="45" height="55" rx="2" fill="url(#windowGlass)"/>
+          <rect x="85" y="115" width="45" height="55" rx="2" stroke="#FFFDE7" stroke-width="4"/>
+          <line x1="107.5" y1="115" x2="107.5" y2="170" stroke="#FFFDE7" stroke-width="3"/>
+          <line x1="85" y1="142.5" x2="130" y2="142.5" stroke="#FFFDE7" stroke-width="3"/>
+          
+          <!-- Right Window -->
+          <rect x="190" y="115" width="45" height="55" rx="2" fill="#B3E5FC"/>
+          <rect x="190" y="115" width="45" height="55" rx="2" fill="url(#windowGlass)"/>
+          <rect x="190" y="115" width="45" height="55" rx="2" stroke="#FFFDE7" stroke-width="4"/>
+          <line x1="212.5" y1="115" x2="212.5" y2="170" stroke="#FFFDE7" stroke-width="3"/>
+          <line x1="190" y1="142.5" x2="235" y2="142.5" stroke="#FFFDE7" stroke-width="3"/>
+          
+          <!-- Door -->
+          <rect x="138" y="130" width="44" height="70" rx="2" fill="url(#doorGradient)"/>
+          <rect x="138" y="130" width="44" height="70" rx="2" stroke="#5D4037" stroke-width="2"/>
+          <circle cx="172" cy="168" r="4" fill="#FFD54F"/>
+          <circle cx="172" cy="168" r="2.5" fill="#FFC107"/>
+          
+          <!-- Porch Step -->
+          <rect x="130" y="195" width="60" height="8" rx="1" fill="#E0E0E0"/>
+          <rect x="125" y="198" width="70" height="8" rx="1" fill="#BDBDBD"/>
+          
+          <!-- Left Tree -->
+          <rect x="18" y="155" width="12" height="40" fill="#8D6E63"/>
+          <ellipse cx="24" cy="130" rx="28" ry="35" fill="#4CAF50"/>
+          <ellipse cx="24" cy="125" rx="22" ry="28" fill="#66BB6A"/>
+          
+          <!-- Right Tree -->
+          <rect x="288" y="160" width="10" height="35" fill="#8D6E63"/>
+          <ellipse cx="293" cy="138" rx="22" ry="28" fill="#4CAF50"/>
+          <ellipse cx="293" cy="134" rx="17" ry="22" fill="#66BB6A"/>
+          
+          <!-- Bushes -->
+          <ellipse cx="55" cy="190" rx="20" ry="14" fill="#43A047"/>
+          <ellipse cx="265" cy="190" rx="18" ry="12" fill="#43A047"/>
+          
+          <!-- Gradients -->
+          <defs>
+            <linearGradient id="grass" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#66BB6A"/>
+              <stop offset="100%" stop-color="#43A047"/>
+            </linearGradient>
+            <linearGradient id="houseFace" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="rgba(0,0,0,0.02)"/>
+              <stop offset="50%" stop-color="rgba(255,255,255,0.05)"/>
+              <stop offset="100%" stop-color="rgba(0,0,0,0.04)"/>
+            </linearGradient>
+            <linearGradient id="roofGradient" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#6D4C41"/>
+              <stop offset="100%" stop-color="#5D4037"/>
+            </linearGradient>
+            <linearGradient id="roofShingles" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#8D6E63"/>
+              <stop offset="30%" stop-color="#795548"/>
+              <stop offset="60%" stop-color="#8D6E63"/>
+              <stop offset="100%" stop-color="#6D4C41"/>
+            </linearGradient>
+            <linearGradient id="chimneyShade" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="rgba(0,0,0,0.1)"/>
+              <stop offset="100%" stop-color="rgba(255,255,255,0.05)"/>
+            </linearGradient>
+            <linearGradient id="windowGlass" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="rgba(255,255,255,0.4)"/>
+              <stop offset="100%" stop-color="rgba(129,212,250,0.3)"/>
+            </linearGradient>
+            <linearGradient id="doorGradient" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#6D4C41"/>
+              <stop offset="50%" stop-color="#8D6E63"/>
+              <stop offset="100%" stop-color="#5D4037"/>
+            </linearGradient>
+          </defs>
+        </svg>
         <div class="trust-badge">
           <div class="trust-stars">
             <svg viewBox="0 0 20 20"><path d="M10 1l2.39 6.17H19l-5.3 4.08 2.03 6.58L10 13.77l-5.73 4.06 2.03-6.58L1 7.17h6.61z"/></svg>
@@ -1227,10 +1163,10 @@
                 <select id="roof-size">
                   <option value="">Select size...</option>
                   <option value="1000">Under 1,000</option>
-                  <option value="1500">1,000 - 1,500</option>
-                  <option value="2000">1,500 - 2,000</option>
-                  <option value="2500">2,000 - 2,500</option>
-                  <option value="3000">2,500 - 3,000</option>
+                  <option value="1500">1,000 to 1,500</option>
+                  <option value="2000">1,500 to 2,000</option>
+                  <option value="2500">2,000 to 2,500</option>
+                  <option value="3000">2,500 to 3,000</option>
                   <option value="3500">3,000+</option>
                 </select>
               </div>
@@ -1248,7 +1184,7 @@
             
             <div id="estimate-result" class="estimate-result">
               <div class="estimate-label">Estimated Price Range</div>
-              <div class="estimate-range" id="price-range">$0 - $0</div>
+              <div class="estimate-range" id="price-range">$0 to $0</div>
             </div>
 
             <div id="quote-form" class="quote-form">
@@ -1372,7 +1308,7 @@
       const minFormatted = '$' + baseMin.toLocaleString();
       const maxFormatted = '$' + baseMax.toLocaleString();
 
-      document.getElementById('price-range').textContent = minFormatted + ' - ' + maxFormatted;
+      document.getElementById('price-range').textContent = minFormatted + ' to ' + maxFormatted;
       document.getElementById('estimate-result').classList.add('show');
       document.getElementById('quote-form').classList.add('show');
     }
@@ -1427,6 +1363,14 @@
       document.getElementById('email').value = '';
       document.getElementById('address').value = '';
       document.getElementById('notes').value = '';
+    }
+
+    function toggleMobileNav() {
+      document.getElementById('mobile-nav').classList.toggle('open');
+    }
+
+    function closeMobileNav() {
+      document.getElementById('mobile-nav').classList.remove('open');
     }
   </script>
 </body>
