@@ -12,6 +12,66 @@
   <link rel="stylesheet" href="../assets/css/tailwind.css" />
   <link rel="stylesheet" href="../assets/css/glass.css" />
   <link rel="stylesheet" href="../assets/css/custom.css" />
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+  <style>
+    /* Stanza 3D hero canvas styling */
+    #stanza-hero-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+    #stanza-hero-fallback {
+      position: relative;
+      z-index: 1;
+    }
+    .stanza-hero-container {
+      position: relative;
+      min-height: 16rem;
+    }
+    /* Mobile notice banner */
+    .mobile-notice {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.625rem 1rem;
+      margin-bottom: 1rem;
+      font-size: 0.8rem;
+      color: var(--ink-3);
+      background: rgba(251, 191, 36, 0.08);
+      border: 1px solid rgba(251, 191, 36, 0.25);
+      border-radius: 0.75rem;
+    }
+    .mobile-notice svg {
+      flex-shrink: 0;
+      color: #fbbf24;
+    }
+    .mobile-notice-inline {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin-left: 0.5rem;
+      padding: 0.25rem 0.6rem;
+      font-size: 0.65rem;
+      color: var(--ink-3);
+      background: rgba(251, 191, 36, 0.08);
+      border: 1px solid rgba(251, 191, 36, 0.2);
+      border-radius: 999px;
+      vertical-align: middle;
+    }
+    .mobile-notice-inline svg {
+      width: 0.85rem;
+      height: 0.85rem;
+      color: #fbbf24;
+    }
+  </style>
 </head>
 <body class="font-sans text-ink-2 antialiased">
 
@@ -39,13 +99,21 @@
   </header>
 
   <main id="main" class="relative z-10">
-    <article class="pt-28 md:pt-36 pb-20 md:pb-28">
+    <article class="pt-32 md:pt-40 pb-20 md:pb-28">
       <div class="max-w-3xl mx-auto px-6">
         
         <p class="section-kicker text-left">Personal Project</p>
         <h1 class="text-4xl md:text-5xl font-extrabold text-ink-1 tracking-tight leading-tight mb-4">
           Stanza
         </h1>
+
+        <div class="mobile-notice">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0V12a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 12V5.25" />
+          </svg>
+          <span>The Stanza demo is designed for desktop computers and laptops. It may not work well on mobile devices.</span>
+        </div>
+
         <p class="text-lg text-ink-2 leading-relaxed mb-8 max-w-2xl">
           A spatial decision log for the furniture you already own. Stanza turns an ordinary room photograph into a measured 3D model, lets you rearrange furniture, and keeps a record of every arrangement you tried and why you rejected it.
         </p>
@@ -56,14 +124,15 @@
         </div>
 
         <div class="glass-card glass-edge rounded-2xl overflow-hidden mb-10">
-          <div class="project-media project-media--cyan h-64 flex items-center justify-center">
-            <svg class="w-24 h-24 opacity-60" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="m21 7.5-9-5.25L3 7.5m18 0-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
-            </svg>
+          <div class="project-media project-media--cyan stanza-hero-container h-64 flex items-center justify-center">
+            <canvas id="stanza-hero-canvas" aria-hidden="true"></canvas>
+            <div id="stanza-hero-fallback">
+              <svg class="w-24 h-24 opacity-60" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m21 7.5-9-5.25L3 7.5m18 0-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
+              </svg>
+            </div>
           </div>
         </div>
-
-        <hr class="neon-hairline mb-10" />
 
         <section class="mb-12">
           <h2 class="text-2xl font-bold text-ink-1 mb-4">What It Does</h2>
@@ -170,9 +239,17 @@
 
         <hr class="neon-hairline mb-10" />
 
-        <div class="flex flex-col sm:flex-row gap-4">
+        <div class="flex flex-col sm:flex-row flex-wrap items-start sm:items-center gap-4">
           <a href="../index.html#work" class="btn-ghost px-6 py-3 text-sm">← Back to Portfolio</a>
-          <a href="https://nolenm93.github.io/Physical-Environment-Decision-Log/" target="_blank" rel="noreferrer" class="btn-neon px-6 py-3 text-sm">Open Live Demo →</a>
+          <span class="inline-flex items-center gap-2">
+            <a href="https://nolenm93.github.io/Physical-Environment-Decision-Log/" target="_blank" rel="noreferrer" class="btn-neon px-6 py-3 text-sm">Open Live Demo →</a>
+            <span class="mobile-notice-inline hidden sm:inline-flex">
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0V12a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 12V5.25" />
+              </svg>
+              Desktop only
+            </span>
+          </span>
           <a href="https://github.com/NolenM93/Physical-Environment-Decision-Log" target="_blank" rel="noreferrer" class="btn-ghost px-6 py-3 text-sm">View on GitHub</a>
         </div>
 
@@ -191,5 +268,222 @@
   </footer>
 
   <script src="../assets/js/ui.js" defer></script>
+  <script type="module">
+    // Stanza 3D Hero: Low-poly room with furniture, auto-rotating with mouse orbit
+    // Uses three.js from CDN (pinned version), respects prefers-reduced-motion
+    (async function initStanzaHero() {
+      const canvas = document.getElementById('stanza-hero-canvas');
+      const fallback = document.getElementById('stanza-hero-fallback');
+      if (!canvas) return;
+
+      // Check WebGL support
+      function hasWebGL() {
+        try {
+          const testCanvas = document.createElement('canvas');
+          return !!(testCanvas.getContext('webgl') || testCanvas.getContext('webgl2'));
+        } catch (e) {
+          return false;
+        }
+      }
+
+      if (!hasWebGL()) {
+        canvas.style.display = 'none';
+        return;
+      }
+
+      // Import three.js from CDN (using import map defined in head)
+      let THREE, OrbitControls;
+      try {
+        THREE = await import('three');
+        const OrbitModule = await import('three/addons/controls/OrbitControls.js');
+        OrbitControls = OrbitModule.OrbitControls;
+      } catch (e) {
+        console.warn('Failed to load three.js, showing fallback:', e.message);
+        canvas.style.display = 'none';
+        return;
+      }
+
+      // Hide fallback icon
+      if (fallback) fallback.style.display = 'none';
+
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const container = canvas.parentElement;
+
+      // Scene setup
+      const scene = new THREE.Scene();
+      scene.background = null; // Transparent
+
+      const camera = new THREE.PerspectiveCamera(40, container.clientWidth / container.clientHeight, 0.1, 100);
+      camera.position.set(4, 3.5, 5);
+      camera.lookAt(0, 0.5, 0);
+
+      const renderer = new THREE.WebGLRenderer({
+        canvas,
+        antialias: true,
+        alpha: true,
+        powerPreference: 'low-power'
+      });
+      renderer.setSize(container.clientWidth, container.clientHeight);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.outputColorSpace = THREE.SRGBColorSpace;
+
+      // Teal accent colors from the site theme
+      const tealMain = 0x22d3ee;
+      const tealDark = 0x0e7490;
+      const darkGray = 0x1a1f2e;
+      const lightGray = 0x2d3548;
+
+      // Materials
+      const floorMat = new THREE.MeshStandardMaterial({ color: darkGray, roughness: 0.9 });
+      const wallMat = new THREE.MeshStandardMaterial({ color: 0x151a26, roughness: 0.85 });
+      const sofaMat = new THREE.MeshStandardMaterial({ color: tealDark, roughness: 0.7 });
+      const tableMat = new THREE.MeshStandardMaterial({ color: lightGray, roughness: 0.6, metalness: 0.1 });
+      const shelfMat = new THREE.MeshStandardMaterial({ color: 0x3f4a5c, roughness: 0.75 });
+      const accentMat = new THREE.MeshStandardMaterial({ color: tealMain, roughness: 0.5, emissive: tealMain, emissiveIntensity: 0.15 });
+
+      // Room group for rotation
+      const room = new THREE.Group();
+
+      // Floor
+      const floor = new THREE.Mesh(new THREE.BoxGeometry(4, 0.1, 4), floorMat);
+      floor.position.y = -0.05;
+      room.add(floor);
+
+      // Back wall
+      const backWall = new THREE.Mesh(new THREE.BoxGeometry(4, 2.5, 0.1), wallMat);
+      backWall.position.set(0, 1.2, -2);
+      room.add(backWall);
+
+      // Side wall (left)
+      const sideWall = new THREE.Mesh(new THREE.BoxGeometry(0.1, 2.5, 4), wallMat);
+      sideWall.position.set(-2, 1.2, 0);
+      room.add(sideWall);
+
+      // Sofa (simple box composition)
+      const sofaGroup = new THREE.Group();
+      const sofaBase = new THREE.Mesh(new THREE.BoxGeometry(1.6, 0.4, 0.7), sofaMat);
+      sofaBase.position.y = 0.2;
+      sofaGroup.add(sofaBase);
+      const sofaBack = new THREE.Mesh(new THREE.BoxGeometry(1.6, 0.5, 0.15), sofaMat);
+      sofaBack.position.set(0, 0.55, -0.275);
+      sofaGroup.add(sofaBack);
+      const sofaArmL = new THREE.Mesh(new THREE.BoxGeometry(0.12, 0.35, 0.7), sofaMat);
+      sofaArmL.position.set(-0.74, 0.475, 0);
+      sofaGroup.add(sofaArmL);
+      const sofaArmR = new THREE.Mesh(new THREE.BoxGeometry(0.12, 0.35, 0.7), sofaMat);
+      sofaArmR.position.set(0.74, 0.475, 0);
+      sofaGroup.add(sofaArmR);
+      sofaGroup.position.set(-0.6, 0, -1.3);
+      room.add(sofaGroup);
+
+      // Coffee table
+      const tableGroup = new THREE.Group();
+      const tableTop = new THREE.Mesh(new THREE.BoxGeometry(0.9, 0.06, 0.5), tableMat);
+      tableTop.position.y = 0.35;
+      tableGroup.add(tableTop);
+      const legGeo = new THREE.BoxGeometry(0.05, 0.32, 0.05);
+      const positions = [[-0.38, 0.16, -0.18], [0.38, 0.16, -0.18], [-0.38, 0.16, 0.18], [0.38, 0.16, 0.18]];
+      positions.forEach(pos => {
+        const leg = new THREE.Mesh(legGeo, tableMat);
+        leg.position.set(...pos);
+        tableGroup.add(leg);
+      });
+      tableGroup.position.set(-0.6, 0, -0.3);
+      room.add(tableGroup);
+
+      // Bookshelf
+      const shelfGroup = new THREE.Group();
+      const shelfFrame = new THREE.Mesh(new THREE.BoxGeometry(0.8, 1.5, 0.3), shelfMat);
+      shelfFrame.position.y = 0.75;
+      shelfGroup.add(shelfFrame);
+      // Shelves with teal accent items
+      const shelfBoard = new THREE.BoxGeometry(0.7, 0.04, 0.25);
+      [0.35, 0.7, 1.05, 1.4].forEach((y, i) => {
+        const board = new THREE.Mesh(shelfBoard, shelfMat);
+        board.position.y = y;
+        shelfGroup.add(board);
+        // Add small accent boxes as "books"
+        if (i < 3) {
+          const book = new THREE.Mesh(new THREE.BoxGeometry(0.08 + Math.random() * 0.06, 0.18, 0.15), i % 2 === 0 ? accentMat : tableMat);
+          book.position.set(-0.2 + i * 0.15, y + 0.11, 0);
+          shelfGroup.add(book);
+        }
+      });
+      shelfGroup.position.set(-1.5, 0, 0.5);
+      room.add(shelfGroup);
+
+      // Floor lamp accent
+      const lampGroup = new THREE.Group();
+      const lampPole = new THREE.Mesh(new THREE.CylinderGeometry(0.02, 0.025, 1.2, 8), tableMat);
+      lampPole.position.y = 0.6;
+      lampGroup.add(lampPole);
+      const lampShade = new THREE.Mesh(new THREE.ConeGeometry(0.15, 0.2, 8), accentMat);
+      lampShade.position.y = 1.25;
+      lampShade.rotation.x = Math.PI;
+      lampGroup.add(lampShade);
+      lampGroup.position.set(0.8, 0, -1.4);
+      room.add(lampGroup);
+
+      scene.add(room);
+
+      // Lighting
+      const ambient = new THREE.AmbientLight(0xffffff, 0.5);
+      scene.add(ambient);
+
+      const key = new THREE.DirectionalLight(0xffffff, 0.8);
+      key.position.set(3, 4, 2);
+      scene.add(key);
+
+      const fill = new THREE.DirectionalLight(tealMain, 0.3);
+      fill.position.set(-2, 2, 3);
+      scene.add(fill);
+
+      // Orbit controls for mouse drag
+      const controls = new OrbitControls(camera, canvas);
+      controls.enableDamping = true;
+      controls.dampingFactor = 0.05;
+      controls.enableZoom = false;
+      controls.enablePan = false;
+      controls.minPolarAngle = Math.PI / 6;
+      controls.maxPolarAngle = Math.PI / 2.2;
+      controls.target.set(0, 0.5, 0);
+      controls.update();
+
+      // Animation
+      let animationId;
+      function animate() {
+        animationId = requestAnimationFrame(animate);
+        
+        // Auto-rotate unless user prefers reduced motion
+        if (!prefersReducedMotion) {
+          room.rotation.y += 0.002;
+        }
+        
+        controls.update();
+        renderer.render(scene, camera);
+      }
+      animate();
+
+      // Handle resize
+      function onResize() {
+        const width = container.clientWidth;
+        const height = container.clientHeight;
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+        renderer.setSize(width, height);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      }
+      window.addEventListener('resize', onResize);
+
+      // Cleanup on page hide
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden && animationId) {
+          cancelAnimationFrame(animationId);
+        } else if (!document.hidden) {
+          animate();
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
