@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth" data-accent="cyan">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="assets/favicons/support-side.svg" type="image/svg+xml">
+  <title>Website Care Plans | Support Side Tech</title>
+  <meta name="description" content="Monthly website care plans from Support Side Tech in Dunedin, Florida. Hosting oversight, updates, backups, and support for businesses in Tampa Bay, Clearwater, and St. Pete." />
+  <meta name="theme-color" content="#05070d" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/tailwind.css" />
+  <link rel="stylesheet" href="assets/css/glass.css" />
+  <link rel="stylesheet" href="assets/css/custom.css" />
+  <style>
+    .plan-card {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    .plan-card-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .plan-features {
+      flex: 1;
+    }
+    .plan-popular {
+      position: relative;
+    }
+    .plan-popular::before {
+      content: 'Most Popular';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 0.35rem 0.9rem;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--accent-ink);
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body class="font-sans text-ink-2 antialiased">
+
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <div class="aurora" aria-hidden="true">
+    <span class="aurora-orb aurora-orb--1"></span>
+    <span class="aurora-orb aurora-orb--2"></span>
+    <span class="aurora-orb aurora-orb--3"></span>
+  </div>
+  <div class="grid-veil" aria-hidden="true"></div>
+
+  <header id="top" class="site-nav glass-nav fixed top-0 left-0 right-0 z-50">
+    <nav class="max-w-3xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2.5">
+        <span class="brand-mark">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
+          </svg>
+        </span>
+        <span class="text-ink-1 font-bold text-lg tracking-tight">Support Side</span>
+      </a>
+      <div class="hidden sm:flex items-center gap-6 text-sm font-medium">
+        <a href="index.html#work" class="link-neon">Work</a>
+        <a href="index.html#about" class="link-neon">About</a>
+        <a href="index.html#contact" class="btn-neon px-4 py-2">Contact</a>
+      </div>
+      <button id="menu-btn" class="sm:hidden text-ink-2 hover:text-ink-1 p-1" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+      </button>
+    </nav>
+    <div id="mobile-menu" class="hidden sm:hidden border-t border-hair px-6 py-4 flex flex-col gap-4">
+      <a href="index.html#work" class="link-neon text-sm font-medium" onclick="closeMobileMenu()">Work</a>
+      <a href="index.html#about" class="link-neon text-sm font-medium" onclick="closeMobileMenu()">About</a>
+      <a href="index.html#contact" class="btn-neon text-sm px-4 py-2.5" onclick="closeMobileMenu()">Contact</a>
+    </div>
+  </header>
+
+  <main id="main" class="relative z-10">
+
+    <section class="pt-32 md:pt-40 pb-16 md:pb-20">
+      <div class="max-w-3xl mx-auto px-6 text-center">
+        <p class="section-kicker">Website Care Plans</p>
+        <h1 class="text-4xl md:text-5xl font-extrabold text-ink-1 tracking-tight leading-tight mb-6">
+          Keep your site running<br class="hidden sm:block" /> while you run the business.
+        </h1>
+        <p class="text-lg text-ink-3 leading-relaxed max-w-2xl mx-auto">
+          Monthly plans that cover hosting oversight, updates, backups, uptime monitoring, and quick support when you need it. Pick what fits and get back to work.
+        </p>
+      </div>
+    </section>
+
+    <section class="pb-20 md:pb-28">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="grid md:grid-cols-3 gap-6">
+
+          <!-- Basic Plan -->
+          <div class="glass-card glass-edge rounded-2xl p-6 plan-card">
+            <div class="plan-card-body">
+              <div class="mb-6">
+                <h2 class="text-xl font-bold text-ink-1 mb-2">Basic</h2>
+                <p class="text-sm text-ink-3 mb-4">For sites that need steady upkeep</p>
+                <div class="flex items-baseline gap-1 mb-1">
+                  <span class="text-sm text-ink-3">Starting at</span>
+                </div>
+                <div class="flex items-baseline gap-1">
+                  <span class="text-4xl font-extrabold text-ink-1">$49</span>
+                  <span class="text-ink-3">/month</span>
+                </div>
+              </div>
+
+              <ul class="plan-features space-y-3 text-sm text-ink-3 mb-8">
+                <li class="flex items-start gap-3">
+                  <svg class="w-5 h-5 text-[color:var(--accent)] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                  </svg>
+                  <span>Hosting oversight and management</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <svg class="w-5 h-5 text-[color:var(--accent)] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                  </svg>
+                  <span>Monthly software and security updates</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <svg class="w-5 h-5 text-[color:var(--accent)] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                  </svg>
+                  <span>Weekly backups</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <svg class="w-5 h-5 text-[color:var(--accent)] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                  </svg>
+                  <span>Uptime monitoring with alerts</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <svg class="w-5 h-5 text-[color:var(--accent)] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                  </svg>
+                  <span>Email support (48-hour response)</span>
+                </li>
+              </ul>
+
+              <a href="index.html#contact" class="btn-ghost w-full py-3 text-sm">Get Started</a>
+            </div>
+          </div>
+
+          <!-- Standard Plan -->
+          <div class="glass-card glass-edge rounded-2xl p-6 plan-card plan-popular" style="border-color: var(--accent-line);">
+            <div class="plan-card-body">
+              <div class="mb-6">
+                <h2 class="text-xl font-bold text-ink-1 mb-2">Standard</h2>
+                <p class="text-sm text-ink-3 mb-4">For sites that need active care</p>
+                <div class="flex items-baseline gap-1 mb-1">
+                  <span class="text-sm text-ink-3">Starting at</span>
+                </div>
+                <div class="flex items-baseline gap-1">
+                  <span class="text-4xl font-extrabold text-ink-1">$99</span>
+                  <span class="text-ink-3">/month</span>
+                </div>
+              </div>
+
+              <ul class="plan-features space-y-3 text-sm text-ink-3 mb-8">
+                <li class="flex items-start gap-3">
+                  <svg class="w-5 h-5 text-[color:var(--accent)] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                  </svg>
+                  <span>Everything in Basic</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <svg class="w-5 h-5 text-[color:var(--accent)] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                  </svg>
+                  <span>Daily backups with 30-day retention</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <svg class="w-5 h-5 text-[color:var(--accent)] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                  </svg>
+                  <span>Up to 2 hours of small content edits per month</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <svg class="w-5 h-5 text-[color:var(--accent)] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                  </svg>
+                  <span>Performance and speed checks</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <svg class="w-5 h-5 text-[color:var(--accent)] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                  </svg>
+                  <span>Email support (24-hour response)</span>
+                </li>
+              </ul>
+
+              <a href="index.html#contact" class="btn-neon w-full py-3 text-sm">Get Started</a>
+            </div>
+          </div>
+
+          <!-- Premium Plan -->
+          <div class="glass-card glass-edge rounded-2xl p-6 plan-card">
+            <div class="plan-card-body">
+              <div class="mb-6">
+                <h2 class="text-xl font-bold text-ink-1 mb-2">Premium</h2>
+                <p class="text-sm text-ink-3 mb-4">For sites that need priority attention</p>
+                <div class="flex items-baseline gap-1 mb-1">
+                  <span class="text-sm text-ink-3">Starting at</span>
+                </div>
+                <div class="flex items-baseline gap-1">
+                  <span class="text-4xl font-extrabold text-ink-1">$199</span>
+                  <span class="text-ink-3">/month</span>
+                </div>
+              </div>
+
+              <ul class="plan-features space-y-3 text-sm text-ink-3 mb-8">
+                <li class="flex items-start gap-3">
+                  <svg class="w-5 h-5 text-[color:var(--accent)] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                  </svg>
+                  <span>Everything in Standard</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <svg class="w-5 h-5 text-[color:var(--accent)] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                  </svg>
+                  <span>Real-time backups</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <svg class="w-5 h-5 text-[color:var(--accent)] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                  </svg>
+                  <span>Up to 5 hours of edits and updates per month</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <svg class="w-5 h-5 text-[color:var(--accent)] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                  </svg>
+                  <span>Monthly analytics review and recommendations</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <svg class="w-5 h-5 text-[color:var(--accent)] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                  </svg>
+                  <span>Priority support (same-day response)</span>
+                </li>
+              </ul>
+
+              <a href="index.html#contact" class="btn-ghost w-full py-3 text-sm">Get Started</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="pb-20 md:pb-28">
+      <div class="max-w-3xl mx-auto px-6">
+        <div class="glass-strong glass-edge rounded-2xl p-8 text-center">
+          <h2 class="text-2xl font-bold text-ink-1 mb-4">Not sure which plan fits?</h2>
+          <p class="text-ink-3 leading-relaxed mb-6">
+            Every site is different. Reach out and we can talk through what your site actually needs. No pressure, no upsell.
+          </p>
+          <a href="index.html#contact" class="btn-neon px-8 py-3 text-sm">Start a Conversation</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="pb-20 md:pb-28">
+      <div class="max-w-3xl mx-auto px-6">
+        <h2 class="text-2xl font-bold text-ink-1 mb-8 text-center">Questions about plans</h2>
+        <div class="space-y-4">
+
+          <div class="glass-card glass-edge rounded-xl p-5">
+            <h3 class="font-semibold text-ink-1 mb-2">What counts as a "small edit"?</h3>
+            <p class="text-sm text-ink-3 leading-relaxed">
+              Updating text, swapping images, adjusting business hours, adding a new team member, or fixing a typo. Bigger changes like new pages or features are quoted separately.
+            </p>
+          </div>
+
+          <div class="glass-card glass-edge rounded-xl p-5">
+            <h3 class="font-semibold text-ink-1 mb-2">Do I need a care plan if you built my site?</h3>
+            <p class="text-sm text-ink-3 leading-relaxed">
+              Not required, but recommended. Sites need updates and attention over time. A care plan means you do not have to think about it.
+            </p>
+          </div>
+
+          <div class="glass-card glass-edge rounded-xl p-5">
+            <h3 class="font-semibold text-ink-1 mb-2">Can I switch plans later?</h3>
+            <p class="text-sm text-ink-3 leading-relaxed">
+              Yes. Upgrade or downgrade anytime. Changes take effect at the start of the next billing cycle.
+            </p>
+          </div>
+
+          <div class="glass-card glass-edge rounded-xl p-5">
+            <h3 class="font-semibold text-ink-1 mb-2">What if I need more than the monthly edit hours?</h3>
+            <p class="text-sm text-ink-3 leading-relaxed">
+              Additional hours are billed at an hourly rate we agree on upfront. No surprises.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="relative z-10 border-t border-hair py-10">
+    <div class="max-w-3xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm">
+      <span class="text-ink-2 font-medium">Support Side Tech</span>
+      <p class="text-ink-3 text-xs">
+        &copy; 2026 Nolen Millington ·
+        <a href="privacy.html" class="link-neon">Privacy</a> ·
+        <a href="terms.html" class="link-neon">Terms</a> ·
+        <a href="mailto:nolenmillington@supportsidetech.com" class="link-neon">nolenmillington@supportsidetech.com</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="assets/js/ui.js" defer></script>
+</body>
+</html>
