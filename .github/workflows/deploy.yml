@@ -45,7 +45,23 @@ jobs:
 
       - name: Prune app sources from Pages artifact
         run: |
+          # Keep static site content. A previous prune list included demos/
+          # and 404'd every live demo on supportsidetech.com after deploy.
+          # Never add demos, projects, assets, or HTML write-ups to this list.
           rm -rf node_modules studio homeschool-ai-scheduler
+          test -d demos
+          test -d projects
+          test -f demos/summit-roofing/index.html
+          test -f demos/the-parlor/index.html
+          test -f demos/business-dashboard/index.html
+          test -f projects/stanza.html
+          test -f projects/homeschool-ai-scheduler.html
+          test -f projects/lantern-hollow.html
+          test -f projects/adirondack-property-group.html
+          test -f assets/images/projects/homeschool-ai-scheduler-preview.png
+          test -f assets/images/projects/stanza-preview.jpg
+          test -f assets/images/projects/lantern-hollow-preview.jpg
+          test -f assets/images/projects/summit-roofing-preview.png
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
