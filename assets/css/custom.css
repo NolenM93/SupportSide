@@ -149,14 +149,32 @@ h3.font-extrabold {
 
 .hero-canvas {
   display: block;
+  position: relative;
+  z-index: 1;
   width: 100%;
   height: 100%;
+  opacity: 0;
+  transition: opacity 0.7s ease;
 }
 
 .hero-static {
-  display: none;
+  display: block;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
   width: 100%;
   height: 100%;
+  opacity: 1;
+  pointer-events: none;
+  transition: opacity 0.7s ease;
+}
+
+.scene-live .hero-canvas {
+  opacity: 1;
+}
+
+.scene-live .hero-static {
+  opacity: 0;
 }
 
 .scene-static .hero-scene {
@@ -172,6 +190,8 @@ h3.font-extrabold {
 .scene-static .hero-static,
 html.scene-static .hero-static {
   display: block;
+  opacity: 1;
+  position: relative;
 }
 
 .scene-nodes {
@@ -185,23 +205,51 @@ html.scene-static .hero-static {
   position: absolute;
   left: 0;
   top: 0;
-  min-width: 2.75rem;
-  min-height: 2.75rem;
-  padding: 1.1rem 0.35rem 0;
+  width: 3rem;
+  height: 3rem;
+  padding: 0;
+  margin: 0;
   border: 0;
   background: transparent;
+  overflow: visible;
+  pointer-events: auto;
+}
+
+.scene-node-label {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, 2.85rem);
   font-family: 'JetBrains Mono', ui-monospace, monospace;
   font-size: 0.62rem;
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--ink-2);
-  pointer-events: auto;
+  color: #d7e0ee;
   white-space: nowrap;
+  pointer-events: none;
+  text-shadow:
+    0 1px 1px #05070d,
+    0 0 8px rgba(5, 7, 13, 0.95),
+    0 0 16px rgba(5, 7, 13, 0.85);
+}
+
+.scene-node-btn[data-side="below-right"] .scene-node-label {
+  transform: translate(-12%, 2.85rem);
+}
+
+.scene-node-btn[data-side="below-left"] .scene-node-label {
+  transform: translate(-88%, 2.85rem);
+}
+
+.scene-node-btn[data-side="right"] .scene-node-label {
+  transform: translate(1.7rem, -50%);
 }
 
 .scene-static .scene-node-btn {
   position: static;
+  width: auto;
+  height: auto;
   min-height: 2.5rem;
   padding: 0.4rem 0.7rem;
   margin: 0.2rem;
@@ -209,6 +257,14 @@ html.scene-static .hero-static {
   border: 1px solid var(--accent-line);
   border-radius: 0.6rem;
   background: var(--accent-wash);
+}
+
+.scene-static .scene-node-label {
+  position: static;
+  transform: none;
+  text-shadow: none;
+  pointer-events: none;
+  color: inherit;
 }
 
 .scene-static .scene-nodes {
@@ -269,12 +325,12 @@ html.scene-static .hero-static {
   font-family: var(--font-display);
   font-optical-sizing: auto;
   font-synthesis: none;
-  font-size: clamp(2.4rem, 1.05rem + 4.6vw, 5.5rem);
+  font-size: clamp(2.35rem, 1.05rem + 3.55vw, 4.5rem);
   font-weight: 600;
   line-height: 1.08;
   letter-spacing: -0.03em;
   color: var(--ink-1);
-  text-wrap: balance;
+  text-wrap: wrap;
   margin: 0 0 clamp(1rem, 2.4vh, 1.75rem);
 }
 
@@ -303,11 +359,13 @@ html.scene-static .hero-static {
 
 .node-card {
   position: relative;
-  margin-top: 1.25rem;
+  flex-shrink: 0;
+  margin: 0.7rem 1.25rem 0.2rem;
   max-width: 26rem;
   padding: 1rem 1.1rem 1.05rem;
   border-radius: 1rem;
-  z-index: 4;
+  z-index: 6;
+  pointer-events: auto;
 }
 
 .node-card-kicker {
@@ -430,29 +488,26 @@ html.scene-static .hero-static {
   }
 
   .hero-copy {
-    max-width: 24rem;
+    position: relative;
+    max-width: 36rem;
   }
 
   .hero-copy::before {
     content: '';
     position: absolute;
     inset: -12% auto -20% -8%;
-    width: min(42vw, 32rem);
+    width: min(48vw, 38rem);
     background: radial-gradient(ellipse at 20% 40%, rgba(5, 7, 13, 0.78), rgba(5, 7, 13, 0) 70%);
     pointer-events: none;
     z-index: -1;
   }
 
-  .hero-copy {
-    position: relative;
-  }
-
   .node-card {
     position: absolute;
-    left: calc(100% + 1.25rem);
-    bottom: 0;
-    width: 22rem;
-    margin-top: 0;
+    left: auto;
+    top: auto;
+    width: 21rem;
+    margin: 0;
   }
 
   .about-lead {

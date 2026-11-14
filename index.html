@@ -144,16 +144,33 @@
           <text x="586" y="392" text-anchor="middle" fill="#9aa3b5" font-family="ui-monospace, monospace" font-size="11" letter-spacing="1.6">CARE PLANS</text>
         </svg>
         <div class="scene-nodes" id="scene-nodes">
-          <button type="button" class="scene-node-btn" data-node="sites">Websites</button>
-          <button type="button" class="scene-node-btn" data-node="booking">Booking tools</button>
-          <button type="button" class="scene-node-btn" data-node="apps">Apps</button>
-          <button type="button" class="scene-node-btn" data-node="care">Care plans</button>
+          <button type="button" class="scene-node-btn" data-node="sites" data-side="below" data-label="Websites" data-href="#work" data-link="See the work" data-copy="A site customers can use, without an agency markup or a bloated subscription.">
+            <span class="scene-node-label">Websites</span>
+          </button>
+          <button type="button" class="scene-node-btn" data-node="booking" data-side="below-right" data-label="Booking tools" data-href="#work" data-link="See the work" data-copy="A booking website for a local rental company: availability, reservations, and a flow customers can actually use.">
+            <span class="scene-node-label">Booking tools</span>
+          </button>
+          <button type="button" class="scene-node-btn" data-node="apps" data-side="below" data-label="Apps" data-href="#work" data-link="See the work" data-copy="I build safe, affordable software of any kind: sites, booking tools, apps, so local owners can stay on the actual work.">
+            <span class="scene-node-label">Apps</span>
+          </button>
+          <button type="button" class="scene-node-btn" data-node="care" data-side="below" data-label="Care plans" data-href="plans.html" data-link="View plans" data-copy="Monthly plans that cover hosting oversight, updates, backups, uptime monitoring, and quick support when you need it.">
+            <span class="scene-node-label">Care plans</span>
+          </button>
         </div>
       </div>
 
       <div class="hero-hud" aria-hidden="true">
         <p class="hero-hud-item hero-hud-item--tl">Dunedin, FL</p>
         <p class="hero-hud-item hero-hud-item--tr" data-hud-status>Select a node</p>
+      </div>
+
+      <div class="node-card glass-strong glass-edge" id="node-card" hidden>
+        <p class="node-card-kicker" id="node-card-kicker"></p>
+        <p class="node-card-copy" id="node-card-copy"></p>
+        <div class="node-card-row">
+          <a class="node-card-link" id="node-card-link" href="#work">See the work</a>
+          <button type="button" class="node-card-close" id="node-card-close">Close</button>
+        </div>
       </div>
 
       <div class="layout-wide hero-shell">
@@ -169,14 +186,6 @@
           <div class="hero-actions">
             <a href="#contact" class="btn-neon px-5 py-3 text-sm js-magnetic">Contact</a>
             <a href="plans.html" class="hero-secondary link-neon font-medium">Plans</a>
-          </div>
-          <div class="node-card glass-strong glass-edge" id="node-card" hidden>
-            <p class="node-card-kicker" id="node-card-kicker"></p>
-            <p class="node-card-copy" id="node-card-copy"></p>
-            <div class="node-card-row">
-              <a class="node-card-link" id="node-card-link" href="#work">See the work</a>
-              <button type="button" class="node-card-close" id="node-card-close">Close</button>
-            </div>
           </div>
         </div>
       </div>
@@ -488,6 +497,6 @@
   </noscript>
   <script src="assets/js/ui.js" defer></script>
   <script src="assets/js/motion.js" defer></script>
-  <script src="assets/js/scene.js" defer></script>
+  <script src="assets/js/scene-boot.js" defer></script>
 </body>
 </html>
