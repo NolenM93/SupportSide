@@ -59,7 +59,7 @@
   <meta name="theme-color" content="#05070d" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,500;6..72,600;6..72,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,500;6..72,600;6..72,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/tailwind.css" />
   <link rel="stylesheet" href="assets/css/glass.css" />
   <link rel="stylesheet" href="assets/css/custom.css" />
@@ -90,7 +90,7 @@
         <a href="#about" class="link-neon">About</a>
         <a href="#work" class="link-neon">Work</a>
         <a href="plans.html" class="link-neon">Plans</a>
-        <a href="#contact" class="btn-neon px-4 py-2">Contact</a>
+        <a href="#contact" class="btn-neon px-4 py-2 js-magnetic">Contact</a>
       </div>
       <button id="menu-btn" class="sm:hidden text-ink-2 hover:text-ink-1 p-1" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -110,23 +110,73 @@
   <main id="main" class="relative z-10">
 
     <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero-scene" id="hero-scene">
+        <canvas class="hero-canvas" id="hero-canvas" aria-hidden="true"></canvas>
+        <svg class="hero-static" viewBox="0 0 800 480" role="img" aria-label="Diagram of a local business at the center with websites, booking tools, apps, and care plans connected inward">
+          <defs>
+            <radialGradient id="core-glow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#ffd3ba" />
+              <stop offset="42%" stop-color="#ff9b6a" stop-opacity="0.9" />
+              <stop offset="100%" stop-color="#ff9b6a" stop-opacity="0" />
+            </radialGradient>
+            <radialGradient id="node-glow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.9" />
+              <stop offset="100%" stop-color="#22d3ee" stop-opacity="0" />
+            </radialGradient>
+          </defs>
+          <line x1="400" y1="230" x2="168" y2="128" stroke="#22d3ee" stroke-opacity="0.45" />
+          <line x1="400" y1="230" x2="632" y2="142" stroke="#22d3ee" stroke-opacity="0.45" />
+          <line x1="400" y1="230" x2="292" y2="372" stroke="#22d3ee" stroke-opacity="0.45" />
+          <line x1="400" y1="230" x2="586" y2="352" stroke="#22d3ee" stroke-opacity="0.45" />
+          <circle cx="400" cy="230" r="78" fill="url(#core-glow)" />
+          <circle cx="400" cy="230" r="18" fill="#ffc4a8" />
+          <circle cx="168" cy="128" r="28" fill="url(#node-glow)" />
+          <circle cx="632" cy="142" r="28" fill="url(#node-glow)" />
+          <circle cx="292" cy="372" r="28" fill="url(#node-glow)" />
+          <circle cx="586" cy="352" r="28" fill="url(#node-glow)" />
+          <circle cx="168" cy="128" r="7" fill="#22d3ee" />
+          <circle cx="632" cy="142" r="7" fill="#22d3ee" />
+          <circle cx="292" cy="372" r="7" fill="#22d3ee" />
+          <circle cx="586" cy="352" r="7" fill="#22d3ee" />
+          <text x="168" y="168" text-anchor="middle" fill="#9aa3b5" font-family="ui-monospace, monospace" font-size="11" letter-spacing="1.6">WEBSITES</text>
+          <text x="632" y="182" text-anchor="middle" fill="#9aa3b5" font-family="ui-monospace, monospace" font-size="11" letter-spacing="1.6">BOOKING TOOLS</text>
+          <text x="292" y="412" text-anchor="middle" fill="#9aa3b5" font-family="ui-monospace, monospace" font-size="11" letter-spacing="1.6">APPS</text>
+          <text x="586" y="392" text-anchor="middle" fill="#9aa3b5" font-family="ui-monospace, monospace" font-size="11" letter-spacing="1.6">CARE PLANS</text>
+        </svg>
+        <div class="scene-nodes" id="scene-nodes">
+          <button type="button" class="scene-node-btn" data-node="sites">Websites</button>
+          <button type="button" class="scene-node-btn" data-node="booking">Booking tools</button>
+          <button type="button" class="scene-node-btn" data-node="apps">Apps</button>
+          <button type="button" class="scene-node-btn" data-node="care">Care plans</button>
+        </div>
+      </div>
+
+      <div class="hero-hud" aria-hidden="true">
+        <p class="hero-hud-item hero-hud-item--tl">Dunedin, FL</p>
+        <p class="hero-hud-item hero-hud-item--tr" data-hud-status>Select a node</p>
+      </div>
+
       <div class="layout-wide hero-shell">
         <div class="hero-copy">
           <p class="section-kicker text-left">Support Side Tech</p>
           <h1 id="hero-heading" class="hero-title">
-            Software that supports the local business.
+            <span class="hero-line">Software that supports</span>
+            <span class="hero-line">the local business.</span>
           </h1>
           <p class="hero-lede">
             I’m Nolen Millington. I build safe, affordable software of any kind: sites, booking tools, apps, so local owners can stay on the actual work.
           </p>
           <div class="hero-actions">
-            <a href="#contact" class="btn-neon px-5 py-3 text-sm">Contact</a>
+            <a href="#contact" class="btn-neon px-5 py-3 text-sm js-magnetic">Contact</a>
             <a href="plans.html" class="hero-secondary link-neon font-medium">Plans</a>
           </div>
-        </div>
-        <div class="hero-visual">
-          <div class="founder-portrait reveal">
-            <img src="assets/images/nolen.png" alt="Nolen Millington" width="200" height="200" />
+          <div class="node-card glass-strong glass-edge" id="node-card" hidden>
+            <p class="node-card-kicker" id="node-card-kicker"></p>
+            <p class="node-card-copy" id="node-card-copy"></p>
+            <div class="node-card-row">
+              <a class="node-card-link" id="node-card-link" href="#work">See the work</a>
+              <button type="button" class="node-card-close" id="node-card-close">Close</button>
+            </div>
           </div>
         </div>
       </div>
@@ -160,6 +210,11 @@
     <section id="about" class="section-block">
       <div class="layout-wide">
         <div class="layout-measure">
+        <div class="about-lead">
+          <div class="founder-portrait">
+            <img src="assets/images/nolen.png" alt="Nolen Millington" width="200" height="200" />
+          </div>
+          <div>
         <p class="section-kicker text-left">About</p>
         <h2 class="section-title mb-6">Nolen Millington</h2>
         <p class="text-lg text-ink-3 leading-relaxed mb-4">
@@ -168,6 +223,8 @@
         <p class="text-lg text-ink-3 leading-relaxed mb-10">
           I finished an associate’s in software development at Full Sail University. Outside of that: fishing, hiking, family, and making things with other people.
         </p>
+          </div>
+        </div>
 
         <div class="flex flex-wrap gap-x-6 gap-y-2 text-sm mb-12">
           <a class="neon-text font-medium" href="mailto:nolenmillington@supportsidetech.com">nolenmillington@supportsidetech.com</a>
@@ -418,6 +475,19 @@
     </div>
   </footer>
 
+  <noscript>
+    <style>
+      .hero-canvas { display: none !important; }
+      .hero-static { display: block !important; opacity: 1 !important; }
+      .has-motion .hero-line,
+      .has-motion .hero-lede,
+      .has-motion .hero-actions,
+      .has-motion .hero .section-kicker,
+      .has-motion .hero-hud-item { opacity: 1 !important; }
+    </style>
+  </noscript>
   <script src="assets/js/ui.js" defer></script>
+  <script src="assets/js/motion.js" defer></script>
+  <script src="assets/js/scene.js" defer></script>
 </body>
 </html>
