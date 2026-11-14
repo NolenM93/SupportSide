@@ -5,7 +5,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
+        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        display: ['Newsreader', 'Iowan Old Style', 'Palatino Linotype', 'Palatino', 'serif'],
       },
       colors: {
         /* Canvas */

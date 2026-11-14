@@ -59,7 +59,7 @@
   <meta name="theme-color" content="#05070d" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,500;6..72,600;6..72,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/tailwind.css" />
   <link rel="stylesheet" href="assets/css/glass.css" />
   <link rel="stylesheet" href="assets/css/custom.css" />
@@ -76,7 +76,7 @@
   <div class="grid-veil" aria-hidden="true"></div>
 
   <header id="top" class="site-nav glass-nav fixed top-0 left-0 right-0 z-50">
-    <nav class="max-w-3xl mx-auto px-6 h-16 flex items-center justify-between">
+    <nav class="layout-wide h-16 flex items-center justify-between">
       <a href="#top" class="flex items-center gap-2.5">
         <span class="brand-mark">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
@@ -90,7 +90,7 @@
         <a href="#about" class="link-neon">About</a>
         <a href="#work" class="link-neon">Work</a>
         <a href="plans.html" class="link-neon">Plans</a>
-        <a href="#contact" class="btn-neon px-4 py-2">Contact</a>
+        <a href="#contact" class="btn-neon px-4 py-2 js-magnetic">Contact</a>
       </div>
       <button id="menu-btn" class="sm:hidden text-ink-2 hover:text-ink-1 p-1" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -109,29 +109,96 @@
 
   <main id="main" class="relative z-10">
 
-    <section class="pt-28 md:pt-36 pb-16 md:pb-20">
-      <div class="max-w-3xl mx-auto px-6">
-        <div class="flex flex-col sm:flex-row sm:items-center gap-8">
-          <div class="founder-portrait reveal">
-            <img src="assets/images/nolen.png" alt="Nolen Millington" width="200" height="200" />
-          </div>
-          <div>
-            <p class="section-kicker text-left">Support Side Tech</p>
-            <h1 class="text-4xl md:text-5xl font-extrabold text-ink-1 tracking-tight leading-tight mb-4">
-              Software that supports<br />the local business.
-            </h1>
-            <p class="text-lg text-ink-2 leading-relaxed max-w-xl">
-              I’m Nolen Millington. I build safe, affordable software of any kind: sites, booking tools, apps, so local owners can stay on the actual work.
-            </p>
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero-scene" id="hero-scene">
+        <canvas class="hero-canvas" id="hero-canvas" aria-hidden="true"></canvas>
+        <svg class="hero-static" viewBox="0 0 800 480" role="img" aria-label="Still frame of a retro arcade space battle with labeled ships for websites, booking tools, apps, and care plans">
+          <g fill="#9ab0c8" opacity="0.55">
+            <circle cx="520" cy="40" r="1.2" />
+            <circle cx="610" cy="88" r="1" />
+            <circle cx="700" cy="36" r="1.4" />
+            <circle cx="760" cy="140" r="1" />
+            <circle cx="480" cy="160" r="1" />
+            <circle cx="670" cy="210" r="1.2" />
+            <circle cx="790" cy="260" r="1" />
+            <circle cx="540" cy="300" r="1.1" />
+            <circle cx="730" cy="340" r="1" />
+            <circle cx="500" cy="400" r="1.3" />
+            <circle cx="640" cy="430" r="1" />
+          </g>
+          <g fill="#ff9b6a">
+            <polygon points="537,116 528,128 537,124 546,128" />
+            <polygon points="597,108 588,120 597,116 606,120" />
+            <polygon points="657,116 648,128 657,124 666,128" />
+            <polygon points="717,108 708,120 717,116 726,120" />
+          </g>
+          <g fill="#22d3ee">
+            <polygon points="519,160 508,176 519,170 530,176" />
+            <polygon points="589,152 578,168 589,162 600,168" />
+            <polygon points="659,160 648,176 659,170 670,176" />
+            <polygon points="729,152 718,168 729,162 740,168" />
+          </g>
+          <rect x="618" y="200" width="2" height="16" fill="#ff9b6a" />
+          <rect x="688" y="248" width="2" height="18" fill="#a5f3fc" />
+          <rect x="598" y="300" width="2" height="18" fill="#a5f3fc" />
+          <polygon points="620,388 608,416 620,408 632,416" fill="#22d3ee" />
+        </svg>
+        <div class="scene-nodes" id="scene-nodes">
+          <button type="button" class="scene-node-btn" data-node="sites" data-side="below" data-label="Websites" data-href="#work" data-link="See the work" data-copy="A site customers can use, without an agency markup or a bloated subscription.">
+            <span class="scene-node-label">Websites</span>
+          </button>
+          <button type="button" class="scene-node-btn" data-node="booking" data-side="below-right" data-label="Booking tools" data-href="#work" data-link="See the work" data-copy="A booking website for a local rental company: availability, reservations, and a flow customers can actually use.">
+            <span class="scene-node-label">Booking tools</span>
+          </button>
+          <button type="button" class="scene-node-btn" data-node="apps" data-side="below" data-label="Apps" data-href="#work" data-link="See the work" data-copy="I build safe, affordable software of any kind: sites, booking tools, apps, so local owners can stay on the actual work.">
+            <span class="scene-node-label">Apps</span>
+          </button>
+          <button type="button" class="scene-node-btn" data-node="care" data-side="below" data-label="Care plans" data-href="plans.html" data-link="View plans" data-copy="Monthly plans that cover hosting oversight, updates, backups, uptime monitoring, and quick support when you need it.">
+            <span class="scene-node-label">Care plans</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="hero-hud" aria-hidden="true">
+        <p class="hero-hud-item hero-hud-item--tl">Dunedin, FL</p>
+        <p class="hero-hud-item hero-hud-item--tr" data-hud-status>Select a node</p>
+      </div>
+
+      <div class="node-card glass-strong glass-edge" id="node-card" hidden>
+        <p class="node-card-kicker" id="node-card-kicker"></p>
+        <p class="node-card-copy" id="node-card-copy"></p>
+        <div class="node-card-row">
+          <a class="node-card-link" id="node-card-link" href="#work">See the work</a>
+          <button type="button" class="node-card-close" id="node-card-close">Close</button>
+        </div>
+      </div>
+
+      <div class="layout-wide hero-shell">
+        <div class="hero-copy">
+          <p class="section-kicker text-left">Support Side Tech</p>
+          <h1 id="hero-heading" class="hero-title">
+            <span class="hero-line">Software that supports</span>
+            <span class="hero-line">the local business.</span>
+          </h1>
+          <p class="hero-lede">
+            I’m Nolen Millington. I build safe, affordable software of any kind: sites, booking tools, apps, so local owners can stay on the actual work.
+          </p>
+          <div class="hero-actions">
+            <a href="#contact" class="btn-neon px-5 py-3 text-sm js-magnetic">Contact</a>
+            <a href="plans.html" class="hero-secondary link-neon font-medium">Plans</a>
           </div>
         </div>
       </div>
+      <a class="scroll-cue" href="#purpose" aria-label="Continue to Why Support Side exists">
+        <span class="scroll-cue-mark" aria-hidden="true"></span>
+      </a>
     </section>
 
-    <section id="purpose" class="scroll-mt-24 pb-20 md:pb-28">
-      <div class="max-w-3xl mx-auto px-6">
+    <section id="purpose" class="section-block">
+      <div class="layout-wide">
+        <div class="layout-measure">
         <p class="section-kicker text-left">Purpose</p>
-        <h2 class="text-3xl md:text-4xl font-extrabold text-ink-1 tracking-tight mb-6">Why Support Side exists</h2>
+        <h2 class="section-title mb-6">Why Support Side exists</h2>
         <div class="space-y-5 text-lg text-ink-3 leading-relaxed">
           <p>
             Local businesses get stuck with software that doesn’t fit, or with prices that don’t make sense. They need tools that match how they actually work: booking, scheduling, inventory, customer intake, or a site customers can use, without an agency markup or a bloated subscription.
@@ -143,21 +210,30 @@
             The owner stays on the actual work. I stay on the support side.
           </p>
         </div>
+        </div>
       </div>
     </section>
 
-    <hr class="neon-hairline max-w-3xl mx-auto" />
+    <hr class="neon-hairline max-w-6xl mx-auto" />
 
-    <section id="about" class="scroll-mt-24 py-20 md:py-28">
-      <div class="max-w-3xl mx-auto px-6">
+    <section id="about" class="section-block">
+      <div class="layout-wide">
+        <div class="layout-measure">
+        <div class="about-lead">
+          <div class="founder-portrait">
+            <img src="assets/images/nolen.png" alt="Nolen Millington" width="200" height="200" />
+          </div>
+          <div>
         <p class="section-kicker text-left">About</p>
-        <h2 class="text-3xl md:text-4xl font-extrabold text-ink-1 tracking-tight mb-6">Nolen Millington</h2>
+        <h2 class="section-title mb-6">Nolen Millington</h2>
         <p class="text-lg text-ink-3 leading-relaxed mb-4">
           Software developer in Warrensburg, New York. I like building things people can actually use: websites, desktop tools, and mobile apps. I learn by shipping the next project.
         </p>
         <p class="text-lg text-ink-3 leading-relaxed mb-10">
           I finished an associate’s in software development at Full Sail University. Outside of that: fishing, hiking, family, and making things with other people.
         </p>
+          </div>
+        </div>
 
         <div class="flex flex-wrap gap-x-6 gap-y-2 text-sm mb-12">
           <a class="neon-text font-medium" href="mailto:nolenmillington@supportsidetech.com">nolenmillington@supportsidetech.com</a>
@@ -198,22 +274,25 @@
           <li>Foundations of Cybersecurity, Google / Coursera, May 2024</li>
           <li>Play It Safe: Manage Security Risks, Google / Coursera, June 2024</li>
         </ul>
+        </div>
       </div>
     </section>
 
-    <hr class="neon-hairline max-w-3xl mx-auto" />
+    <hr class="neon-hairline max-w-6xl mx-auto" />
 
-    <section id="work" class="scroll-mt-24 py-20 md:py-28">
-      <div class="max-w-3xl mx-auto px-6">
+    <section id="work" class="section-block">
+      <div class="layout-wide">
+        <div class="layout-measure mb-10">
         <p class="section-kicker text-left">Selected work</p>
-        <h2 class="text-3xl md:text-4xl font-extrabold text-ink-1 tracking-tight mb-10">Things I’ve built</h2>
+        <h2 class="section-title">Things I’ve built</h2>
+        </div>
 
-                <div class="flex flex-col gap-5" style="--card-min-h: auto;">
+                <div class="project-grid">
 
           <!-- Homeschool AI Scheduler -->
           <article class="glass-card glass-edge rounded-2xl overflow-hidden group">
-            <a href="https://week-by-week-schedule.vercel.app/" target="_blank" rel="noreferrer" class="block h-40 overflow-hidden">
-              <img src="assets/images/projects/homeschool-ai-scheduler-preview.png" alt="Homeschool AI Scheduler landing page with a sample week-by-week plan" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300">
+            <a href="https://week-by-week-schedule.vercel.app/" target="_blank" rel="noreferrer" class="project-frame">
+              <img src="assets/images/projects/homeschool-ai-scheduler-preview.png" alt="Homeschool AI Scheduler landing page with a sample week-by-week plan" class="group-hover:scale-105 transition-transform duration-300">
             </a>
             <div class="p-6">
               <div class="flex items-center gap-2 mb-2">
@@ -233,8 +312,8 @@
 
           <!-- Stanza - 3D Room Planner -->
           <article class="glass-card glass-edge rounded-2xl overflow-hidden group">
-            <a href="https://nolenm93.github.io/Physical-Environment-Decision-Log/" target="_blank" rel="noreferrer" class="block h-40 overflow-hidden">
-              <img src="assets/images/projects/stanza-preview.jpg" alt="Stanza room planner with a 3D living room view, metric dimensions, and door swing check" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300">
+            <a href="https://nolenm93.github.io/Physical-Environment-Decision-Log/" target="_blank" rel="noreferrer" class="project-frame">
+              <img src="assets/images/projects/stanza-preview.jpg" alt="Stanza room planner with a 3D living room view, metric dimensions, and door swing check" class="group-hover:scale-105 transition-transform duration-300">
             </a>
             <div class="p-6">
               <div class="flex items-center gap-2 mb-2">
@@ -254,8 +333,8 @@
 
           <!-- Lantern Hollow - Playable browser game -->
           <article class="glass-card glass-edge rounded-2xl overflow-hidden group">
-            <a href="https://nolenm93.github.io/game/" target="_blank" rel="noreferrer" class="block h-40 overflow-hidden">
-              <img src="assets/images/projects/lantern-hollow-preview.jpg" alt="Lantern Hollow title scene with a glowing lantern in a cartoon graveyard" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300">
+            <a href="https://nolenm93.github.io/game/" target="_blank" rel="noreferrer" class="project-frame">
+              <img src="assets/images/projects/lantern-hollow-preview.jpg" alt="Lantern Hollow title scene with a glowing lantern in a cartoon graveyard" class="group-hover:scale-105 transition-transform duration-300">
             </a>
             <div class="p-6">
               <div class="flex items-center gap-2 mb-2">
@@ -275,7 +354,7 @@
 
           <!-- Adirondack Property Group - Case Study -->
           <a href="projects/adirondack-property-group.html" class="glass-card glass-edge rounded-2xl overflow-hidden block group">
-            <div class="project-media project-media--cyan h-40 flex items-center justify-center">
+            <div class="project-frame project-media project-media--cyan flex items-center justify-center">
               <svg class="w-16 h-16 opacity-60" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 21v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21m0 0h4.5V3.545M12.75 21h7.5V10.75M2.25 21h1.5m18 0h-18M2.25 9l4.5-1.636M18.75 3l-1.5.545m0 6.205 3 1m1.5.5-1.5-.5M6.75 7.364V3h-3v18m3-13.636 10.5-3.819" />
               </svg>
@@ -295,8 +374,8 @@
 
           <!-- Summit Roofing Co. - Contractor Demo -->
           <a href="demos/summit-roofing/" class="glass-card glass-edge rounded-2xl overflow-hidden block group">
-            <div class="h-40 overflow-hidden">
-              <img src="assets/images/projects/summit-roofing-preview.png" alt="Summit Roofing contractor website with hero section, instant estimate calculator, and trust badges" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300">
+            <div class="project-frame">
+              <img src="assets/images/projects/summit-roofing-preview.png" alt="Summit Roofing contractor website with hero section, instant estimate calculator, and trust badges" class="group-hover:scale-105 transition-transform duration-300">
             </div>
             <div class="p-6">
               <div class="flex items-center gap-2 mb-2">
@@ -313,8 +392,8 @@
 
           <!-- The Parlor - Barbershop Demo -->
           <a href="demos/the-parlor/" class="glass-card glass-edge rounded-2xl overflow-hidden block group">
-            <div class="h-40 overflow-hidden">
-              <img src="assets/images/projects/the-parlor-preview.png" alt="The Parlor barbershop booking site with online appointment scheduling and service selection" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300">
+            <div class="project-frame">
+              <img src="assets/images/projects/the-parlor-preview.png" alt="The Parlor barbershop booking site with online appointment scheduling and service selection" class="group-hover:scale-105 transition-transform duration-300">
             </div>
             <div class="p-6">
               <div class="flex items-center gap-2 mb-2">
@@ -331,8 +410,8 @@
 
           <!-- Business Dashboard Demo -->
           <a href="demos/business-dashboard/" class="glass-card glass-edge rounded-2xl overflow-hidden block group">
-            <div class="h-40 overflow-hidden">
-              <img src="assets/images/projects/business-dashboard-preview.png" alt="Business dashboard with customer list, revenue chart, invoice tracking, and overdue payment alerts" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300">
+            <div class="project-frame">
+              <img src="assets/images/projects/business-dashboard-preview.png" alt="Business dashboard with customer list, revenue chart, invoice tracking, and overdue payment alerts" class="group-hover:scale-105 transition-transform duration-300">
             </div>
             <div class="p-6">
               <div class="flex items-center gap-2 mb-2">
@@ -352,10 +431,11 @@
       </div>
     </section>
 
-    <section id="contact" class="scroll-mt-24 pb-24 md:pb-32">
-      <div class="max-w-3xl mx-auto px-6">
+    <section id="contact" class="section-block">
+      <div class="layout-wide">
+        <div class="layout-measure">
         <p class="section-kicker text-left">Contact</p>
-        <h2 class="text-3xl md:text-4xl font-extrabold text-ink-1 tracking-tight mb-4">Say hello</h2>
+        <h2 class="section-title mb-4">Say hello</h2>
         <p class="text-lg text-ink-3 leading-relaxed mb-8">
           Need software for the business, want to talk through a project, or just introducing yourself. Email is fine. I reply within a day.
         </p>
@@ -386,13 +466,14 @@
 
           <button type="submit" class="btn-neon w-full py-3.5 text-sm">Send</button>
         </form>
+        </div>
       </div>
     </section>
 
   </main>
 
   <footer class="relative z-10 border-t border-hair py-10">
-    <div class="max-w-3xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm">
+    <div class="layout-wide flex flex-col sm:flex-row items-center justify-between gap-3 text-sm">
       <span class="text-ink-2 font-medium">Support Side Tech</span>
       <p class="text-ink-3 text-xs">
         &copy; 2026 Nolen Millington ·
@@ -403,6 +484,19 @@
     </div>
   </footer>
 
+  <noscript>
+    <style>
+      .hero-canvas { display: none !important; }
+      .hero-static { display: block !important; opacity: 1 !important; }
+      .has-motion .hero-line,
+      .has-motion .hero-lede,
+      .has-motion .hero-actions,
+      .has-motion .hero .section-kicker,
+      .has-motion .hero-hud-item { opacity: 1 !important; }
+    </style>
+  </noscript>
   <script src="assets/js/ui.js" defer></script>
+  <script src="assets/js/motion.js" defer></script>
+  <script src="assets/js/scene-boot.js" defer></script>
 </body>
 </html>

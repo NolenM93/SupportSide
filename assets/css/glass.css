@@ -70,6 +70,15 @@
   --dur-3: 400ms;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 
+  /* Layout */
+  --nav-height: 4rem;
+  --anchor-offset: calc(var(--nav-height) + 0.75rem);
+  --layout-wide: 72rem;
+  --measure: 65ch;
+  --font-sans: Inter, ui-sans-serif, system-ui, sans-serif;
+  --font-display: Newsreader, "Iowan Old Style", Palatino, "Palatino Linotype", serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
   /* Status hues (kept legible on glass) */
   --ok: #34d399;
   --warn: #fbbf24;
@@ -111,7 +120,14 @@ html[data-accent='magenta'] {
 
 html {
   color-scheme: dark;
-  scroll-padding-top: 5rem;
+  scroll-padding-top: var(--anchor-offset);
+}
+
+@supports (padding-top: env(safe-area-inset-top)) {
+  :root {
+    --nav-height: calc(4rem + env(safe-area-inset-top, 0px));
+    --anchor-offset: calc(var(--nav-height) + 0.75rem);
+  }
 }
 
 body {
@@ -283,6 +299,7 @@ textarea::placeholder {
   border-bottom: 1px solid var(--line-1);
   backdrop-filter: blur(var(--blur-lg)) saturate(150%);
   -webkit-backdrop-filter: blur(var(--blur-lg)) saturate(150%);
+  padding-top: env(safe-area-inset-top, 0px);
 }
 
 /* Modal scrim */
