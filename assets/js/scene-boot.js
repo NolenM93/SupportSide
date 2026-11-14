@@ -1,5 +1,5 @@
-/* Lazy-load the support-network scene after first paint.
-   Reduced-motion and missing WebGL stay on the static SVG. */
+/* Lazy-load the Galaga-style hero scene after first paint.
+   Reduced-motion stays on the static SVG. */
 (function () {
   'use strict';
 
@@ -41,10 +41,9 @@
     }
   }
 
-  function webglOk() {
+  function canvas2dOk() {
     try {
-      var c = document.createElement('canvas');
-      return !!(c.getContext('webgl2') || c.getContext('webgl') || c.getContext('experimental-webgl'));
+      return !!(canvas && canvas.getContext && canvas.getContext('2d'));
     } catch (err) {
       return false;
     }
@@ -53,7 +52,7 @@
   if (!sceneRoot || !canvas) return;
 
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduceMotion || !webglOk()) {
+  if (reduceMotion || !canvas2dOk()) {
     goStatic();
     bindCards();
     return;
@@ -63,10 +62,14 @@
   function loadScene() {
     if (loaded) return;
     loaded = true;
-    import('./scene.bundle.js').catch(function () {
+    var s = document.createElement('script');
+    s.src = 'assets/js/scene.js';
+    s.async = true;
+    s.onerror = function () {
       goStatic();
       bindCards();
-    });
+    };
+    document.head.appendChild(s);
   }
 
   function afterPaint(fn) {

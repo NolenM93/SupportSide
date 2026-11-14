@@ -4,14 +4,11 @@
   "scripts": {
     "dev": "npm run dev --prefix studio",
     "build:css": "tailwindcss -i ./assets/css/input.css -o ./assets/css/tailwind.css --minify",
-    "build:scene": "esbuild assets/js/scene.js --bundle --minify --format=esm --outfile=assets/js/scene.bundle.js --legal-comments=none",
     "watch:css": "tailwindcss -i ./assets/css/input.css -o ./assets/css/tailwind.css --watch"
   },
   "devDependencies": {
-    "esbuild": "^0.25.12",
     "puppeteer": "^25.12.0",
-    "tailwindcss": "^3.4.17",
-    "three": "^0.160.1"
+    "tailwindcss": "^3.4.17"
   },
   "dependencies": {
     "sharp": "^0.35.5"

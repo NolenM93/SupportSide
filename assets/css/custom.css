@@ -246,6 +246,22 @@ html.scene-static .hero-static {
   transform: translate(1.7rem, -50%);
 }
 
+@media (max-width: 800px) {
+  .scene-node-label {
+    font-size: 0.5rem;
+    letter-spacing: 0.06em;
+    transform: translate(-50%, 1.65rem);
+    white-space: normal;
+    width: 4.4rem;
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  .scene-node-btn[data-side="below-right"] .scene-node-label {
+    transform: translate(-20%, 1.65rem);
+  }
+}
+
 .scene-static .scene-node-btn {
   position: static;
   width: auto;
