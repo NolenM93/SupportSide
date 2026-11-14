@@ -78,6 +78,253 @@
   margin-bottom: 0.75rem;
 }
 
+/* Display face for headlines. Inter stays on body, UI, and kickers. */
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  font-synthesis: none;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+h1.font-extrabold,
+h2.font-extrabold,
+h1.font-bold,
+h2.font-bold,
+h3.font-bold,
+h3.font-extrabold {
+  font-weight: 600;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  font-synthesis: none;
+  font-size: clamp(1.7rem, 1.05rem + 1.7vw, 2.75rem);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: var(--ink-1);
+  text-wrap: balance;
+}
+
+.layout-wide {
+  width: 100%;
+  max-width: var(--layout-wide);
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+.layout-measure {
+  max-width: var(--measure);
+}
+
+.section-block {
+  padding-block: clamp(4.5rem, 8vh, 7rem);
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+  min-height: 100vh;
+  min-height: 100svh;
+  min-height: calc(100svh + 1px);
+  padding-top: var(--nav-height);
+  padding-bottom: 4.75rem;
+}
+
+.hero-shell {
+  display: grid;
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 4.5rem);
+  width: 100%;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  font-synthesis: none;
+  font-size: clamp(2.4rem, 1.05rem + 4.6vw, 5.5rem);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: var(--ink-1);
+  text-wrap: balance;
+  margin: 0 0 clamp(1rem, 2.4vh, 1.75rem);
+}
+
+.hero-lede {
+  font-size: clamp(1.05rem, 0.95rem + 0.4vw, 1.25rem);
+  line-height: 1.65;
+  color: var(--ink-2);
+  max-width: 38rem;
+  margin: 0 0 clamp(1.35rem, 3vh, 2rem);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.9rem 1.6rem;
+}
+
+.hero-secondary {
+  font-size: 0.9rem;
+}
+
+.hero-visual {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.hero .founder-portrait {
+  width: 9.5rem;
+  height: 9.5rem;
+  border-radius: 1.6rem;
+}
+
+@media (min-width: 640px) {
+  .hero .founder-portrait {
+    width: 13rem;
+    height: 13rem;
+    border-radius: 1.9rem;
+  }
+}
+
+.scroll-cue {
+  position: absolute;
+  left: 50%;
+  bottom: 1.15rem;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  color: var(--ink-3);
+  border-radius: 999px;
+}
+
+.scroll-cue:hover,
+.scroll-cue:focus-visible {
+  color: var(--ink-1);
+}
+
+.scroll-cue-mark {
+  display: block;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+  animation: cue-bob 2.2s var(--ease) infinite;
+}
+
+@keyframes cue-bob {
+  0%, 100% { transform: translateY(-2px) rotate(45deg); }
+  50% { transform: translateY(4px) rotate(45deg); }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hero-shell {
+    grid-template-columns: minmax(0, 1fr) 13.5rem;
+    column-gap: 2rem;
+    row-gap: 1.25rem;
+  }
+
+  .hero-copy {
+    display: contents;
+  }
+
+  .hero-copy .section-kicker {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .hero-title {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+
+  .hero-lede {
+    grid-column: 1;
+    grid-row: 3;
+  }
+
+  .hero-actions {
+    grid-column: 1;
+    grid-row: 4;
+    align-self: end;
+  }
+
+  .hero-visual {
+    grid-column: 2;
+    grid-row: 3 / 5;
+    justify-content: flex-end;
+    align-self: center;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-shell {
+    grid-template-columns: minmax(0, 1.2fr) minmax(16rem, 0.8fr);
+    padding-block: clamp(0.5rem, 3vh, 2.5rem);
+  }
+
+  .hero-visual {
+    justify-content: flex-end;
+  }
+
+  .hero .founder-portrait {
+    width: min(22rem, 100%);
+    height: min(22rem, 100%);
+    border-radius: 2.25rem;
+  }
+}
+
+/* ---------- Project frames ---------- */
+
+.project-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.25rem;
+}
+
+.project-grid > * {
+  min-width: 0;
+}
+
+.project-frame {
+  display: block;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--glass-1);
+}
+
+.project-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.project-grid .project-media {
+  height: auto;
+  min-height: 0;
+}
+
+@media (min-width: 768px) {
+  .project-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+}
+
 /* ---------- Cards & tiles ---------- */
 
 .icon-tile {
@@ -260,4 +507,10 @@
   background-position: right 0.9rem center;
   background-size: 1.1rem;
   padding-right: 2.75rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-cue-mark {
+    animation: none;
+  }
 }
