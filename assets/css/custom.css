@@ -197,7 +197,7 @@ html.scene-static .hero-static {
 .scene-nodes {
   position: absolute;
   inset: 0;
-  z-index: 2;
+  z-index: 5;
   pointer-events: none;
 }
 
@@ -225,13 +225,14 @@ html.scene-static .hero-static {
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #d7e0ee;
+  color: #e8eef8;
   white-space: nowrap;
   pointer-events: none;
-  text-shadow:
-    0 1px 1px #05070d,
-    0 0 8px rgba(5, 7, 13, 0.95),
-    0 0 16px rgba(5, 7, 13, 0.85);
+  opacity: 1;
+  padding: 0.12rem 0.32rem 0.1rem;
+  border-radius: 0.28rem;
+  background: rgba(5, 7, 13, 0.84);
+  text-shadow: 0 1px 2px #05070d, 0 0 8px rgba(5, 7, 13, 0.9);
 }
 
 .scene-node-btn[data-side="below-right"] .scene-node-label {
@@ -250,15 +251,15 @@ html.scene-static .hero-static {
   .scene-node-label {
     font-size: 0.5rem;
     letter-spacing: 0.06em;
-    transform: translate(-50%, 1.65rem);
+    transform: translate(-50%, 1.7rem);
     white-space: normal;
-    width: 4.4rem;
+    width: 4.2rem;
     line-height: 1.2;
     text-align: center;
   }
 
   .scene-node-btn[data-side="below-right"] .scene-node-label {
-    transform: translate(-20%, 1.65rem);
+    transform: translate(-50%, 1.7rem);
   }
 }
 
@@ -279,6 +280,8 @@ html.scene-static .hero-static {
   position: static;
   transform: none;
   text-shadow: none;
+  background: transparent;
+  padding: 0;
   pointer-events: none;
   color: inherit;
 }

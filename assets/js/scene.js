@@ -201,7 +201,7 @@
       battle.w = w * 0.92;
       battle.h = h * 0.86;
     }
-    var gapX = battle.w / 5.2;
+    var gapX = battle.w / (w < 800 ? 4.35 : 5.2);
     var top = battle.y + battle.h * 0.16;
     var rowH = Math.min(52, battle.h * 0.12);
     enemies.forEach(function (en) {
@@ -363,13 +363,11 @@
       if (!en.labeled) return;
       var btn = nodesRoot && nodesRoot.querySelector('[data-node="' + en.tag + '"]');
       if (!btn) return;
-      if (!en.alive) {
-        btn.style.opacity = '0.35';
-      } else {
-        btn.style.opacity = '1';
-      }
-      var x = (en.x / w) * rect.width;
-      var y = (en.y / h) * rect.height;
+      btn.style.opacity = '1';
+      var lx = en.formX || en.homeX;
+      var ly = en.formY || en.homeY;
+      var x = (lx / w) * rect.width;
+      var y = (ly / h) * rect.height;
       btn.style.transform = 'translate(' + x + 'px, ' + y + 'px) translate(-50%, -50%)';
     });
   }
@@ -425,9 +423,11 @@
         }
         return;
       }
+      en.formX = en.homeX + sway;
+      en.formY = en.homeY + Math.sin(time * 1.1 + en.col) * 4;
       if (en.mode === 'form') {
-        en.x = en.homeX + sway;
-        en.y = en.homeY + Math.sin(time * 1.1 + en.col) * 4;
+        en.x = en.formX;
+        en.y = en.formY;
       } else {
         en.t += dt / 2.6;
         var t = en.t;
