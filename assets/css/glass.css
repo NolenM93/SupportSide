@@ -129,14 +129,6 @@ html {
   }
 }
 
-[id] {
-  scroll-margin-top: var(--anchor-offset);
-}
-
-#top {
-  scroll-margin-top: 0;
-}
-
 body {
   background-color: var(--bg-base);
   color: var(--ink-2);
