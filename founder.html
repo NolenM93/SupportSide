@@ -1,14 +1,132 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth" data-accent="cyan">
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="refresh" content="0; url=index.html#about" />
-  <link rel="canonical" href="index.html#about" />
-  <title>About Nolen | Support Side</title>
-  <script>location.replace("index.html#about");</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="assets/favicons/support-side.svg" type="image/svg+xml">
+  <title>Founder | Support Side Tech</title>
+  <meta name="description" content="Nolen Millington founded Support Side Tech. We build websites, booking tools, and custom software for local businesses." />
+  <meta name="theme-color" content="#05070d" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,500;6..72,600;6..72,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/tailwind.css" />
+  <link rel="stylesheet" href="assets/css/glass.css" />
+  <link rel="stylesheet" href="assets/css/custom.css" />
 </head>
-<body>
-  <p><a href="index.html#about">Continue to Support Side</a></p>
+<body class="font-sans text-ink-2 antialiased">
+
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <div class="aurora" aria-hidden="true">
+    <span class="aurora-orb aurora-orb--1"></span>
+    <span class="aurora-orb aurora-orb--2"></span>
+    <span class="aurora-orb aurora-orb--3"></span>
+  </div>
+  <div class="grid-veil" aria-hidden="true"></div>
+
+  <header id="top" class="site-nav glass-nav fixed top-0 left-0 right-0 z-50">
+    <nav class="layout-wide h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2.5">
+        <span class="brand-mark">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
+          </svg>
+        </span>
+        <span class="text-ink-1 font-bold text-lg tracking-tight">Support Side</span>
+      </a>
+      <div class="hidden md:flex items-center gap-6 text-sm font-medium">
+        <a href="index.html#work" class="link-neon">Work</a>
+        <a href="index.html#about" class="link-neon">About</a>
+        <a href="founder.html" class="link-neon" aria-current="page">Founder</a>
+        <a href="plans.html" class="link-neon">Hosting</a>
+        <a href="index.html#contact" class="btn-neon px-4 py-2">Contact</a>
+      </div>
+      <button id="menu-btn" class="md:hidden text-ink-2 hover:text-ink-1 p-1" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+      </button>
+    </nav>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-hair px-6 py-4 flex flex-col gap-4">
+      <a href="index.html#work" class="link-neon text-sm font-medium" onclick="closeMobileMenu()">Work</a>
+      <a href="index.html#about" class="link-neon text-sm font-medium" onclick="closeMobileMenu()">About</a>
+      <a href="founder.html" class="link-neon text-sm font-medium" aria-current="page" onclick="closeMobileMenu()">Founder</a>
+      <a href="plans.html" class="link-neon text-sm font-medium" onclick="closeMobileMenu()">Hosting</a>
+      <a href="index.html#contact" class="btn-neon text-sm px-4 py-2.5" onclick="closeMobileMenu()">Contact</a>
+    </div>
+  </header>
+
+  <main id="main" class="relative z-10">
+    <article class="pt-32 md:pt-40 pb-20 md:pb-28">
+      <div class="layout-wide">
+        <div class="layout-measure">
+          <div class="about-lead">
+            <div class="founder-portrait">
+              <img src="assets/images/nolen.png" alt="Nolen Millington" width="200" height="200" />
+            </div>
+            <div>
+              <p class="section-kicker text-left">Founder</p>
+              <h1 class="section-title mb-6">Nolen Millington</h1>
+              <p class="text-lg text-ink-3 leading-relaxed mb-4">
+                Nolen founded Support Side Tech to build software that matches how local businesses actually work. We stay on the support side so owners can stay on the actual work.
+              </p>
+              <p class="text-lg text-ink-3 leading-relaxed">
+                Based in Warrensburg, New York, and working with clients in Florida and beyond. Outside the studio: fishing, hiking, family, and making things with other people.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-x-6 gap-y-2 text-sm mb-12">
+            <a class="neon-text font-medium" href="mailto:nolenmillington@supportsidetech.com">nolenmillington@supportsidetech.com</a>
+            <a class="link-neon" href="tel:+15186690636">(518)-669-0636</a>
+            <a class="link-neon" href="https://github.com/NolenM93" target="_blank" rel="noreferrer">GitHub</a>
+            <a class="link-neon" href="https://www.linkedin.com/in/nolen-millington" target="_blank" rel="noreferrer">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+
+      <hr class="neon-hairline max-w-6xl mx-auto" />
+
+      <div class="layout-wide section-block">
+        <div class="layout-measure">
+          <p class="section-kicker text-left">How we work</p>
+          <h2 class="section-title mb-6">A studio, not an agency markup</h2>
+          <div class="space-y-5 text-lg text-ink-3 leading-relaxed mb-10">
+            <p>
+              We talk to the people who run the work, scope a real first version, and write the code ourselves. No account manager in the middle. No bloated subscription that charges per booking.
+            </p>
+            <p>
+              That can be a website, SEO and Google Business Profile support, hosting, or a custom tool. The job is the same: listen, build what they need, keep it maintainable.
+            </p>
+          </div>
+
+          <div class="glass-card glass-edge rounded-2xl p-6">
+            <p class="font-semibold text-ink-1 mb-2">Personal projects live separately</p>
+            <p class="text-sm text-ink-3 leading-relaxed mb-3">
+              Side projects and experiments are on Nolen’s personal site, not on the Support Side business pages.
+            </p>
+            <a href="https://nolenm93.github.io" class="text-sm font-medium text-[color:var(--accent)]" target="_blank" rel="noreferrer">Personal portfolio →</a>
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="relative z-10 border-t border-hair py-10">
+    <div class="layout-wide flex flex-col sm:flex-row items-center justify-between gap-3 text-sm">
+      <span class="text-ink-2 font-medium">Support Side Tech</span>
+      <p class="text-ink-3 text-xs">
+        &copy; 2026 Nolen Millington ·
+        <a href="privacy.html" class="link-neon">Privacy</a> ·
+        <a href="terms.html" class="link-neon">Terms</a> ·
+        <a href="https://nolenm93.github.io" class="link-neon whitespace-nowrap" target="_blank" rel="noreferrer">Personal portfolio</a> ·
+        <a href="mailto:nolenmillington@supportsidetech.com" class="link-neon">nolenmillington@supportsidetech.com</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="assets/js/ui.js" defer></script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d314b289fea24d7cb2f7457e90dc4368"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>

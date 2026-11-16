@@ -1,6 +1,8 @@
-# Support Side
+# Support Side Tech
 
-Personal site for **Nolen Millington** and **Support Side Tech**: a short description of the practice, a resume, selected work, and a contact form.
+Business site for **Support Side Tech**: why the studio exists, client work, hosting plans, and a contact form.
+
+Personal projects live at **https://nolenm93.github.io**.
 
 ## Local
 
