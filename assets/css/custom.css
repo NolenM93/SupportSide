@@ -770,6 +770,136 @@ html.scene-static .hero-static {
   padding-right: 2.75rem;
 }
 
+/* ---------- Plan get-started modal ---------- */
+
+.plan-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: max(1rem, env(safe-area-inset-top, 0px))
+    max(1rem, env(safe-area-inset-right, 0px))
+    max(1rem, env(safe-area-inset-bottom, 0px))
+    max(1rem, env(safe-area-inset-left, 0px));
+}
+
+.plan-modal[hidden] {
+  display: none !important;
+}
+
+.plan-modal-panel {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 22.5rem);
+  max-height: min(32rem, calc(100dvh - 2rem));
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: 1.35rem 1.2rem 1.2rem;
+  background: rgba(10, 15, 26, 0.96);
+  box-shadow: var(--elev-3), var(--glow-soft);
+}
+
+.plan-modal-close {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.4rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border: 0;
+  border-radius: 0.75rem;
+  color: var(--ink-2);
+  background: transparent;
+  cursor: pointer;
+}
+
+.plan-modal-close:hover,
+.plan-modal-close:focus-visible {
+  color: var(--ink-1);
+  background: var(--glass-hover);
+}
+
+.plan-modal-title {
+  margin: 0 2.85rem 0.55rem 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--ink-1);
+}
+
+.plan-modal-copy {
+  margin: 0 0 1.1rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+.plan-modal-actions {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.plan-modal-action {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.2rem;
+  width: 100%;
+  min-height: 3.25rem;
+  padding: 0.85rem 1rem;
+  text-align: left;
+  text-decoration: none;
+}
+
+.plan-modal-action-kicker {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.btn-neon.plan-modal-action .plan-modal-action-kicker {
+  color: var(--accent-ink);
+  opacity: 0.82;
+}
+
+.plan-modal-email {
+  font-size: 0.9rem;
+  line-height: 1.35;
+  overflow-wrap: break-word;
+  word-break: normal;
+  hyphens: none;
+}
+
+@media (max-width: 400px) {
+  .plan-modal-panel {
+    padding: 1.2rem 1rem 1rem;
+  }
+
+  .plan-modal-action {
+    padding: 0.85rem 0.8rem;
+  }
+
+  .plan-modal-email {
+    font-size: 0.8125rem;
+  }
+}
+
+.plan-modal-form-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  margin-top: 0.35rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .scroll-cue-mark {
     animation: none;

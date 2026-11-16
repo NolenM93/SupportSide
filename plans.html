@@ -292,7 +292,7 @@
                 </li>
               </ul>
 
-              <a href="index.html#contact" class="btn-ghost w-full py-3 text-sm">Get Started</a>
+              <a href="index.html#contact" class="btn-ghost w-full py-3 text-sm js-plan-start" data-plan="Hosting Basic" aria-haspopup="dialog" aria-controls="plan-modal">Get Started</a>
             </div>
           </div>
 
@@ -353,7 +353,7 @@
                 </li>
               </ul>
 
-              <a href="index.html#contact" class="btn-neon w-full py-3 text-sm">Get Started</a>
+              <a href="index.html#contact" class="btn-neon w-full py-3 text-sm js-plan-start" data-plan="Hosting Plus" aria-haspopup="dialog" aria-controls="plan-modal">Get Started</a>
             </div>
           </div>
 
@@ -414,7 +414,7 @@
                 </li>
               </ul>
 
-              <a href="index.html#contact" class="btn-ghost w-full py-3 text-sm">Get Started</a>
+              <a href="index.html#contact" class="btn-ghost w-full py-3 text-sm js-plan-start" data-plan="Hosting Pro" aria-haspopup="dialog" aria-controls="plan-modal">Get Started</a>
             </div>
           </div>
 
@@ -499,6 +499,36 @@
       </p>
     </div>
   </footer>
+
+  <div id="plan-modal" class="plan-modal glass-scrim" hidden>
+    <div
+      class="plan-modal-panel glass-strong glass-edge rounded-2xl"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="plan-modal-title"
+      aria-describedby="plan-modal-copy"
+      tabindex="-1"
+    >
+      <button type="button" class="plan-modal-close" data-plan-modal-close aria-label="Close">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+        </svg>
+      </button>
+      <h2 id="plan-modal-title" class="plan-modal-title">Get started</h2>
+      <p id="plan-modal-copy" class="plan-modal-copy">Email or call Nolen to start this plan.</p>
+      <div class="plan-modal-actions">
+        <a id="plan-modal-email" class="btn-neon plan-modal-action" href="mailto:nolenmillington@supportsidetech.com">
+          <span class="plan-modal-action-kicker">Email</span>
+          <span class="plan-modal-email">nolenmillington@<wbr>supportsidetech.com</span>
+        </a>
+        <a class="btn-ghost plan-modal-action" href="tel:+15186690636">
+          <span class="plan-modal-action-kicker">Call or text</span>
+          <span>(518) 669-0636</span>
+        </a>
+      </div>
+      <a href="index.html#contact" class="plan-modal-form-link link-neon">Or use the full contact form</a>
+    </div>
+  </div>
 
   <script src="assets/js/ui.js" defer></script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d314b289fea24d7cb2f7457e90dc4368"}'></script><!-- End Cloudflare Web Analytics -->
