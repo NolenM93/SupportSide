@@ -27,7 +27,7 @@
     { id: 'sites', label: 'Websites', copy: 'A site customers can use, without an agency markup or a bloated subscription.', href: '#work', linkLabel: 'See the work' },
     { id: 'booking', label: 'Booking tools', copy: 'A booking website for a local rental company: availability, reservations, and a flow customers can actually use.', href: '#work', linkLabel: 'See the work' },
     { id: 'apps', label: 'Apps', copy: 'I build safe, affordable software of any kind: sites, booking tools, apps, so local owners can stay on the actual work.', href: '#work', linkLabel: 'See the work' },
-    { id: 'care', label: 'Care plans', copy: 'Monthly plans that cover hosting oversight, updates, backups, uptime monitoring, and quick support when you need it.', href: 'plans.html', linkLabel: 'View plans' }
+    { id: 'care', label: 'Hosting', copy: 'We host your website and keep it running, safe, and up to date for one monthly price, so you never have to think about it.', href: 'plans.html', linkLabel: 'View hosting' }
   ];
 
   var isPhone = window.matchMedia('(max-width: 768px)').matches || navigator.maxTouchPoints > 2;
