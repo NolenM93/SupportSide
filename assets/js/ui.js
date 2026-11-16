@@ -61,6 +61,109 @@
     onScroll();
   }
 
+  /* ---------- Plan get-started modal ---------- */
+
+  var planModal = document.getElementById('plan-modal');
+  var planModalPanel = planModal && planModal.querySelector('[role="dialog"]');
+  var planModalTitle = document.getElementById('plan-modal-title');
+  var planModalEmail = document.getElementById('plan-modal-email');
+  var planModalTriggers = document.querySelectorAll('.js-plan-start');
+  var planModalLastFocus = null;
+  var PLAN_CONTACT_EMAIL = 'nolenmillington@supportsidetech.com';
+
+  function planModalFocusables() {
+    if (!planModalPanel) return [];
+    return Array.prototype.filter.call(
+      planModalPanel.querySelectorAll('a[href], button:not([disabled])'),
+      function (el) {
+        return el.offsetWidth > 0 && el.offsetHeight > 0;
+      }
+    );
+  }
+
+  function setPlanPageInert(inert) {
+    Array.prototype.forEach.call(document.body.children, function (el) {
+      if (el === planModal) return;
+      el.inert = inert;
+    });
+  }
+
+  function closePlanModal() {
+    if (!planModal || planModal.hidden) return;
+    planModal.hidden = true;
+    document.body.style.overflow = '';
+    setPlanPageInert(false);
+    if (planModalLastFocus && typeof planModalLastFocus.focus === 'function') {
+      planModalLastFocus.focus();
+    }
+    planModalLastFocus = null;
+  }
+
+  function openPlanModal(trigger) {
+    if (!planModal || !planModalPanel || !planModalTitle || !planModalEmail) return;
+    var planName = (trigger && trigger.getAttribute('data-plan')) || 'this plan';
+    planModalTitle.textContent = 'Get started with ' + planName;
+    planModalEmail.setAttribute(
+      'href',
+      'mailto:' + PLAN_CONTACT_EMAIL + '?subject=' + encodeURIComponent(planName)
+    );
+    planModalLastFocus = trigger || document.activeElement;
+    planModal.hidden = false;
+    document.body.style.overflow = 'hidden';
+    setPlanPageInert(true);
+    planModalPanel.focus();
+  }
+
+  if (planModal && planModalPanel && planModalTriggers.length) {
+    planModalTriggers.forEach(function (trigger) {
+      trigger.addEventListener('click', function (e) {
+        if (e.defaultPrevented) return;
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+        e.preventDefault();
+        openPlanModal(trigger);
+      });
+    });
+
+    planModal.addEventListener('click', function (e) {
+      if (e.target === planModal || (e.target.closest && e.target.closest('[data-plan-modal-close]'))) {
+        closePlanModal();
+      }
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (planModal.hidden) return;
+
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        closePlanModal();
+        return;
+      }
+
+      if (e.key !== 'Tab') return;
+
+      var list = planModalFocusables();
+      if (!list.length) {
+        e.preventDefault();
+        planModalPanel.focus();
+        return;
+      }
+
+      var first = list[0];
+      var last = list[list.length - 1];
+      var active = document.activeElement;
+
+      if (e.shiftKey) {
+        if (active === first || active === planModalPanel || !planModalPanel.contains(active)) {
+          e.preventDefault();
+          last.focus();
+        }
+      } else if (active === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    });
+  }
+
   /* ---------- Scroll reveal ---------- */
 
   var revealables = document.querySelectorAll('.reveal');
