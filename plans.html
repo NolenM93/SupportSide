@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" href="assets/favicons/support-side.svg" type="image/svg+xml">
-  <title>Website Care Plans | Support Side Tech</title>
-  <meta name="description" content="Monthly website care plans from Support Side Tech in Dunedin, Florida. Hosting oversight, updates, backups, and support for businesses in Tampa Bay, Clearwater, and St. Pete." />
+  <title>Website Hosting &amp; Care | Support Side Tech</title>
+  <meta name="description" content="Website hosting and care from Support Side Tech in Dunedin, Florida. We host your site and keep it running, safe, and up to date for one monthly price. Serving Tampa Bay, Clearwater, and St. Pete." />
   <meta name="theme-color" content="#05070d" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -27,8 +27,12 @@
     .plan-features {
       flex: 1;
     }
+    .plan-features span {
+      min-width: 0;
+    }
     .plan-popular {
       position: relative;
+      margin-top: 0.75rem;
     }
     .plan-popular::after {
       content: 'Most Popular';
@@ -45,6 +49,73 @@
       background: linear-gradient(135deg, var(--accent), var(--accent-2));
       border-radius: 999px;
       white-space: nowrap;
+    }
+    .plan-hosting {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+      padding: 0.8rem 0.9rem;
+      border-radius: 0.85rem;
+      color: var(--ink-1);
+      background: var(--accent-wash);
+      border: 1px solid var(--accent-line);
+      font-size: 0.95rem;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+    .plan-hosting svg {
+      flex-shrink: 0;
+      width: 1.25rem;
+      height: 1.25rem;
+      margin-top: 0.1rem;
+      color: var(--accent);
+    }
+    .plan-intro {
+      min-height: 0;
+    }
+    .plan-good-for {
+      font-size: 0.875rem;
+      line-height: 1.45;
+      color: var(--ink-2);
+      margin: 0 0 1rem;
+    }
+    .plan-good-for strong {
+      color: var(--ink-1);
+      font-weight: 600;
+    }
+    .fit-list {
+      display: grid;
+      gap: 0.9rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .fit-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: var(--ink-2);
+    }
+    .fit-item svg {
+      flex-shrink: 0;
+      width: 1.25rem;
+      height: 1.25rem;
+      margin-top: 0.15rem;
+      color: var(--accent);
+    }
+    @media (min-width: 768px) {
+      .plan-popular {
+        margin-top: 0;
+      }
+      .plans-grid {
+        padding-top: 0.9rem;
+      }
+      .plan-intro {
+        min-height: 6.5rem;
+      }
     }
   </style>
 </head>
@@ -72,6 +143,7 @@
       <div class="hidden sm:flex items-center gap-6 text-sm font-medium">
         <a href="index.html#work" class="link-neon">Work</a>
         <a href="index.html#about" class="link-neon">About</a>
+        <a href="plans.html" class="link-neon" aria-current="page">Hosting</a>
         <a href="index.html#contact" class="btn-neon px-4 py-2">Contact</a>
       </div>
       <button id="menu-btn" class="sm:hidden text-ink-2 hover:text-ink-1 p-1" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
@@ -83,34 +155,86 @@
     <div id="mobile-menu" class="hidden sm:hidden border-t border-hair px-6 py-4 flex flex-col gap-4">
       <a href="index.html#work" class="link-neon text-sm font-medium" onclick="closeMobileMenu()">Work</a>
       <a href="index.html#about" class="link-neon text-sm font-medium" onclick="closeMobileMenu()">About</a>
+      <a href="plans.html" class="link-neon text-sm font-medium" aria-current="page" onclick="closeMobileMenu()">Hosting</a>
       <a href="index.html#contact" class="btn-neon text-sm px-4 py-2.5" onclick="closeMobileMenu()">Contact</a>
     </div>
   </header>
 
   <main id="main" class="relative z-10">
 
-    <section class="pt-32 md:pt-40 pb-16 md:pb-20">
+    <section class="pt-32 md:pt-40 pb-12 md:pb-16">
       <div class="max-w-3xl mx-auto px-6 text-center">
-        <p class="section-kicker">Website Care Plans</p>
+        <p class="section-kicker">Hosting plans</p>
         <h1 class="text-4xl md:text-5xl font-extrabold text-ink-1 tracking-tight leading-tight mb-6">
-          Keep your site running<br class="hidden sm:block" /> while you run the business.
+          Website Hosting &amp; Care
         </h1>
         <p class="text-lg text-ink-3 leading-relaxed max-w-2xl mx-auto">
-          Monthly plans that cover hosting oversight, updates, backups, uptime monitoring, and quick support when you need it. Pick what fits and get back to work.
+          We host your website and keep it running, safe, and up to date for one monthly price, so you never have to think about it.
         </p>
       </div>
     </section>
 
-    <section class="pb-20 md:pb-28">
-      <div class="max-w-5xl mx-auto px-6">
-        <div class="grid md:grid-cols-3 gap-6">
+    <section class="pb-16 md:pb-20" aria-labelledby="fit-heading">
+      <div class="max-w-3xl mx-auto px-6">
+        <div class="glass-card glass-edge rounded-2xl p-6 md:p-8">
+          <h2 id="fit-heading" class="text-2xl font-bold text-ink-1 mb-2">Is this for me?</h2>
+          <p class="text-sm text-ink-3 leading-relaxed mb-6">
+            These hosting plans are a fit if any of this sounds familiar.
+          </p>
+          <ul class="fit-list">
+            <li class="fit-item">
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+              </svg>
+              <span>You need somewhere to host your website</span>
+            </li>
+            <li class="fit-item">
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+              </svg>
+              <span>Your site was built by us, or by someone else</span>
+            </li>
+            <li class="fit-item">
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+              </svg>
+              <span>You do not know who to call when it breaks</span>
+            </li>
+            <li class="fit-item">
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+              </svg>
+              <span>You keep meaning to update hours or photos</span>
+            </li>
+            <li class="fit-item">
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+              </svg>
+              <span>You are worried about getting hacked or losing everything</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-          <!-- Basic Plan -->
+    <section class="pb-20 md:pb-28" aria-labelledby="plans-heading">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="text-center mb-10 md:mb-12">
+          <h2 id="plans-heading" class="text-2xl md:text-3xl font-bold text-ink-1">Hosting plans</h2>
+          <p class="text-ink-3 mt-3 max-w-xl mx-auto leading-relaxed">
+            Every plan includes hosting. Pick the level of care that matches how much your site changes.
+          </p>
+        </div>
+        <div class="plans-grid grid md:grid-cols-3 gap-6">
+
           <div class="glass-card glass-edge rounded-2xl p-6 plan-card">
             <div class="plan-card-body">
-              <div class="mb-6">
-                <h2 class="text-xl font-bold text-ink-1 mb-2">Basic</h2>
-                <p class="text-sm text-ink-3 mb-4">For sites that need steady upkeep</p>
+              <div class="mb-2">
+                <h3 class="text-xl font-bold text-ink-1 mb-2">Hosting Basic</h3>
+                <div class="plan-intro">
+                  <p class="text-sm text-ink-3 mb-3">For sites that need a home and steady upkeep</p>
+                  <p class="plan-good-for"><strong>Good for:</strong> a small business with a simple info site</p>
+                </div>
                 <div class="flex items-baseline gap-1 mb-1">
                   <span class="text-sm text-ink-3">Starting at</span>
                 </div>
@@ -120,33 +244,40 @@
                 </div>
               </div>
 
+              <p class="plan-hosting">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                </svg>
+                <span>Hosting included</span>
+              </p>
+
               <ul class="plan-features space-y-3 text-sm text-ink-3 mb-8">
                 <li class="flex items-start gap-3">
-                  <svg class="w-5 h-5 text-[color:var(--accent)] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <svg class="w-5 h-5 text-[color:var(--accent)] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                   </svg>
-                  <span>Hosting oversight and management</span>
+                  <span>We handle the technical hosting account for you</span>
                 </li>
                 <li class="flex items-start gap-3">
-                  <svg class="w-5 h-5 text-[color:var(--accent)] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <svg class="w-5 h-5 text-[color:var(--accent)] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                   </svg>
-                  <span>Monthly software and security updates</span>
+                  <span>We keep it updated and protected from hackers</span>
                 </li>
                 <li class="flex items-start gap-3">
-                  <svg class="w-5 h-5 text-[color:var(--accent)] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <svg class="w-5 h-5 text-[color:var(--accent)] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                   </svg>
-                  <span>Weekly backups</span>
+                  <span>If something breaks, we can restore your site from a weekly backup</span>
                 </li>
                 <li class="flex items-start gap-3">
-                  <svg class="w-5 h-5 text-[color:var(--accent)] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <svg class="w-5 h-5 text-[color:var(--accent)] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                   </svg>
-                  <span>Uptime monitoring with alerts</span>
+                  <span>We are alerted if your site goes down and fix it, often before you notice</span>
                 </li>
                 <li class="flex items-start gap-3">
-                  <svg class="w-5 h-5 text-[color:var(--accent)] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <svg class="w-5 h-5 text-[color:var(--accent)] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                   </svg>
                   <span>Email support (48-hour response)</span>
@@ -157,12 +288,14 @@
             </div>
           </div>
 
-          <!-- Standard Plan -->
           <div class="glass-card glass-edge rounded-2xl p-6 plan-card plan-popular" style="border-color: var(--accent-line);">
             <div class="plan-card-body">
-              <div class="mb-6">
-                <h2 class="text-xl font-bold text-ink-1 mb-2">Standard</h2>
-                <p class="text-sm text-ink-3 mb-4">For sites that need active care</p>
+              <div class="mb-2">
+                <h3 class="text-xl font-bold text-ink-1 mb-2">Hosting Plus</h3>
+                <div class="plan-intro">
+                  <p class="text-sm text-ink-3 mb-3">For sites that change and need active care</p>
+                  <p class="plan-good-for"><strong>Good for:</strong> a business that changes menus, specials, or photos often</p>
+                </div>
                 <div class="flex items-baseline gap-1 mb-1">
                   <span class="text-sm text-ink-3">Starting at</span>
                 </div>
@@ -172,33 +305,40 @@
                 </div>
               </div>
 
+              <p class="plan-hosting">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                </svg>
+                <span>Hosting included</span>
+              </p>
+
               <ul class="plan-features space-y-3 text-sm text-ink-3 mb-8">
                 <li class="flex items-start gap-3">
-                  <svg class="w-5 h-5 text-[color:var(--accent)] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <svg class="w-5 h-5 text-[color:var(--accent)] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                   </svg>
-                  <span>Everything in Basic</span>
+                  <span>Everything in Hosting Basic</span>
                 </li>
                 <li class="flex items-start gap-3">
-                  <svg class="w-5 h-5 text-[color:var(--accent)] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <svg class="w-5 h-5 text-[color:var(--accent)] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                   </svg>
-                  <span>Daily backups with 30-day retention</span>
+                  <span>If something breaks, we can restore your site from a daily backup kept for 30 days</span>
                 </li>
                 <li class="flex items-start gap-3">
-                  <svg class="w-5 h-5 text-[color:var(--accent)] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <svg class="w-5 h-5 text-[color:var(--accent)] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                   </svg>
                   <span>Up to 2 hours of small content edits per month</span>
                 </li>
                 <li class="flex items-start gap-3">
-                  <svg class="w-5 h-5 text-[color:var(--accent)] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <svg class="w-5 h-5 text-[color:var(--accent)] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                   </svg>
-                  <span>Performance and speed checks</span>
+                  <span>We check that your site still loads quickly</span>
                 </li>
                 <li class="flex items-start gap-3">
-                  <svg class="w-5 h-5 text-[color:var(--accent)] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <svg class="w-5 h-5 text-[color:var(--accent)] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                   </svg>
                   <span>Email support (24-hour response)</span>
@@ -209,12 +349,14 @@
             </div>
           </div>
 
-          <!-- Premium Plan -->
           <div class="glass-card glass-edge rounded-2xl p-6 plan-card">
             <div class="plan-card-body">
-              <div class="mb-6">
-                <h2 class="text-xl font-bold text-ink-1 mb-2">Premium</h2>
-                <p class="text-sm text-ink-3 mb-4">For sites that need priority attention</p>
+              <div class="mb-2">
+                <h3 class="text-xl font-bold text-ink-1 mb-2">Hosting Pro</h3>
+                <div class="plan-intro">
+                  <p class="text-sm text-ink-3 mb-3">For sites that need priority attention</p>
+                  <p class="plan-good-for"><strong>Good for:</strong> a business that relies on its site for bookings or sales</p>
+                </div>
                 <div class="flex items-baseline gap-1 mb-1">
                   <span class="text-sm text-ink-3">Starting at</span>
                 </div>
@@ -224,33 +366,40 @@
                 </div>
               </div>
 
+              <p class="plan-hosting">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                </svg>
+                <span>Hosting included</span>
+              </p>
+
               <ul class="plan-features space-y-3 text-sm text-ink-3 mb-8">
                 <li class="flex items-start gap-3">
-                  <svg class="w-5 h-5 text-[color:var(--accent)] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <svg class="w-5 h-5 text-[color:var(--accent)] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                   </svg>
-                  <span>Everything in Standard</span>
+                  <span>Everything in Hosting Plus</span>
                 </li>
                 <li class="flex items-start gap-3">
-                  <svg class="w-5 h-5 text-[color:var(--accent)] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <svg class="w-5 h-5 text-[color:var(--accent)] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                   </svg>
-                  <span>Real-time backups</span>
+                  <span>If something breaks, we can restore your site from a backup taken throughout the day</span>
                 </li>
                 <li class="flex items-start gap-3">
-                  <svg class="w-5 h-5 text-[color:var(--accent)] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <svg class="w-5 h-5 text-[color:var(--accent)] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                   </svg>
                   <span>Up to 5 hours of edits and updates per month</span>
                 </li>
                 <li class="flex items-start gap-3">
-                  <svg class="w-5 h-5 text-[color:var(--accent)] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <svg class="w-5 h-5 text-[color:var(--accent)] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                   </svg>
-                  <span>Monthly analytics review and recommendations</span>
+                  <span>Each month we look at how people use your site and suggest what to improve</span>
                 </li>
                 <li class="flex items-start gap-3">
-                  <svg class="w-5 h-5 text-[color:var(--accent)] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <svg class="w-5 h-5 text-[color:var(--accent)] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                   </svg>
                   <span>Priority support (same-day response)</span>
@@ -268,7 +417,7 @@
     <section class="pb-20 md:pb-28">
       <div class="max-w-3xl mx-auto px-6">
         <div class="glass-strong glass-edge rounded-2xl p-8 text-center">
-          <h2 class="text-2xl font-bold text-ink-1 mb-4">Not sure which plan fits?</h2>
+          <h2 class="text-2xl font-bold text-ink-1 mb-4">Not sure which hosting plan fits?</h2>
           <p class="text-ink-3 leading-relaxed mb-6">
             Every site is different. Reach out and we can talk through what your site actually needs. No pressure, no upsell.
           </p>
@@ -279,8 +428,22 @@
 
     <section class="pb-20 md:pb-28">
       <div class="max-w-3xl mx-auto px-6">
-        <h2 class="text-2xl font-bold text-ink-1 mb-8 text-center">Questions about plans</h2>
+        <h2 class="text-2xl font-bold text-ink-1 mb-8 text-center">Questions about hosting</h2>
         <div class="space-y-4">
+
+          <div class="glass-card glass-edge rounded-xl p-5">
+            <h3 class="font-semibold text-ink-1 mb-2">What is website hosting?</h3>
+            <p class="text-sm text-ink-3 leading-relaxed">
+              Hosting is where your website lives on the internet. Without it, your site goes offline and nobody can visit it. These plans include that hosting, plus the care that keeps the site running.
+            </p>
+          </div>
+
+          <div class="glass-card glass-edge rounded-xl p-5">
+            <h3 class="font-semibold text-ink-1 mb-2">What happens if I don't have a plan?</h3>
+            <p class="text-sm text-ink-3 leading-relaxed">
+              You can skip a plan. You would then handle hosting, updates, and backups yourself, or find someone else when you need them. If the site goes down or needs a change, no one is already looking after it. We can still help as one-off work when you ask.
+            </p>
+          </div>
 
           <div class="glass-card glass-edge rounded-xl p-5">
             <h3 class="font-semibold text-ink-1 mb-2">What counts as a "small edit"?</h3>
@@ -290,9 +453,9 @@
           </div>
 
           <div class="glass-card glass-edge rounded-xl p-5">
-            <h3 class="font-semibold text-ink-1 mb-2">Do I need a care plan if you built my site?</h3>
+            <h3 class="font-semibold text-ink-1 mb-2">Do I need a hosting plan if you built my site?</h3>
             <p class="text-sm text-ink-3 leading-relaxed">
-              Not required, but recommended. Sites need updates and attention over time. A care plan means you do not have to think about it.
+              Not required, but recommended. Every site needs a place to live, plus updates over time. A hosting plan means you do not have to think about it.
             </p>
           </div>
 
