@@ -25,8 +25,8 @@
 
   var NODES = [
     { id: 'sites', label: 'Websites', copy: 'A site customers can use, without an agency markup or a bloated subscription.', href: '#work', linkLabel: 'See the work' },
-    { id: 'booking', label: 'Booking tools', copy: 'A booking website for a local rental company: availability, reservations, and a flow customers can actually use.', href: '#work', linkLabel: 'See the work' },
-    { id: 'apps', label: 'Apps', copy: 'I build safe, affordable software of any kind: sites, booking tools, apps, so local owners can stay on the actual work.', href: '#work', linkLabel: 'See the work' },
+    { id: 'booking', label: 'Booking tools', copy: 'Custom websites for local businesses, including a vacation rental company in the Adirondacks.', href: '#work', linkLabel: 'See the work' },
+    { id: 'apps', label: 'Apps', copy: 'We build safe, affordable software of any kind: sites, booking tools, apps, so local owners can stay on the actual work.', href: '#work', linkLabel: 'See the work' },
     { id: 'care', label: 'Hosting', copy: 'We host your website and keep it running, safe, and up to date for one monthly price, so you never have to think about it.', href: 'plans.html', linkLabel: 'View hosting' }
   ];
 
