@@ -22,6 +22,8 @@
     if (!mobileMenu || !menuBtn) return;
     mobileMenu.classList.toggle('hidden', !open);
     menuBtn.setAttribute('aria-expanded', String(open));
+    var header = menuBtn.closest('.site-nav');
+    if (header) header.classList.toggle('is-menu-open', open);
   }
 
   window.closeMobileMenu = function () {

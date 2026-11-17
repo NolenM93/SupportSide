@@ -35,15 +35,11 @@
     var heroLines = document.querySelectorAll('.hero-line');
     var heroLede = document.querySelector('.hero-lede');
     var heroActions = document.querySelector('.hero-actions');
-    var heroHud = document.querySelectorAll('.hero-hud-item');
     var kicker = document.querySelector('.hero .section-kicker');
 
     var tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-    if (heroHud.length) {
-      tl.fromTo(heroHud, { opacity: 0, y: -8 }, { opacity: 1, y: 0, duration: 0.7, stagger: 0.08 }, 0.15);
-    }
     if (kicker) {
-      tl.fromTo(kicker, { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.7 }, 0.28);
+      tl.fromTo(kicker, { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.7 }, 0.2);
     }
     if (heroLines.length) {
       tl.fromTo(heroLines, { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 1.05, stagger: 0.12 }, 0.38);
