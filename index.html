@@ -5,55 +5,204 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" href="assets/favicons/support-side.svg" type="image/svg+xml">
   <title>Support Side Tech</title>
-  <meta name="description" content="Support Side Tech builds websites, booking tools, and custom software for local businesses in Dunedin, Florida and the Tampa Bay area including Clearwater, Tampa, and St. Pete." />
+  <meta name="description" content="Support Side Tech is a freelance web and software studio in Dunedin, Florida, run by Nolen Millington. We build websites, booking tools, and custom software for local businesses in the Tampa Bay area including Clearwater, Tampa, and St. Pete." />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Support Side Tech",
-    "description": "Web development and custom software for local businesses in Dunedin, Florida and the Tampa Bay area.",
-    "url": "https://supportsidetech.com",
-    "email": "nolenmillington@supportsidetech.com",
-    "founder": {
-      "@type": "Person",
-      "name": "Nolen Millington"
-    },
-    "areaServed": [
+    "@graph": [
       {
-        "@type": "City",
-        "name": "Dunedin",
-        "containedInPlace": {
-          "@type": "State",
-          "name": "Florida"
-        }
+        "@type": ["LocalBusiness", "ProfessionalService"],
+        "@id": "https://supportsidetech.com/#business",
+        "name": "Support Side Tech",
+        "alternateName": "SupportSide",
+        "description": "Support Side Tech is a freelance web and software studio in Dunedin, Florida, run by Nolen Millington. We build websites, custom web apps, hosting and care plans, and local SEO and Google Business Profile work for local businesses.",
+        "url": "https://supportsidetech.com",
+        "email": "nolenmillington@supportsidetech.com",
+        "telephone": "+1-518-669-0636",
+        "image": "https://supportsidetech.com/assets/images/nolen.png",
+        "logo": "https://supportsidetech.com/assets/favicons/support-side.svg",
+        "priceRange": "$$",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Dunedin",
+          "addressRegion": "FL",
+          "addressCountry": "US"
+        },
+        "founder": { "@id": "https://supportsidetech.com/#nolen" },
+        "employee": { "@id": "https://supportsidetech.com/#nolen" },
+        "areaServed": [
+          {
+            "@type": "City",
+            "name": "Dunedin",
+            "containedInPlace": {
+              "@type": "AdministrativeArea",
+              "name": "Pinellas County",
+              "containedInPlace": { "@type": "State", "name": "Florida" }
+            }
+          },
+          {
+            "@type": "City",
+            "name": "Clearwater",
+            "containedInPlace": { "@type": "State", "name": "Florida" }
+          },
+          {
+            "@type": "City",
+            "name": "Tampa",
+            "containedInPlace": { "@type": "State", "name": "Florida" }
+          },
+          {
+            "@type": "City",
+            "name": "St. Petersburg",
+            "containedInPlace": { "@type": "State", "name": "Florida" }
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Tampa Bay",
+            "containedInPlace": { "@type": "State", "name": "Florida" }
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Pinellas County",
+            "containedInPlace": { "@type": "State", "name": "Florida" }
+          },
+          {
+            "@type": "Country",
+            "name": "United States"
+          }
+        ],
+        "serviceType": [
+          "Websites",
+          "Custom web apps",
+          "Hosting and care plans",
+          "Local SEO",
+          "Google Business Profile"
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Support Side Tech services",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Websites",
+                "description": "Custom websites for local businesses."
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Custom web apps",
+                "description": "Booking tools, apps, and other custom software that matches how a local business actually works."
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Hosting and care plans",
+                "url": "https://supportsidetech.com/plans.html",
+                "description": "Monthly website hosting and care. Hosting Basic is $129 per month and includes up to 30 minutes of small edits. Hosting Plus is $199 per month and includes up to 2 hours of small content edits. Hosting Pro is $349 per month and includes up to 5 hours of edits and updates."
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Local SEO",
+                "description": "Local search engine optimization for small businesses."
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Google Business Profile",
+                "description": "Google Business Profile setup and management."
+              }
+            }
+          ]
+        },
+        "sameAs": [
+          "https://github.com/NolenM93",
+          "https://nolenm93.github.io",
+          "https://www.linkedin.com/in/nolen-millington"
+        ]
       },
       {
-        "@type": "City",
-        "name": "Clearwater",
-        "containedInPlace": {
-          "@type": "State",
-          "name": "Florida"
-        }
+        "@type": "Person",
+        "@id": "https://supportsidetech.com/#nolen",
+        "name": "Nolen Millington",
+        "jobTitle": "Founder",
+        "url": "https://supportsidetech.com/founder.html",
+        "image": "https://supportsidetech.com/assets/images/nolen.png",
+        "email": "nolenmillington@supportsidetech.com",
+        "telephone": "+1-518-669-0636",
+        "worksFor": { "@id": "https://supportsidetech.com/#business" },
+        "homeLocation": {
+          "@type": "Place",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Dunedin",
+            "addressRegion": "FL",
+            "addressCountry": "US"
+          }
+        },
+        "sameAs": [
+          "https://github.com/NolenM93",
+          "https://nolenm93.github.io",
+          "https://www.linkedin.com/in/nolen-millington"
+        ]
       },
       {
-        "@type": "City",
-        "name": "Tampa",
-        "containedInPlace": {
-          "@type": "State",
-          "name": "Florida"
-        }
-      },
-      {
-        "@type": "City",
-        "name": "St. Petersburg",
-        "containedInPlace": {
-          "@type": "State",
-          "name": "Florida"
-        }
+        "@type": "FAQPage",
+        "@id": "https://supportsidetech.com/#faq",
+        "url": "https://supportsidetech.com/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Who do we work with?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We work with local businesses that need a website, a custom web app, hosting and care, or help with local SEO and Google Business Profile. That includes shops, service companies, and rental or hospitality owners. We also work with clients remotely in the United States."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Where is Support Side Tech based, and what is the service area?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Support Side Tech is a freelance web and software studio in Dunedin, Florida, run by Nolen Millington. We serve clients in the Tampa Bay area, including Clearwater, Tampa, St. Pete, and Pinellas County. We also work with clients remotely across the United States."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What do we build?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We build websites, booking tools, custom web apps, and other software that matches how a local business actually works. We also offer monthly hosting and care plans, and we provide local SEO and Google Business Profile support."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does hosting work?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We host your website and keep it running, updated, and backed up for one monthly price. Plans are listed at https://supportsidetech.com/plans.html. Hosting Basic is $129 per month and includes up to 30 minutes of small edits. Hosting Plus is $199 per month and includes up to 2 hours of small content edits. Hosting Pro is $349 per month and includes up to 5 hours of edits and updates. Your site can be one we built, or one built by someone else. Plans are not required."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I get a quote?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Email nolenmillington@supportsidetech.com, call (518) 669-0636, or use the contact form at https://supportsidetech.com/#contact. We reply within a day. Submitting a form starts a conversation. It does not create a binding agreement. The scope, timeline, and cost of any project are agreed on separately before work begins."
+            }
+          }
+        ]
       }
-    ],
-    "serviceType": ["Web Development", "Software Development", "Website Design", "Custom Software"],
-    "priceRange": "$$"
+    ]
   }
   </script>
   <meta name="theme-color" content="#05070d" />
@@ -91,6 +240,7 @@
         <a href="#work" class="link-neon">Work</a>
         <a href="founder.html" class="link-neon">Founder</a>
         <a href="plans.html" class="link-neon">Hosting</a>
+        <a href="#faq" class="link-neon">FAQ</a>
         <a href="#contact" class="btn-neon px-4 py-2 js-magnetic">Contact</a>
       </div>
       <button id="menu-btn" class="md:hidden text-ink-2 hover:text-ink-1 p-1" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
@@ -105,6 +255,7 @@
       <a href="#work" class="link-neon text-sm font-medium" onclick="closeMobileMenu()">Work</a>
       <a href="founder.html" class="link-neon text-sm font-medium" onclick="closeMobileMenu()">Founder</a>
       <a href="plans.html" class="link-neon text-sm font-medium" onclick="closeMobileMenu()">Hosting</a>
+      <a href="#faq" class="link-neon text-sm font-medium" onclick="closeMobileMenu()">FAQ</a>
       <a href="#contact" class="btn-neon text-sm px-4 py-2.5" onclick="closeMobileMenu()">Contact</a>
     </div>
   </header>
@@ -120,7 +271,7 @@
             <span class="hero-line">the local business.</span>
           </h1>
           <p class="hero-lede">
-            We build safe, affordable software of any kind: sites, booking tools, apps, so local owners can stay on the actual work. Founded by Nolen Millington.
+            Support Side Tech is a freelance web and software studio in Dunedin, Florida, run by Nolen Millington. We build safe, affordable software of any kind: sites, booking tools, apps, so local owners can stay on the actual work.
           </p>
           <div class="hero-actions">
             <a href="#contact" class="btn-neon px-5 py-3 text-sm js-magnetic">Contact</a>
@@ -166,10 +317,10 @@
         <p class="section-kicker text-left">About</p>
         <h2 class="section-title mb-6">Nolen Millington</h2>
         <p class="text-lg text-ink-3 leading-relaxed mb-4">
-          Founder of Support Side Tech. We build websites, hosting, and custom software for local businesses, from Dunedin and Tampa Bay to the Adirondacks.
+          Support Side Tech is a freelance web and software studio in Dunedin, Florida, run by Nolen Millington. We build websites, hosting, and custom software for local businesses, from Dunedin and Tampa Bay to the Adirondacks.
         </p>
         <p class="text-lg text-ink-3 leading-relaxed mb-10">
-          Based in Warrensburg, New York. Outside the studio: fishing, hiking, family, and making things with other people.
+          Based in Dunedin, Florida. Outside the studio: fishing, hiking, family, and making things with other people.
         </p>
           </div>
         </div>
@@ -246,6 +397,57 @@
 
       </div>
     </section>
+
+    <hr class="neon-hairline max-w-6xl mx-auto" />
+
+    <section id="faq" class="section-block">
+      <div class="layout-wide">
+        <div class="layout-measure">
+        <p class="section-kicker text-left">FAQ</p>
+        <h2 class="section-title mb-8">Common questions</h2>
+        <div class="space-y-4">
+
+          <div class="glass-card glass-edge rounded-xl p-5">
+            <h3 class="font-semibold text-ink-1 mb-2">Who do we work with?</h3>
+            <p class="text-sm text-ink-3 leading-relaxed">
+              We work with local businesses that need a website, a custom web app, hosting and care, or help with local SEO and Google Business Profile. That includes shops, service companies, and rental or hospitality owners. We also work with clients remotely in the United States.
+            </p>
+          </div>
+
+          <div class="glass-card glass-edge rounded-xl p-5">
+            <h3 class="font-semibold text-ink-1 mb-2">Where is our service area?</h3>
+            <p class="text-sm text-ink-3 leading-relaxed">
+              Support Side Tech is a freelance web and software studio in Dunedin, Florida, run by Nolen Millington. We serve clients in the Tampa Bay area, including Clearwater, Tampa, St. Pete, and Pinellas County. We also work with clients remotely across the United States.
+            </p>
+          </div>
+
+          <div class="glass-card glass-edge rounded-xl p-5">
+            <h3 class="font-semibold text-ink-1 mb-2">What do we build?</h3>
+            <p class="text-sm text-ink-3 leading-relaxed">
+              We build websites, booking tools, custom web apps, and other software that matches how a local business actually works. We also offer monthly hosting and care plans, and we provide local SEO and Google Business Profile support.
+            </p>
+          </div>
+
+          <div class="glass-card glass-edge rounded-xl p-5">
+            <h3 class="font-semibold text-ink-1 mb-2">How does hosting work?</h3>
+            <p class="text-sm text-ink-3 leading-relaxed">
+              We host your website and keep it running, updated, and backed up for one monthly price. Plans are listed on our <a href="plans.html" class="link-neon">Hosting</a> page. Hosting Basic is $129 per month and includes up to 30 minutes of small edits. Hosting Plus is $199 per month and includes up to 2 hours of small content edits. Hosting Pro is $349 per month and includes up to 5 hours of edits and updates. Your site can be one we built, or one built by someone else. Plans are not required.
+            </p>
+          </div>
+
+          <div class="glass-card glass-edge rounded-xl p-5">
+            <h3 class="font-semibold text-ink-1 mb-2">How do I get a quote?</h3>
+            <p class="text-sm text-ink-3 leading-relaxed">
+              Email <a class="link-neon" href="mailto:nolenmillington@supportsidetech.com">nolenmillington@supportsidetech.com</a>, call <a class="link-neon" href="tel:+15186690636">(518) 669-0636</a>, or use the contact form on this page. We reply within a day. Submitting a form starts a conversation. It does not create a binding agreement. The scope, timeline, and cost of any project are agreed on separately before work begins.
+            </p>
+          </div>
+
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="neon-hairline max-w-6xl mx-auto" />
 
     <section id="contact" class="section-block">
       <div class="layout-wide">
