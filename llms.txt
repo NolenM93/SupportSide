@@ -1,0 +1,55 @@
+# Support Side Tech
+
+Support Side Tech is a freelance web and software studio in Dunedin, Florida, run by Nolen Millington.
+
+- Website: https://supportsidetech.com
+- Founder: https://supportsidetech.com/founder.html
+- Hosting plans: https://supportsidetech.com/plans.html
+- Privacy: https://supportsidetech.com/privacy.html
+- Terms: https://supportsidetech.com/terms.html
+
+## Contact
+
+- Email: nolenmillington@supportsidetech.com
+- Phone: (518) 669-0636
+- Contact form: https://supportsidetech.com/#contact
+
+We reply within a day. Submitting the contact form starts a conversation. It does not create a binding agreement. The scope, timeline, and cost of any project are agreed on separately before work begins.
+
+## Service area
+
+We are based in Dunedin, Florida, in Pinellas County and the Tampa Bay area, including Clearwater, Tampa, and St. Pete. We also work with clients remotely across the United States.
+
+## Services
+
+- Websites for local businesses
+- Custom web apps, including booking tools and other software that matches how a business actually works
+- Hosting and monthly care plans
+- Local SEO
+- Google Business Profile support
+- Marketing support, including Google Ads, when that is the agreed work
+
+Website and software project prices are quoted separately for each client.
+
+## Hosting and care plans
+
+Official monthly prices, as listed on https://supportsidetech.com/plans.html:
+
+- Hosting Basic: $129 per month. Includes hosting, software and security updates, weekly backups, uptime monitoring, up to 30 minutes of small edits per month (text, photos, hours), and email support with a 48-hour response.
+- Hosting Plus: $199 per month. Includes everything in Hosting Basic, daily backups with 30-day retention, up to 2 hours of small content edits per month, performance checks, and email support with a 24-hour response. Marked as Most Popular on the hosting page.
+- Hosting Pro: $349 per month. Includes everything in Hosting Plus, more frequent backups throughout the day, up to 5 hours of edits and updates per month, a monthly review of how people use the site with suggested improvements, and priority support with same-day response.
+
+A hosting plan can cover a site we built or a site built by someone else. Plans are not required. You can upgrade or downgrade later; changes take effect at the start of the next billing cycle. Additional edit hours are billed at an hourly rate agreed on upfront. Small edits include updating text, swapping images, adjusting business hours, adding a new team member, or fixing a typo. Bigger changes like new pages or features are quoted separately.
+
+## Client work
+
+- ADK Property Group, an Adirondack vacation rental company: we built a custom website. Live site: https://adirondack-property-group.vercel.app
+- Annie's List, a Florida Keys concierge: we provide local SEO, Google Business Profile management, and marketing support, including Google Ads and marketing. The Annie's List website is built and hosted by her own provider. We do not build or host that site. https://annies-list.com
+
+## About the founder
+
+Nolen Millington lives in Dunedin, Florida and runs Support Side Tech.
+
+- Personal portfolio: https://nolenm93.github.io
+- GitHub: https://github.com/NolenM93
+- LinkedIn: https://www.linkedin.com/in/nolen-millington
