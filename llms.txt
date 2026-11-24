@@ -1,6 +1,8 @@
 # Support Side Tech
 
-Support Side Tech is a freelance web and software studio in Dunedin, Florida, run by Nolen Millington.
+Support Side Tech LLC is Nolen Millington's one-person web and software studio in Dunedin, Florida.
+
+Nolen now takes new projects directly at https://nolenm93.github.io.
 
 - Website: https://supportsidetech.com
 - Founder: https://supportsidetech.com/founder.html
